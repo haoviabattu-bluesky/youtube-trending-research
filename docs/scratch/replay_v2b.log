@@ -1,0 +1,12 @@
+[replay] E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\runs\2026-09-22\Lopezzapa68 — 2180 video
+[replay] hard filter: 200 giữ / 861 loại {'DURATION_TOO_LONG': 289, 'DURATION_TOO_SHORT': 289, 'AGE_GT_MAX': 83, 'NON_TARGET_LANGUAGE': 194, 'LIVE_OR_PREMIERE': 6}
+[replay] semantic+format: 5/200 PASS  (LLM {'calls': 1, 'cached': 14, 'errors': 0, 'prompt_tokens': 0, 'completion_tokens': 0, 'latency_ms': 25487, 'provider_dead': []})
+[replay] viral: 5/5 PASS
+[replay] opportunity 5/5 · final QC 5/5
+  1.   78.9 https://youtu.be/J2WiiKe2VY4 viral=68.6 MARKET_TREND br=None topic=90 NARRATED_STORY qc=PASS | 【漫画】周りから愛される60代は必ず言っている魔法の口癖7選
+  2.   66.0 https://youtu.be/Scnn76gZ8E8 viral=52.8 NORMAL br=None topic=90 NARRATED_STORY qc=PASS | 【漫画】退職金で豪華クルーズ旅をした65歳夫婦のリアル…14日間で知った現実とは？
+  3.   60.9 https://youtu.be/5RzvlhcYVZ0 viral=50.9 NORMAL br=None topic=80 NARRATED_STORY qc=PASS | 【漫画】60代以降でも気楽に働ける人気なアルバイト・パート5選とは…
+  4.   60.3 https://youtu.be/r3i0SYOEvkw viral=51.3 NORMAL br=None topic=80 NARRATED_STORY qc=PASS | 【元施設長が暴露】なぜ老人ホームに入ると数年で亡くなってしまうのか？その残酷な真実…
+  5.   60.2 https://youtu.be/yLvVh9CQmys viral=51.0 NORMAL br=None topic=80 NARRATED_STORY qc=PASS | 【感動】「私が弾きます」高級レストランの専属ピアニストが救急搬送…皿洗いの女性が代役でピアノを演
+[replay] SELECTED: []
+EXIT=0

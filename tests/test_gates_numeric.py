@@ -135,3 +135,22 @@ def test_ranker_opportunity_reject_blocks(rules):
     c = _alive("a", "C1", "x")
     c["opportunity"]["decision"] = "REJECT"
     assert ranker.rank([c], rules, "L")[0] == []
+
+
+def test_baseline_missing_does_not_silently_block_selection(rules):
+    """Baseline trống (hết quota/kênh mới) → breakout_ratio None, nhưng ứng viên đã qua 4 cổng
+    vẫn phải được chọn; chỉ gắn cờ. Đã dính thật 2026-09-22: SELECTED rỗng mà không báo gì."""
+    c = _alive("a", "C1", "老後の友情の話")
+    c["viral"]["breakout_ratio"] = None
+    c["flags"].append("BASELINE_MISSING")
+    selected, _ = ranker.rank([c], rules, "L")
+    assert [x["video_id"] for x in selected] == ["a"]
+    assert selected[0]["selected_record"]["breakout_ratio"] is None
+
+
+def test_missing_real_critical_field_still_blocks(rules):
+    c = _alive("a", "C1", "x")
+    c["opportunity"]["opportunity_score"] = None   # gate lỗi → thiếu field critical thật
+    selected, _ = ranker.rank([c], rules, "L")
+    assert selected == []
+    assert any("MISSING_CRITICAL" in f for f in c["flags"])

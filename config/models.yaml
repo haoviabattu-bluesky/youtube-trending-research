@@ -49,8 +49,12 @@ gates:
     max_tokens: 2000
     temperature: 0.2
     prompt_version: opportunity_v1
-  final_qc:                 # H8 — Sol, model KHÁC HẲN 2 gate trên để độc lập thật
+  final_qc:                 # H8 — Sol, model KHÁC HẲN 2 gate trên để độc lập thật.
+                            # HAI ĐƯỜNG DÂY tới CÙNG model (không phải 2 model khác nhau) — đổi
+                            # đường không làm mất tính độc lập, mà tránh 1 proxy 503 là mất cả lane
+                            # (đo thật 2026-09-22: hhtech 503 + auth_unavailable, ns24 trả 6s OK).
     chain:
+      - [ns24, gpt-5.6-sol]
       - [hhtech, gpt-5.6-sol]
     timeout_s: 120
     max_tokens: 1500

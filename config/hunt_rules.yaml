@@ -23,6 +23,7 @@ semantic:                      # điểm 0–100 từ Gemini
     content_identity_match: 50
   uncertain_retry: 1           # UNCERTAIN → chấm lại đúng 1 lần
   uncertain_batch_size: 5      # lô nhỏ hơn cho lượt chấm lại (gọi từng video 1 là 45 phút/lane)
+  gapfill_batch_size: 5        # hỏi lại video bị model BỎ SÓT khỏi lô (đo thật: sót 20%)
   max_uncertain_retry: 40      # trần số video được chấm lại mỗi lane
   batch_size: 15               # nhỏ để né Cloudflare 524 ~100s của ramclouds
   description_chars: 600

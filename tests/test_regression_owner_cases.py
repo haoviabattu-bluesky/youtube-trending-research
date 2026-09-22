@@ -105,3 +105,26 @@ def test_final_qc_disabled_blocks_selection(cases, lane_satori, rules, stub_clie
     final_qc.run(kept, lane_satori, client, enabled=False)
     selected, shadow = ranker.rank(kept, rules, "L")
     assert selected == [] and len(shadow) == len(rows)
+
+
+def test_gapfill_rescues_videos_dropped_by_model(cases, lane_satori, rules, stub_client_factory):
+    """Model trả JSON hợp lệ nhưng BỎ BỚT video trong lô → phải hỏi lại, không để thành ERROR.
+    Đo thật 2026-09-22: 39/200 (20%) bị bỏ im lặng."""
+    canned = _canned(cases)
+    dropped = "OK000000001"
+    state = {"first": True}
+
+    class DroppingClient(type(stub_client_factory({}))):
+        def call(self, gate, prompt, ids, schema_name, expect_list=False, system=None, use_cache=True):
+            if gate == "semantic_format" and state["first"]:
+                state["first"] = False
+                ids = [v for v in ids if v != dropped]      # lô đầu: nuốt mất 1 video
+            return super().call(gate, prompt, ids, schema_name, expect_list, system, use_cache)
+
+    client = DroppingClient(stub_client_factory({}).cfg, canned)
+    rows = [dict(c["row"]) for c in cases["cases"]]
+    kept, _ = hard_filter.apply(rows, lane_satori, rules, set(), [], [])
+    semantic_format_gate.run(kept, lane_satori, client, rules, FLAGS)
+    c = next(c for c in kept if c["video_id"] == dropped)
+    assert c["semantic"]["decision"] != "ERROR", "video bị bỏ sót phải được hỏi lại"
+    assert "GAPFILL_RETRIED" in c["flags"]

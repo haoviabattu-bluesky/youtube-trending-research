@@ -1,0 +1,12 @@
+[replay] E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\runs\2026-09-22\Lopezzapa68 — 2180 video
+[replay] hard filter: 200 giữ / 861 loại {'DURATION_TOO_LONG': 289, 'DURATION_TOO_SHORT': 289, 'AGE_GT_MAX': 83, 'NON_TARGET_LANGUAGE': 194, 'LIVE_OR_PREMIERE': 6}
+[replay] semantic+format: 11/200 PASS  (LLM {'calls': 10, 'cached': 14, 'errors': 0, 'prompt_tokens': 0, 'completion_tokens': 0, 'latency_ms': 213049, 'provider_dead': ['ns24', 'ramclouds']})
+[replay] viral: 6/11 PASS
+[replay] opportunity 6/6 · final QC 2/6
+  1.   80.5 https://youtu.be/J2WiiKe2VY4 viral=72.6 MARKET_TREND br=None topic=90 NARRATED_STORY qc=PASS | 【漫画】周りから愛される60代は必ず言っている魔法の口癖7選
+  2.   74.4 https://youtu.be/ryxGhlOFnfA viral=55.0 NORMAL br=None topic=85 NARRATED_STORY qc=ERROR | 【2ch有益スレ】ヘルパーは見た…終の棲家シニア向けマンションで現実に起きてる地獄がエグすぎ…【ゆっ
+  3.   69.2 https://youtu.be/BzOm-N6qX4Q viral=46.9 NORMAL br=None topic=85 NARRATED_STORY qc=ERROR | 【漫画】70年以上ずっと一緒だった祖母の親友。90歳を超えたある日、祖母は突然「私たち、今日で終わり
+  4.   68.7 https://youtu.be/D5OFG29UCcQ viral=46.3 NORMAL br=None topic=90 NARRATED_STORY qc=ERROR | 年金を渡さない夫を捨てた日…「こっちは無給の仕事を40年やってきた」
+  5.   66.2 https://youtu.be/AQcPSZ8Em_4 viral=57.4 MARKET_TREND br=None topic=85 NARRATED_STORY qc=ERROR | 【漫画】定年後、贅沢しなくても心は満たせる…60代から一生モノになる最高の趣味5選
+  6.   65.8 https://youtu.be/Scnn76gZ8E8 viral=52.3 NORMAL br=None topic=90 NARRATED_STORY qc=PASS | 【漫画】退職金で豪華クルーズ旅をした65歳夫婦のリアル…14日間で知った現実とは？
+[replay] SELECTED: ['J2WiiKe2VY4', 'Scnn76gZ8E8']

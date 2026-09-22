@@ -94,6 +94,16 @@ def run(cands: list[dict], lane: LaneProfile, client: LlmClient, rules: dict,
     bs = rules["semantic"]["batch_size"]
     for i in range(0, len(cands), bs):
         _run_batch(cands[i:i + bs], lane, client, rules)
+
+    # LẤP CHỖ THIẾU: model trả JSON hợp lệ nhưng BỎ BỚT video trong lô (đo thật 2026-09-22:
+    # 39/200 video = 20% bị bỏ im lặng, không lỗi nào). Hỏi lại riêng những video bị bỏ, theo lô
+    # nhỏ. Không làm bước này thì 1/5 pool bị loại oan mà chỉ hiện ra dưới dạng "ERROR".
+    gb = max(1, rules["semantic"].get("gapfill_batch_size", 5))
+    missing = [c for c in cands if c["semantic"].get("decision") == "ERROR"]
+    for c in missing:
+        c["flags"].append("GAPFILL_RETRIED")
+    for i in range(0, len(missing), gb):
+        _run_batch(missing[i:i + gb], lane, client, rules, use_cache=False)
     # UNCERTAIN → chấm lại 1 lần (guide §25), theo LÔ NHỎ chứ không từng video một: gọi đơn lẻ
     # 45 video × ~60s = 45 phút/lane, nhân 9 lane là không chạy nổi trong ngày. Lô 5 vẫn giúp model
     # tập trung hơn lô 15 mà chỉ tốn ~9 lượt gọi.

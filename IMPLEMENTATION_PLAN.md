@@ -285,7 +285,7 @@ Output kiểm tra: `E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\runs\<YYYY-MM-DD>\<lane>
 |---|---|---|
 | P0-01..13 | ✅ | `src/hunt_v2/` 16 file, `config/{hunt_rules,models}.yaml`, `lanes/` 9 lane, `tests/` 48 case xanh |
 | P1-01 discovery mở rộng | ✅ | `discovery.py` (B/C/D + window `today`), bật cờ `discovery_expansion: true` |
-| P1-02 verify model | ✅ | gemini-3.8-flash: ramclouds OK nhưng **rất chậm** hôm nay (ping 160s, 1 lô 3 video 664s), ns24 trả `upstream_error` trong SSE; Sol hhtech 3s; `claude -p sonnet` 16s → thêm claude_cli làm fallback cuối cho semantic gate + cầu dao provider theo lượt |
+| P1-02 verify model | ✅ | gemini-3.8-flash: ramclouds OK nhưng **rất phập phù** (lúc 39s/lô 15 video, lúc treo >240s), ns24 `upstream_error`; `claude -p sonnet` ổn định **30s/lô 15 và miễn phí**; Sol: hhtech 503/auth_unavailable → thêm đường ns24 (cùng model). Chuỗi cuối: semantic ramclouds→ns24→claude_cli · opportunity claude_cli · QC ns24→hhtech |
 | P1-03 opportunity (Claude) | ✅ | `claude -p --model sonnet --output-format json`, cwd tạm để không nạp CLAUDE.md |
 | P1-04 final QC (Sol) | ✅ | hhtechapi.net non-stream |
 | P1-05 chuyển RESEARCH sang V2 | ⏸ | code sẵn (`shadow_mode: false` + OLD_FALLBACK), CHƯA bật — chờ HUMAN_DECISION |
@@ -294,6 +294,35 @@ Output kiểm tra: `E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\runs\<YYYY-MM-DD>\<lane>
 | P2-02 thumbnail | ⏸ | chưa làm |
 | P2-03 retire OLD | ⏸ | chờ ≥2 tuần production |
 | P2-04 bật lịch | ⏸ | chỉ khi user ra lệnh |
+
+### Số đo thật lane Lopezzapa68 (2026-09-22, shadow)
+
+```
+discovery  2.180 video (tag cũ 4.143 thô → +533 query mở rộng, +15 watch channel)
+hard filter  200 giữ / 861 loại (DURATION 578 · NON_TARGET_LANGUAGE 194 · AGE 83 · LIVE 6)
+semantic+format  11/200 PASS   ← đường cũ chỉ còn 12 video ngay từ hard filter vì hard-reject tag
+viral        6/11 PASS
+opportunity  6/6 · final QC 2/6 (4 ERROR do proxy Sol chập chờn lúc đó → fail-safe, không chọn)
+SELECTED     2  (J2WiiKe2VY4, Scnn76gZ8E8)
+```
+
+Gemini loại đúng thứ đường cũ hay để lọt: VLOG_PERSON 44 · TALK_SHOW 43 · NEWS 17 · INTERVIEW 6 ·
+TV_CLIP 5. `topic_match` trung vị của pool = 15 → pool rộng đúng như thiết kế, gate ngữ nghĩa mới là
+chỗ lọc, không phải chuỗi từ khoá.
+
+**4 lỗi THẬT tìm ra nhờ chạy thật (không test nào bắt được nếu chỉ chạy stub):**
+1. **Stream treo vô hạn** — `requests` timeout chỉ tính cho MỖI lần đọc socket; proxy nhỏ giọt dòng
+   keep-alive `: ping` thì không bao giờ chạm timeout. Một lượt đứng im 20 phút, log không ghi gì.
+   → `_read_sse` nhận `deadline` tuyệt đối.
+2. **Model BỎ SÓT video trong lô mà vẫn trả JSON hợp lệ** — 39/200 = 20% bị gắn ERROR oan. Hiện ra
+   y như lỗi hạ tầng nên rất dễ đổ nhầm cho proxy. → bước "lấp chỗ thiếu" hỏi lại theo lô nhỏ; sau khi
+   sửa, PASS tăng 5 → 11.
+3. **`breakout_ratio = None` (kênh chưa có baseline) bị tính là "thiếu field critical"** → CHẶN IM
+   LẶNG mọi lượt chọn: 5 ứng viên qua đủ 4 cổng mà `SELECTED` vẫn rỗng, không một dòng cảnh báo.
+   → bỏ khỏi `SELECTED_CRITICAL`, thay bằng cờ `BASELINE_MISSING`.
+4. **Cầu dao 2 lần lỗi là quá gắt** — hhtech 503 tạm thời (2 attempt trong 1 lượt gọi) đã ngắt Sol cho
+   cả lượt chạy → QC ERROR toàn bộ → mất trắng lane. → nâng lên 3, và thêm đường ns24 cho Sol
+   (CÙNG model gpt-5.6-sol, khác đường dây — vẫn độc lập với Gemini/Claude).
 
 Bẫy đã dính khi code (ghi để khỏi lặp): (1) heredoc bash trên máy này biến `\n` thành xuống dòng
 thật → patch file Python bằng Edit tool, không dùng `python - <<EOF` với chuỗi có `

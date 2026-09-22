@@ -91,9 +91,10 @@ def test_circuit_breaker_skips_dead_provider(models, mem_con, tmp_path, monkeypa
     monkeypatch.setattr(lc.time, "sleep", lambda s: None)
     c = _client(models, mem_con, tmp_path)
     c.call("semantic_format", "p", ["x1"], None)   # timeout → không retry, fails=1
-    c.call("semantic_format", "p", ["x2"], None)   # timeout lần 2 → cầu dao ngắt
+    c.call("semantic_format", "p", ["x2"], None)   # timeout lần 2
+    c.call("semantic_format", "p", ["x2b"], None)  # lần 3 → cầu dao ngắt
     r = c.call("semantic_format", "p", ["x3"], None)
-    assert seen.count("https://ramclouds.me/v1") == 2 and r.ok
+    assert seen.count("https://ramclouds.me/v1") == 3 and r.ok
     assert "ramclouds" in c.stats["provider_dead"]
 
 

@@ -50,9 +50,13 @@ SCHEMAS: dict[str, dict[str, tuple]] = {
     },
 }
 
-# Field critical của record được chọn (guide §36) — thiếu 1 → DO NOT SELECT
+# Field critical của record được chọn (guide §36) — thiếu 1 → DO NOT SELECT.
+# `breakout_ratio` CỐ Ý không nằm đây dù guide có liệt kê: kênh chưa lấy được baseline (hết quota
+# Data API / kênh mới) thì nó = None hợp lệ, mà viral_pass đã là cổng riêng cho tín hiệu viral.
+# Để nó vào critical là chặn IM LẶNG mọi lượt chọn khi baseline trống (đã dính thật 2026-09-22:
+# 5 ứng viên qua cả 4 cổng vẫn ra SELECTED rỗng). Thiếu baseline → gắn cờ BASELINE_MISSING ở audit.
 SELECTED_CRITICAL = ("video_id", "url", "lane_id", "semantic_pass", "format_pass", "viral_pass",
-                     "final_qc_pass", "viral_type", "viral_score", "breakout_ratio", "topic_match",
+                     "final_qc_pass", "viral_type", "viral_score", "topic_match",
                      "format_class", "opportunity_score", "learning_value", "why_viral",
                      "why_useful", "final_score")
 

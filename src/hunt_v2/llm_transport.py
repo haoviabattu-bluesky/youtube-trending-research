@@ -72,8 +72,9 @@ def _read_sse(r: requests.Response, deadline: float) -> tuple[str, dict]:
     try:
         for raw in r.iter_lines(decode_unicode=True):
             if time.time() > deadline:
-                raise TransportError(f"Timeout: quá {int(deadline - time.time() + 1)}s (stream treo)"
-                                     if not parts else "Timeout: stream chưa kết thúc trong hạn")
+                raise TransportError(
+                    f"Timeout: quá hạn {int(time.time() - deadline)}s "
+                    f"({'chưa nhận được nội dung nào' if not parts else 'stream chưa kết thúc'})")
             if not raw or not raw.startswith("data:"):
                 continue
             payload = raw[5:].strip()

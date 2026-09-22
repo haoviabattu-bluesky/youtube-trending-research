@@ -136,7 +136,7 @@ class LlmClient:
                     last_err = f"{prov_name}:{model} lần {attempt}: {e}"
                     res.attempts_log.append(f"{last_err} ({int((time.time() - t0) * 1000)}ms)")
                     self._fails[prov_name] = self._fails.get(prov_name, 0) + 1
-                    if self._fails[prov_name] >= 2:
+                    if self._fails[prov_name] >= 3:  # 2 là quá gắt: 1 lượt 503 tạm thời (2 attempt) đã ngắt cả lượt chạy
                         self.dead.add(prov_name)
                         self.stats["provider_dead"] = sorted(self.dead)
                     if "Timeout" in str(e) or prov_name in self.dead:

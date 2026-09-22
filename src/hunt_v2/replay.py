@@ -69,6 +69,8 @@ def main() -> int:
     LOG(f"[replay] hard filter: {len(kept)} giữ / {len(rejected)} loại {dict(rej)}")
 
     semantic_format_gate.run(kept, lane, client, rules, flags)
+    rs.save(4, "semantic", [{"video_id": c["video_id"], "title": c["title"], **c["semantic"]} for c in kept])
+    rs.save(5, "format", [{"video_id": c["video_id"], **c["format"]} for c in kept])
     alive = [c for c in kept if c["semantic_pass"] and c["format_pass"]]
     LOG(f"[replay] semantic+format: {len(alive)}/{len(kept)} PASS  (LLM {client.stats})")
 
@@ -79,6 +81,7 @@ def main() -> int:
         row = store_v2.load_hunt_baseline(con, c["channel_id"])
         bl[c["channel_id"]] = json.loads(row["payload"]) if row else None
     viral_engine.score(alive, bl, rules)
+    rs.save(6, "viral", [{"video_id": c["video_id"], "title": c["title"], **c["viral"]} for c in alive])
     viral_ok = sorted([c for c in alive if c["viral"]["viral_pass"]],
                       key=lambda c: c["viral"]["viral_score"], reverse=True)
     LOG(f"[replay] viral: {len(viral_ok)}/{len(alive)} PASS")
@@ -89,6 +92,8 @@ def main() -> int:
         qc_short = [c for c in short if c["opportunity"].get("decision") in ("PASS", "UNCERTAIN")]
         qc_short = qc_short[: rules["final_qc"]["shortlist_n"]]
         final_qc.run(qc_short, lane, client, True)
+        rs.save(7, "opportunity", [{"video_id": c["video_id"], **c["opportunity"]} for c in short])
+        rs.save(8, "final_qc", [{"video_id": c["video_id"], **c["final_qc"]} for c in qc_short])
         LOG(f"[replay] opportunity {len([c for c in short if c.get('opportunity_pass')])}/{len(short)}"
             f" · final QC {len([c for c in qc_short if c.get('final_qc_pass')])}/{len(qc_short)}")
 
