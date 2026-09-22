@@ -21,7 +21,9 @@ semantic:                      # điểm 0–100 từ Gemini
   reject:
     topic_match: 55
     content_identity_match: 50
-  uncertain_retry: 1           # UNCERTAIN → gọi lại 1 lần đơn lẻ
+  uncertain_retry: 1           # UNCERTAIN → chấm lại đúng 1 lần
+  uncertain_batch_size: 5      # lô nhỏ hơn cho lượt chấm lại (gọi từng video 1 là 45 phút/lane)
+  max_uncertain_retry: 40      # trần số video được chấm lại mỗi lane
   batch_size: 15               # nhỏ để né Cloudflare 524 ~100s của ramclouds
   description_chars: 600
   examples_each: 5             # số positive/negative example đưa vào prompt

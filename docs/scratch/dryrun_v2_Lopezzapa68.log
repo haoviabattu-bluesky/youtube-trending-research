@@ -1,5 +1,19 @@
-[proxy] 2 proxy trong pool
+[proxy] không dùng proxy (IP thật)
 [guard] trước khi chạy: {'NOTE': '20 dòng/57d9b732b4', 'GMAIL': '102 dòng/92fd68a279', 'shinya_shiryoshitsu': '18 dòng/19ecc30376', 'Lopezzapa68': '22 dòng/5b17cf813b', 'irogatatarukioku': '12 dòng/28d07b79a3', '70dai-kenko': '11 dòng/a2807c8b0c', 'teinengo-real': '11 dòng/caf80c2e20', 'teinengo-tanoshimi': '11 dòng/4435b8cf58', 'kokoro-kazoku': '1 dòng/da5422de3c', 'sengoku-uragawa': '1 dòng/443d4ab09a', 'teinengo-fuufu': '1 dòng/c0841faf80'}
 
 === Lopezzapa68 — Lane satori — chuyện người già cảm động ===
 [Lopezzapa68] 78 từ khoá (tag cột F + seed)
+  [Lopezzapa68] 10/78 tag → 513 video
+  [Lopezzapa68] 20/78 tag → 1124 video
+  [Lopezzapa68] 30/78 tag → 1673 video
+  [Lopezzapa68] 40/78 tag → 2198 video
+  [Lopezzapa68] 50/78 tag → 2825 video
+  [Lopezzapa68] 60/78 tag → 3290 video
+  [Lopezzapa68] 70/78 tag → 3746 video
+[Lopezzapa68] 4143 video thô, parse_ok=5260 parse_fail=123
+[Lopezzapa68] 2030 video ≥10,000 view (thô)
+[Lopezzapa68] 12 video qua hết sàng lọc (loại: 278 không có chữ Nhật, 6 live-stream, 2013 tiêu đề không khớp từ khoá thật, + trùng lane/quá 30d/<10k/Shorts/trùng đề tài đã làm)
+[Lopezzapa68] bỏ qua bước kiểm định dạng kênh (thiếu LLM_API_KEY hoặc lỗi gọi model)
+[Lopezzapa68][v2] discovery +533 query, +15 watch → enrich thêm 150
+[Lopezzapa68][v2] hard filter: 200 giữ / 1980 loại {'DURATION_TOO_LONG': 289, 'DURATION_TOO_SHORT': 289, 'AGE_GT_MAX': 83, 'NON_TARGET_LANGUAGE': 194, 'LIVE_OR_PREMIERE': 6, 'CAP_SEMANTIC_POOL': 1119}
+EXIT=127

@@ -94,11 +94,16 @@ def run(cands: list[dict], lane: LaneProfile, client: LlmClient, rules: dict,
     bs = rules["semantic"]["batch_size"]
     for i in range(0, len(cands), bs):
         _run_batch(cands[i:i + bs], lane, client, rules)
-    # UNCERTAIN → retry đơn lẻ 1 lần (guide §25)
+    # UNCERTAIN → chấm lại 1 lần (guide §25), theo LÔ NHỎ chứ không từng video một: gọi đơn lẻ
+    # 45 video × ~60s = 45 phút/lane, nhân 9 lane là không chạy nổi trong ngày. Lô 5 vẫn giúp model
+    # tập trung hơn lô 15 mà chỉ tốn ~9 lượt gọi.
+    rb = max(1, rules["semantic"].get("uncertain_batch_size", 5))
     retry = [c for c in cands if "UNCERTAIN" in (c["semantic"].get("decision"), c["format"].get("decision"))]
-    for c in retry[: 3 * bs]:
+    retry = retry[: rules["semantic"].get("max_uncertain_retry", 40)]
+    for c in retry:
         c["flags"].append("UNCERTAIN_RETRIED")
-        _run_batch([c], lane, client, rules, use_cache=False)
+    for i in range(0, len(retry), rb):
+        _run_batch(retry[i:i + rb], lane, client, rules, use_cache=False)
     for c in cands:
         c["semantic_pass"] = c["semantic"].get("decision") == "PASS"
         c["format_pass"] = c["format"].get("decision") == "PASS"

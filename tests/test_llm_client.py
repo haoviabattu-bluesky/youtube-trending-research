@@ -95,3 +95,21 @@ def test_circuit_breaker_skips_dead_provider(models, mem_con, tmp_path, monkeypa
     r = c.call("semantic_format", "p", ["x3"], None)
     assert seen.count("https://ramclouds.me/v1") == 2 and r.ok
     assert "ramclouds" in c.stats["provider_dead"]
+
+
+def test_sse_wall_clock_deadline(monkeypatch):
+    """Proxy nhỏ giọt keep-alive → iter_lines không bao giờ hết timeout của requests."""
+    class R:
+        status_code = 200
+
+        def iter_lines(self, decode_unicode=True):
+            while True:
+                yield ": ping"
+
+    monkeypatch.setattr(tr.time, "time", lambda: 1e9)      # luôn quá hạn
+    try:
+        tr._read_sse(R(), deadline=1e9 - 1)
+    except tr.TransportError as e:
+        assert "Timeout" in str(e)
+    else:
+        raise AssertionError("phải ném TransportError")

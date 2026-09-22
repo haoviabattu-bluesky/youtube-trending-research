@@ -13,6 +13,7 @@ import os
 import re
 import subprocess
 import tempfile
+import time
 from pathlib import Path
 
 import requests
@@ -48,7 +49,7 @@ def chat_http(prov: dict, model: str, messages: list[dict], timeout: int,
     if r.status_code != 200:
         raise TransportError(f"HTTP {r.status_code}: {r.text[:200]}")
     if prov.get("stream"):
-        text, usage = _read_sse(r)
+        text, usage = _read_sse(r, deadline=time.time() + timeout)
     else:
         data = r.json()
         try:
@@ -63,10 +64,16 @@ def chat_http(prov: dict, model: str, messages: list[dict], timeout: int,
     return text, usage
 
 
-def _read_sse(r: requests.Response) -> tuple[str, dict]:
+def _read_sse(r: requests.Response, deadline: float) -> tuple[str, dict]:
+    """`deadline` là mốc TUYỆT ĐỐI phải dừng. Timeout của requests chỉ tính cho MỖI lần đọc
+    socket — proxy nhỏ giọt dòng keep-alive `: ping` vài giây một lần thì không bao giờ chạm
+    timeout, call treo vô hạn (đã dính thật 2026-09-22: 1 lượt đứng 20 phút không log gì)."""
     parts, usage = [], {}
     try:
         for raw in r.iter_lines(decode_unicode=True):
+            if time.time() > deadline:
+                raise TransportError(f"Timeout: quá {int(deadline - time.time() + 1)}s (stream treo)"
+                                     if not parts else "Timeout: stream chưa kết thúc trong hạn")
             if not raw or not raw.startswith("data:"):
                 continue
             payload = raw[5:].strip()
