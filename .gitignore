@@ -1,0 +1,8 @@
+config/.env
+credentials/
+data/*.csv
+data/*.db
+__pycache__/
+*.pyc
+.venv/
+config/proxies.txt

@@ -1,0 +1,130 @@
+# Ngách ỨNG VIÊN để khảo sát — KHÁC niches.yaml (ngách đang chạy hằng ngày).
+# Tiêu chí chọn ứng viên: faceless, kể chuyện bằng giọng đọc, cảnh SINH ĐƯỢC bằng ảnh AI,
+# có đối thủ để bóc transcript 70/30. Loại: gameplay, review sản phẩm thật, tin tức,
+# người thật nổi tiếng, thể thao, reaction — những thứ pipeline hiện tại không làm được.
+
+defaults:
+  windows: [week, month]
+  baseline_per_niche: 45
+
+niches:
+
+  jp_kaidan:
+    label: "Chuyện ma / kinh dị có thật (怪談)"
+    ai_fit: "RẤT CAO — cảnh đêm, nhà cũ, bóng người; ảnh AI mạnh nhất ở đây"
+    hl: ja
+    gl: JP
+    keywords: [怖い話, 実話怪談, 意味がわかると怖い話, 心霊体験, 都市伝説,
+               洒落にならない怖い話, 怪談 朗読, ゾッとする話, 田舎 怖い話, 山の怖い話,
+               2ch 怖い話, 禁后]
+
+  jp_ww2_history:
+    label: "Chiến tranh / lịch sử Showa (戦争・昭和史)"
+    ai_fit: "CAO — ảnh tư liệu dựng lại; anh đã có pipeline WW2"
+    hl: ja
+    gl: JP
+    keywords: [戦争 体験談, 太平洋戦争 解説, 昭和 の暮らし, 特攻隊, 満州 引き揚げ,
+               東京大空襲, 戦後 日本, 昭和 30年代, 戦国武将 解説, 日本史 ミステリー,
+               歴史 の真実, 昭和 懐かしい]
+
+  jp_manga_sukatto:
+    label: "Manga スカッと / báo ứng (định dạng đang thắng)"
+    ai_fit: "RẤT CAO — 6/10 video tinh hoa HÔM NAY dùng đúng định dạng này"
+    hl: ja
+    gl: JP
+    keywords: [漫画 スカッと, スカッとする話 漫画, 漫画 修羅場, 漫画 因果応報,
+               漫画 義母, 漫画 職場, 漫画 復讐, 漫画 離婚, 漫画 遺産,
+               漫画 実話, マンガ動画 スカッと, 漫画 ざまぁ]
+
+  jp_mystery:
+    label: "Vụ án chưa có lời giải / bí ẩn (未解決事件)"
+    ai_fit: "CAO — cảnh dựng lại, bản đồ, hiện trường"
+    hl: ja
+    gl: JP
+    keywords: [未解決事件, 失踪 事件, 日本 ミステリー, 消えた, 謎の事件,
+               世界の謎, 怖い事件, 迷宮入り, 不可解な話, 行方不明,
+               海外 ミステリー, 事故物件]
+
+  jp_uchuu_kagaku:
+    label: "Vũ trụ / khoa học giải thích (宇宙・科学)"
+    ai_fit: "RẤT CAO — hành tinh, thiên hà, giả tưởng; ảnh AI cực mạnh"
+    hl: ja
+    gl: JP
+    keywords: [宇宙 解説, 宇宙の謎, ブラックホール, 地球外生命体, 宇宙人,
+               宇宙 ヤバい, 科学 解説, 深海 生物, 恐竜 解説, 人類の未来,
+               もし地球が, 天体 解説]
+
+  jp_zen:
+    label: "Thiền / Phật giáo / triết lý sống (禅・仏教)"
+    ai_fit: "CAO — chùa, thiên nhiên, người già tĩnh lặng"
+    hl: ja
+    gl: JP
+    keywords: [禅 の教え, 仏教 の教え, ブッダの教え, 般若心経, 空海,
+               人生 哲学, 名言 人生, 心が軽くなる, 手放す 生き方, 執着 手放す,
+               老子 の教え, 幸せになる考え方]
+
+  jp_money:
+    label: "Tiền bạc / tiết kiệm / đầu tư cho người trung niên"
+    ai_fit: "CAO — cảnh sinh hoạt, đồ thị, nhà cửa"
+    hl: ja
+    gl: JP
+    keywords: [新NISA, 節約 生活, 貯金 コツ, 投資 初心者, 資産形成,
+               お金 の増やし方, 節約 主婦, 固定費 削減, 保険 見直し, 副業,
+               50代 貯金, ふるさと納税]
+
+  jp_animal:
+    label: "Chuyện động vật cảm động (動物 感動)"
+    ai_fit: "RẤT CAO — anh đã có niche pack wildlife-en"
+    hl: ja
+    gl: JP
+    keywords: [犬 感動 実話, 猫 感動, 保護犬, 動物 感動する話, 忠犬,
+               野生動物 ドキュメンタリー, 動物 の絆, 猫 不思議, 犬 別れ, ペットロス,
+               動物 賢い, 野生 の掟]
+
+  jp_shokuba:
+    label: "Công sở / nghỉ việc / công ty đen (仕事)"
+    ai_fit: "CAO — văn phòng, đối thoại 2 người"
+    hl: ja
+    gl: JP
+    keywords: [ブラック企業, 仕事 辞めたい, 退職 体験談, 上司 むかつく, パワハラ 実話,
+               転職 成功, 会社 辞めた, 職場 人間関係, 新人 教育, 派遣 実話,
+               定年 退職 会社, 働き方]
+
+  jp_jiken:
+    label: "Vụ án hình sự / tội phạm có thật (事件・犯罪ノンフィクション)"
+    ai_fit: "CAO — hiện trường, bản đồ, chân dung, tài liệu điều tra"
+    hl: ja
+    gl: JP
+    keywords: [殺人事件 解説, 迷宮入り 事件簿, 未解決事件 日本, 猟奇殺人 事件,
+               冤罪事件 真相, 連続殺人犯, サイコパス 事件, 誘拐事件 真相,
+               ノンフィクション 犯罪, 実録 事件簿, 死刑囚 手記, 警察 未解決,
+               行方不明 事件, 海外 猟奇殺人, 日本三大 事件]
+
+  jp_keizai_suitai:
+    label: "JP — giải thích ngành/khu vực đang suy thoái (bản dịch ngách 돈의 맥락 KR)"
+    ai_fit: "CAO — đồ hoạ vector phẳng, không cần người thật"
+    hl: ja
+    gl: JP
+    keywords: [空き家問題, 空き家 なぜ増える, シャッター商店街, 商店街 衰退 理由,
+               物流 2024年問題, トラックドライバー 不足, 限界集落, 過疎化 集落,
+               消滅可能性都市, 閉店ラッシュ, 倒産ラッシュ 理由, 業界の闇,
+               人手不足 倒産, コンビニ 閉店 理由, 飲食店 倒産 増加, 地方 経済 崩壊]
+
+  en_story:
+    label: "EN — story/reddit/life lessons (đối chứng thị trường Mỹ)"
+    ai_fit: "CAO — nhưng cần dựng giọng tiếng Anh mới"
+    hl: en
+    gl: US
+    keywords: ["reddit stories", "entitled parents", "revenge story",
+               "true scary stories", "life lessons at 70", "retirement regrets",
+               "elderly wisdom", "unsolved mystery", "space documentary",
+               "animal rescue story", "malicious compliance", "wholesome story"]
+
+  ko_senior:
+    label: "KR — người già / hậu vận (nguồn gốc simbot2)"
+    ai_fit: "CAO — anh đã clone 70/30 từ đây sang Nhật"
+    hl: ko
+    gl: KR
+    keywords: [노년의 삶, 노후 준비, 60대 건강, 70대 인생, 사연 실화,
+               감동 사연, 시어머니 사연, 유산 상속, 황혼 이혼, 자식 배신,
+               노후 자금, 인생 교훈]

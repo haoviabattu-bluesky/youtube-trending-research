@@ -1,0 +1,183 @@
+# Ngách theo dõi. Đây là bản bootstrap — từ Phase 3 tool sẽ đọc tab TRD_CONFIG
+# trên Google Sheet và file này chỉ còn là giá trị mặc định khi Sheet trống.
+#
+# hl/gl quyết định ngôn ngữ InnerTube trả về (ảnh hưởng parser số + tuổi video).
+# windows: lát thời gian quét, luôn sort theo view count.
+
+defaults:
+  windows: [today, week, month]
+  min_subs: 300            # sàn chống nhiễu — kênh 7 subs cho mult 2618x vô nghĩa
+  max_ch_age_days: 1095    # trần 3 năm — loại CM/kênh chính phủ không nhân bản được
+  min_duration_s: 180      # chỉ long-form, bỏ Shorts
+  breakout_ratio: 3.0          # video >= 3x median CHÍNH KÊNH đó = bứt phá
+  new_channel_days: 120
+  new_channel_min_views: 50000
+  # 🔁 PROVEN_NICHE — kênh có công thức chạy được (không phải video may mắn).
+  # Dùng ch_mult = median_views / subs (độ ỔN ĐỊNH), KHÔNG dùng hit_rate (độ giật cục):
+  # kênh nào mọi video đều 100k view sẽ có hit_rate ~0 nhưng ch_mult rất cao.
+  # Hiệu chỉnh 2026-09-09 trên phân phối THẬT của 50 kênh: median-của-median = 3.104,
+  # ngưỡng cũ (mult>=5, median>=20k) chỉ 2/50 kênh đạt → nhãn gần như không bao giờ bật.
+  proven_ch_mult: 3.0        # video ĐIỂN HÌNH (không phải video tốt nhất) >= 3x số sub
+  proven_min_videos: 8       # đủ video để loại trừ may mắn
+  proven_min_median: 5000
+  # Baseline chỉ tính cho kênh có video thật sự kéo được view — nếu không, xếp hạng theo
+  # views/subs sẽ toàn kênh tí hon 1 video ăn may, đúng cái nhiễu đã gặp lúc probe.
+  baseline_min_views: 10000
+  # Báo cáo ngày là bản CHẮT LỌC, không phải bảng tra cứu. 10 video, mỗi kênh 1 video.
+  # Toàn bộ dữ liệu thô vẫn nằm trong data/trending.db nếu cần đào lại.
+  max_rows_per_channel: 1
+  elite_min_ch_mult: 3.0     # video ĐIỂN HÌNH của kênh phải >= 3x số sub
+  elite_min_views: 30000
+  elite_min_rows: 5          # ít hơn mức này thì tự nới cổng
+  new_rows_limit: 15         # tab TRD_NEW cũng gọn lại
+  # 📈 RISING — phải ĐANG leo thật, không phải "có tăng chút đỉnh".
+  # Ngưỡng >0 làm 58/117 video dính nhãn, vô dụng.
+  rising_min_views_24h: 2000
+  rising_min_share: 0.08     # >=8% tổng view đến trong 1 ngày = vẫn đang được đẩy
+  # Giới hạn số kênh được tính baseline mỗi lượt (mỗi kênh tốn 2 quota)
+  baseline_max_channels: 400
+  baseline_recent_videos: 12
+  baseline_min_age_days: 7   # bỏ video vừa đăng, chúng chưa kịp tích view
+  daily_report_rows: 10
+  deepdive_top_n: 10        # chỉ còn 10 video nên đào sâu HẾT, không chọn lọc lại
+  deepdive_budget_s: 420    # trần thời gian cho cả bước đào sâu
+  deepdive_comments: 50
+
+niches:
+
+  jp_senior:
+    label: "JP — người già / sức khoẻ / tiền hưu"
+    hl: ja
+    gl: JP
+    keywords:
+      - 高齢者 健康
+      - 老後 健康
+      - 60代 健康
+      - 70代 健康
+      - 80代 健康
+      - シニア 健康
+      - 健康寿命
+      - 老後 お金
+      - 定年後 生活
+      - 定年後 仕事
+      - 老後 資金
+      - 年金 生活
+      - 年金 いくら
+      - 高齢者 食事
+      - 高齢者 食べ物
+      - シニア 食事
+      - 60代 食事
+      - 70代 食べ物
+      - 血圧 下げる
+      - 血糖値 下げる
+      - 認知症 予防
+      - 認知症 前兆
+      - 脳梗塞 前兆
+      - 心筋梗塞 前兆
+      - 血管 若返り
+      - 足腰 鍛える
+      - 高齢者 筋トレ
+      - 転倒 予防
+      - 骨粗鬆症 予防
+      - 高齢者 睡眠
+      - 朝の習慣 健康
+      - 夜の習慣 健康
+      - 長生き 食べ物
+      - 長生き 習慣
+      - 寿命 縮める 習慣
+      - 危険な食べ物
+      - 避けるべき 食品
+      - サプリ 危険
+      - 薬 飲み合わせ 危険
+      - 医師 警告 高齢者
+      - 名医 教える 健康
+      - 終活
+      - 相続 トラブル
+      - 遺言書 書き方
+      - 介護 費用
+      - 老人ホーム 費用
+      - 老後 一人暮らし
+      - 熟年離婚
+      - 老後 孤独
+      - 子供に頼れない 老後
+      - 60歳 やめるべきこと
+      - 70歳 やめるべきこと
+      - シニア 趣味
+      - 老後 生きがい
+      - シニア 断捨離
+      - ゆうちょ銀行 裏技
+      - 医療費 節約
+      - 高額療養費 制度
+      - 介護保険 使い方
+      - 健康診断 数値
+      - コレステロール 下げる
+      - 腸内環境 改善
+      - 免疫力 高める
+      - タンパク質 高齢者
+      - 高齢者 水分
+
+  jp_satori:
+    label: "JP — satori / chuyện cảm động / 2ch"
+    hl: ja
+    gl: JP
+    keywords:
+      - スカッとする話
+      - 2ch スカッと
+      - 修羅場 2ch
+      - 感動する話
+      - 泣ける話 実話
+      - 人生の教訓
+      - 因果応報 話
+      - 2ch 面白いスレ
+      - ゆっくり解説 2ch
+      - 5ch まとめ
+      - 義母 トラブル
+      - 嫁姑 修羅場
+      - 職場 スカッと
+      - DQN返し
+      - 実話 感動 老人
+      - 老後 後悔
+      - 人生 逆転 実話
+      - 定年後 後悔
+      - 親の介護 修羅場
+      - 遺産相続 争い
+      - 兄弟 遺産 トラブル
+      - 隣人トラブル 実話
+      - モラハラ 夫
+      - 熟年離婚 実話
+      - 独身 老後
+      - 孤独死
+      - 高齢者 詐欺 実話
+      - 息子 嫁 トラブル
+      - 娘 絶縁
+      - 実家じまい
+      - 定年 妻
+      - 年金 詐欺 実話
+      - 病室 実話
+      - 看護師 実話
+      - 介護士 実話
+      - 余命宣告 実話
+      - 最期の言葉
+      - おばあちゃんの知恵
+      - 昭和 懐かしい 生活
+      - 戦争 体験談
+      - 人生100年
+      - 老後 幸せ
+      - 90歳 元気
+      - 高齢女性 一人暮らし
+      - 遺品整理 実話
+      - 家族 感動 実話
+      - 恩返し 話
+      - 知らない人 親切 話
+      - 人生 やり直し
+      - 後悔しない生き方
+      - 漫画 定年後
+      - 漫画 老後
+      - マンガ 人生
+      - シニア 漫画 実話
+      - 2ch シニア
+      - 老後 2ch
+      - 田舎 移住 失敗
+      - 施設 入居 実話
+      - 認知症 家族 実話
+      - 親 死後 手続き

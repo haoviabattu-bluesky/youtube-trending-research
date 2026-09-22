@@ -1,0 +1,19 @@
+[guard] số dòng trước khi ghi: {'GMAIL': 101, 'NOTE': 1, 'TRENDING': 151, 'TRD_CONFIG': 126, 'TRD_CHANNELS': 830, 'TRD_NEW': 39, 'TRD_KEYWORDS': 127, 'TRD_DEEPDIVE': 6}
+[config] đọc từ TRD_CONFIG: {'jp_senior': 65, 'jp_satori': 60}
+
+[jp_senior] 3 kw × 1 lát
+[jp_senior] 50 video, parse 98.3%
+[jp_senior] enrich {'api_videos': 50, 'api_channels': 39, 'scrape_channels': 0, 'api_off': 0}
+
+[dedupe] 50 → 50 video duy nhất
+[baseline] 0 kênh mới cần tính (đã cache 294)
+[delta] 0 video có snapshot cũ để so; baseline 294 kênh
+[label] {'BREAKOUT': 8, 'NOISE': 15, 'NEW_CHANNEL_HIT': 3, 'WATCH': 21, 'PROVEN_NICHE': 3}
+[cap] 35 → 28 sau khi chặn 2 video/kênh
+[keywords] 126 keyword có thống kê
+[channels] 12 kênh đáng theo dõi / 25 kênh quét được
+[sheet] TRENDING+0 · CHANNELS ~12/+0 · NEW+0 · KW+0 · DEEP+0
+[sheet] CHÚ Ý: lượt này ít dòng hơn lượt trước cùng ngày → còn 122+35 dòng cũ nằm lại (không được phép xoá dòng trên Sheet)
+[guard] số dòng sau khi ghi: {'GMAIL': 101, 'NOTE': 1, 'TRENDING': 151, 'TRD_CONFIG': 126, 'TRD_CHANNELS': 830, 'TRD_NEW': 39, 'TRD_KEYWORDS': 127, 'TRD_DEEPDIVE': 6}
+[quota] 2 / 10000
+[done] 18s

@@ -1,0 +1,11 @@
+[Unit]
+Description=Chay YouTube Trend Hunter 07:00 hang ngay (gio VN)
+
+[Timer]
+# VPS phai set TZ=Asia/Ho_Chi_Minh thi OnCalendar moi la gio VN truc tiep.
+# Kiem bang: timedatectl
+OnCalendar=*-*-* 07:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

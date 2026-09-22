@@ -1,0 +1,8 @@
+google-api-python-client==2.194.0
+google-auth==2.49.2
+gspread==6.1.2
+python-dotenv==1.2.2
+PyYAML==6.0.3
+requests==2.32.3
+youtube-comment-downloader==0.1.83
+youtube-transcript-api==1.2.4

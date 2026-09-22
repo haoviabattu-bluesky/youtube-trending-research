@@ -1,0 +1,45 @@
+[1/4] sinh từ khoá từ YouTube Suggest...
+  ...suggest 10/45 seed, 60 từ khoá
+  ...suggest 20/45 seed, 120 từ khoá
+  ...suggest 30/45 seed, 180 từ khoá
+  ...suggest 40/45 seed, 240 từ khoá
+[1/4] 270 từ khoá duy nhất
+[2/4] search InnerTube...
+  ...search 20/270 từ khoá, 601 video
+  ...search 40/270 từ khoá, 1407 video
+  ...search 60/270 từ khoá, 2154 video
+  ...search 80/270 từ khoá, 2939 video
+  ...search 100/270 từ khoá, 3624 video
+  ...search 120/270 từ khoá, 4295 video
+  ...search 140/270 từ khoá, 4928 video
+  ...search 160/270 từ khoá, 5541 video
+  ...search 180/270 từ khoá, 6066 video
+  ...search 200/270 từ khoá, 6741 video
+  ...search 220/270 từ khoá, 7532 video
+  ...search 240/270 từ khoá, 8196 video
+  ...search 260/270 từ khoá, 8860 video
+[2/4] 9272 video / 5621 kênh
+[3/4] 4098 video >= 50,000 view (thô, chưa enrich)
+[3/4] quota dùng: 123
+[4/4] 10 kênh khớp: sub<1000, 3-5 video, view>=50,000
+[out] data\trend_hunt_full.csv
+    907sub  3vid 2,354,387v  松本人志　笑いの真骨頂                              | 颯sas
+    https://youtube.com/watch?v=NMvcOG2aPPs  https://youtube.com/channel/UC0d6gFTJPvJ5vQgu4ugbEOw
+    247sub  5vid  562,012v  INMU KING / English ver                  | SDO_Y
+    https://youtube.com/watch?v=kBz5p0Mfanc  https://youtube.com/channel/UCduD6w8VoKJCMYgPk5fmMZA
+    539sub  5vid  511,175v  Billie Jean - Michael Jackson 🌕          | Moon Lyrics
+    https://youtube.com/watch?v=5Ryi0LkxVA0  https://youtube.com/channel/UCLi4dcUGOPhe7XzzymWk2mw
+    262sub  3vid  417,729v  ブラマヨ吉田vsフルポン村上                           | かぢりんぞー
+    https://youtube.com/watch?v=pguxBQBS9KI  https://youtube.com/channel/UCenACvSS1DO9uLYAWHb3f3A
+    112sub  4vid  231,219v  この距離くださいませ                               | ばち子
+    https://youtube.com/watch?v=ruLI94Ekk88  https://youtube.com/channel/UCDSKvwQsfgE7ZZ3nwKetiAA
+     91sub  3vid  224,089v  【全コメント付き】INMU KING / YAJU-MC（41,192コメ）   | にこ
+    https://youtube.com/watch?v=m9CWwPgxDEo  https://youtube.com/channel/UCXNzbsyrg4QnrR2Ee6fahJA
+    116sub  3vid  204,651v  日本代表 2026北中米ワールドカップ ハイライト「烏/米津玄師」【MV】    | WFB
+    https://youtube.com/watch?v=gDFQshW1NHc  https://youtube.com/channel/UCJio7gz-XmrKr4dbX6mWFmA
+    488sub  3vid  150,707v  THE MIYAKO TSUNAMI: A City Swallowed by  | One Documentary
+    https://youtube.com/watch?v=ldpUIvhvZCs  https://youtube.com/channel/UC3GsUpgXMoL0ZbHlNQVjRmg
+    993sub  4vid  120,902v  サザンオールスターズ 夏の終わり                         | ふみちゃん
+    https://youtube.com/watch?v=NRnpVCBYX7Y  https://youtube.com/channel/UCyWYBuhsR7BZoIeOaeCtiEw
+    663sub  4vid   80,968v  VLOG | Summer at VinWonders Nha Trang🍡   | Hirene
+    https://youtube.com/watch?v=Xppv7MEVcWQ  https://youtube.com/channel/UC56OwPWpICz1F9QIzDpZi-Q

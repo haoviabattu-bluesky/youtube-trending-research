@@ -1,0 +1,107 @@
+# Cấu hình "Video Hunt" — quét theo VIDEO (mọi kênh) cho từng lane sản xuất, khác
+# niches.yaml (quét theo KÊNH). Chốt bởi user 2026-09-21.
+#
+# Mỗi ngày mỗi lane: gom video JP <=30 ngày, >=10.000 view, chấm điểm ưu tiên
+# view/ngày + độ mới, chọn đúng 2 video/lane, ghi tab RESEARCH (cột theo thứ tự lanes).
+
+defaults:
+  hl: ja
+  gl: JP
+  windows: [week, month]
+  # verify thật 2026-09-21: 5 trang = 99 video/từ khoá, không trùng — NHƯNG trang 3 trở
+  # đi bắt đầu lẫn video không liên quan chủ đề (YouTube "độn" video hot khi từ khoá hiếm
+  # hết kết quả liên quan) — đã dính thật 1 video scandal thần tượng lọt lane UFO/bí ẩn,
+  # kiểm tra tags/mô tả thật của chính video đó qua Data API không khớp bất kỳ từ khoá nào.
+  # Hạ xuống 2 trang để ưu tiên độ chính xác — mỗi lane chỉ cần đúng 2 video/ngày, không
+  # cần vét cạn.
+  pages_per_kw: 2
+  max_age_days: 30
+  min_views: 10000
+  min_duration_s: 180      # bỏ Shorts
+  pick_per_lane: 2
+  distinct_channels: true  # 2 video được chọn phải từ 2 kênh khác nhau
+  fresh_bonus_days: 14     # video <=14 ngày được cộng điểm độ mới
+  sheet_id: "1xu4iNudIPanWrUxlTODqIySGf9YxLy7rpTq9OtXDMOU"
+  research_tab: RESEARCH
+  # Tag quá chung sẽ kéo video LẠC chủ đề lane (vd 実話/朗読 xuất hiện ở mọi lane người già)
+  stop_tags:
+    - 実話
+    - 朗読
+    - ドキュメンタリー
+    - 怖い話
+    - 歴史
+    - 感動
+    - シニア
+    - 高齢者
+    - 60代
+    - 70代
+    - 家族
+    - 都市伝説
+    - ミステリー
+    # Địa danh chung chung — cột F gắn cho video lịch sử (vd trại giam người Nhật ở Mỹ
+    # WWII đóng ở California) nhưng tự khớp NHẦM video du lịch/đời sống hiện đại cùng
+    # tên chỗ đó. Đã dính thật: video Disney/Los Angeles lọt lane D lịch sử WW2.
+    - カリフォルニア
+    - ロサンゼルス
+    - ニューヨーク
+    - アメリカ
+
+# Thứ tự dict = thứ tự cột B..J của tab RESEARCH.
+# `col`: tên cột ghi trên Sheet (giữ đúng chữ user gõ, có thể khác `tab`).
+# `tab`: tên tab thật trên Google Sheet (nguồn tag cột F + đề tài đã làm cột B/E).
+# `seed_tags`: mồi ban đầu cho lane CHƯA có tag ở cột F — soạn từ chủ đề ô B1 của tab,
+#   sẽ hiệu chỉnh lại theo kết quả --dry-run thật, không phải danh sách cố định.
+lanes:
+  shinya_shiryoshitsu:
+    col: shinya_shiryoshitsu
+    tab: shinya_shiryoshitsu
+    label: "Lane A — 都市伝説/vũ trụ/bí ẩn"
+    seed_tags: [宇宙 謎, 宇宙 都市伝説, UFO 日本, NASA 隠蔽, 未解決 ミステリー]
+
+  Lopezzapa68:
+    col: Lopezzapa68
+    tab: Lopezzapa68
+    label: "Lane satori — chuyện người già cảm động"
+    seed_tags: [老後 実話, 高齢者 感動 話, 年金 生活 実話, 老老介護 実話, 特殊詐欺 実話]
+
+  irogatatarukioku:
+    col: irogatatarukioku
+    tab: irogatatarukioku
+    label: "Lane D — lịch sử WW2 ảnh tô màu"
+    seed_tags: [太平洋戦争 カラー化, 戦争 写真 カラー, 日本軍 将校 最期, 玉砕 真実, 沖縄戦 実話]
+
+  70dai-kenko:
+    col: 70dai-kenko
+    tab: 70dai-kenko
+    label: "Lane E — sức khoẻ/trường thọ người già"
+    seed_tags: [70代 健康, 高齢者 食べ物, 転倒 予防, 筋肉 減る 高齢者, 長生き 習慣, 血流 改善 足]
+
+  teinengo-real:
+    col: teinengo-real
+    tab: teinengo-real
+    label: "Lane F — hưu trí manga, tiền mất, 2 nhân vật đối lập"
+    seed_tags: [定年後 漫画, 年金 繰り上げ 後悔, 再雇用 給料 半分, 退職 後悔 漫画, 老後 お金 失敗]
+
+  teinengo-tanoshimi:
+    col: teinengo-tanoshimi
+    tab: teinengo-tanoshimi
+    label: "Lane G — hưu trí manga list N選, sống vui/rẻ"
+    seed_tags: [定年後 趣味 5選, 60代 朝の習慣, 定年後 一人旅, 老後 楽しみ 漫画, シニア 節約 生活]
+
+  kokoro-kazoku:
+    col: kokoro-kazokugaku   # user gõ tên cột lệch tên tab — giữ đúng chữ user gõ
+    tab: kokoro-kazoku
+    label: "Lane H — tâm lý gia đình người già"
+    seed_tags: [老後 夫婦 心理, 親子 関係 老後, 高齢の親 心, 定年後 夫婦 関係, 家族 心理 高齢者]
+
+  sengoku-uragawa:
+    col: sengoku-uragawa
+    tab: sengoku-uragawa
+    label: "Lane I — Chiến quốc manga chibi, lật huyền thoại"
+    seed_tags: [戦国時代 真実, 戦国武将 裏話, 織田信長 真相, 戦国 通説 嘘, 戦国 漫画 解説]
+
+  teinengo-fuufu:
+    col: teinengo-fuufu
+    tab: teinengo-fuufu
+    label: "Lane J — vợ chồng hưu trí, quyết định lớn"
+    seed_tags: [定年後 夫婦 漫画, 熟年離婚 漫画, 老後 夫婦 決断, 定年 妻 本音, 老後 二人暮らし]

@@ -1,0 +1,10 @@
+[Unit]
+Description=YouTube Trend & Outlier Hunter - quet hang ngay
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root/yt-trend
+EnvironmentFile=/root/yt-trend/config/.env
+ExecStart=/bin/bash -lc 'venv/bin/python -X utf8 -u src/run_daily.py >> /root/yt-trend/data/daily.log 2>&1'
+TimeoutStartSec=5400
