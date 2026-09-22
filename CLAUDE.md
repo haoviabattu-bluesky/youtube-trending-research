@@ -135,6 +135,20 @@ Dòng thừa của khối cũ trong ngày được đánh dấu `<ngày> ⏹cũ`
 - **Không tự ý mở/tắt Chrome profile của user** (`VEO3_PROFILE`, `GROK_PROFILE`...) — luôn xin phép
   trước, kể cả khi chỉ để thử nghiệm (đã có sự cố tắt nhầm profile đang dùng lúc probe heatmap).
 
+## VIDEO HUNT V2 (2026-09-22, shadow mode)
+- Kế hoạch + mapping: `IMPLEMENTATION_PLAN.md`; guide gốc `VIDEO_HUNT_V2_CLAUDE_IMPLEMENTATION_GUIDE.md`.
+- Code: `src/hunt_v2/` (mỗi gate 1 file). Chạy SAU đường cũ trong `run_video_hunt.py`; cờ ở
+  `config/video_hunt.yaml` khối `video_hunt_v2` (`enabled`/`shadow_mode`/từng gate), threshold ở
+  `config/hunt_rules.yaml`, model ở `config/models.yaml`, hồ sơ lane ở `lanes/<lane>/` (KHÔNG regenerate).
+- **`shadow_mode: true`** → tab `RESEARCH` vẫn nhận pick CŨ; V2 chỉ ghi `TRD_HUNT_AUDIT` + `runs/<ngày>/<lane>/`
+  + `logs/llm_*.jsonl`. Bật production = đổi `shadow_mode: false` (chỉ khi Top 2 được accept ≥80%).
+- Model đã verify: gemini-3.8-flash qua ramclouds (BẮT BUỘC stream + User-Agent, key `RAMCLOUDS_API_KEY`
+  khác `LLM_API_KEY` cũ — key cũ "no access" 3.8), ns24 dự phòng, Sol qua hhtechapi.net, opportunity
+  qua `claude -p --model sonnet` (gói Claude Code, không tốn API).
+- Cột `HUMAN_DECISION`/`REJECT_REASON` trên `TRD_HUNT_AUDIT` là user gõ tay — tool CHỈ ĐỌC
+  (`src/hunt_v2/feedback.py --sync/--propose/--apply`). Không bao giờ update dòng audit.
+- Test offline 0 tiền: `py -3.13 -X utf8 -m pytest tests -q` (47 case, gồm regression lỗi owner đã bắt).
+
 ## Git conventions
 - Commit theo từng phase, không gộp
 - `feat(phase-N): ...` / `fix: ...` / `docs: ...`

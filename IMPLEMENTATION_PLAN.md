@@ -2,7 +2,11 @@
 
 > Thư mục gốc: `E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH`
 > Nguồn yêu cầu: `E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\VIDEO_HUNT_V2_CLAUDE_IMPLEMENTATION_GUIDE.md` (mục 37–41)
-> Trạng thái: **KẾ HOẠCH — chưa sửa dòng code nào.** Chờ user review.
+> Trạng thái (2026-09-22 tối): **ĐÃ TRIỂN KHAI P0 + P1 + P2-01**, đang chạy `shadow_mode: true`.
+> User đã duyệt 5 điểm ở mục 8 (git init OK; gemini-3.8 ramclouds chính, Sol qua hhtechapi.net,
+> opportunity = Claude sonnet qua `claude -p` không tốn API; tab audit `TRD_HUNT_AUDIT`).
+> Còn lại: P1-05 bật `shadow_mode: false` (chờ ≥80% accept), P2-02 thumbnail, P2-03 dọn OLD, P2-04 lịch.
+> Nhật ký triển khai ở mục 10 cuối file.
 > Ngày lập: 2026-09-22
 
 **Mục tiêu:** Đưa Video Hunt từ "search theo tag → lọc chuỗi → 1 call LLM → view/ngày" sang kiến trúc 11 gate của V2, **không phá lượt chạy hiện tại**, chạy `shadow_mode=true` song song cho tới khi Top 2 của V2 được owner accept ≥ 80%.
@@ -272,3 +276,28 @@ py -3.13 -X utf8 E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\src\run_video_hunt.py --no-
 ```
 
 Output kiểm tra: `E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\runs\<YYYY-MM-DD>\<lane>\{01_discovery,02_enriched,03_hard_filter,04_semantic,05_format,06_viral,09_ranked}.json` + `report.md`; log LLM `E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\logs\llm_<YYYYMMDD>.jsonl`.
+
+---
+
+## 10. NHẬT KÝ TRIỂN KHAI (2026-09-22)
+
+| Task | Trạng thái | Ghi chú thực tế |
+|---|---|---|
+| P0-01..13 | ✅ | `src/hunt_v2/` 16 file, `config/{hunt_rules,models}.yaml`, `lanes/` 9 lane, `tests/` 48 case xanh |
+| P1-01 discovery mở rộng | ✅ | `discovery.py` (B/C/D + window `today`), bật cờ `discovery_expansion: true` |
+| P1-02 verify model | ✅ | gemini-3.8-flash: ramclouds OK nhưng **rất chậm** hôm nay (ping 160s, 1 lô 3 video 664s), ns24 trả `upstream_error` trong SSE; Sol hhtech 3s; `claude -p sonnet` 16s → thêm claude_cli làm fallback cuối cho semantic gate + cầu dao provider theo lượt |
+| P1-03 opportunity (Claude) | ✅ | `claude -p --model sonnet --output-format json`, cwd tạm để không nạp CLAUDE.md |
+| P1-04 final QC (Sol) | ✅ | hhtechapi.net non-stream |
+| P1-05 chuyển RESEARCH sang V2 | ⏸ | code sẵn (`shadow_mode: false` + OLD_FALLBACK), CHƯA bật — chờ HUMAN_DECISION |
+| P1-06 metric/report | ✅ | `runs/<ngày>/<lane>/report.md` + `feedback.py --sync` in accept rate |
+| P2-01 feedback | ✅ | `feedback.py --sync/--propose/--apply`, ≥20 quyết định/lane mới đề xuất |
+| P2-02 thumbnail | ⏸ | chưa làm |
+| P2-03 retire OLD | ⏸ | chờ ≥2 tuần production |
+| P2-04 bật lịch | ⏸ | chỉ khi user ra lệnh |
+
+Bẫy đã dính khi code (ghi để khỏi lặp): (1) heredoc bash trên máy này biến `\n` thành xuống dòng
+thật → patch file Python bằng Edit tool, không dùng `python - <<EOF` với chuỗi có `
+`; (2) model
+reasoning in vài dòng dẫn nhập rồi mới JSON, tiêu đề video chứa `[`/【 → "tìm ngoặc ngoài cùng" chọn sai
+điểm bắt đầu, JSON hợp lệ vẫn báo lỗi → `repair_json` quét từng vị trí `[`/`{` + `raw_decode`;
+(3) ns24 trả lỗi upstream **bên trong SSE với HTTP 200** → phải bắt `data: {"error":...}`.

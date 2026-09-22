@@ -35,7 +35,9 @@ gates:
     chain:
       - [ramclouds, gemini-3.8-flash]
       - [ns24, gemini-3.8-flash]
-    timeout_s: 180
+      - [claude_cli, sonnet]            # dự phòng cuối: đo thật 2026-09-22 cả 2 đường gemini cùng
+                                        # chết (ramclouds >180s, ns24 upstream_error) → sonnet 16s, free
+    timeout_s: 150
     max_tokens: 6000
     temperature: 0.1
     prompt_version: semantic_format_v1

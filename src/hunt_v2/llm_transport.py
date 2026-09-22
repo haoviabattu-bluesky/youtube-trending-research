@@ -76,6 +76,8 @@ def _read_sse(r: requests.Response) -> tuple[str, dict]:
                 ev = json.loads(payload)
             except json.JSONDecodeError:
                 continue
+            if ev.get("error"):  # ns24 trả lỗi upstream NGAY TRONG SSE với HTTP 200
+                raise TransportError(f"SSE error: {str(ev['error'])[:160]}")
             if ev.get("usage"):
                 usage = ev["usage"]
             for ch in ev.get("choices") or []:
@@ -115,24 +117,32 @@ def chat_claude_cli(prov: dict, model: str, messages: list[dict], timeout: int) 
 
 
 def repair_json(text: str):
-    """Bóc JSON từ text model: bỏ fence → thử parse → tìm cặp ngoặc ngoài cùng.
-    Trả None nếu không cứu được (caller ghi error, KHÔNG nuốt)."""
+    """Bóc JSON từ text model: bỏ fence → parse thẳng → quét TỪNG vị trí `[`/`{` từ trái sang và
+    raw_decode (model reasoning hay in vài dòng dẫn nhập, mà tiêu đề video lại chứa `[`/【 nên
+    "tìm ngoặc ngoài cùng" chọn nhầm điểm bắt đầu — đã dính thật 2026-09-22, JSON hợp lệ vẫn báo
+    không parse được). Trả None nếu không cứu được (caller ghi error, KHÔNG nuốt)."""
     t = text.strip()
     if t.startswith("```"):
         t = t.split("\n", 1)[1] if "\n" in t else t[3:]
         if t.rstrip().endswith("```"):
             t = t.rstrip()[:-3]
     t = t.strip()
-    for cand in (t,):
+    try:
+        return json.loads(t)
+    except json.JSONDecodeError:
+        pass
+    dec = json.JSONDecoder()
+    tried = 0
+    for i, ch in enumerate(t):
+        if ch not in "[{":
+            continue
+        tried += 1
+        if tried > 200:
+            break
         try:
-            return json.loads(cand)
+            obj, _end = dec.raw_decode(t[i:])
         except json.JSONDecodeError:
-            pass
-    for open_c, close_c in (("[", "]"), ("{", "}")):
-        i, j = t.find(open_c), t.rfind(close_c)
-        if i != -1 and j > i:
-            try:
-                return json.loads(t[i:j + 1])
-            except json.JSONDecodeError:
-                continue
+            continue
+        if isinstance(obj, (list, dict)):
+            return obj
     return None

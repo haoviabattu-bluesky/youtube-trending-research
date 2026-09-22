@@ -122,3 +122,15 @@ Bản thiết kế sản xuất ngách bí ẩn: `docs/LANE_A_BLUEPRINT.md`.
 - Kiến trúc & quyết định: `plans/260909-1611-youtube-trend-outlier-hunter/brainstorm-summary.md`
 - Roadmap 7 phase: `plans/260909-1611-youtube-trend-outlier-hunter/plan.md`
 - Module map: `docs/codebase-summary.md`
+
+## VIDEO HUNT V2 (2026-09-22)
+Pipeline 11 gate chạy song song (shadow) với Video Hunt cũ — xem `IMPLEMENTATION_PLAN.md`.
+
+```bash
+py -3.13 -X utf8 -m pytest tests -q                                   # test offline, 0 tiền
+py -3.13 -X utf8 src/run_video_hunt.py --lane Lopezzapa68 --dry-run   # V2 chạy, chỉ ghi runs/
+py -3.13 -X utf8 src/run_video_hunt.py                                # RESEARCH = cũ; TRD_HUNT_AUDIT = cũ + V2
+py -3.13 -X utf8 src/run_video_hunt.py --no-v2                        # tắt hẳn V2
+py -3.13 -X utf8 src/hunt_v2/feedback.py --sync                       # đọc HUMAN_DECISION → metric
+```
+Output: `runs/<ngày>/<lane>/01..09_*.json + report.md`, `logs/llm_<ngày>.jsonl`.

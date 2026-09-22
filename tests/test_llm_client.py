@@ -76,3 +76,22 @@ def test_schema_error_recorded_not_cached(models, mem_con, tmp_path, monkeypatch
     r = c.call("final_qc", "p", ["v3"], "final_qc")
     assert r.schema_errors
     assert c._cache_get(c.cache_key("final_qc", "gpt-5.6-sol", ["v3"])) is None
+
+
+def test_circuit_breaker_skips_dead_provider(models, mem_con, tmp_path, monkeypatch):
+    seen = []
+
+    def fake(prov, model, messages, timeout, max_tokens, temperature):
+        seen.append(prov["base_url"])
+        if "ramclouds" in prov["base_url"]:
+            raise tr.TransportError("ReadTimeout")
+        return json.dumps({"video_id": "x"}), {}
+
+    monkeypatch.setattr(tr, "chat_http", fake)
+    monkeypatch.setattr(lc.time, "sleep", lambda s: None)
+    c = _client(models, mem_con, tmp_path)
+    c.call("semantic_format", "p", ["x1"], None)   # timeout → không retry, fails=1
+    c.call("semantic_format", "p", ["x2"], None)   # timeout lần 2 → cầu dao ngắt
+    r = c.call("semantic_format", "p", ["x3"], None)
+    assert seen.count("https://ramclouds.me/v1") == 2 and r.ok
+    assert "ramclouds" in c.stats["provider_dead"]

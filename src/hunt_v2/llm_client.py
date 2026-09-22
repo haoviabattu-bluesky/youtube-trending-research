@@ -39,6 +39,7 @@ class LlmResult:
     usage: dict = field(default_factory=dict)
     schema_errors: list = field(default_factory=list)
     fallback_used: bool = False
+    attempts_log: list = field(default_factory=list)  # mọi lần thử thất bại, để soi sau
 
     @property
     def ok(self) -> bool:
@@ -56,7 +57,11 @@ class LlmClient:
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.lane_fp = lane_fingerprint
         self.stats = {"calls": 0, "cached": 0, "errors": 0, "prompt_tokens": 0,
-                      "completion_tokens": 0, "latency_ms": 0}
+                      "completion_tokens": 0, "latency_ms": 0, "provider_dead": []}
+        # Cầu dao theo lượt chạy: provider timeout/chết 2 lần liên tiếp → bỏ qua tới hết lượt,
+        # khỏi đốt 150s×2 mỗi lô (đo thật 2026-09-22: ramclouds 664s/call, ns24 upstream_error).
+        self.dead: set[str] = set()
+        self._fails: dict[str, int] = {}
 
     # ---------- cache ----------
     def cache_key(self, gate: str, model: str, ids: list[str]) -> str:
@@ -84,6 +89,7 @@ class LlmClient:
                "provider": res.provider, "model": res.model, "latency_ms": res.latency_ms,
                "attempt": res.attempt, "cached": res.cached, "error": res.error,
                "schema_errors": res.schema_errors[:5], "usage": res.usage, "n_ids": len(ids),
+               "attempts_log": res.attempts_log,
                "raw_head": res.raw_response[:300]}
         with open(self.log_dir / f"llm_{dt.date.today().strftime('%Y%m%d')}.jsonl", "a",
                   encoding="utf-8") as f:
@@ -112,6 +118,9 @@ class LlmClient:
         last_err = None
         for idx, (prov_name, model) in enumerate(chain):
             prov = self.cfg["providers"][prov_name]
+            if prov_name in self.dead:
+                res.attempts_log.append(f"{prov_name}: bỏ qua (cầu dao đã ngắt trong lượt này)")
+                continue
             for attempt in range(1, 3):
                 t0 = time.time()
                 res.attempt += 1
@@ -125,8 +134,16 @@ class LlmClient:
                                                    g.get("temperature", 0.1))
                 except tr.TransportError as e:
                     last_err = f"{prov_name}:{model} lần {attempt}: {e}"
+                    res.attempts_log.append(f"{last_err} ({int((time.time() - t0) * 1000)}ms)")
+                    self._fails[prov_name] = self._fails.get(prov_name, 0) + 1
+                    if self._fails[prov_name] >= 2:
+                        self.dead.add(prov_name)
+                        self.stats["provider_dead"] = sorted(self.dead)
+                    if "Timeout" in str(e) or prov_name in self.dead:
+                        break  # timeout thử lại cũng timeout — sang provider kế
                     time.sleep(min(2 ** attempt, 8))
                     continue
+                self._fails[prov_name] = 0
                 res.latency_ms = int((time.time() - t0) * 1000)
                 res.raw_response, res.usage = text, usage or {}
                 self.stats["calls"] += 1
@@ -136,6 +153,7 @@ class LlmClient:
                 parsed = tr.repair_json(text)
                 if parsed is None:
                     last_err = f"{prov_name}:{model}: không parse được JSON"
+                    res.attempts_log.append(f"{last_err}: {text[:200]!r}")
                     continue
                 res.parsed_response = parsed
                 if schema_name:
