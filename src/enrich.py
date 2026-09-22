@@ -17,6 +17,8 @@ ROW_FIELDS = [
     "views", "likes", "comments", "duration_s", "published_at", "age_hours",
     "subs", "ch_created_at", "ch_age_days", "ch_total_views", "ch_video_count",
     "uploads_playlist", "src", "snap_date",
+    # V2: mặc định rỗng khi không có Data API
+    "description", "tags", "live_broadcast_content", "default_language",
 ]
 
 
@@ -123,5 +125,9 @@ class Enricher:
                 "uploads_playlist": c.get("uploads_playlist", ""),
                 "src": f"v:{'api' if v else 'it'}/c:{c.get('_src', 'none')}",
                 "snap_date": snap,
+                "description": v.get("description", ""),
+                "tags": v.get("tags", []) or [],
+                "live_broadcast_content": v.get("live_broadcast_content", "none"),
+                "default_language": v.get("default_language", ""),
             })
         return rows

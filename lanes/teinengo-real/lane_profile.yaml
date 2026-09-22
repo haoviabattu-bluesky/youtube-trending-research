@@ -1,0 +1,64 @@
+lane_id: teinengo-real
+label: Lane F — 定年後リアル漫画 (retirement manga, money regret, 2 contrasting characters)
+draft: true
+market:
+  country: Japan
+  language: Japanese
+audience:
+  age_range: 60+
+  gender: mixed
+  interests:
+  - 老後
+  - 年金
+  - 人間関係
+  - 家族
+  - 孤独
+  - 健康
+  - 人生の教訓
+content_identity:
+  primary:
+  - manga_story
+  - retirement_money_drama
+  - contrast_two_characters
+wanted_topics:
+- 定年後のお金
+- 年金繰り上げの後悔
+- 再雇用と給料
+- 退職金の失敗
+- 夫婦の収入差
+- 老後破産
+- 住宅ローン 老後
+- 退職後の人間関係
+allowed_formats:
+- manga_story
+- ai_image_story
+- narration
+- slideshow_story
+excluded_formats:
+- vlog
+- podcast
+- interview
+- talk_show
+- news
+- tv_clip
+- livestream
+- reaction
+- music_video
+- sports_highlight
+excluded_subjects:
+- celebrity gossip
+- idol scandal
+- US police bodycam
+- gaming
+- politics
+- food/cooking vlog
+- travel vlog
+- music
+- sports
+- FP on camera lecture
+- investment product promotion
+- news about pension law
+duration:
+  min_minutes: 8
+  max_minutes: 40
+notes: 'draft=true: soạn từ seed_tags + ô B1 tab, chưa có handoff — user duyệt sau lượt shadow đầu'

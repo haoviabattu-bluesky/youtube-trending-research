@@ -1,0 +1,90 @@
+# VIDEO HUNT V2 — MỌI threshold/trọng số ở một chỗ (guide §11, §13, §14, §17, §18).
+# Đừng hard-code số ở gate; sửa ở đây rồi chạy lại. Ghi chú "vì sao" cạnh từng số.
+
+hard_filter:
+  max_age_days: 30
+  min_views: 10000
+  min_duration_s: 180          # bỏ Shorts
+  max_duration_s: 3600
+  require_kana: true           # lane JP: tiêu đề phải có hiragana/katakana (bẫy tiếng Trung đã dính)
+  max_semantic_candidates_per_lane: 200   # sắp theo vpd rồi cắt — bỏ hard-reject tag làm pool lớn hơn
+
+keyword_match:
+  min_token_len: 4             # tag ngắn quá chung (暴露/奇跡) không tính
+  full_score_hits: 3           # ≥3 tag khớp = 1.0; 1 tag = 1/3
+
+semantic:                      # điểm 0–100 từ Gemini
+  pass:
+    topic_match: 75
+    audience_match: 65
+    content_identity_match: 65
+  reject:
+    topic_match: 55
+    content_identity_match: 50
+  uncertain_retry: 1           # UNCERTAIN → gọi lại 1 lần đơn lẻ
+  batch_size: 15               # nhỏ để né Cloudflare 524 ~100s của ramclouds
+  description_chars: 600
+  examples_each: 5             # số positive/negative example đưa vào prompt
+
+format:
+  allowed_default: [NARRATED_STORY, AI_STORY, STOCK_STORY, SLIDESHOW, DOCUMENTARY]
+  min_confidence: 60           # format_confidence dưới mức này → UNCERTAIN, không REJECT
+
+baseline:
+  recent_videos: 10
+  min_video_age_days: 7        # đo thật median 306 vs 460 nếu không bỏ video <7 ngày
+  cache_days: 7
+  max_channels_per_lane: 40    # trần quota Data API (2 quota/kênh)
+  min_baseline_vph: 2.0        # floor tránh breakout_ratio vô hạn
+
+viral:
+  weights:                     # cộng = 1.0
+    velocity: 0.30
+    breakout: 0.30
+    absolute: 0.20
+    engagement: 0.10
+    freshness: 0.10
+  freshness_mult:              # guide §13.5 — KHÔNG boost 2× như bản cũ
+    d0_3: 1.35
+    d4_7: 1.25
+    d8_14: 1.15
+    d15_30: 1.00
+  breakout_good: 2.0
+  breakout_strong: 5.0
+  breakout_extreme: 10.0
+  market_trend_velocity_pct: 75    # percentile velocity ≥ → MARKET_TREND
+  market_trend_absolute_pct: 60
+  min_pool_for_percentile: 8       # pool nhỏ hơn → dùng log-scale tuyệt đối
+  min_score: 40                    # viral_pass
+  engagement_cap_like_rate: 0.08   # like/view trên mức này coi = 100
+  engagement_cap_comment_rate: 0.01
+
+opportunity:
+  shortlist_n: 15
+  reject_if:
+    celebrity_dependency: 80
+    external_event_dependency: 80
+    production_compatibility_below: 40
+  keep_uncertain_if_viral_score: 90   # §25: không tự reject UNCERTAIN khi viral cực cao
+
+final_qc:
+  shortlist_n: 6
+
+ranking:
+  weights:                     # cộng = 1.0
+    viral: 0.40
+    semantic: 0.25
+    opportunity: 0.20
+    freshness: 0.10
+    diversity: 0.05
+  diversity_penalty_same_channel: 25
+  diversity_penalty_same_topic: 15
+  same_topic_ratio: 0.6        # difflib ratio với video xếp trên
+  pick_per_lane: 2
+  shadow_top_n: 5              # số dòng V2 ghi vào audit mỗi lane
+
+discovery:
+  windows: [today, week, month]
+  pages_per_kw: 2
+  max_queries_per_lane: 60
+  watch_channel_max_age_days: 30

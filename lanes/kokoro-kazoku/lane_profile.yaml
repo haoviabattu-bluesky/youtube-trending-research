@@ -1,0 +1,65 @@
+lane_id: kokoro-kazoku
+label: 'Lane H — 老後の家族心理 (senior family psychology: parent-child, couple)'
+draft: true
+market:
+  country: Japan
+  language: Japanese
+audience:
+  age_range: 60+
+  gender: mixed
+  interests:
+  - 老後
+  - 年金
+  - 人間関係
+  - 家族
+  - 孤独
+  - 健康
+  - 人生の教訓
+content_identity:
+  primary:
+  - family_psychology_story
+  - narrated_story
+  - senior_relationship
+wanted_topics:
+- 老後の夫婦関係
+- 親子関係の心理
+- 高齢の親の本音
+- 定年後の夫婦
+- 孫との距離
+- 嫁姑
+- 家族との断絶
+- 心理学 老後
+allowed_formats:
+- narration
+- stock_story
+- ai_image_story
+- slideshow_story
+- manga_story
+- explainer
+excluded_formats:
+- vlog
+- podcast
+- interview
+- talk_show
+- news
+- tv_clip
+- livestream
+- reaction
+- music_video
+- sports_highlight
+excluded_subjects:
+- celebrity gossip
+- idol scandal
+- US police bodycam
+- gaming
+- politics
+- food/cooking vlog
+- travel vlog
+- music
+- sports
+- psychologist on camera lecture
+- parenting of small children
+duration:
+  min_minutes: 8
+  max_minutes: 45
+notes: 'draft=true: soạn từ seed_tags + ô B1 tab, chưa có handoff — user duyệt sau lượt shadow đầu'

@@ -1,0 +1,44 @@
+{
+  "negative_patterns": [
+    {
+      "pattern": "アイドル/芸能人スキャンダル (idol or celebrity scandal news)",
+      "reason": "celebrity news, not lane content",
+      "count": 1
+    },
+    {
+      "pattern": "グルメ/料理動画 (food, cooking, restaurant)",
+      "reason": "wrong topic — matched loose keyword only",
+      "count": 1
+    },
+    {
+      "pattern": "ミュージックビデオ/歌ってみた (music video, cover song)",
+      "reason": "MV matched 1 word (サイエンス) — not content",
+      "count": 1
+    },
+    {
+      "pattern": "ライブカメラ/生配信 (live camera, live stream)",
+      "reason": "live view count is not comparable",
+      "count": 1
+    },
+    {
+      "pattern": "中国語/英語の動画 (Chinese or English language video)",
+      "reason": "wrong market language",
+      "count": 2
+    },
+    {
+      "pattern": "アメリカ警察の取材/トークショー (US police guest talk show, bodycam)",
+      "reason": "wrong format (host/interview, real person) + wrong content identity",
+      "count": 1
+    },
+    {
+      "pattern": "スポーツハイライト転載/TVクリップ (sports highlight reup, TV clip)",
+      "reason": "REUP — footage not owned, not replicable",
+      "count": 1
+    },
+    {
+      "pattern": "顔出しVlog/対談 (person on camera vlog, two-person podcast)",
+      "reason": "faceless pipeline cannot reproduce",
+      "count": 2
+    }
+  ]
+}

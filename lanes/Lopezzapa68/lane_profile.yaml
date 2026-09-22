@@ -1,0 +1,67 @@
+lane_id: Lopezzapa68
+label: Lane satori — 老後の人間関係・感動実話 (senior narrated emotional story)
+draft: false
+market:
+  country: Japan
+  language: Japanese
+audience:
+  age_range: 60+
+  gender: mixed
+  interests:
+  - 老後
+  - 年金
+  - 人間関係
+  - 家族
+  - 孤独
+  - 健康
+  - 人生の教訓
+content_identity:
+  primary:
+  - narrated_story
+  - emotional_story
+  - senior_story
+wanted_topics:
+- 老後の人間関係
+- 友情の崩壊
+- 親子関係
+- 孤独
+- 後悔
+- 老老介護
+- 老後のお金
+- 年金
+- 特殊詐欺
+- 熟年離婚
+- 遺産相続
+allowed_formats:
+- narration
+- stock_story
+- ai_image_story
+- slideshow_story
+- manga_story
+excluded_formats:
+- vlog
+- podcast
+- interview
+- talk_show
+- news
+- tv_clip
+- livestream
+- reaction
+- music_video
+- sports_highlight
+excluded_subjects:
+- celebrity gossip
+- idol scandal
+- US police bodycam
+- gaming
+- politics
+- food/cooking vlog
+- travel vlog
+- music
+- sports
+- medical advice / health tips
+- finance how-to
+duration:
+  min_minutes: 8
+  max_minutes: 60
+notes: soạn từ docs/LANE_*_HANDOFF.md

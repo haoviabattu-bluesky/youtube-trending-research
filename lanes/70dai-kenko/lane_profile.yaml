@@ -1,0 +1,67 @@
+lane_id: 70dai-kenko
+label: Lane E — 70代の健康・長寿 (senior health & longevity tips)
+draft: true
+market:
+  country: Japan
+  language: Japanese
+audience:
+  age_range: 65+
+  gender: mixed
+  interests:
+  - 健康
+  - 長生き
+  - 食事
+  - 転倒予防
+  - 筋肉
+  - 血流
+  - 認知症予防
+content_identity:
+  primary:
+  - health_tips_list
+  - senior_health_explainer
+  - narrated_health_story
+wanted_topics:
+- 転倒・骨折予防
+- サルコペニア
+- 高齢者の食事
+- 長生きの習慣
+- 血流・足のむくみ
+- 認知症予防
+- 睡眠
+- 朝の習慣
+- 食べてはいけない食品
+allowed_formats:
+- narration
+- slideshow_story
+- ai_image_story
+- manga_story
+- explainer
+excluded_formats:
+- vlog
+- podcast
+- interview
+- talk_show
+- news
+- tv_clip
+- livestream
+- reaction
+- music_video
+- sports_highlight
+excluded_subjects:
+- celebrity gossip
+- idol scandal
+- US police bodycam
+- gaming
+- politics
+- food/cooking vlog
+- travel vlog
+- music
+- sports
+- doctor on camera lecture
+- fitness influencer workout
+- product sales / supplement ads
+- hospital news
+duration:
+  min_minutes: 6
+  max_minutes: 40
+notes: 'draft=true: soạn từ seed_tags + ô B1 tab, chưa có handoff — user duyệt sau lượt shadow đầu'

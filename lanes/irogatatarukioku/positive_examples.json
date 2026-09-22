@@ -1,0 +1,12 @@
+{
+  "positive_examples": [
+    {
+      "title": "【沖縄戦】首里城地下の壕でランタンを囲む4人の将校——撮影から2か月3週間後…",
+      "why": "one real photo → narrated fate of people in it"
+    },
+    {
+      "title": "【硫黄島】正面を見据えるこの司令官は万歳突撃を禁じた——",
+      "why": "archive photo, officer story"
+    }
+  ]
+}

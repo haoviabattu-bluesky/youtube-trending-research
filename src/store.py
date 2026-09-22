@@ -36,6 +36,16 @@ CREATE TABLE IF NOT EXISTS hunt_pick(
   video_id TEXT, lane TEXT, pick_date TEXT, rank INT, title TEXT, channel TEXT,
   views INT, age_days REAL, vpd REAL, score REAL, reason TEXT,
   PRIMARY KEY(video_id, lane));
+-- VIDEO HUNT V2 (2026-09-22) — bảng riêng, không đụng bảng cũ
+CREATE TABLE IF NOT EXISTS hunt_baseline(
+  channel_id TEXT PRIMARY KEY, median_views INT, median_vph REAL, n_videos INT,
+  payload TEXT, updated TEXT);
+CREATE TABLE IF NOT EXISTS hunt_v2_pick(
+  video_id TEXT, lane TEXT, pick_date TEXT, rank INT, mode TEXT, final_score REAL,
+  payload TEXT, PRIMARY KEY(video_id, lane));
+CREATE TABLE IF NOT EXISTS human_feedback(
+  video_id TEXT, lane TEXT, decision TEXT, reason TEXT, note TEXT, date TEXT,
+  PRIMARY KEY(video_id, lane));
 CREATE INDEX IF NOT EXISTS ix_vs_date ON video_snapshot(snap_date);
 CREATE INDEX IF NOT EXISTS ix_v_channel ON video(channel_id);
 CREATE INDEX IF NOT EXISTS ix_v_first_seen ON video(first_seen);
@@ -192,3 +202,4 @@ def channel_first_seen(con: sqlite3.Connection) -> dict[str, str]:
     """Ngày phát hiện GỐC của mỗi kênh — dùng khi upsert Sheet để không ghi đè mất."""
     return {r["channel_id"]: r["first_seen"]
             for r in con.execute("SELECT channel_id, first_seen FROM channel")}
+

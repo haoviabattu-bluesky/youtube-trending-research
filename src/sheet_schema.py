@@ -32,6 +32,14 @@ HEADERS = {
     "RESEARCH": ["DATE", "RANK", "shinya_shiryoshitsu", "Lopezzapa68", "irogatatarukioku",
                  "70dai-kenko", "teinengo-real", "teinengo-tanoshimi",
                  "kokoro-kazokugaku", "sengoku-uragawa", "teinengo-fuufu"],
+    # VIDEO HUNT V2 (2026-09-22) — audit trail đầy đủ (guide §19): OLD pick + top V2 mỗi lane/ngày.
+    # HUMAN_DECISION (ACCEPT/REJECT/SKIP) + REJECT_REASON là cột USER GÕ TAY — tool chỉ đọc.
+    "TRD_HUNT_AUDIT": ["DATE", "LANE", "RANK", "VIDEO_URL", "TITLE", "CHANNEL", "PUBLISHED_AT",
+                       "AGE_DAYS", "VIEWS", "VPD", "VPH", "BREAKOUT_RATIO", "VIRAL_TYPE",
+                       "VIRAL_SCORE", "TOPIC_MATCH", "FORMAT_CLASS", "OPPORTUNITY_SCORE",
+                       "FINAL_QC", "WHY_VIRAL", "WHY_USEFUL", "CONFIDENCE", "HUMAN_DECISION",
+                       "REJECT_REASON", "OLD_SELECTED", "V2_SELECTED", "RUN_MODE", "RUN_ID",
+                       "FLAGS", "VIDEO_ID"],
 }
 # Tab riêng, KHÔNG có prefix TRD_ — chốt bởi user 2026-09-21, khai cứng ở _EXTRA_ALLOWED
 # vì _assert_allowed() chỉ cho phép MAIN_TAB hoặc prefix TRD_.

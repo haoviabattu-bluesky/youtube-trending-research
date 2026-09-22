@@ -75,6 +75,12 @@ class YouTubeAPI:
                     "comments": int(st.get("commentCount", 0) or 0),
                     "duration_s": parse_duration(it.get("contentDetails", {}).get("duration")),
                     "category_id": sn.get("categoryId", ""),
+                    # V2 (2026-09-22): cùng part=snippet, KHÔNG tốn thêm quota — semantic gate
+                    # cần description/tags; live_broadcast_content bắt live/premiere chưa phát.
+                    "description": sn.get("description", ""),
+                    "tags": sn.get("tags", []) or [],
+                    "live_broadcast_content": sn.get("liveBroadcastContent", "none"),
+                    "default_language": sn.get("defaultAudioLanguage") or sn.get("defaultLanguage", ""),
                 }
         return out
 

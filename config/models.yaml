@@ -1,0 +1,63 @@
+# VIDEO HUNT V2 — model/provider cho từng gate (guide §23). KHÔNG hard-code model ở file khác.
+# Verify thật 2026-09-22 (docs/scratch/ping_h2dev.txt + probe trong phiên):
+#   ramclouds gemini-3.8-flash  OK (chậm lúc cao điểm: 160s/ping) — BẮT BUỘC stream:true + User-Agent
+#   ns24      gemini-3.8-flash  OK 8.8s — dự phòng, cùng luật stream/UA
+#   hhtech    gpt-5.6-sol       OK 3.1s non-stream chuẩn OpenAI
+#   claude_cli sonnet           OK — `claude -p --model sonnet` dùng gói Claude Code, không tốn API key
+# Key: RAMCLOUDS_API_KEY / NS24_API_KEY / HHTECH_API_KEY trong config/.env (LLM_API_KEY cũ chỉ có
+# quyền gemini-3.5-flash-low, KHÔNG truy cập được gemini-3.8-flash — đã probe "no access").
+
+providers:
+  ramclouds:
+    kind: openai_http
+    base_url: https://ramclouds.me/v1
+    key_env: RAMCLOUDS_API_KEY
+    stream: true            # non-stream trả 200 + SSE rỗng = mất trắng nội dung (bài học h2dev)
+    user_agent: true        # thiếu → Cloudflare 403 code 1010
+  ns24:
+    kind: openai_http
+    base_url: https://api.ns24.io/v1
+    key_env: NS24_API_KEY
+    stream: true
+    user_agent: true
+  hhtech:
+    kind: openai_http
+    base_url: https://hhtechapi.net/v1
+    key_env: HHTECH_API_KEY
+    stream: false
+    user_agent: false
+  claude_cli:
+    kind: claude_cli        # subprocess `claude -p` — chạy trên máy đã đăng nhập Claude Code
+    command: claude
+
+gates:
+  semantic_format:          # H4 + H5 gộp 1 call — bulk classifier, ưu tiên rẻ
+    chain:
+      - [ramclouds, gemini-3.8-flash]
+      - [ns24, gemini-3.8-flash]
+    timeout_s: 180
+    max_tokens: 6000
+    temperature: 0.1
+    prompt_version: semantic_format_v1
+  opportunity:              # H7 — Claude (sonnet qua Claude Code, không mất tiền API)
+    chain:
+      - [claude_cli, sonnet]
+      - [ramclouds, gemini-3.8-flash]   # fallback chỉ để không crash; kết quả gắn cờ FALLBACK_MODEL
+    timeout_s: 240
+    max_tokens: 2000
+    temperature: 0.2
+    prompt_version: opportunity_v1
+  final_qc:                 # H8 — Sol, model KHÁC HẲN 2 gate trên để độc lập thật
+    chain:
+      - [hhtech, gpt-5.6-sol]
+    timeout_s: 120
+    max_tokens: 1500
+    temperature: 0.1
+    prompt_version: finalqc_v1
+  feedback:                 # H11 — tổng hợp proposal, chạy tay
+    chain:
+      - [claude_cli, sonnet]
+    timeout_s: 300
+    max_tokens: 4000
+    temperature: 0.3
+    prompt_version: feedback_v1

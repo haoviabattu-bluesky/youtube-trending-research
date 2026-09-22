@@ -1,0 +1,66 @@
+lane_id: shinya_shiryoshitsu
+label: Lane A — 都市伝説/宇宙/未解決ミステリー (narrated mystery)
+draft: false
+market:
+  country: Japan
+  language: Japanese
+audience:
+  age_range: 40+
+  gender: mixed
+  interests:
+  - 都市伝説
+  - UFO
+  - 宇宙
+  - 未解決事件
+  - 陰謀論
+  - オカルト
+  - ミステリー
+content_identity:
+  primary:
+  - narrated_mystery
+  - documentary_style_story
+  - investigation_narration
+wanted_topics:
+- UFO事件
+- 宇宙の謎
+- 未解決失踪事件
+- 政府の隠蔽
+- エリア51
+- 古代文明の謎
+- 深海・未知の生物
+- NASA/宇宙開発の裏側
+- 人類滅亡シナリオ
+- 超常現象の実話
+allowed_formats:
+- narration
+- stock_footage_story
+- documentary_narration
+- slideshow_story
+excluded_formats:
+- vlog
+- podcast
+- interview
+- talk_show
+- news
+- tv_clip
+- livestream
+- reaction
+- music_video
+- sports_highlight
+excluded_subjects:
+- celebrity gossip
+- idol scandal
+- US police bodycam
+- gaming
+- politics
+- food/cooking vlog
+- travel vlog
+- music
+- sports
+- horror fiction / creepypasta pure fiction
+- ghost prank
+- anime/game lore
+duration:
+  min_minutes: 8
+  max_minutes: 60
+notes: soạn từ docs/LANE_*_HANDOFF.md

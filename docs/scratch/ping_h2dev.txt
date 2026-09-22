@@ -1,0 +1,4 @@
+ramclouds  gemini-3.8-flash   OK   160.9s  'ok'
+ns24       gemini-3.8-flash   OK     8.8s  'ok'
+ramclouds  gpt-5.6-luna       FAIL   5.3s  Hết chuỗi fallback, không model nào cho output dùng được:
+  - ramclouds:gpt-5.6-luna (lần 1): HTTP 503 {"error

@@ -1,0 +1,65 @@
+lane_id: irogatatarukioku
+label: Lane D — 色でたどる戦争の記録 (WW2 real photos AI-colorized, narrated)
+draft: false
+market:
+  country: Japan
+  language: Japanese
+audience:
+  age_range: 50+
+  gender: mostly_male
+  interests:
+  - 太平洋戦争
+  - 日本軍
+  - 戦史
+  - 昭和史
+  - 沖縄戦
+  - 硫黄島
+content_identity:
+  primary:
+  - historical_photo_narration
+  - war_history_documentary
+  - colorized_archive_story
+wanted_topics:
+- 太平洋戦争の戦い
+- 日本軍将校の最期
+- 玉砕・特攻
+- 沖縄戦
+- 硫黄島
+- 戦争写真の裏側
+- 戦後の引き揚げ
+- 戦時中の生活
+- 軍艦・航空機の記録
+allowed_formats:
+- narration
+- archive_photo_story
+- documentary_narration
+- slideshow_story
+excluded_formats:
+- vlog
+- podcast
+- interview
+- talk_show
+- news
+- tv_clip
+- livestream
+- reaction
+- music_video
+- sports_highlight
+excluded_subjects:
+- celebrity gossip
+- idol scandal
+- US police bodycam
+- gaming
+- politics
+- food/cooking vlog
+- travel vlog
+- music
+- sports
+- modern travel to war sites vlog
+- modern US city life
+- military hardware news today
+- war game footage
+duration:
+  min_minutes: 8
+  max_minutes: 60
+notes: soạn từ docs/LANE_*_HANDOFF.md

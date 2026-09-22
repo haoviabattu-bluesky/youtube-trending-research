@@ -1,0 +1,98 @@
+{
+  "_doc": "Guide §40/§41 — bộ case cố định. `row` = candidate sau enrich; `stub` = response LLM ghi sẵn (offline); `expected` = PASS (được chọn production) / REJECT + gate phải chặn. Case từ lỗi owner đã bắt thật ghi `owner_case: true`.",
+  "lane": "Lopezzapa68",
+  "cases": [
+    {"id": "ok_high_view", "desc": "đúng ngách, view cao", "expected": "PASS", "expected_gate": null,
+     "row": {"video_id": "OK000000001", "title": "年金「月25万」を漏らした73歳…40年の仲間の会が解散、LINE誤送信の一行【老後 人間関係】", "channel": "老後の実話", "channel_id": "UCokA", "views": 420000, "likes": 5200, "comments": 610, "duration_s": 1500, "age_hours": 120, "subs": 80000, "uploads_playlist": "UUokA", "description": "老後の人間関係をめぐる実話を朗読でお届けします。", "tags": ["老後", "人間関係", "朗読"], "live_broadcast_content": "none"},
+     "baseline": {"median_recent_vph": 300, "median_recent_views": 40000, "n_videos": 10},
+     "stub": {"semantic": {"topic_match": 95, "audience_match": 92, "content_identity_match": 90, "market_language_match": 100, "semantic_confidence": 90, "decision": "PASS", "reasons": ["senior relationship story"], "matched_topics": ["老後の人間関係"], "mismatch_flags": []},
+              "format": {"format_class": "NARRATED_STORY", "real_person_present": false, "host_driven": false, "interview_style": false, "news_style": false, "format_confidence": 92, "decision": "PASS", "reason": "narrated"},
+              "opportunity": {"why_viral": ["TITLE_HOOK", "CONTRADICTION", "TOPIC"], "transferability": 90, "topic_reusability": 88, "hook_reusability": 92, "audience_compatibility": 95, "production_compatibility": 95, "channel_authority_dependency": 10, "external_event_dependency": 5, "celebrity_dependency": 0, "opportunity_score": 90, "decision": "PASS", "fatal_flags": [], "reason": "transferable premise"},
+              "final_qc": {"semantic_fit": 93, "format_fit": 95, "viral_validity": 90, "learning_value": 94, "independent_confidence": 90, "fatal_issue": null, "disagreements": [], "decision": "PASS", "reason": "fits"}}},
+
+    {"id": "ok_breakout_small_channel", "desc": "đúng ngách, kênh nhỏ breakout mạnh", "expected": "PASS", "expected_gate": null,
+     "row": {"video_id": "OK000000002", "title": "【老老介護】手帳の最後に鉛筆で「たすけて」…倒れたのは80歳の母ではなく娘", "channel": "静かな夜の物語", "channel_id": "UCokB", "views": 68000, "likes": 900, "comments": 210, "duration_s": 1320, "age_hours": 60, "subs": 1500, "uploads_playlist": "UUokB", "description": "介護の実話", "tags": ["老老介護"], "live_broadcast_content": "none"},
+     "baseline": {"median_recent_vph": 4, "median_recent_views": 900, "n_videos": 10},
+     "stub": {"semantic": {"topic_match": 90, "audience_match": 90, "content_identity_match": 88, "market_language_match": 100, "semantic_confidence": 85, "decision": "PASS", "reasons": [], "matched_topics": ["老老介護"], "mismatch_flags": []},
+              "format": {"format_class": "AI_STORY", "real_person_present": false, "host_driven": false, "interview_style": false, "news_style": false, "format_confidence": 85, "decision": "PASS", "reason": ""},
+              "opportunity": {"why_viral": ["EMOTION", "CONTRADICTION"], "transferability": 88, "topic_reusability": 85, "hook_reusability": 90, "audience_compatibility": 92, "production_compatibility": 92, "channel_authority_dependency": 5, "external_event_dependency": 0, "celebrity_dependency": 0, "opportunity_score": 88, "decision": "PASS", "fatal_flags": [], "reason": "small channel breakout on pure story"},
+              "final_qc": {"semantic_fit": 90, "format_fit": 90, "viral_validity": 88, "learning_value": 90, "independent_confidence": 85, "fatal_issue": null, "disagreements": [], "decision": "PASS", "reason": ""}}},
+
+    {"id": "wrong_niche_tag_match", "desc": "sai ngách nhưng tag khớp — MV khớp 1 từ", "expected": "REJECT", "expected_gate": "semantic", "owner_case": true,
+     "row": {"video_id": "NG000000003", "title": "【MV】老後のサイエンス feat. 孤独のうた", "channel": "音楽レーベル", "channel_id": "UCngC", "views": 900000, "likes": 30000, "comments": 4000, "duration_s": 600, "age_hours": 100, "subs": 500000, "uploads_playlist": "UUngC", "description": "新曲MV公開", "tags": ["MV", "老後"], "live_broadcast_content": "none"},
+     "stub": {"semantic": {"topic_match": 20, "audience_match": 30, "content_identity_match": 10, "market_language_match": 100, "semantic_confidence": 95, "decision": "REJECT", "reasons": ["music video"], "matched_topics": [], "mismatch_flags": ["MUSIC"]},
+              "format": {"format_class": "REUP", "real_person_present": true, "host_driven": false, "interview_style": false, "news_style": false, "format_confidence": 90, "decision": "REJECT", "reason": "MV"}}},
+
+    {"id": "police_bodycam_talkshow", "desc": "US police guest / talk show", "expected": "REJECT", "expected_gate": "format", "owner_case": true,
+     "row": {"video_id": "NG000000004", "title": "【衝撃】アメリカ警察の現役刑事が語る老後の孤独と後悔【トークショー】", "channel": "対談チャンネル", "channel_id": "UCngD", "views": 150000, "likes": 2000, "comments": 500, "duration_s": 2400, "age_hours": 72, "subs": 20000, "uploads_playlist": "UUngD", "description": "ゲストとの対談", "tags": ["老後", "孤独", "後悔"], "live_broadcast_content": "none"},
+     "stub": {"semantic": {"topic_match": 70, "audience_match": 60, "content_identity_match": 30, "market_language_match": 100, "semantic_confidence": 80, "decision": "REJECT", "reasons": ["talk show"], "matched_topics": ["孤独"], "mismatch_flags": ["INTERVIEW"]},
+              "format": {"format_class": "TALK_SHOW", "real_person_present": true, "host_driven": true, "interview_style": true, "news_style": false, "format_confidence": 95, "decision": "REJECT", "reason": "host + guest on camera"}}},
+
+    {"id": "interview", "desc": "phỏng vấn", "expected": "REJECT", "expected_gate": "format",
+     "row": {"video_id": "NG000000005", "title": "80歳の元教師にインタビュー…老後の人間関係で後悔したこと", "channel": "インタビュー局", "channel_id": "UCngE", "views": 90000, "likes": 1200, "comments": 300, "duration_s": 1800, "age_hours": 96, "subs": 30000, "uploads_playlist": "UUngE", "description": "", "tags": [], "live_broadcast_content": "none"},
+     "stub": {"semantic": {"topic_match": 85, "audience_match": 85, "content_identity_match": 55, "market_language_match": 100, "semantic_confidence": 80, "decision": "UNCERTAIN", "reasons": [], "matched_topics": ["老後の人間関係"], "mismatch_flags": []},
+              "format": {"format_class": "INTERVIEW", "real_person_present": true, "host_driven": false, "interview_style": true, "news_style": false, "format_confidence": 92, "decision": "REJECT", "reason": ""}}},
+
+    {"id": "podcast", "desc": "podcast 2 người", "expected": "REJECT", "expected_gate": "format",
+     "row": {"video_id": "NG000000006", "title": "【ラジオ】老後の友達づくり、どうしてる？雑談回", "channel": "ふたりラジオ", "channel_id": "UCngF", "views": 40000, "likes": 500, "comments": 100, "duration_s": 3000, "age_hours": 200, "subs": 15000, "uploads_playlist": "UUngF", "description": "", "tags": [], "live_broadcast_content": "none"},
+     "stub": {"semantic": {"topic_match": 78, "audience_match": 70, "content_identity_match": 40, "market_language_match": 100, "semantic_confidence": 75, "decision": "REJECT", "reasons": [], "matched_topics": [], "mismatch_flags": []},
+              "format": {"format_class": "PODCAST", "real_person_present": true, "host_driven": true, "interview_style": false, "news_style": false, "format_confidence": 90, "decision": "REJECT", "reason": ""}}},
+
+    {"id": "vlog", "desc": "vlog người thật", "expected": "REJECT", "expected_gate": "format",
+     "row": {"video_id": "NG000000007", "title": "70歳一人暮らしの日常vlog｜孤独と向き合う朝", "channel": "おばあちゃんの日々", "channel_id": "UCngG", "views": 120000, "likes": 3000, "comments": 400, "duration_s": 900, "age_hours": 48, "subs": 50000, "uploads_playlist": "UUngG", "description": "", "tags": [], "live_broadcast_content": "none"},
+     "stub": {"semantic": {"topic_match": 80, "audience_match": 85, "content_identity_match": 35, "market_language_match": 100, "semantic_confidence": 85, "decision": "REJECT", "reasons": [], "matched_topics": ["孤独"], "mismatch_flags": []},
+              "format": {"format_class": "VLOG_PERSON", "real_person_present": true, "host_driven": true, "interview_style": false, "news_style": false, "format_confidence": 95, "decision": "REJECT", "reason": ""}}},
+
+    {"id": "celebrity", "desc": "idol scandal / celebrity", "expected": "REJECT", "expected_gate": "semantic", "owner_case": true,
+     "row": {"video_id": "NG000000008", "title": "【速報】人気アイドル、73歳の祖母を巡るスキャンダルの真相", "channel": "芸能ニュース速報", "channel_id": "UCngH", "views": 2000000, "likes": 20000, "comments": 9000, "duration_s": 600, "age_hours": 30, "subs": 300000, "uploads_playlist": "UUngH", "description": "", "tags": ["芸能"], "live_broadcast_content": "none"},
+     "stub": {"semantic": {"topic_match": 25, "audience_match": 30, "content_identity_match": 20, "market_language_match": 100, "semantic_confidence": 95, "decision": "REJECT", "reasons": ["celebrity gossip"], "matched_topics": [], "mismatch_flags": ["CELEBRITY"]},
+              "format": {"format_class": "NEWS", "real_person_present": true, "host_driven": false, "interview_style": false, "news_style": true, "format_confidence": 90, "decision": "REJECT", "reason": ""}}},
+
+    {"id": "news", "desc": "tin thời sự", "expected": "REJECT", "expected_gate": "format",
+     "row": {"video_id": "NG000000009", "title": "年金改正が閣議決定 高齢者の負担増へ【ニュース】", "channel": "報道チャンネル", "channel_id": "UCngI", "views": 300000, "likes": 2500, "comments": 3000, "duration_s": 600, "age_hours": 20, "subs": 1000000, "uploads_playlist": "UUngI", "description": "", "tags": [], "live_broadcast_content": "none"},
+     "stub": {"semantic": {"topic_match": 60, "audience_match": 70, "content_identity_match": 30, "market_language_match": 100, "semantic_confidence": 90, "decision": "REJECT", "reasons": [], "matched_topics": ["年金"], "mismatch_flags": ["NEWS"]},
+              "format": {"format_class": "NEWS", "real_person_present": true, "host_driven": false, "interview_style": false, "news_style": true, "format_confidence": 95, "decision": "REJECT", "reason": ""}}},
+
+    {"id": "big_channel_normal_view", "desc": "kênh lớn view bình thường — không breakout, không MARKET_TREND", "expected": "REJECT", "expected_gate": "viral_or_qc",
+     "row": {"video_id": "NG000000010", "title": "定年後に妻から言われた一言…60代夫の後悔【朗読】", "channel": "大手朗読チャンネル", "channel_id": "UCngJ", "views": 30000, "likes": 300, "comments": 40, "duration_s": 1400, "age_hours": 500, "subs": 900000, "uploads_playlist": "UUngJ", "description": "", "tags": [], "live_broadcast_content": "none"},
+     "baseline": {"median_recent_vph": 800, "median_recent_views": 250000, "n_videos": 10},
+     "stub": {"semantic": {"topic_match": 88, "audience_match": 90, "content_identity_match": 90, "market_language_match": 100, "semantic_confidence": 85, "decision": "PASS", "reasons": [], "matched_topics": ["後悔"], "mismatch_flags": []},
+              "format": {"format_class": "NARRATED_STORY", "real_person_present": false, "host_driven": false, "interview_style": false, "news_style": false, "format_confidence": 90, "decision": "PASS", "reason": ""},
+              "opportunity": {"why_viral": ["AUTHORITY"], "transferability": 40, "topic_reusability": 60, "hook_reusability": 50, "audience_compatibility": 90, "production_compatibility": 90, "channel_authority_dependency": 70, "external_event_dependency": 0, "celebrity_dependency": 0, "opportunity_score": 45, "decision": "UNCERTAIN", "fatal_flags": [], "reason": "below channel baseline"},
+              "final_qc": {"semantic_fit": 88, "format_fit": 90, "viral_validity": 20, "learning_value": 30, "independent_confidence": 85, "fatal_issue": "MISLEADING_VIRAL_METRIC", "disagreements": ["viral engine flagged NORMAL"], "decision": "REJECT", "reason": "underperforms channel"}}},
+
+    {"id": "no_tag_semantic_ok", "desc": "title không có tag nào nhưng semantic rất đúng", "expected": "PASS", "expected_gate": null,
+     "row": {"video_id": "OK000000011", "title": "四十年通った喫茶店が閉まる日、マスターが最後に渡した封筒", "channel": "夕暮れ朗読館", "channel_id": "UCokK", "views": 150000, "likes": 2400, "comments": 380, "duration_s": 1600, "age_hours": 90, "subs": 12000, "uploads_playlist": "UUokK", "description": "老後の友情と別れの物語", "tags": [], "live_broadcast_content": "none"},
+     "baseline": {"median_recent_vph": 30, "median_recent_views": 5000, "n_videos": 10},
+     "stub": {"semantic": {"topic_match": 88, "audience_match": 90, "content_identity_match": 92, "market_language_match": 100, "semantic_confidence": 85, "decision": "PASS", "reasons": ["friendship & farewell story for seniors"], "matched_topics": ["友情", "後悔"], "mismatch_flags": []},
+              "format": {"format_class": "NARRATED_STORY", "real_person_present": false, "host_driven": false, "interview_style": false, "news_style": false, "format_confidence": 88, "decision": "PASS", "reason": ""},
+              "opportunity": {"why_viral": ["EMOTION", "CURIOSITY_GAP"], "transferability": 85, "topic_reusability": 80, "hook_reusability": 88, "audience_compatibility": 92, "production_compatibility": 95, "channel_authority_dependency": 10, "external_event_dependency": 0, "celebrity_dependency": 0, "opportunity_score": 86, "decision": "PASS", "fatal_flags": [], "reason": ""},
+              "final_qc": {"semantic_fit": 90, "format_fit": 92, "viral_validity": 85, "learning_value": 88, "independent_confidence": 85, "fatal_issue": null, "disagreements": [], "decision": "PASS", "reason": ""}}},
+
+    {"id": "disney_la_placename", "desc": "Disney/LA du lịch lọt vì tag địa danh", "expected": "REJECT", "expected_gate": "semantic", "owner_case": true,
+     "row": {"video_id": "NG000000012", "title": "ロサンゼルス ディズニー 60代夫婦の旅行記【カリフォルニア】", "channel": "旅チャンネル", "channel_id": "UCngL", "views": 80000, "likes": 1500, "comments": 200, "duration_s": 1200, "age_hours": 150, "subs": 40000, "uploads_playlist": "UUngL", "description": "", "tags": ["ロサンゼルス"], "live_broadcast_content": "none"},
+     "stub": {"semantic": {"topic_match": 15, "audience_match": 60, "content_identity_match": 20, "market_language_match": 100, "semantic_confidence": 90, "decision": "REJECT", "reasons": ["travel"], "matched_topics": [], "mismatch_flags": ["TRAVEL"]},
+              "format": {"format_class": "VLOG_PERSON", "real_person_present": true, "host_driven": true, "interview_style": false, "news_style": false, "format_confidence": 85, "decision": "REJECT", "reason": ""}}},
+
+    {"id": "chinese_language", "desc": "tiếng Trung phồn thể không kana → hard filter", "expected": "REJECT", "expected_gate": "hard_filter", "owner_case": true,
+     "row": {"video_id": "NG000000013", "title": "老後生活真相：退休後最後悔的三件事", "channel": "退休頻道", "channel_id": "UCngM", "views": 500000, "likes": 5000, "comments": 800, "duration_s": 1500, "age_hours": 100, "subs": 200000, "uploads_playlist": "UUngM", "description": "", "tags": [], "live_broadcast_content": "none"},
+     "stub": {}},
+
+    {"id": "live_camera", "desc": "live-cam sân bay view ảo", "expected": "REJECT", "expected_gate": "hard_filter", "owner_case": true,
+     "row": {"video_id": "NG000000014", "title": "🔴 羽田空港ライブカメラ 老後の散歩コース", "channel": "空港ライブ", "channel_id": "UCngN", "views": 900000, "likes": 100, "comments": 10, "duration_s": 36000, "age_hours": 700, "subs": 5000, "uploads_playlist": "UUngN", "description": "", "tags": [], "live_broadcast_content": "live"},
+     "stub": {}},
+
+    {"id": "reup_sports", "desc": "reup highlight thể thao", "expected": "REJECT", "expected_gate": "format",
+     "row": {"video_id": "NG000000015", "title": "【感動】70代の元プロ野球選手 引退セレモニー ハイライト", "channel": "スポーツまとめ", "channel_id": "UCngO", "views": 250000, "likes": 4000, "comments": 600, "duration_s": 480, "age_hours": 40, "subs": 8000, "uploads_playlist": "UUngO", "description": "", "tags": [], "live_broadcast_content": "none"},
+     "stub": {"semantic": {"topic_match": 35, "audience_match": 60, "content_identity_match": 25, "market_language_match": 100, "semantic_confidence": 85, "decision": "REJECT", "reasons": [], "matched_topics": [], "mismatch_flags": ["SPORTS"]},
+              "format": {"format_class": "REUP", "real_person_present": true, "host_driven": false, "interview_style": false, "news_style": false, "format_confidence": 90, "decision": "REJECT", "reason": ""}}},
+
+    {"id": "external_event_dependency", "desc": "đúng ngách/format nhưng viral nhờ sự kiện thời sự → opportunity reject", "expected": "REJECT", "expected_gate": "opportunity",
+     "row": {"video_id": "NG000000016", "title": "【朗読】あの大地震の夜、80歳の母が最後に電話で言ったこと", "channel": "記憶の朗読", "channel_id": "UCngP", "views": 700000, "likes": 9000, "comments": 2000, "duration_s": 1300, "age_hours": 36, "subs": 6000, "uploads_playlist": "UUngP", "description": "", "tags": [], "live_broadcast_content": "none"},
+     "baseline": {"median_recent_vph": 10, "median_recent_views": 2000, "n_videos": 10},
+     "stub": {"semantic": {"topic_match": 85, "audience_match": 88, "content_identity_match": 90, "market_language_match": 100, "semantic_confidence": 85, "decision": "PASS", "reasons": [], "matched_topics": ["親子関係"], "mismatch_flags": []},
+              "format": {"format_class": "NARRATED_STORY", "real_person_present": false, "host_driven": false, "interview_style": false, "news_style": false, "format_confidence": 90, "decision": "PASS", "reason": ""},
+              "opportunity": {"why_viral": ["TIMING", "EMOTION"], "transferability": 30, "topic_reusability": 40, "hook_reusability": 60, "audience_compatibility": 90, "production_compatibility": 90, "channel_authority_dependency": 5, "external_event_dependency": 90, "celebrity_dependency": 0, "opportunity_score": 40, "decision": "PASS", "fatal_flags": [], "reason": "rode breaking news"},
+              "final_qc": {"semantic_fit": 85, "format_fit": 90, "viral_validity": 60, "learning_value": 40, "independent_confidence": 80, "fatal_issue": null, "disagreements": [], "decision": "PASS", "reason": ""}}}
+  ]
+}

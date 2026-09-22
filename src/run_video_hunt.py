@@ -89,7 +89,10 @@ def video_cell(p: dict) -> str:
 
 
 def run_lane(name: str, lcfg: dict, cfg: dict, api: YouTubeAPI | None,
-            rep: SheetReporter, con, pool: ProxyPool | None = None) -> list[dict]:
+            rep: SheetReporter, con, pool: ProxyPool | None = None,
+            v2_ctx: dict | None = None) -> list[dict]:
+    """`v2_ctx` (dict rỗng do caller đưa) được điền pool discovery/enrich để VIDEO HUNT V2 chạy
+    tiếp SAU đường cũ mà không quét lại tag. Không đưa → hành vi y hệt bản cũ."""
     hl, gl = cfg.get("hl", "ja"), cfg.get("gl", "JP")
     kws = lane_keywords(rep, lcfg, cfg.get("stop_tags", []))
     LOG(f"[{name}] {len(kws)} từ khoá (tag cột F + seed)")
@@ -113,6 +116,9 @@ def run_lane(name: str, lcfg: dict, cfg: dict, api: YouTubeAPI | None,
     scored = hs.score_rows(rows, cfg)
     already = store.picked_video_ids(con, name)
     done_titles = lane_done_titles(rep, lcfg)
+    if v2_ctx is not None:
+        v2_ctx.update(found=found, rows=rows, kws=kws, done_titles=done_titles, it=it,
+                      pool=pool, enricher=enr)
     non_jp = sum(1 for r in scored if not hs.is_japanese_title(r["title"]))
     live = sum(1 for r in scored if hs.is_live_stream(r["title"]))
     mismatch = sum(1 for r in scored if not hs.title_matches_pool(r["title"], kws))
@@ -151,6 +157,7 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--no-api", action="store_true")
     ap.add_argument("--no-proxy", action="store_true", help="bỏ qua config/proxies.txt, chạy IP thật")
+    ap.add_argument("--no-v2", action="store_true", help="tắt VIDEO HUNT V2 (hành vi y hệt bản cũ)")
     args = ap.parse_args()
 
     t0 = time.time()
@@ -171,17 +178,41 @@ def main() -> int:
 
     names = [n.strip() for n in args.lane.split(",") if n.strip()] or list(cfg["lanes"])
     n_ranks = d["pick_per_lane"]
+    v2flags = {} if args.no_v2 else (cfg.get("video_hunt_v2") or {})
+    v2_on = bool(v2flags.get("enabled"))
+    shadow = bool(v2flags.get("shadow_mode", True))
     all_picks: dict[str, list[dict]] = {}
+    v2_results: dict = {}
     for name in names:
         lcfg = cfg["lanes"][name]
         LOG(f"\n=== {name} — {lcfg.get('label', '')} ===")
+        v2_ctx: dict = {}
         try:
-            picks = run_lane(name, lcfg, d, api, rep, con, pool)
+            picks = run_lane(name, lcfg, d, api, rep, con, pool, v2_ctx if v2_on else None)
         except BotCheckError as e:
             LOG(f"!! BOT-CHECK ở lane {name}: {e} — bỏ qua lane này, giữ nguyên các lane khác")
             picks = []
         all_picks[name] = picks
+        if v2_on and v2_ctx:
+            # V2 chạy SAU khi đã có pick cũ; lỗi V2 không được làm hỏng lượt cũ (guide §31)
+            from hunt_v2.runner import run_lane_v2
+            v2_ctx["old_picks"] = picks
+            try:
+                r2 = run_lane_v2(ROOT, name, v2flags, v2_ctx, api, con, snap, LOG, discover_lane)
+                if r2.error:
+                    LOG(f"[{name}][v2] {r2.error}")
+                v2_results[name] = r2
+            except Exception as e:
+                LOG(f"!! [{name}][v2] LỖI {type(e).__name__}: {e} — giữ nguyên kết quả cũ")
+            if not shadow and v2_results.get(name) and v2_results[name].selected:
+                sel = v2_results[name].selected
+                all_picks[name] = [dict(c, score=c.get("final_score"),
+                                        reason=f"V2 final_score={c.get('final_score')}") for c in sel]
+                LOG(f"[{name}][v2] PRODUCTION: RESEARCH nhận {len(sel)} pick V2 (thay pick cũ)")
 
+    if v2_on:
+        from hunt_v2 import shadow_report
+        shadow_report.print_compare(names, all_picks, v2_results, shadow, LOG)
     if args.dry_run:
         LOG("\n[dry-run] KHÔNG ghi Sheet. Kết quả từng lane:")
         for name in names:
@@ -191,6 +222,12 @@ def main() -> int:
             for i, p in enumerate(picks, 1):
                 LOG(f"\n--- {name} #{i} ---\n{video_cell(p)}")
     else:
+        if v2_on and v2flags.get("write_audit_tab", True):
+            try:
+                n_audit = shadow_report.write_audit(rep, names, all_picks, v2_results, snap, shadow)
+                LOG(f"[sheet] TRD_HUNT_AUDIT +{n_audit} dòng")
+            except Exception as e:
+                LOG(f"!! audit tab lỗi {type(e).__name__}: {e} — vẫn ghi RESEARCH như cũ")
         header = HEADERS[d["research_tab"]]
         # Chạy từng lane riêng lẻ (để publish ngay khi 1 lane xong) sẽ GHI ĐÈ MẤT các
         # lane/hạng KHÁC nếu chỉ đẩy dữ liệu của lane vừa chạy — phải đọc các dòng

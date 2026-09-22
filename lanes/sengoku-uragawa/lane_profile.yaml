@@ -1,0 +1,63 @@
+lane_id: sengoku-uragawa
+label: Lane I — 戦国の裏側 (Sengoku history, chibi manga + narration, myth-busting)
+draft: true
+market:
+  country: Japan
+  language: Japanese
+audience:
+  age_range: 40+
+  gender: mostly_male
+  interests:
+  - 戦国時代
+  - 武将
+  - 日本史
+  - 歴史の真実
+  - 通説の嘘
+content_identity:
+  primary:
+  - history_explainer_manga
+  - myth_busting_narration
+  - sengoku_story
+wanted_topics:
+- 戦国武将の真実
+- 通説の嘘
+- 織田信長・豊臣秀吉・徳川家康の裏話
+- 合戦の真相
+- 戦国の生活
+- 裏切りと謀略
+- 最期の真実
+allowed_formats:
+- manga_story
+- ai_image_story
+- narration
+- slideshow_story
+- explainer
+excluded_formats:
+- vlog
+- podcast
+- interview
+- talk_show
+- news
+- tv_clip
+- livestream
+- reaction
+- music_video
+- sports_highlight
+excluded_subjects:
+- celebrity gossip
+- idol scandal
+- US police bodycam
+- gaming
+- politics
+- food/cooking vlog
+- travel vlog
+- music
+- sports
+- taiga drama clips
+- castle travel vlog
+- game (Nobunaga's Ambition) footage
+- history teacher on camera
+duration:
+  min_minutes: 8
+  max_minutes: 45
+notes: 'draft=true: soạn từ seed_tags + ô B1 tab, chưa có handoff — user duyệt sau lượt shadow đầu'

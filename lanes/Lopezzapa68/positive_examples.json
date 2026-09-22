@@ -1,0 +1,12 @@
+{
+  "positive_examples": [
+    {
+      "title": "年金「月25万」を漏らした73歳…40年の仲間の会が解散、LINE誤送信の一行",
+      "why": "senior relationship story, emotional twist"
+    },
+    {
+      "title": "【老老介護】手帳の最後に鉛筆で「たすけて」…倒れたのは80歳の母ではなく娘",
+      "why": "caregiving story with emotional contradiction"
+    }
+  ]
+}

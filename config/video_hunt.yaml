@@ -105,3 +105,22 @@ lanes:
     tab: teinengo-fuufu
     label: "Lane J — vợ chồng hưu trí, quyết định lớn"
     seed_tags: [定年後 夫婦 漫画, 熟年離婚 漫画, 老後 夫婦 決断, 定年 妻 本音, 老後 二人暮らし]
+
+# ---------------------------------------------------------------------------
+# VIDEO HUNT V2 — feature flags (guide §39). Threshold ở config/hunt_rules.yaml,
+# model ở config/models.yaml. `enabled: false` → run_video_hunt.py chạy y hệt bản cũ.
+# `shadow_mode: true` → tab RESEARCH vẫn nhận pick CŨ; V2 chỉ ghi TRD_HUNT_AUDIT + runs/.
+video_hunt_v2:
+  enabled: true
+  shadow_mode: true
+  discovery_expansion: true
+  semantic_gate: true
+  format_gate: true
+  viral_engine_v2: true
+  opportunity_gate: true
+  final_qc: true
+  feedback_learning: false
+  write_audit_tab: true
+  audit_tab: TRD_HUNT_AUDIT
+  lanes_dir: lanes
+  runs_dir: runs
