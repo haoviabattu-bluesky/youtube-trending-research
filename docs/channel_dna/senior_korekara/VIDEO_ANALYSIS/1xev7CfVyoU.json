@@ -1,0 +1,23 @@
+{
+ "topics": [
+  "定年後の仕事",
+  "アルバイト",
+  "条件",
+  "60代の働き方"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "年金13万円の生活。あなたはどんな生活か想像がつくだろうか。食えないほどじゃないでも[音楽]何ひつないというのが8年やってきた俺の正直なところだ。俺は篠[音楽]正一68歳独身地43年のアパートで[音楽]1人で暮らしている。今日は年金13万円で暮らす俺の等身台の生活を隠さずに話そうと思う。その前になんで13万円なのかだけ言っておく。高校を出て公務店に入った。28歳で独立",
+ "hook_n_segments_0_30": 10,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 323 segments, phủ ~100% độ dài video",
+ "video_id": "1xev7CfVyoU",
+ "title": "【漫画】老後年金13万円の超リアルな生活水準。「冷蔵庫が壊れるとやばい」綱渡りのギリギリの毎日",
+ "view_count": 28340,
+ "duration_min": 17.0,
+ "vpd": 2361.7,
+ "days": 12
+}

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深読み地図 (Bản đồ đọc sâu) — Phân tích kênh · 19/10/2026</title>
+<style>
+  :root{
+    --ink:#101820;
+    --ink-2:#3b4754;
+    --muted:#6b7785;
+    --line:#d9dee4;
+    --line-soft:#eceff2;
+    --paper:#fbfaf7;
+    --card:#ffffff;
+    --navy:#12283f;
+    --navy-2:#1d3f5e;
+    --sand:#c8a878;
+    --sand-2:#f2e9db;
+    --amber:#b3701c;
+    --red:#a3342a;
+    --green:#2f6b4f;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Consolas",monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px 96px}
+
+  /* ---------- masthead ---------- */
+  header.mast{
+    background:var(--navy);color:#eef3f7;
+    padding:44px 0 40px;margin-bottom:44px;
+    border-bottom:3px solid var(--sand);
+  }
+  header.mast .wrap{padding-bottom:0}
+  .kicker{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--sand);margin:0 0 14px
+  }
+  h1{
+    font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.4vw,46px);
+    line-height:1.14;margin:0 0 6px;letter-spacing:-.01em
+  }
+  h1 .sub{display:block;font-size:.44em;font-weight:400;color:#a9bccd;margin-top:12px;letter-spacing:0;font-family:var(--sans)}
+  .mast-meta{
+    display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:24px;
+    font-family:var(--mono);font-size:12px;color:#93a9bd
+  }
+  .mast-meta b{color:#e8eff5;font-weight:600}
+
+  /* ---------- answer box ---------- */
+  .answer{
+    background:var(--card);border:1px solid var(--line);border-top:4px solid var(--amber);
+    padding:28px 30px;margin-bottom:44px;
+  }
+  .answer h2{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--amber);margin:0 0 16px;font-weight:700
+  }
+  .answer p{margin:0 0 14px}
+  .answer p:last-child{margin-bottom:0}
+  .answer .q{font-family:var(--mono);color:var(--muted);font-size:13px;display:block;margin-bottom:2px}
+
+  /* ---------- sections ---------- */
+  section{margin:0 0 52px}
+  h2.sec{
+    font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.25;
+    margin:0 0 6px;letter-spacing:-.005em;
+    display:flex;align-items:baseline;gap:14px
+  }
+  h2.sec .n{
+    font-family:var(--mono);font-size:12px;font-weight:700;color:var(--sand);
+    letter-spacing:.06em;flex:none;padding-top:4px
+  }
+  .lede{color:var(--ink-2);margin:0 0 22px;max-width:74ch}
+  h3{font-size:17px;font-weight:650;margin:30px 0 10px;letter-spacing:-.005em}
+  h3:first-child{margin-top:0}
+  p{margin:0 0 14px}
+  ul,ol{margin:0 0 16px;padding-left:22px}
+  li{margin:0 0 7px}
+  strong{font-weight:650}
+  code{font-family:var(--mono);font-size:.88em;background:var(--sand-2);padding:1px 5px;border-radius:3px}
+  a{color:var(--navy-2);text-decoration:none;border-bottom:1px solid rgba(29,63,94,.28)}
+  a:hover{border-bottom-color:var(--navy-2);background:rgba(29,63,94,.05)}
+
+  /* ---------- stat strip ---------- */
+  .stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);margin:0 0 26px
+  }
+  .stat{background:var(--card);padding:16px 18px}
+  .stat .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .stat .v{font-family:var(--mono);font-size:23px;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+  .stat .u{font-size:11.5px;color:var(--muted);margin-top:3px}
+
+  /* ---------- tables ---------- */
+  .tbl-wrap{overflow-x:auto;margin:0 0 22px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;background:var(--card);font-size:13.5px}
+  th,td{padding:10px 13px;text-align:left;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--muted);background:#f7f8f9;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap
+  }
+  tbody tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;font-family:var(--mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+  tr.hi td{background:#fdf7ec}
+  tr.dim td{color:var(--muted)}
+  .tag{
+    display:inline-block;font-family:var(--mono);font-size:10.5px;padding:1px 7px;
+    border-radius:2px;letter-spacing:.04em;white-space:nowrap
+  }
+  .tag.new{background:#e6f0ea;color:var(--green)}
+  .tag.warn{background:#faeae7;color:var(--red)}
+  .tag.mid{background:#f1ece2;color:var(--amber)}
+
+  /* ---------- mechanism list ---------- */
+  .mech{counter-reset:m;margin:0;padding:0;list-style:none}
+  .mech > li{
+    counter-increment:m;position:relative;padding:0 0 22px 52px;margin:0;
+    border-left:1px solid var(--line);margin-left:15px
+  }
+  .mech > li:last-child{border-left-color:transparent;padding-bottom:0}
+  .mech > li::before{
+    content:counter(m,decimal-leading-zero);position:absolute;left:-15px;top:0;
+    width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;
+    font-family:var(--mono);font-size:11.5px;font-weight:600;
+    display:flex;align-items:center;justify-content:center
+  }
+  .mech h3{margin:3px 0 7px;font-size:16.5px}
+  .mech .ev{
+    font-family:var(--mono);font-size:11.5px;color:var(--amber);
+    letter-spacing:.02em;display:block;margin-bottom:6px
+  }
+  .mech p{margin:0 0 9px;font-size:15px;color:var(--ink-2)}
+  .mech p:last-child{margin-bottom:0}
+
+  /* ---------- figures ---------- */
+  figure{margin:0 0 26px}
+  figure img{width:100%;display:block;border:1px solid var(--line);background:#fff}
+  figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+  .fig-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:26px}
+  @media(max-width:720px){.fig-row{grid-template-columns:1fr}}
+
+  /* ---------- quote ---------- */
+  blockquote{
+    margin:0 0 16px;padding:14px 18px;background:var(--card);
+    border-left:3px solid var(--sand);font-size:14.5px
+  }
+  blockquote .jp{
+    display:block;font-size:12.5px;color:var(--muted);
+    margin-top:6px;line-height:1.45;font-family:var(--sans)
+  }
+  blockquote cite{display:block;font-style:normal;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.03em}
+
+  /* ---------- callout ---------- */
+  .note{
+    background:var(--sand-2);border:1px solid #e3d5bd;padding:16px 18px;
+    font-size:14.5px;margin:0 0 22px
+  }
+  .note b{color:var(--amber)}
+  .warnbox{background:#fbf0ee;border:1px solid #eed3ce;padding:16px 18px;font-size:14.5px;margin:0 0 22px}
+  .warnbox b{color:var(--red)}
+
+  /* ---------- transcript ---------- */
+  .tl{border-left:2px solid var(--line);margin:0 0 22px;padding:0}
+  .tl div{position:relative;padding:0 0 12px 56px;font-size:14.5px}
+  .tl div span.t{
+    position:absolute;left:0;top:1px;font-family:var(--mono);font-size:11px;color:var(--muted);
+    width:44px;text-align:right
+  }
+  .tl div em{font-style:normal;color:var(--muted);font-size:12.5px;display:block}
+
+  /* ---------- links ---------- */
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:0 0 24px}
+  .links a{
+    display:block;background:var(--card);border:1px solid var(--line);
+    padding:13px 15px;border-bottom:1px solid var(--line)
+  }
+  .links a:hover{background:#f7f9fb}
+  .links .nm{font-weight:650;font-size:14.5px;display:block;margin-bottom:2px}
+  .links .h{font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);padding-top:22px;margin-top:20px;
+    font-size:12.5px;color:var(--muted)
+  }
+  .toc{
+    background:var(--card);border:1px solid var(--line);padding:18px 22px;margin:0 0 44px;
+    font-size:14px
+  }
+  .toc ol{margin:0;padding-left:20px;columns:2;column-gap:34px}
+  @media(max-width:640px){.toc ol{columns:1}}
+  .toc li{margin-bottom:5px}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="kicker">Trending Research · Phân tích kênh đối thủ · 19/10/2026</p>
+    <h1>Bản đồ đọc sâu
+      <span class="sub">深読み地図 (Fukayomi Chizu) — kênh 3,9 ngày tuổi, 2 video, 1.322.741 view</span>
+    </h1>
+    <div class="mast-meta">
+      <span>Handle <b>@fukayomi-chizu</b></span>
+      <span>Tạo kênh <b>15/10/2026</b></span>
+      <span>Dữ liệu chốt <b>19/10/2026 16:30 JST</b></span>
+      <span>Nguồn <b>YouTube Data API + InnerTube + yt-dlp + phụ đề</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="answer">
+    <h2>Trả lời trực tiếp 2 câu hỏi</h2>
+    <p><span class="q">1. Kênh làm về chủ đề gì?</span>
+    <strong>Địa lý – địa chất – địa hình Nhật Bản, giải thích bằng bản đồ 3D và lát cắt.</strong>
+    Mỗi tập lấy một câu hỏi "tại sao" mà người xem <em>tự kiểm chứng được bằng mắt trên bản đồ</em>
+    (vì sao Shikoku và Kyushu không có cầu, vì sao Hawaii nằm giữa Thái Bình Dương, vì sao rãnh sâu 6.000 m không thấy trên bản đồ),
+    rồi <em>rút nước biển</em> hoặc <em>bổ đôi địa hình</em> để cho thấy thứ bình thường bị che. Hai nhân vật dẫn chuyện:
+    chuột chũi Hori (rành lòng đất) và chim di trú Sora (nhìn bản đồ từ trên cao). Độ dài 18:49 và 21:34, đăng cách nhau 1,5 ngày.</p>
+    <p><span class="q">2. Tại sao nhiều view thế?</span>
+    <strong>Vì kênh bán được một thứ mà người xem không tự tưởng tượng nổi: hình dạng thật của đáy biển / lòng đất.</strong>
+    Tiêu đề đặt câu hỏi ai cũng thấy mà không ai trả lời được, thumbnail cho thấy luôn "chỗ giấu đáp án",
+    và <em>giây thứ 43</em> đã trả một phần đáp án (hố sâu 460 m) — không hứa hẹn suông.
+    Cộng thêm: đây là <em>làn sóng định dạng mới</em> — 4 kênh cùng công thức lập trong tháng 9–10/2026 đều đang bùng nổ,
+    tức thuật toán đang đói định dạng này, không phải may mắn riêng của một kênh.</p>
+  </div>
+
+  <div class="toc">
+    <ol>
+      <li><a href="#s1">Hồ sơ kênh bằng số</a></li>
+      <li><a href="#s2">Nội dung chính xác là gì</a></li>
+      <li><a href="#s3">Bằng chứng hình ảnh &amp; lời thoại</a></li>
+      <li><a href="#s4">8 cơ chế tạo view</a></li>
+      <li><a href="#s5">So sánh với kênh cùng ngách</a></li>
+      <li><a href="#s6">Công thức có clone được không</a></li>
+      <li><a href="#s7">Tín hiệu xấu phải nói thẳng</a></li>
+      <li><a href="#s8">Rủi ro &amp; phần chưa kiểm</a></li>
+      <li><a href="#s9">Link &amp; quyết định</a></li>
+    </ol>
+  </div>
+
+  <!-- ============ 1 ============ -->
+  <section id="s1">
+    <h2 class="sec"><span class="n">01</span>Hồ sơ kênh bằng số</h2>
+    <p class="lede">Toàn bộ số dưới đây lấy trực tiếp từ YouTube Data API lúc 16:30 ngày 19/10/2026, không ước lượng.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="k">Tuổi kênh</div><div class="v">3,9</div><div class="u">ngày (tạo 15/10)</div></div>
+      <div class="stat"><div class="k">Subscriber</div><div class="v">3.020</div><div class="u">người</div></div>
+      <div class="stat"><div class="k">Tổng view (cấp video)</div><div class="v">1.322.741</div><div class="u">2 video cộng lại</div></div>
+      <div class="stat"><div class="k">View / ngày (bình quân)</div><div class="v">343.000</div><div class="u">1,32 tr ÷ 3,86 ngày tuổi kênh</div></div>
+      <div class="stat"><div class="k">View / giờ (hiện tại)</div><div class="v">18.000</div><div class="u">14.045 + 3.954 cộng lại</div></div>
+      <div class="stat"><div class="k">View / sub</div><div class="v">438×</div><div class="u">ngưỡng bất thường &gt; 20×</div></div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Video</th><th class="num">Đăng</th><th class="num">Tuổi</th>
+            <th class="num">View</th><th class="num">View/giờ</th>
+            <th class="num">Like</th><th class="num">Cmt</th><th class="num">Dài</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td><strong>Vì sao Shikoku và Kyushu không có cầu? Rút nước biển ra xem</strong><br>
+              <span style="color:var(--muted);font-size:12.5px">四国と九州になぜ橋がない？海を抜いて見てみた</span></td>
+            <td class="num">16/10</td><td class="num">81,4 h</td>
+            <td class="num"><strong>1.143.239</strong></td><td class="num">14.045</td>
+            <td class="num">0,30 %</td><td class="num">467</td><td class="num">18:49</td>
+          </tr>
+          <tr>
+            <td><strong>Vì sao Hawaii nằm giữa Thái Bình Dương? Rút nước biển ra xem</strong><br>
+              <span style="color:var(--muted);font-size:12.5px">太平洋の真ん中になぜハワイ？海を抜いて見てみた</span></td>
+            <td class="num">17/10</td><td class="num">45,4 h</td>
+            <td class="num">179.502</td><td class="num">3.954</td>
+            <td class="num">0,30 %</td><td class="num">42</td><td class="num">21:34</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="font-size:13.5px">
+      <b>Một điểm dữ liệu phải nói rõ:</b> <code>channels.list</code> trả tổng view kênh = 954.237,
+      nhưng riêng video 1 đã 1.143.239 view — <em>tổng kênh nhỏ hơn một video</em>.
+      Đây là độ trễ đồng bộ của trường thống kê cấp kênh, không phải lỗi dữ liệu của tôi.
+      Vì vậy mọi phân tích dưới đây dùng <strong>số cấp video</strong>, không dùng tổng kênh.
+      Cùng hiện tượng ở ジオレンズ (kênh 861.910, nhưng video 1 đã 1.047.888).
+    </div>
+
+    <p style="font-size:14px;color:var(--muted)">
+      Mô tả kênh tự khai nguyên văn: <em>"Biển dưới đáy, dưới mặt đất, hình dạng thuở trước. Kênh làm cho những hình khối ẩn trong bản đồ trở nên nhìn thấy được, để giải các câu hỏi 'tại sao'."</em><br>
+      Người dẫn: <em>"Hori — chuột chũi rành lòng đất, và Sora — chim di trú đã nhìn bản đồ từ trên cao."</em><br>
+      Chủ đề nhận: <em>hình thành địa hình, eo biển và đảo, độ lệch của phố và dân số, đường và đường sắt không nối được, hình dạng đất thuở trước.</em><br>
+      Chủ đề từ chối: <em>chính trị và tranh chấp lãnh thổ, tin ngay sau thiên tai, quảng cáo du lịch.</em><br>
+      Nguyên tắc: <em>"Bản đồ và con số làm từ tư liệu công và dữ liệu mở, nguồn ghi ở phần mô tả từng video. Sơ đồ và hình minh hoạ đều hiển thị rõ trên màn hình. Phát hiện sai thì đính chính ở phần mô tả. Giọng là giọng tổng hợp, nhân vật là ảnh sinh ra."</em>
+    </p>
+  </section>
+
+  <!-- ============ 2 ============ -->
+  <section id="s2">
+    <h2 class="sec"><span class="n">02</span>Nội dung chính xác là gì</h2>
+    <p class="lede">Không phải "kênh kiến thức" chung chung. Đây là một định dạng rất hẹp, và chính cái hẹp đó làm nên hiệu quả.</p>
+
+    <h3>Khuôn mỗi tập</h3>
+    <ol>
+      <li><strong>Một nghịch lý nhìn thấy được.</strong> "Honshu–Shikoku cầu mọc đầy ra, mà chỗ này cách nhau 14 km lại không có cầu cũng không có hầm."</li>
+      <li><strong>Thao tác thị giác.</strong> Rút toàn bộ nước biển, hoặc cắt lát địa hình — biến câu trả lời thành <em>một cảnh quay được</em>, không phải một đoạn văn.</li>
+      <li><strong>Trả một phần đáp án trong 60 giây đầu.</strong> Hố sâu 460 m, cao bằng tháp Tokyo lật ngược.</li>
+      <li><strong>5 lý do lồng nhau</strong> (video 1) hoặc 3 lớp giả thuyết – kiểm chứng (video 2). Tránh được lý do này thì lý do kia hiện ra → không có điểm dừng tự nhiên.</li>
+      <li><strong>Đóng bằng dữ liệu công khai + ghi chú nguồn.</strong> GEBCO 2024, 国土地理院 (Cục Địa lý Nhật), OpenStreetMap, nghị trình Quốc hội. Mọi hình mô phỏng đều dán nhãn "模式" (sơ đồ) hoặc "イメージ" (hình minh hoạ).</li>
+    </ol>
+
+    <h3>Mục lục chính thức — đọc ra được nhịp kịch bản</h3>
+    <p>Đây là mục lục kênh tự đăng trong mô tả video, không phải tôi suy ra. Nhìn mốc thời gian là thấy cấu trúc.</p>
+
+    <p style="font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:6px">TẬP 1 — VÌ SAO SHIKOKU VÀ KYUSHU KHÔNG CÓ CẦU (18:49)</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th class="num">Mốc</th><th>Nội dung</th><th>Chức năng</th></tr></thead>
+        <tbody>
+          <tr><td class="num">0:00</td><td>Gần thế mà vì sao không có cầu?</td><td>Nghịch lý</td></tr>
+          <tr><td class="num">1:51</td><td>Lý do ① Biển sâu</td><td rowspan="2">Trả đáp án sớm</td></tr>
+          <tr><td class="num">4:05</td><td>Lý do ② Dòng chảy tạo ra hố</td></tr>
+          <tr><td class="num">6:02</td><td>Lý do ② Có dòng chảy thì hỏng việc gì?</td><td>Đào sâu</td></tr>
+          <tr><td class="num">7:55</td><td>Lý do ③ Khoảng cách giữa các trụ lớn (khác Naruto)</td><td>So sánh</td></tr>
+          <tr><td class="num">10:56</td><td>Lý do ④ Đường hầm cũng là đại công trình</td><td>Lật giả thuyết</td></tr>
+          <tr><td class="num">13:55</td><td>Lý do ⑤ Tiền và quy định</td><td>Chốt kinh tế</td></tr>
+          <tr class="hi"><td class="num">16:47</td><td>Đáp án, và những chuyến phà đang nối biển hôm nay</td><td>Đóng bằng thực tại</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:6px">TẬP 2 — VÌ SAO HAWAII NẰM GIỮA THÁI BÌNH DƯƠNG (21:34)</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th class="num">Mốc</th><th>Nội dung</th><th>Chức năng</th></tr></thead>
+        <tbody>
+          <tr><td class="num">0:00</td><td>Giữa Thái Bình Dương, vì sao Hawaii?</td><td>Nghịch lý</td></tr>
+          <tr><td class="num">1:16</td><td>Thứ nhìn thấy chỉ là phần đỉnh</td><td>Đổi góc nhìn</td></tr>
+          <tr><td class="num">1:56</td><td>Đo tuổi bằng "đồng hồ đá"</td><td>Phương pháp</td></tr>
+          <tr><td class="num">3:35</td><td>Cái gì phải dịch chuyển để thành một dãy?</td><td>Cơ chế</td></tr>
+          <tr><td class="num">4:52</td><td>Kiểm trên bản đồ: khoảng cách và tuổi</td><td>Kiểm chứng 1</td></tr>
+          <tr><td class="num">7:35</td><td>Núi ngầm có đỉnh phẳng</td><td>Chi tiết lạ</td></tr>
+          <tr><td class="num">9:25</td><td>Núi ngầm phía bắc mang tên Nhật</td><td>Móc bản địa</td></tr>
+          <tr><td class="num">10:53</td><td>Giả thuyết A: mảng đổi hướng</td><td>Giả thuyết</td></tr>
+          <tr><td class="num">11:46</td><td>Kiểm chứng 1: từ tính còn trong đá</td><td>Kiểm chứng 2</td></tr>
+          <tr><td class="num">15:40</td><td>Kiểm chứng 2: dãy núi ngầm Louisville cùng mảng</td><td>Kiểm chứng 3</td></tr>
+          <tr class="hi"><td class="num">18:22</td><td>Đáp án: vì sao dãy bị gãy khúc</td><td>Trả đáp án</td></tr>
+          <tr><td class="num">20:31</td><td>Tổng kết</td><td>Đóng</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <b>Đọc nhịp từ mục lục:</b> tập 1 trả đáp án ở phút <strong>1:51</strong> rồi mới đào 5 lý do — cấu trúc "thưởng trước".
+      Tập 2 giữ đáp án tới phút <strong>18:22</strong>, nhưng bù bằng <em>3 lần kiểm chứng</em> rải ở 4:52 / 11:46 / 15:40 — mỗi lần là một phần thưởng nhỏ.
+      Đây chính là khác biệt giải thích vì sao tập 2 vẫn giữ được người xem dù đáp án để cuối: <strong>không để khoảng trống nào dài hơn 3 phút mà không có phát hiện mới.</strong>
+    </div>
+
+    <h3>Nhân vật &amp; giọng</h3>
+    <p>Hai nhân vật cố định, phân vai rõ: <strong>Hori (chuột chũi)</strong> — chuyên gia lòng đất; <strong>Sora (chim di trú)</strong> — người đặt câu hỏi, đóng vai khán giả. Kênh ghi rõ "出演：ホリ（モグラ）、ソラ（渡り鳥）" — tức là dàn diễn viên cố định, không phải nhân vật mỗi tập một khác.
+    Toàn bộ lời dẫn là <em>hội thoại hai người</em>, không có narrator đọc số liệu. Đây là lý do phụ đề burn-in đọc như truyện, không như bài giảng.</p>
+
+    <h3>Phần hình — 3 lớp tách bạch</h3>
+    <ul>
+      <li><strong>Địa hình 3D thật</strong> dựng từ dữ liệu độ cao GEBCO + 国土地理院, phóng đại chiều cao 5× (kênh ghi rõ hệ số trên màn hình).</li>
+      <li><strong>Sơ đồ mặt cắt</strong> vẽ riêng, có nhãn số. Kênh tự ghi rõ: "3D và mặt cắt là dữ liệu địa hình đã gia công, có phóng đại chiều cao; vị trí trụ cầu và tuyến hầm là <em>phác thảo đọc từ tài liệu khảo sát</em>".</li>
+      <li><strong>Ảnh AI</strong> cho cảnh không có tư liệu — luôn dán nhãn "イメージ" (hình minh hoạ).</li>
+    </ul>
+    <p>Kênh tự khai trong mô tả video: <em>"Lời thoại dùng Gemini TTS, nhân vật và hình minh hoạ dùng tính năng sinh ảnh của OpenAI."</em>
+    Đây là khai báo của chính kênh, không phải tôi suy đoán từ giọng đọc.</p>
+  </section>
+
+  <!-- ============ 3 ============ -->
+  <section id="s3">
+    <h2 class="sec"><span class="n">03</span>Bằng chứng hình ảnh &amp; lời thoại</h2>
+    <p class="lede">Tải nguyên video về, cắt 13 khung ở nhiều mốc, đọc phụ đề burn-in — không suy diễn từ thumbnail.</p>
+
+    <figure>
+      <img src="img/frames_bridge.jpg" alt="13 khung hình cắt từ video cầu Shikoku–Kyushu">
+      <figcaption><strong>13 khung hình</strong> ở các mốc 5s → 1.050s của tập 1. Đọc được ngay cấu trúc: bản đồ Nhật nhìn từ trên → rút nước → lộ 2 hố sâu → mặt cắt eo biển có số đo → sơ đồ trụ cầu → bảng chi phí. Nền xanh navy, khối đất vàng cát, phụ đề trắng viền đen nằm trong dải tối ở đáy khung. Hai nhân vật hoạt hình (chuột chũi đội mũ bảo hộ bên trái, chim trắng mỏ cam bên phải) đứng rất nhỏ ở góc dưới, không tranh chỗ với bản đồ. Khung giữa có nhãn vàng "海が深い" (biển sâu) — nhãn chức năng, không phải phụ đề.</figcaption>
+    </figure>
+
+    <div class="fig-row">
+      <figure>
+        <img src="img/thumb_bridge.jpg" alt="Thumbnail tập 1">
+        <figcaption><strong>Tập 1 — 1,14 triệu view.</strong> Chữ lớn: 「なぜ橋がない？」 (Vì sao không có cầu?) — chữ 橋 (cầu) tô cam để mắt dừng lại. Chữ nhỏ: 「海の底に答え」 (Đáp án ở đáy biển). Hình: mặt cắt đáy biển với <em>một đường nét đứt trắng bắc từ mỏm đất bên trái sang mỏm bên phải</em> — cây cầu "lẽ ra phải có" được vẽ ra để người xem thấy ngay cái đang thiếu. Giữa hai bờ là 2 hố sâu màu xanh đậm và dãy núi đá nâu. Nhãn イメージ ở góc dưới phải.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/thumb_hawaii.jpg" alt="Thumbnail tập 2">
+        <figcaption><strong>Tập 2 — 179 nghìn view.</strong> Chữ: 「折れた海底山脈」 (Dãy núi dưới đáy biển bị gãy). Hình: các núi ngầm hình nón, đỉnh bị cắt phẳng. Cùng ngôn ngữ thị giác, nhưng <em>không còn nghịch lý nào người xem tự kiểm chứng được</em> — không ai từng nhìn thấy dãy núi này. Đây là khác biệt cốt lõi giữa 1,14 triệu và 179 nghìn.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Hook 0–83 giây, nguyên văn phụ đề (dịch)</h3>
+    <div class="tl">
+      <div><span class="t">0:02</span>Sora: "Này Hori, Shikoku với Kyushu không nối bằng cầu nhỉ."<em>ねえ、堀り、四国と九州って橋で繋がってないよね。</em></div>
+      <div><span class="t">0:06</span>Hori: "Ừ. Oita của Kyushu với Ehime của Shikoku. Giữa hai mũi nhô ra. Đây là eo Hōyo."</div>
+      <div><span class="t">0:14</span>"Chỗ hẹp nhất khoảng 14 km."</div>
+      <div><span class="t">0:17</span>"Honshu với Shikoku thì cầu mọc đầy ra, mà ở đây không có cầu cũng không có hầm."<em>Nghịch lý đặt xong ở giây 17.</em></div>
+      <div><span class="t">0:24</span>"Sao không làm được? Hay là không làm?"<em>Câu hỏi kép — buộc người xem chọn phe.</em></div>
+      <div><span class="t">0:30</span>"Manh mối nằm dưới đáy biển."</div>
+      <div><span class="t">0:35</span>"Vậy thì rút hết nước biển này ra xem."<em>Thao tác định dạng — lời hứa thị giác.</em></div>
+      <div><span class="t">0:43</span>"Ơ, chỗ đó không phẳng. Có một cái hố lớn."<em><strong>Trả đáp án ở giây 43.</strong> Không hứa suông.</em></div>
+      <div><span class="t">0:46</span>"Hố phía bắc sâu 460 m tính từ mặt biển."</div>
+      <div><span class="t">0:52</span>"Dựng cái tháp Tokyo cao 333 m xuống đó cũng bị nuốt trọn."</div>
+      <div><span class="t">1:14</span>"Có 5 lý do lớn. Mà 5 cái đó không rời nhau."<em>5つある。しかも5つはバラバラじゃない。</em></div>
+      <div><span class="t">1:23</span>"Tránh được cái khó này thì cái khó tiếp theo hiện ra."<em>1つの難しさを避けようとすると次の難しさが出てくる。Cam kết cấu trúc — lý do để xem hết 18 phút.</em></div>
+    </div>
+
+    <div class="note">
+      <b>Ghi chú về phụ đề:</b> phụ đề tự động nghe sai hai tên riêng — 「法葉海峡」 thay vì <strong>豊予海峡</strong> (eo Hōyo), và 「地下本州」 thay vì 「本州と四国」 (Honshu và Shikoku).
+      Tôi giữ nguyên văn hai chỗ đó chỉ để đối chiếu lỗi ASR; phần dịch đã sửa theo đúng địa danh. Các trích dẫn khác là nguyên văn phụ đề.
+    </div>
+
+    <h3>Comment thật — khán giả bàn cái gì</h3>
+    <blockquote>
+      "Làm cũng lỗ nặng, không duy trì nổi. Phà là đúng rồi."
+      <span class="jp">作っても大赤字で維持できないわな。フェリーが正解。</span>
+      <cite>comment tập 1 · 467 comment</cite>
+    </blockquote>
+    <blockquote>
+      "Nhìn cái địa hình thì đúng là nó đang đòi người ta nối lại thật."
+      <span class="jp">見た目が繋げてくれ、と言わんばかりの地形ではある。</span>
+      <cite>comment tập 1</cite>
+    </blockquote>
+    <blockquote>
+      "Eo Kanmon rộng 700 m, sâu 14 m — bằng một ga tàu điện ngầm. Còn eo Hōyo rộng gấp 20, sâu gấp 20, lại không có người ở. Không có cửa nào để có lãi."
+      <span class="jp">関門海峡は幅700m、深さ14m、地下鉄1駅と同じ規模。幅20倍深さ20倍、人が住んで無い豊予海峡で採算が取れる見込みは無いですよね</span>
+      <cite>comment tập 1 · 34 lượt thích — khán giả tự bổ sung số liệu</cite>
+    </blockquote>
+    <blockquote>
+      "Cái chỗ 'gãy khúc' ấy kích thích trí tưởng tượng thật. Ước gì một ngày có bằng chứng quyết định, hoặc dựng được mô hình dự báo hợp lý."
+      <span class="jp">「折れ曲がり」の部分は想像力を掻き立てられますよね！いつの日か、決定的な証拠が見つかったり合理的な予測モデルが確立されることを願っています。</span>
+      <cite>comment tập 2</cite>
+    </blockquote>
+    <p style="font-size:14.5px;color:var(--ink-2)">
+      Đọc 20 comment đầu mỗi tập (theo lượt thích): <strong>không có comment nào chê "bịa" hay "sai kiến thức"</strong>.
+      Chủ đề bàn là chi phí – hiệu quả, phà, địa chấn, và các giả thuyết địa chất. Tập 1 có 4 comment hàng đầu đều là
+      <em>đồng tình có lý lẽ</em> (277 / 242 / 181 / 130 lượt thích) — dấu hiệu kênh thắng được lòng tin, nên comment
+      kéo dài phần thảo luận chứ không phải phần tranh cãi.
+      Riêng tập 2 có comment xếp hạng cao nhất là "最近のAIはすごいな" (Dạo này AI ghê thật) — khán giả <em>nhận ra</em> đây là kênh AI
+      và vẫn xem, không quay lưng.
+    </p>
+  </section>
+
+  <!-- ============ 4 ============ -->
+  <section id="s4">
+    <h2 class="sec"><span class="n">04</span>8 cơ chế tạo view</h2>
+    <p class="lede">Xếp theo mức đóng góp thật, không theo thứ tự trình bày.</p>
+
+    <ol class="mech">
+      <li>
+        <span class="ev">Cơ chế 1 · quan trọng nhất</span>
+        <h3>Bán "thứ bị che", không bán kiến thức</h3>
+        <p>Người xem không bấm vì muốn học địa chất. Họ bấm vì <em>biết câu trả lời tồn tại nhưng không thể tưởng tượng nổi nó trông thế nào</em>. Đáy biển sâu 460 m dưới eo Hōyo: ai cũng có thể hiểu khái niệm, không ai hình dung được hình dạng.</p>
+        <p>Kênh giải quyết đúng khoảng trống đó bằng một thao tác duy nhất lặp lại mỗi tập: <strong>rút nước</strong>. Đây là "định dạng" chứ không phải "chủ đề" — và định dạng mới là thứ khiến người ta bấm.</p>
+      </li>
+      <li>
+        <span class="ev">Cơ chế 2</span>
+        <h3>Tiêu đề và thumbnail nói cùng một câu, không lệch</h3>
+        <p>Tiêu đề: 「四国と九州になぜ橋がない？」. Thumbnail: 「なぜ橋がない？」. Cùng một câu hỏi, thumbnail ngắn hơn để đọc trong 0,4 giây. Không có chuyện tiêu đề hứa A, thumbnail vẽ B — lỗi phổ biến nhất của kênh Việt/Nhật clone.</p>
+        <p>Thêm một chi tiết đáng học: thumbnail <strong>vẽ ra cây cầu không tồn tại</strong> bằng một nét đứt nối hai mỏm đất — người xem thấy "cái đang thiếu" chứ không chỉ thấy "cái đang có". Đây là mẹo đảo cực: bình thường thumbnail khoe thứ đã có, ở đây khoe thứ <em>không</em> có.</p>
+      </li>
+      <li>
+        <span class="ev">Cơ chế 3</span>
+        <h3>Trả đáp án ở giây 43, không phải giây 600</h3>
+        <p>Rất nhiều kênh mystery giữ đáp án tới cuối và bị tụt retention. Tập này trả ngay một mảnh: hố sâu 460 m, cao bằng tháp Tokyo lật ngược. Người xem được thưởng sớm → tin là kênh sẽ trả tiếp → ở lại.</p>
+        <p>Sau đó mới mở 5 lý do. Cấu trúc "thưởng trước – đào sau" là thứ giữ chân ở phút 12.</p>
+      </li>
+      <li>
+        <span class="ev">Cơ chế 4</span>
+        <h3>Nghịch lý có sẵn trong đầu người Nhật</h3>
+        <p>"Shikoku–Kyushu không có cầu" là kiến thức <em>thụ động</em> gần như mọi người Nhật có: họ đã đi phà, đã thấy bản đồ. Kênh không dạy kiến thức mới, kênh <em>đặt câu hỏi lên kiến thức cũ</em>. Loại này có CTR cao vì không đòi người xem đầu tư trước.</p>
+        <p>Đối chiếu tập 2: "vì sao Hawaii ở giữa Thái Bình Dương" — người Nhật cũng biết Hawaii, nhưng <em>không có trải nghiệm trực tiếp</em> nào về khoảng cách 6.100 km ấy. Kết quả: 179 nghìn thay vì 1,14 triệu. <strong>Cùng công thức, khác mức gần gũi → khác 6,4 lần.</strong></p>
+      </li>
+      <li>
+        <span class="ev">Cơ chế 5</span>
+        <h3>Hội thoại 2 nhân vật thay vì narrator</h3>
+        <p>Giây thứ 2 đã là một câu nói với người khác, không phải "Hôm nay chúng ta sẽ cùng tìm hiểu…". Người xem bị kéo vào một cuộc nói chuyện đang diễn ra, không phải một bài giảng đã bắt đầu.</p>
+        <p>Hai nhân vật còn có chức năng kỹ thuật: Sora hỏi đúng câu khán giả đang nghĩ ("Vậy tránh hố mà bắc cầu thì sao?"), Hori trả lời — nên không cần đoạn "như các bạn đã biết".</p>
+      </li>
+      <li>
+        <span class="ev">Cơ chế 6</span>
+        <h3>Nguồn công khai + nhãn minh bạch = vũ khí giữ chân</h3>
+        <p>Mỗi video có 10–14 nguồn ghi rõ trong mô tả (GEBCO, 国土地理院, bảo tàng đứt gãy, nghị trình). Mọi hình mô phỏng dán nhãn "模式", mọi ảnh AI dán nhãn "イメージ".</p>
+        <p>Tác dụng kép: (a) khán giả Nhật khó tính chấp nhận kênh AI vì thấy tác giả không giấu; (b) nội dung có thể tái sử dụng làm tư liệu — tăng khả năng được đề xuất trong watch session dài.</p>
+      </li>
+      <li>
+        <span class="ev">Cơ chế 7</span>
+        <h3>Đúng lúc thuật toán đang đói định dạng này</h3>
+        <p>Bốn kênh cùng công thức, đều mới, đều bùng nổ trong 6 tuần: 本気の雑学 (tạo 21/9), 断面ジャパン (22/9), ジオレンズ (12/10), 深読み地図 (15/10).
+        Video 1,05 triệu của ジオレンズ đăng <strong>sau</strong> video của 深読み地図 chỉ <strong>5,5 giờ</strong> (16/10 05:30 so với 00:00 UTC) và cũng vượt 1 triệu.
+        Hai kênh độc lập, cùng một đề tài "địa chất Nhật nhìn bằng dữ liệu độ cao", cùng nổ trong cùng một ngày.</p>
+        <p>Nghĩa là: <strong>đây không phải hiện tượng cá biệt của một kênh.</strong> Có một làn sóng "3D data-explainer tiếng Nhật" đang được hệ thống đẩy. Đây là thông tin có giá trị nhất cho quyết định làm hay không làm.</p>
+      </li>
+      <li>
+        <span class="ev">Cơ chế 8</span>
+        <h3>Độ dài 18–22 phút ăn watch-time</h3>
+        <p>Không phải clip ngắn. Hai tập 18:49 và 21:34. Với nội dung có 5 lý do lồng nhau, 18 phút vẫn không lê thê.
+        Watch-time tuyệt đối cao trên một video mới là thứ thuật toán dùng để quyết định đẩy tiếp — cùng lượt xem, video 19 phút cho watch-time gấp ~2,4 lần clip 8 phút.
+        <em>Lưu ý:</em> đây là suy luận từ cơ chế xếp hạng, không phải số đo retention của kênh (không lấy được).</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ 5 ============ -->
+  <section id="s5">
+    <h2 class="sec"><span class="n">05</span>So sánh với kênh cùng ngách</h2>
+    <p class="lede">Đây là phần quan trọng hơn "tại sao nhiều view": so sánh để biết cái gì là công thức chung, cái gì là lợi thế riêng.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Kênh</th><th class="num">Tuổi</th><th class="num">Sub</th><th class="num">Video</th>
+            <th class="num">Tổng view</th><th class="num">View/ngày</th><th>Nội dung</th><th>Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td><strong>深読み地図</strong><br><span style="font-size:12px;color:var(--muted)">Bản đồ đọc sâu</span></td>
+            <td class="num">3,9 d</td><td class="num">3.020</td><td class="num">2</td>
+            <td class="num">1.322.741</td><td class="num">343.000</td>
+            <td>Địa hình + eo biển + đảo, rút nước / cắt lát</td>
+            <td><span class="tag new">bùng nổ</span></td>
+          </tr>
+          <tr class="hi">
+            <td><strong>ジオレンズ</strong><br><span style="font-size:12px;color:var(--muted)">GeoLens — địa lý bằng dữ liệu</span></td>
+            <td class="num">6,9 d</td><td class="num">2.410</td><td class="num">2</td>
+            <td class="num">1.072.164</td><td class="num">155.386</td>
+            <td>Địa chất Nhật: đứt gãy, biển tiến Jōmon</td>
+            <td><span class="tag new">bùng nổ</span></td>
+          </tr>
+          <tr>
+            <td><strong>断面ジャパン</strong><br><span style="font-size:12px;color:var(--muted)">Mặt cắt Nhật Bản</span></td>
+            <td class="num">27 d</td><td class="num">2.250</td><td class="num">9</td>
+            <td class="num">676.825</td><td class="num">25.067</td>
+            <td>Cắt lát máy móc &amp; công trình: Shinkansen, hầm Seikan, đền Izumo</td>
+            <td><span class="tag mid">không đều</span></td>
+          </tr>
+          <tr>
+            <td><strong>本気の雑学</strong><br><span style="font-size:12px;color:var(--muted)">Kiến thức nghiêm túc</span></td>
+            <td class="num">28 d</td><td class="num">244</td><td class="num">7</td>
+            <td class="num">161.221</td><td class="num">5.704</td>
+            <td>Câu hỏi "nếu như": rút cạn đại dương, vũ trụ, tiến hoá</td>
+            <td><span class="tag warn">1 hit / 6 fail</span></td>
+          </tr>
+          <tr class="dim">
+            <td><strong>江戸見聞録</strong><br><span style="font-size:12px;color:var(--muted)">Ghi chép Edo</span></td>
+            <td class="num">1.405 d</td><td class="num">171.000</td><td class="num">90</td>
+            <td class="num">34,4 tr</td><td class="num">24.527</td>
+            <td>Lịch sử Edo — kênh trưởng thành, không cùng định dạng</td>
+            <td><span class="tag mid">ổn định</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Đọc bảng này thế nào</h3>
+    <ul>
+      <li><strong>Nhóm 3D data-explainer (3 kênh đầu) đang ở pha bùng nổ:</strong> view/ngày 25.000 – 343.000 với chỉ 2–9 video và 2.000–3.000 sub. Đây là mức không thể giải thích bằng sub — toàn bộ view đến từ đề xuất. <em>Lưu ý:</em> cột Tổng view ở đây là <strong>cộng số cấp video</strong>, không lấy trường tổng kênh (trường đó đang trễ, xem ghi chú §1).</li>
+      <li><strong>Nhưng độ ổn định khác nhau rõ:</strong> 断面ジャパン có 4 video lớn (259k · 152k · 123k · 107k), 1 video 52k, 1 video 10k, và <strong>3 video dưới 1.400 view</strong>. Tức là <em>chỉ video về công trình lớn mới nổ</em>. Còn 深読み地図 mới 2 video, chưa đủ mẫu để nói nó ổn định.</li>
+      <li><strong>本気の雑学 là bài học cảnh báo:</strong> 7 video, chỉ 1 video đạt 159k (rút cạn đại dương), 6 video còn lại 93–935 view. Cùng là "câu hỏi nếu như", nhưng chỉ cái nào <em>nhìn thấy được bằng mắt</em> mới nổ. Đây là bằng chứng mạnh nhất cho cơ chế 1.</li>
+    </ul>
+
+    <h3>Mật độ cung — có bị bão hoà chưa?</h3>
+    <p>Quét 5 truy vấn InnerTube (cửa sổ "tháng này") ra <strong>55 video unique thuộc 39 kênh khác nhau</strong> trong vùng chủ đề địa lý / địa hình / bản đồ.
+    Trong đó chỉ 8 kênh có từ 2 video trở lên: なぜの地図帖 6, 絵で見る歴史ラボ 4, 経済の地図 3, 地理を解く 3, ジオトリ 2, れきしと地政 2, 地形の謎ラボ 2, 深読み地図 2.
+    Nghĩa là <strong>31/39 kênh chỉ có đúng 1 video lọt vào kết quả</strong> — phần lớn là kênh mới thử một lần rồi im.</p>
+    <p>Top view trong 30 ngày: <strong>1,14 tr · 1,05 tr · 976k · 642k · 501k · 259k · 251k · 215k · 201k · 185k · 179k</strong>.
+    <strong>Đọc ra:</strong> ngách chưa bão hoà về view — vẫn có 4 video vượt 600k trong một tháng, và các kênh đứng đầu chỉ có 2–6 video.
+    Nhưng <strong>đã bão hoà về số người thử</strong>: 39 kênh trong 30 ngày, phần đa chết yểu (nhiều kênh dưới 300 view).
+    Cửa sổ đang hẹp dần: người vào sớm và làm đúng định dạng thắng, người vào sau làm na ná sẽ không có view.</p>
+  </section>
+
+  <!-- ============ 6 ============ -->
+  <section id="s6">
+    <h2 class="sec"><span class="n">06</span>Công thức có clone được không</h2>
+    <p class="lede">Đánh giá thẳng theo 3 lớp: cái dễ, cái cần pipeline mới, cái không copy được.</p>
+
+    <h3>Dễ — copy trong 1 tuần</h3>
+    <ul>
+      <li><strong>Khuôn hook:</strong> hội thoại 2 nhân vật (2s) → nêu nghịch lý có số (17s) → câu hỏi kép "không làm được hay không làm?" (24s) → "manh mối ở đáy biển" (30s) → thao tác (35s) → trả đáp án (43s) → cam kết 5 lý do lồng nhau (79s).</li>
+      <li><strong>Khuôn tiêu đề:</strong> <code>[Địa danh A] と [Địa danh B] になぜ [thứ không tồn tại]？[thao tác] てみた</code>. Vế hỏi + vế thao tác, không có tính từ cảm xúc.</li>
+      <li><strong>Khuôn thumbnail:</strong> chữ hỏi ngắn ≤ 8 ký tự, một từ tô màu nhấn, hình là mặt cắt/địa hình thật, không mặt người, không mũi tên đỏ giật gân.</li>
+      <li><strong>Nhân vật đôi + TTS:</strong> Gemini TTS + ảnh sinh. Chi phí gần 0, đã có sẵn trong pipeline hiện tại.</li>
+      <li><strong>Nhãn minh bạch:</strong> 模式 / イメージ / nguồn trong mô tả — 30 phút làm template.</li>
+    </ul>
+
+    <h3>Cần pipeline mới — đây là rào cản thật</h3>
+    <ul>
+      <li><strong>Địa hình 3D từ dữ liệu thật.</strong> Cần đổ GEBCO grid + 国土地理院 DEM vào Blender (hoặc Three.js) và render. Không thể làm bằng ảnh AI: hình phải <em>đúng</em> thì khán giả Nhật mới chấp nhận, và chính cái đúng đó là lý do kênh đáng tin.</li>
+      <li><strong>Mặt cắt có số đo.</strong> Mỗi tập cần 3–6 hình cắt dọc với nhãn số lấy từ tài liệu chính thức. Đây là khâu tốn thời gian nhất, không tự động hoá hoàn toàn được.</li>
+      <li><strong>Kịch bản 18–22 phút có 5 lý do lồng nhau.</strong> Không phải 5 mục rời — phải chứng minh được "tránh cái này thì sinh ra cái kia". Cần người viết hiểu vấn đề, không chỉ ghép dữ liệu.</li>
+    </ul>
+
+    <h3>Không copy được</h3>
+    <ul>
+      <li><strong>Mức "gần gũi" của câu hỏi.</strong> Đây là thứ quyết định 1,14 triệu vs 179 nghìn. Chọn đúng câu hỏi mà người Nhật đã từng tự hỏi — không chọn câu hỏi nghe hay.</li>
+      <li><strong>Thời điểm.</strong> Kênh vào tháng 10/2026, khi thuật toán còn đẩy định dạng này. Vào sau 3–6 tháng, cùng chất lượng có thể chỉ còn 1/10 view.</li>
+    </ul>
+
+    <div class="note">
+      <b>Nếu làm:</b> không nên làm "kênh địa lý" chung. Nên chọn một <em>lát cắt hẹp hơn</em> mà 4 kênh kia chưa chiếm —
+      ví dụ eo biển &amp; đảo của Nhật, hoặc hạ tầng không nối được (đường sắt bỏ hoang, cầu không xây được, phà sắp đóng).
+      Cả 4 kênh đang trải rộng; chưa ai độc quyền một lát cắt.
+    </div>
+  </section>
+
+  <!-- ============ 7 ============ -->
+  <section id="s7">
+    <h2 class="sec"><span class="n">07</span>Tín hiệu xấu phải nói thẳng</h2>
+    <p class="lede">Không tô hồng. Ba con số dưới đây nói rằng kênh <em>chưa</em> chứng minh được khả năng lặp lại.</p>
+
+    <div class="warnbox">
+      <b>1. Video 2 tụt 84 % so với video 1.</b> 1.143.239 → 179.502. Nếu công thức ổn định, video 2 phải giữ được 50–70 %. Tụt còn 15,7 % cho thấy
+      video 1 ăn nhờ <em>chủ đề</em> (eo Hōyo ai cũng biết) chứ chưa chứng minh ăn nhờ <em>kênh</em>.
+    </div>
+    <div class="warnbox">
+      <b>2. Like rate 0,30 % — thấp so với kênh trưởng thành.</b> Đo trên 8 video lớn nhất của 江戸見聞録: 0,33 – 1,26 %, trung vị 0,77 %.
+      断面ジャパン video 259k: 0,43 %. Kênh này 0,30 % — tức khoảng 40 % mức của kênh đã có fan.
+      Nhưng comment rate lại <em>cao</em> (0,41 comment/1.000 view, so với 0,16–0,72 và trung vị 0,35 của 江戸見聞録). Diễn giải: người xem đến từ đề xuất, xem xong <em>tranh luận</em>,
+      nhưng không bấm like vì chưa "thuộc" kênh. Đây là view của thuật toán, chưa phải fan.
+    </div>
+    <div class="warnbox">
+      <b>3. Mới 2 video — chưa có median.</b> Không thể tính <code>ch_mult</code> hay <code>trend</code> theo quy trình chuẩn.
+      Mọi kết luận về "kênh có công thức" ở đây là suy luận từ 1 hit + 1 video tụt, <strong>không phải kết luận thống kê</strong>.
+    </div>
+
+    <p>Đối chiếu 断面ジャパン — kênh đã có 9 video nên nhìn được hình dạng thật: 259k / 152k / 123k / 107k / 52k / 10k / 1,3k / 952 / 869.
+    Tức là <strong>đúng 4 video về công trình lớn (Shinkansen, thành Edo, đền Izumo, hầm Seikan) mới nổ; 5 video về đồ vật nhỏ và hệ thống kỹ thuật (đồng xu 500 yên, bồn cầu, máy bán hàng, tàu đệm từ) chết.</strong>
+    Đây là bằng chứng cho thấy tiêu chí chọn đề tài quan trọng hơn chất lượng sản xuất.</p>
+  </section>
+
+  <!-- ============ 8 ============ -->
+  <section id="s8">
+    <h2 class="sec"><span class="n">08</span>Rủi ro &amp; phần chưa kiểm</h2>
+    <ul>
+      <li><strong>Retention / CTR thật: KHÔNG lấy được.</strong> Đã thử nhiều đường ở các lane trước — không có heatmap nếu không có quyền chủ kênh. Mọi nhận định về "giữ chân" ở trên là suy ra từ cấu trúc kịch bản, không phải số đo.</li>
+      <li><strong>Nguồn traffic: KHÔNG có.</strong> Không biết bao nhiêu % từ Browse, Suggested, Search hay External. Suy luận "đến từ đề xuất" dựa trên tỉ lệ view/sub 438×, không phải dữ liệu Analytics.</li>
+      <li><strong>Ngày tạo kênh 15/10 nhưng video 1 đăng 16/10</strong> — kênh có thể đã chuẩn bị nội dung trước đó rất lâu. "3,9 ngày tuổi" là tuổi <em>kênh</em>, không phải tuổi <em>sản xuất</em>.</li>
+      <li><strong>Chưa xem hết 2 video.</strong> Đã đọc toàn bộ phụ đề 0–97s của tập 1 (hết phần hook + cam kết cấu trúc) và 0–118s của tập 2, cộng 13 khung hình rải khắp 1.050s. Phần giữa (mục 3–5 của tập 1) chỉ nắm qua mục lục chính thức, chưa đọc kỹ.</li>
+      <li><strong>Chưa kiểm chéo số liệu kênh đưa ra</strong> (460 m, 365 m, 14 km, 6.100 km) với nguồn gốc. Chỉ ghi nhận kênh có trích nguồn, chưa xác minh nguồn đó nói đúng.</li>
+      <li><strong>Phụ đề tập 2 lấy qua ASR</strong> (38 đoạn, hết ở 118s) — không có phụ đề đầy đủ. Các trích dẫn tập 2 vì thế chỉ dùng cho phần hook.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 9 ============ -->
+  <section id="s9">
+    <h2 class="sec"><span class="n">09</span>Link &amp; quyết định</h2>
+
+    <div class="links">
+      <a href="https://www.youtube.com/@fukayomi-chizu" target="_blank" rel="noopener">
+        <span class="nm">深読み地図 — Bản đồ đọc sâu</span>
+        <span class="h">@fukayomi-chizu · kênh đang phân tích</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=3xdIwOjzUL8" target="_blank" rel="noopener">
+        <span class="nm">Tập 1 — Vì sao Shikoku và Kyushu không có cầu</span>
+        <span class="h">1.143.239 view · 18:49 · 467 comment</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=uxvFoLUsPCo" target="_blank" rel="noopener">
+        <span class="nm">Tập 2 — Vì sao Hawaii nằm giữa Thái Bình Dương</span>
+        <span class="h">179.502 view · 21:34 · 42 comment</span>
+      </a>
+      <a href="https://www.youtube.com/channel/UCLOQw6HvijZvUfq6rBWzlcg" target="_blank" rel="noopener">
+        <span class="nm">ジオレンズ — GeoLens</span>
+        <span class="h">2.410 sub · 2 video · 1.072.164 view · 6,9 ngày</span>
+      </a>
+      <a href="https://www.youtube.com/channel/UCIfLpkSJnjCFuyFjHmngIiw" target="_blank" rel="noopener">
+        <span class="nm">断面ジャパン — Mặt cắt Nhật Bản</span>
+        <span class="h">2.250 sub · 676.825 view · 9 video</span>
+      </a>
+      <a href="https://www.youtube.com/channel/UC6XvYoQx3CadGI_we9n1w0g" target="_blank" rel="noopener">
+        <span class="nm">本気の雑学 — Kiến thức nghiêm túc</span>
+        <span class="h">244 sub · 161.221 view · 7 video (bài học cảnh báo)</span>
+      </a>
+    </div>
+
+    <h3>Ba lựa chọn</h3>
+    <ol>
+      <li><strong>Duyệt ngách, mở lane mới "địa hình 3D Nhật Bản"</strong> — tôi soạn hồ sơ bàn giao đầy đủ (khán giả, cấu trúc kịch bản, công thức tiêu đề/thumbnail, 10 đề tài đầu, yêu cầu pipeline 3D).</li>
+      <li><strong>Chỉ lấy công thức, không lập lane</strong> — áp khuôn hook "rút nước / cắt lát" vào lane đang có (Lane A urban legend hoặc Lane C nghề nghiệp). Ít rủi ro hơn, không cần pipeline 3D.</li>
+      <li><strong>Theo dõi thêm 2 tuần</strong> — đợi kênh ra video 3–4 rồi mới quyết, để có dữ liệu ổn định thật thay vì 1 hit.</li>
+    </ol>
+
+    <p style="font-size:14.5px;color:var(--ink-2);margin-top:22px">
+      <strong>Khuyến nghị của tôi:</strong> lựa chọn 3 trước, nhưng chuẩn bị sẵn phương án 2.
+      Lý do: video 2 tụt 84 % là tín hiệu đủ mạnh để chưa nên đổ nguồn lực vào pipeline 3D (rào cản lớn nhất).
+      Nhưng công thức hook thì đã đủ chắc để thử ngay ở lane có sẵn, chi phí gần 0.
+    </p>
+  </section>
+
+  <footer>
+    <p><strong>Nguồn dữ liệu:</strong> YouTube Data API v3 (channels.list / videos.list / playlistItems.list) · InnerTube search 5 truy vấn · yt-dlp tải nguyên video · phụ đề tự động · 20 comment mỗi tập · 13 khung hình ffmpeg + 6 thumbnail.</p>
+    <p><strong>Dữ liệu gốc:</strong> <code>data/fukayomi_chizu_20261019/</code> — <code>channel_videos.json</code>, <code>peers.json</code>, <code>supply_scan.json</code>, <code>transcripts/</code>, <code>d6_comments/</code>, <code>thumbs/</code>, <code>frames/</code>.</p>
+    <p>Báo cáo lập 19/10/2026 · Trending Research · chỉ phục vụ nghiên cứu, không sản xuất.</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<title>Lane O · Kho đề tài tập 11+</title>
+<style>
+/* Layout: một cột đọc, bảng cuộn ngang riêng, thẻ đề tài xếp lưới tự gãy */
+:root{
+  --bg:#f6f7f4; --panel:#ffffff; --fg:#1f2a26; --muted:#5d6b65; --line:#d9e0dc;
+  --accent:#2f7a63; --accent-soft:#e3f1ec; --warn:#a4602a; --warn-soft:#f8ecdf; --bad:#a83a3a; --bad-soft:#f7e3e3;
+  --f-display:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;
+  --f-body:"Noto Sans JP","Noto Sans",system-ui,sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141a18; --panel:#1c2421; --fg:#e4ebe7; --muted:#9aa9a2; --line:#2e3a35;
+  --accent:#6cc3a6; --accent-soft:#1f3a31; --warn:#e0a46d; --warn-soft:#3a2a1c; --bad:#e58a8a; --bad-soft:#3d2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a18; --panel:#1c2421; --fg:#e4ebe7; --muted:#9aa9a2; --line:#2e3a35;
+  --accent:#6cc3a6; --accent-soft:#1f3a31; --warn:#e0a46d; --warn-soft:#3a2a1c; --bad:#e58a8a; --bad-soft:#3d2224; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.65}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.3}
+h1{font-size:1.9rem;margin:0 0 .3rem}
+h2{font-size:1.35rem;margin:2.6rem 0 .8rem;padding-bottom:.35rem;border-bottom:2px solid var(--accent)}
+h3{font-size:1.08rem;margin:1.4rem 0 .5rem}
+p,li{max-width:72ch}
+.sub{color:var(--muted);margin:0}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.vi{color:var(--muted);font-size:.92em}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.verdict{background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;padding:14px 18px;margin-top:1.2rem}
+.verdict ul{margin:.3rem 0 0;padding-left:1.2rem;display:grid;gap:.35rem}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.75rem;letter-spacing:.04em;color:var(--muted);background:var(--bg);white-space:nowrap}
+td.r,th.r{text-align:right}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.ok{background:var(--accent-soft);color:var(--accent)}
+.mid{background:var(--warn-soft);color:var(--warn)}
+.no{background:var(--bad-soft);color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.card .rank{font-family:var(--f-num);font-size:.8rem;color:var(--muted)}
+.card .jp{font-family:var(--f-display);font-weight:700;font-size:1rem;line-height:1.45}
+.card .meta{font-size:.84rem;color:var(--muted)}
+.card .src{font-size:.84rem}
+.links{display:grid;gap:4px;font-size:.9rem;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;min-width:0}
+.box ul{padding-left:1.1rem;margin:.3rem 0;display:grid;gap:.3rem}
+code{font-family:var(--f-num);font-size:.85em;background:var(--bg);padding:1px 5px;border-radius:4px;word-break:break-all}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+JP:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap">
+
+<div class="wrap">
+<div class="eyebrow">Lane O · 人生のつづき · nghiên cứu 15/10/2026</div>
+<h1>Kho đề tài Lane O cho tập 11 trở đi</h1>
+<p class="sub">Đo kênh mình bằng Studio (đã mở GPM profile rosella rồi đóng lại), quét lại kênh gốc 千種テンカ, săn 97 từ khoá tìm kênh tương tự, đọc 1.001 bình luận qua API.</p>
+
+<div class="verdict">
+<strong>Kết luận</strong>
+<ul>
+<li><b>Kênh gốc giảm thật nhưng chưa chết.</b> Tuần đầu từng đạt 34k–307k view/video (đo 24/09), nay chỉ còn ~7k–14k. Còn <b>4 tập chưa làm đáng lấy</b>, phần còn lại bỏ.</li>
+<li><b>Nguồn tốt hơn kênh gốc: 白衣のうしろ姿</b> (Áo blouse nhìn từ sau lưng). Kênh này chép đúng khuôn 千種, 20 ngày tuổi, trung vị 22k view/video (gấp đôi kênh gốc). Có <b>7 câu cửa miệng mình chưa làm</b>, chuyển sang 介護 rất khớp.</li>
+<li><b>Kênh mình không hỏng ở chất lượng kịch bản mà ở lượt hiển thị.</b> CTR vẫn 6–8%, tỉ lệ xem tăng từ 29% lên 43–46%, nhưng YouTube đẩy ít dần: 88k lượt hiển thị xuống 13k. Hai tập dùng tiêu đề kiểu giảng giải 「なぜ危険なのか」「危険な3つの理由」 thì gần như không được đẩy.</li>
+<li>Đề xuất <b>12 đề tài</b> xếp hạng ở mục 5, kèm 2 đề tài khác khung chờ anh quyết. <b>Chưa bàn giao h2dev</b>, chờ anh duyệt.</li>
+</ul>
+</div>
+
+<h2>1. Kênh mình @人生のつづき — số Studio thật</h2>
+<div class="tbl"><table>
+<tr><th>Tập (đăng)</th><th class="r">View</th><th class="r">Lượt hiển thị</th><th class="r">CTR</th><th class="r">Xem TB</th><th class="r">% xem</th><th class="r">Sub +</th></tr>
+<tr><td>「自分、仕事できるんで」<span class="vi"> (Tôi làm giỏi mà)</span> · 05/10</td><td class="r num">28.1k</td><td class="r num">88.4k</td><td class="r num">8.0%</td><td class="r num">6:44</td><td class="r num">29.5%</td><td class="r num">+23</td></tr>
+<tr><td>「じゃあ、辞めます」<span class="vi"> (Vậy tôi nghỉ)</span> · 07/10</td><td class="r num">8.6k</td><td class="r num">36.2k</td><td class="r num">7.3%</td><td class="r num">7:40</td><td class="r num">33.0%</td><td class="r num">+12</td></tr>
+<tr><td>「定時なんで」<span class="vi"> (Hết giờ rồi)</span> · 09/10</td><td class="r num">5.8k</td><td class="r num">27.5k</td><td class="r num">6.8%</td><td class="r num">6:51</td><td class="r num">34.4%</td><td class="r num">+8</td></tr>
+<tr><td>「辞めたらまた採ればいい」はなぜ危険なのか？<span class="vi"> (Vì sao câu "nghỉ thì tuyển lại" nguy hiểm?)</span> · 10/10</td><td class="r num">0.7k</td><td class="r num">3.0k</td><td class="r num">6.7%</td><td class="r num">7:18</td><td class="r num">45.7%</td><td class="r num">+1</td></tr>
+<tr><td>「ご家族の前だけは優しい」<span class="vi"> (Chỉ hiền trước mặt gia đình)</span> · 11/10</td><td class="r num">2.2k</td><td class="r num">9.9k</td><td class="r num">6.3%</td><td class="r num">8:28</td><td class="r num">42.8%</td><td class="r num">+2</td></tr>
+<tr><td>「そんなことも分からないの？」<span class="vi"> (Chuyện đó cũng không biết à?)</span> · 12/10</td><td class="r num">2.4k</td><td class="r num">13.1k</td><td class="r num">7.6%</td><td class="r num">8:36</td><td class="r num">42.5%</td><td class="r num">+14</td></tr>
+<tr><td>「それ、担当じゃない」が危険な3つの理由<span class="vi"> (3 lý do câu "không phải phần tôi" nguy hiểm)</span> · 14/10</td><td class="r num">0.7k</td><td class="r num">2.8k</td><td class="r num">7.3%</td><td class="r num">9:32</td><td class="r num">46.4%</td><td class="r num">+2</td></tr>
+</table></div>
+<div class="two" style="margin-top:14px">
+<div class="box"><h3>Đọc bảng này thế nào</h3><ul>
+<li>Kịch bản tốt lên thật: % xem tăng từ 29,5% lên 42–46%, phút thứ 1 giữ 62–64% so với 49–53% ở 3 tập đầu.</li>
+<li>Thứ tụt là <b>lượt hiển thị</b>. Tập 「辞めたら」 sau 5 ngày chỉ 3k, trong khi tập cùng tuổi khác được 10–27k. Khác biệt duy nhất là tiêu đề kiểu bài giảng, câu cửa miệng nằm ở giây 69 thay vì giây 0.</li>
+<li>94% view đến từ trang chủ (Browse). Video gợi ý sang kênh mình là của 千種テンカ, 「介護職に転職するとどうなる」 (ヒトゴト) và 「町内会で名刺を配った元部長」 (山下さんちの定年後). Đó là đúng nhóm khán giả mình cần câu.</li>
+</ul></div>
+<div class="box"><h3>Việc sửa ngay, không cần nghiên cứu thêm</h3><ul>
+<li>Bỏ hẳn khuôn tiêu đề 「なぜ〜なのか？」「〜な3つの理由」. Giữ khuôn 「<i>câu cửa miệng</i>」が口ぐせの介護士が、<i>con số + tình huống</i>した結果…</li>
+<li>Câu cửa miệng phải vang ở giây 0–3 (khuôn K29 bên dưới).</li>
+<li>Con số trong tiêu đề phải được đọc lại ở cao trào.</li>
+</ul></div>
+</div>
+
+<h2>2. Bình luận kênh mình (39 bình luận + phản hồi) — anh cần sửa gì</h2>
+<div class="tbl"><table>
+<tr><th>Vấn đề</th><th>Bằng chứng (nguyên văn)</th><th>Sửa</th></tr>
+<tr><td><b>Giọng AI đọc sai chữ Hán</b>, 3 tập bị chê</td><td>「方を『ほう』ではなく『かた』と読む必要があるよ、AI君」 <span class="vi">(phải đọc 方 là "kata")</span> · 「平野を『へいや』と読むのか！AIはポンコツだな」 <span class="vi">(đọc họ Hirano thành "heiya")</span> · 「漢字の、小学生以下の誤読が痛い」 <span class="vi">(đọc sai kém hơn học sinh tiểu học)</span></td><td>Thêm bước soát cách đọc: tên người viết kana trong bản TTS, danh sách từ dễ sai 方・表・入居者名.</td></tr>
+<tr><td><b>Giọng nhân vật bị tráo</b></td><td>「須藤と安達の声、逆じゃない？」 <span class="vi">(giọng Sudo và Adachi bị ngược)</span></td><td>Khoá bảng nhân vật→giọng trong vai.txt, kiểm trước khi xuất.</td></tr>
+<tr><td><b>Lỗi hình liên tục</b></td><td>「車椅子に座ってたのに椅子になってる」 <span class="vi">(đang ngồi xe lăn thành ghế thường)</span></td><td>Ghi đạo cụ cố định (xe lăn) vào prompt mọi cảnh của nhân vật đó.</td></tr>
+<tr><td><b>Kết lửng</b></td><td>「中途半端な終わり方だな！コイツがどーなったのかまで上げてよ」 <span class="vi">(kết nửa vời, cho xem hắn ra sao chứ)</span> · 4 like</td><td>Cảnh cuối phải cho thấy hệ quả cụ thể của nhân vật xấu (nơi làm mới, câu cửa miệng lặp lại đổi nghĩa).</td></tr>
+<tr><td><b>Người làm nghề thật đang xem và bắt lỗi</b></td><td>「夜勤入れるか打診があるのに…『入れといたよ～』が通例じゃないの」 <span class="vi">(thực tế quản lý cứ xếp ca đêm rồi báo, chẳng ai hỏi)</span> · 3 bình luận ký tên 介護福祉士</td><td>Tình huống nghiệp vụ phải theo cách hiện trường làm thật, không theo cách lịch sự.</td></tr>
+<tr><td><b>Phản diện quá có lý → khán giả bênh</b></td><td>Tập 「定時なんで」: 「私は真柴君の考え方にほぼ賛成ですね。ボランティアもどきのブラック業務には反対です」 <span class="vi">(tôi gần như đồng ý với Mashiba, phản đối làm thêm không lương)</span></td><td>Cài mâu thuẫn có số cho phản diện (kiểu "đòi về đúng giờ nhưng sáng nào cũng trễ 7 phút" — mục 6).</td></tr>
+<tr><td>Điểm tốt nên giữ</td><td>「薬剤師シリーズの次は介護士シリーズが始まったのかな」 <span class="vi">(sau series dược sĩ là series điều dưỡng à)</span> · 「うわぁ…いたわ『私、仕事出来るので』って言ってた人」 <span class="vi">(trời, chỗ tôi có người y vậy)</span></td><td>Khán giả 千種 coi mình là phần tiếp, cứ bám khuôn đó.</td></tr>
+</table></div>
+<p class="vi">Phụ: mọi câu trả lời của kênh đều kết bằng 「よかったら高評価とチャンネル登録お願いします」 — nhìn giống máy, nên đổi câu.</p>
+
+<h2>3. Kênh gốc 千種テンカ — tập chưa làm, cái nào đáng lấy</h2>
+<p>Kênh đăng mỗi ngày, 27 video, 1.260 sub. Đo cùng tuổi 3–5 ngày: tháng 9 được 20k–307k, tháng 10 chỉ 6k–14k. Kênh đang tự rẽ sang chuyện gia đình (mẹ, lễ mừng thọ 88) và chuyện ấm áp. Lấy 4 tập, bỏ phần còn lại.</p>
+<div class="tbl"><table>
+<tr><th>Video gốc</th><th class="r">View</th><th class="r">Tuổi</th><th class="r">View/ngày</th><th>Quyết định</th></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=Dj1vmfkL7x4">婚活で「俺は部長だったんだぞ」と言った男</a><br><span class="vi">Người đàn ông nói "tôi từng là trưởng phòng" khi đi xem mắt</span></td><td class="r num">25,159</td><td class="r num">11</td><td class="r num">2,287</td><td><span class="pill ok">Lấy · đề tài #1</span></td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=uW0alVtJ5B8">仕事が遅いと心配された新人。速かった同期は退職代行で辞めた</a><br><span class="vi">Người mới bị lo là chậm; đứa đồng kỳ nhanh nhảu thì nghỉ qua dịch vụ báo nghỉ</span></td><td class="r num">13,687</td><td class="r num">5</td><td class="r num">2,737</td><td><span class="pill ok">Lấy · #5</span></td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=JkcoRdMJwGU">米寿の席で「他人なんだから」と嫁を写真から外した義妹</a><br><span class="vi">Mừng thọ 88, em chồng gạt con dâu khỏi ảnh vì "người ngoài"</span></td><td class="r num">5,891</td><td class="r num">2</td><td class="r num">2,945</td><td><span class="pill ok">Lấy · #8</span></td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=Po7AuZopDng">母はなぜ、毎月わざわざ薬をもらいに行ったのか</a><br><span class="vi">Vì sao mẹ tháng nào cũng tự đi lấy thuốc</span></td><td class="r num">9,891</td><td class="r num">4</td><td class="r num">2,473</td><td><span class="pill ok">Lấy · #9</span></td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=ljzDmb13xLQ">「俺は忙しいんだよ」が口ぐせの薬剤師</a><br><span class="vi">"Tôi bận lắm" — câu cửa miệng</span></td><td class="r num">10,972</td><td class="r num">12</td><td class="r num">914</td><td><span class="pill mid">Lấy, view vừa · #6</span></td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=azt1wdJz3s4">推し活する事務さんを「いい歳して、みっともない」と小バカにした</a><br><span class="vi">Chê đồng nghiệp mê thần tượng "già rồi còn đua đòi"</span></td><td class="r num">4,580</td><td class="r num">3</td><td class="r num">1,527</td><td><span class="pill mid">Dự phòng (đề tài ca sĩ)</span></td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=84w2W-aHTls">「絶対ビッグになる」…33年後の同窓会</a> <span class="vi">(nhất định thành người lớn — họp lớp 33 năm)</span></td><td class="r num">21,593</td><td class="r num">18</td><td class="r num">1,200</td><td><span class="pill no">Bỏ · khó đưa vào viện</span></td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=ayvbrs99ZMU">「存在感のない人は、いらない」</a> <span class="vi">(người mờ nhạt thì không cần)</span></td><td class="r num">6,990</td><td class="r num">1</td><td class="r num">6,990</td><td><span class="pill no">Bỏ · trùng chủ đề tập 「辞めたら」 vừa thua</span></td></tr>
+<tr><td>鍵はいつも同じ人 · 数字は嘘をつかない · 安売りはしない · 高級時計 · 中間管理職 · その分負担 · パワハラです · 陰口 · 優しい後輩</td><td class="r num">4.8k–15k</td><td class="r num">6–20</td><td class="r num">300–1,500</td><td><span class="pill no">Bỏ · view thấp hoặc xa đời viện</span></td></tr>
+</table></div>
+
+<h2>4. Kênh mới tương tự — đã quét 97 từ khoá, 855 video</h2>
+<p>Chỉ giữ kênh có khuôn chuyện nơi làm việc đưa được vào viện dưỡng lão. Kênh tình cảm/スカッと kiểu 「→私『は？』」 bị loại vì khác hẳn giọng Lane O.</p>
+<div class="tbl"><table>
+<tr><th>Kênh</th><th class="r">Tuổi video đầu</th><th class="r">Sub</th><th class="r">Trung vị 10 video</th><th class="r">Xu hướng</th><th>Dùng cho Lane O</th></tr>
+<tr><td><b><a href="https://www.youtube.com/channel/UCCpzYkqkqdOgZFu2nz9xD9A">白衣のうしろ姿</a></b><br><span class="vi">Áo blouse nhìn từ sau lưng — dược sĩ, bản sao 千種</span></td><td class="r num">20 ngày</td><td class="r num">1,160</td><td class="r num">22,234</td><td class="r num">0.86</td><td><span class="pill ok">Nguồn chính</span> 7 câu cửa miệng chưa làm</td></tr>
+<tr><td><b><a href="https://www.youtube.com/channel/UCoYjUL3-LiVXdOrz6KhTfmA">人には言えない話</a></b><br><span class="vi">Chuyện không thể kể với ai — tính cách khó chịu, gia đình</span></td><td class="r num">41 ngày</td><td class="r num">1,620</td><td class="r num">22,180</td><td class="r num">1.82 ↑</td><td><span class="pill ok">Lấy 1 đề tài</span> 「納得するまで」 366 bình luận</td></tr>
+<tr><td><a href="https://www.youtube.com/channel/UCbJNpZPxUowhhH--sTK6aZA">山下さんちの定年後</a><br><span class="vi">Sau tuổi hưu nhà Yamashita</span></td><td class="r num">20 ngày</td><td class="r num">401</td><td class="r num">13,226</td><td class="r">–</td><td><span class="pill ok">Ghép vào #1</span> video 197k 元部長</td></tr>
+<tr><td><a href="https://www.youtube.com/channel/UCTbvUrB31kE-8w-mpv2QYgw">他人事じゃない人生【ヒトゴト】</a><br><span class="vi">Cuộc đời không phải chuyện người khác — nghề thật</span></td><td class="r num">19 ngày</td><td class="r num">723</td><td class="r num">30,231</td><td class="r">–</td><td><span class="pill mid">Tư liệu nghiệp vụ</span> 「介護職に転職」 24k</td></tr>
+<tr><td><a href="https://www.youtube.com/channel/UCcp-QxDJ7ipOqDbS2ZVf9LQ">働く人生【ハタジン】</a><br><span class="vi">Đời đi làm — tài xế đưa đón デイサービス</span></td><td class="r num">32 ngày</td><td class="r num">1,000</td><td class="r num">19,315</td><td class="r num">0.59 ↓</td><td><span class="pill mid">Tư liệu nghiệp vụ</span> cho #9</td></tr>
+<tr><td><a href="https://www.youtube.com/channel/UCOC_HsbIZZKRK-QqjFbTt5g">人生の数多の視点</a><br><span class="vi">Nhiều góc nhìn đời — 1 người trực đêm 20 cụ</span></td><td class="r num">26 ngày</td><td class="r num">1,040</td><td class="r num">6,008</td><td class="r num">0.76</td><td><span class="pill mid">Tư liệu</span> ca đêm</td></tr>
+<tr><td><a href="https://www.youtube.com/channel/UC2wUlNljW20K46iSoxeErKQ">はたらく女子のこっそり日記</a><br><span class="vi">Nhật ký lén của cô gái đi làm</span></td><td class="r num">329 ngày</td><td class="r num">4,670</td><td class="r num">8,818</td><td class="r num">0.52 ↓</td><td><span class="pill no">Không clone</span> chỉ chứng minh 「定時なんで」+退職代行 ăn khách (367k)</td></tr>
+<tr><td><a href="https://www.youtube.com/channel/UCqsxd5pD8Bq9BdbyPrQMZEw">職場トラブルAI漫画</a> · <a href="https://www.youtube.com/channel/UCf75tRo0AL01LWjytBldgoQ">嵐の夜明け</a> · <a href="https://www.youtube.com/channel/UCEmNegxtkjUIzfzP_E9LUhg">あの人の口ぐせ</a></td><td class="r num">15–221 ngày</td><td class="r num">38–8,170</td><td class="r num">1k–23k</td><td class="r num">0.32–1.54</td><td><span class="pill no">Bỏ</span> khuôn スカッと ồn ào / kênh 38 sub</td></tr>
+</table></div>
+
+<h2>5. 12 đề tài đề xuất cho Lane O (xếp theo độ chắc)</h2>
+<p>Mỗi đề tài đã qua 4 phép thử của SOP Lane O: kiểu người mọi nghề đều gặp · câu nói là vũ khí · lặp được 3 lần · quay ngược vào chính hắn. Không trùng 10 tập đã làm. Tiêu đề Nhật là bản nháp hướng đi, h2dev viết lại.</p>
+<div class="grid">
+
+<div class="card"><div class="rank">#1 · nguồn 3 video · 25k + 197k + 24k</div>
+<div class="jp">「俺は部長だったんだぞ」が口ぐせの62歳新人介護職員。入居者の娘は、元部下だった…</div>
+<div class="vi">"Tôi từng là trưởng phòng đấy" — nhân viên mới 62 tuổi. Con gái của cụ trong viện lại là cấp dưới cũ của ông.</div>
+<div class="meta">Khán giả 60+ đang xem đúng chủ đề này: video 山下 197k được YouTube gợi ý sang kênh mình. Về hưu rồi vào làm điều dưỡng là chuyện có thật (ヒトゴト 24k).</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=Dj1vmfkL7x4">Dj1vmfkL7x4</a> · <a href="https://www.youtube.com/watch?v=ZG6Qp-xa3jE">ZG6Qp-xa3jE</a> · <a href="https://www.youtube.com/watch?v=nM1oVRMtVE0">nM1oVRMtVE0</a></div></div>
+
+<div class="card"><div class="rank">#2 · 白衣 · 46,927 view / 16 ngày</div>
+<div class="jp">「聞いてないです」が口ぐせの介護士。申し送りノートに、彼のサインだけが14日なかった</div>
+<div class="vi">"Tôi không được báo" — sổ bàn giao ca thiếu chữ ký của hắn 14 ngày.</div>
+<div class="meta">Sổ bàn giao ca là việc cốt lõi ở viện. Kết boomerang: buổi phỏng vấn thăng chức đã xong mà "hắn không được báo".</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=3p51IRlTd5w">3p51IRlTd5w</a></div></div>
+
+<div class="card"><div class="rank">#3 · 白衣 · 13,852 view</div>
+<div class="jp">「私、間違えないんで」が口ぐせの介護士。半年で23回、黙って配薬を止めていた看護師がいた</div>
+<div class="vi">"Tôi không bao giờ sai" — nửa năm, 23 lần có y tá lặng lẽ chặn thuốc phát nhầm.</div>
+<div class="meta">Phát nhầm thuốc là sự cố số 1 trong viện. Cần kiểm quy trình 配薬/ダブルチェック có nguồn. Cụ không bị hại (luật lane).</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=F1iEog9k3J8">F1iEog9k3J8</a></div></div>
+
+<div class="card"><div class="rank">#4 · 白衣 · 9,247 view / 2 ngày (đang lên)</div>
+<div class="jp">「前の施設ではこうでした」と入浴の手順を変えた中途介護士。面談の机に置かれた、3年前の自分の字</div>
+<div class="vi">"Ở viện cũ người ta làm thế này" — đổi quy trình tắm cho cụ; trên bàn là bút tích của chính hắn 3 năm trước.</div>
+<div class="meta">Ngành 介護 nhảy việc nhiều, ai cũng gặp người này.</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=UAbIF2VPkHQ">UAbIF2VPkHQ</a></div></div>
+
+<div class="card"><div class="rank">#5 · 千種 · 13,687 view / 5 ngày</div>
+<div class="jp">「遅い」と心配された新人介護士。速かった同期は、退職代行で辞めた</div>
+<div class="vi">Người mới bị lo là chậm. Đứa đồng kỳ nhanh nhảu nghỉ qua dịch vụ báo nghỉ.</div>
+<div class="meta">退職代行 đang nóng: 「定時なんで」+退職代行 của はたらく女子 đạt 367k, 183 bình luận.</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=uW0alVtJ5B8">uW0alVtJ5B8</a> · <a href="https://www.youtube.com/watch?v=ZiOqR8LgBTY">ZiOqR8LgBTY</a></div></div>
+
+<div class="card"><div class="rank">#6 · 千種 · 10,972 view</div>
+<div class="jp">「俺は忙しいんだよ」が口ぐせの介護士。ナースコールに怒った息子さんが、ベテランを見た途端に黙った</div>
+<div class="vi">"Tôi bận lắm" — con trai cụ đang nổi giận, thấy nhân viên lâu năm thì im bặt.</div>
+<div class="meta">Bình luận gốc: 「自分の口で『忙しい』って言っているヤツほど仕事ができない」 (ai tự nói mình bận thường làm kém). Người nhà phải giận có lý.</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=ljzDmb13xLQ">ljzDmb13xLQ</a></div></div>
+
+<div class="card"><div class="rank">#7 · 白衣 · 30,102 view</div>
+<div class="jp">「新人の仕事でしょ」が口ぐせの介護士。18年目の異動先で、新人の名札を渡された</div>
+<div class="vi">"Đó là việc của người mới" — năm thứ 18 bị chuyển chỗ, được phát bảng tên "người mới".</div>
+<div class="meta">Khác tập 「そんなことも」: ở đây là đùn việc bẩn (thay tã, ga giường) chứ không phải chửi người mới.</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=u08jrHrqsV4">u08jrHrqsV4</a></div></div>
+
+<div class="card"><div class="rank">#8 · 千種 · 5,891 view / 2 ngày</div>
+<div class="jp">施設の米寿祝いで「他人なんだから」と嫁を写真から外した義妹。毎週面会に来ていたのは…</div>
+<div class="vi">Mừng thọ 88 tại viện, em chồng gạt con dâu khỏi ảnh. Người tuần nào cũng đến thăm cụ lại chính là cô ấy.</div>
+<div class="meta">Tập ấm áp để đổi nhịp. Nhân viên là người chứng kiến (sổ thăm viếng).</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=JkcoRdMJwGU">JkcoRdMJwGU</a></div></div>
+
+<div class="card"><div class="rank">#9 · 千種 · 9,891 view / 4 ngày</div>
+<div class="jp">母はなぜ、雨の日もデイサービスを休まなかったのか。送迎の職員から聞いた母の本音</div>
+<div class="vi">Vì sao mẹ trời mưa cũng không nghỉ trung tâm ban ngày. Điều mẹ thật lòng, nghe từ nhân viên đưa đón.</div>
+<div class="meta">Bình luận gốc toàn kể chuyện mẹ mình. Tư liệu nghiệp vụ đưa đón lấy từ ハタジン 35k.</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=Po7AuZopDng">Po7AuZopDng</a> · <a href="https://www.youtube.com/watch?v=8DoBZSGtwY0">8DoBZSGtwY0</a></div></div>
+
+<div class="card"><div class="rank">#10 · 白衣 · 15,801 view</div>
+<div class="jp">「最近の若い子は」が口ぐせのベテラン介護士。見守りセンサーの通知を31回見なかった</div>
+<div class="vi">"Bọn trẻ bây giờ…" — bỏ qua thông báo cảm biến giám sát 31 lần.</div>
+<div class="meta">Chạm đúng chuyện thiết bị mới ở viện, người 50–60 tuổi xem cũng tự thấy mình.</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=bCWeaqwuffk">bCWeaqwuffk</a></div></div>
+
+<div class="card"><div class="rank">#11 · 人には言えない話 · 78,095 view · 366 bình luận</div>
+<div class="jp">「納得できないんですけど」が口ぐせの介護士。説明を求め続けた先に…</div>
+<div class="vi">"Tôi chưa thấy thuyết phục" — bắt mọi người giải thích tới khi mình chịu.</div>
+<div class="meta">Bình luận top 202 like: 「どんな説明したって自分が納得できないから説明しろって言い続けられたら、そりゃ誰だって嫌だわ」. Tránh nói về bệnh tâm lý (bình luận gốc gán ASD).</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=m-YW2q02sXM">m-YW2q02sXM</a></div></div>
+
+<div class="card"><div class="rank">#12 · 白衣 · 10,595 view</div>
+<div class="jp">「責任は俺が取る」が口ぐせのフロアリーダー。事故報告書7枚、指示した者の欄はすべて空欄だった</div>
+<div class="vi">"Tôi chịu trách nhiệm" — 7 bản báo cáo sự cố, ô "người chỉ đạo" đều trống.</div>
+<div class="meta">Con số kiểm được ngay trên giấy, hợp khuôn K29.</div>
+<div class="src"><a href="https://www.youtube.com/watch?v=Opg5WD4ltNM">Opg5WD4ltNM</a></div></div>
+</div>
+
+<h3>Hai đề tài khác khung — anh quyết có làm không</h3>
+<div class="two">
+<div class="box"><b>「こっちは金払ってるんだけど」が口ぐせの家族</b> <span class="vi">("Tôi trả tiền đấy nhé" — người nhà gây áp lực nhân viên)</span><br>Nguồn <a href="https://www.youtube.com/watch?v=-0X37gkc0gk">-0X37gkc0gk</a> 20.6k. Phản diện là người nhà, trái luật lane "người nhà không vô lý". Đổi lại đề tài quấy rối khách hàng (カスハラ) đang được bàn nhiều.</div>
+<div class="box"><b>Cụ bà mê ca sĩ bị nhân viên chê 「いい歳して」</b> <span class="vi">(già rồi còn mê thần tượng)</span><br>Nguồn <a href="https://www.youtube.com/watch?v=azt1wdJz3s4">azt1wdJz3s4</a> 4.6k. View thấp nhưng đúng chủ đề ca sĩ đời thường; bình luận toàn kể chuyện thần tượng của mình.</div>
+</div>
+<p class="vi"><b>Không lấy</b> dù view cao vì trùng tập đã làm: 「それ、私の仕事じゃないんで」 55k (=ep06), 「それなら、辞めますけど」 34k (=ep01/ep10), 「定時なんで」 24k (=ep03), 「前にも言ったよね」 28k (≈ep04), 「そのくらい自分で調べて」 (≈ep05), 「効率悪くないですか」 33k (≈ep02, để dự phòng). Bình luận đối thủ đã bắt lỗi trùng: 「これ別動画で同じの見た」 (28 like), 「前回と同じ？」.</p>
+
+<h2>6. Hook — khuôn mới K29 (đã nạp kho)</h2>
+<p>白衣のうしろ姿 dùng một khuôn ở 15/15 video: câu cửa miệng ở giây 3 → 「昔、〜が口ぐせの〇〇がいた。その一言で、彼女は一年で二百十四件の仕事を人に渡した」 → hắn tự khen kèm một con số. Con số trong hook trùng con số trong tiêu đề và được đọc lại ở cao trào. Đã thêm thành <code>K29</code> và nạp 6 hook (4 của 白衣, 2 của kênh mình: tập thắng và tập thua) vào <code>E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\HOOK_LIBRARY.md</code>.</p>
+
+<h2>7. Đọc bình luận đối thủ — 4 điều áp dụng</h2>
+<div class="two">
+<div class="box"><b>Mâu thuẫn có số là mồi bình luận mạnh nhất.</b> Video 「定時なんで」 của 白衣: 5 bình luận top (18–33 like) chửi cùng một chỗ 「定時にはこだわるくせに、毎日７分遅刻」 (đòi về đúng giờ mà ngày nào cũng trễ 7 phút). Mỗi tập cài đúng 1 mâu thuẫn như vậy.</div>
+<div class="box"><b>Quản lý im lặng quá lâu thì khán giả chửi quản lý.</b> Video 89k 「俺が辞めたら店が潰れるぞ」: 6 bình luận top (37–62 like) đều nói 「店長が悪い」. Ở 白衣 cũng vậy. Phải cho trưởng ca/施設長 nhắc ít nhất 1 lần trên màn hình trước cao trào.</div>
+<div class="box"><b>Nghiệp vụ sai bị bắt ngay.</b> 「事務員、1人は絶対無理」 (một nhân viên hành chính là không thể), 「40枚/日・人は？」. Ở viện: số người trực đêm, định mức nhân sự, quy trình thuốc phải có nguồn [Dn].</div>
+<div class="box"><b>Người tốt im lặng quá lâu cũng bị chê.</b> 「ミスを伝えない事の方が良くないと思う」 (không báo lỗi cho người ta còn tệ hơn, 20 like). Người tốt nên nhắc thẳng 1 lần rồi mới để hậu quả tự đến.</div>
+</div>
+
+<h2>8. Bước tiếp theo</h2>
+<ul>
+<li>Anh chọn đề tài (đánh số #1–#12) và quyết 2 đề tài khác khung.</li>
+<li>Sau khi duyệt: em làm hồ sơ từng tập (transcript video gốc + bình luận + số liệu có nguồn) rồi giao h2dev, không giao trước.</li>
+<li>Các việc ở mục 1–2 (tiêu đề, giọng đọc sai chữ, khoá giọng nhân vật) h2dev sửa được ngay, không phụ thuộc đề tài.</li>
+</ul>
+
+<h3>Dữ liệu gốc</h3>
+<div class="links">
+<span>Thư mục: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_O_mo_rong_20261015\</code></span>
+<span>Studio kênh mình: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_O_mo_rong_20261015\studio_metrics.json</code> · <code>retention.json</code> · <code>studio\</code></span>
+<span>Bình luận: <code>cmt_own.json</code> · <code>cmt_hakui.json</code> · <code>cmt_chigusa.json</code> · <code>cmt_other.json</code></span>
+<span>Transcript đầy đủ: <code>full_hakui\transcripts\</code> · <code>full_jinsei_tsuzuki\transcripts\</code></span>
+<span>Kênh mình: <a href="https://www.youtube.com/@人生のつづき">youtube.com/@人生のつづき</a> · Kênh gốc: <a href="https://www.youtube.com/@iyaku_labo">youtube.com/@iyaku_labo</a></span>
+</div>
+</div>

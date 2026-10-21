@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lane M — Chọn 3 video tốt nhất (20/10/2026)</title>
+<style>
+  :root{
+    --bg:#0a0e14; --panel:#111823; --panel2:#151d2a; --line:#233044;
+    --txt:#e6edf6; --dim:#93a3b8; --acc:#f2b544; --ok:#4ade80; --no:#f87171; --info:#5eb1ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+       font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+       line-height:1.6;font-size:15px}
+  .wrap{max-width:1120px;margin:0 auto;padding:34px 22px 90px}
+  header{border-bottom:2px solid var(--line);padding-bottom:22px;margin-bottom:26px}
+  .kicker{color:var(--acc);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+  h1{font-size:31px;line-height:1.25;margin:10px 0 6px;letter-spacing:-.02em}
+  h1 small{display:block;font-size:15px;color:var(--dim);font-weight:400;margin-top:8px;letter-spacing:0}
+  h2{font-size:20px;margin:44px 0 14px;padding-left:12px;border-left:4px solid var(--acc);letter-spacing:-.01em}
+  h3{font-size:16px;margin:26px 0 8px}
+  p{margin:9px 0}
+  a{color:var(--info)}
+  code,.mono{font-family:"Cascadia Code",Consolas,monospace}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin:22px 0 6px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:14px 16px}
+  .kpi b{display:block;font-size:26px;line-height:1.15;letter-spacing:-.02em}
+  .kpi span{color:var(--dim);font-size:12.5px}
+  .kpi.hot b{color:var(--acc)} .kpi.ok b{color:var(--ok)} .kpi.no b{color:var(--no)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+  th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:var(--dim);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+  td.num{text-align:right;font-family:"Cascadia Code",Consolas,monospace;white-space:nowrap}
+  tr:hover td{background:#0f1620}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:18px 0}
+  .card.pick{border-left:4px solid var(--acc)}
+  .pick-top{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+  .pick-top img{width:288px;max-width:100%;border-radius:9px;border:1px solid var(--line);aspect-ratio:16/9;object-fit:cover}
+  .pick-meta{flex:1 1 340px;min-width:280px}
+  .rank{display:inline-block;background:var(--acc);color:#101418;font-weight:800;font-size:12px;
+        padding:2px 9px;border-radius:999px;letter-spacing:.06em}
+  .tag{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);
+       color:var(--dim);margin:0 5px 5px 0}
+  .tag.ok{color:var(--ok);border-color:#2c5b3c} .tag.no{color:var(--no);border-color:#5b2c2c}
+  .tag.warn{color:var(--acc);border-color:#5b4a2c}
+  .quote{background:#0d141d;border-left:3px solid var(--info);padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0}
+  .quote .jp{color:var(--dim);font-size:13px;margin-top:5px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+  .bar{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:13px}
+  .bar .lbl{width:104px;color:var(--dim);font-family:"Cascadia Code",Consolas,monospace}
+  .bar .fill{height:16px;border-radius:4px;background:linear-gradient(90deg,#f2b544,#b9762a)}
+  .bar .val{color:var(--dim);font-size:12px}
+  .lnk{display:block;background:#0d141d;border:1px dashed #2b3b52;border-radius:9px;padding:10px 14px;margin:8px 0;
+       word-break:break-all;font-family:"Cascadia Code",Consolas,monospace;font-size:12.5px}
+  .lnk a{text-decoration:none}
+  .note{background:#161207;border:1px solid #4a3c14;border-radius:11px;padding:14px 18px;margin:16px 0}
+  .note b{color:var(--acc)}
+  .warnbox{background:#170d0d;border:1px solid #4a2222;border-radius:11px;padding:14px 18px;margin:16px 0}
+  .warnbox b{color:var(--no)}
+  ul{margin:9px 0 9px 20px;padding:0} li{margin:5px 0}
+  footer{margin-top:46px;border-top:1px solid var(--line);padding-top:16px;color:var(--dim);font-size:12.5px}
+  .small{font-size:12.5px;color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Lane M · Nghiên cứu ngách · Báo cáo duyệt</div>
+  <h1>Chọn 3 video tốt nhất — người già · hưu trí · tái tuyển dụng
+    <small>Quét video đăng trong 5 ngày gần nhất (tính tới 20/10/2026) · kênh dạng manga · kênh dưới 10.000 sub · ngưỡng trên 100.000 view</small>
+  </h1>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><b>851</b><span>video đăng trong 5 ngày (đã lọc sạch)</span></div>
+  <div class="kpi"><b>608</b><span>video dạng manga · thuộc 328 kênh</span></div>
+  <div class="kpi ok"><b>1</b><span>video ĐẠT đủ 4 điều kiện cứng</span></div>
+  <div class="kpi hot"><b>3</b><span>video được chọn (2 video đạt ngưỡng trong 5 ngày đầu)</span></div>
+</div>
+
+<h2>00 · Ngách này đang làm về cái gì</h2>
+<p>Truyện tranh màu (phần lớn là ảnh minh hoạ kiểu manga do AI sinh + ô lời dẫn + giọng đọc), kể chuyện
+<b>đời sống người Nhật sau tuổi 60</b>: tiền trợ cấp thôi việc và lương hưu, quyết định nghỉ hẳn hay làm tiếp,
+tái tuyển dụng, sống một mình, viện dưỡng lão, những chuyến đi đắt tiền khi đã về hưu.
+Video thường dài 20–55 phút, tiêu đề mở bằng một con số tuổi hoặc một số tiền.</p>
+
+<h2>01 · Đã quét thế nào — và độ phủ tới đâu</h2>
+<div class="grid2">
+  <div class="card">
+    <h3 style="margin-top:0">Cách quét</h3>
+    <ul>
+      <li><b>21 truy vấn</b> YouTube Data API, sắp xếp theo lượt xem, giới hạn <code>publishedAfter</code> = 120 giờ
+        (漫画 定年 · 漫画 老後 · 漫画 70代 · 定年後 働くか辞めるか · 再雇用 · シルバー人材センター · 漫画 年金 · 漫画 退職金 · 漫画 終活 …).</li>
+      <li><b>3 truy vấn InnerTube</b> (không tốn quota) cho nhóm tiêu đề rộng: 漫画 人生 · 漫画 夫婦 · 漫画 家族.</li>
+      <li>Gộp trùng, bỏ video dưới 3 phút và video quá 5 ngày, rồi lấy số liệu thật bằng <code>videos.list</code> +
+        <code>channels.list</code> (view, thời lượng, sub, tuổi kênh).</li>
+      <li>Định dạng <b>kiểm bằng khung hình thật</b> (tải video, trích 6 khung/video) — không đoán từ thumbnail hay tiêu đề.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">Phân phối view trong 5 ngày (608 video manga, kênh &lt;10k sub)</h3>
+    <div class="bar"><span class="lbl">≥100.000</span><div class="fill" style="width:2px"></div><span class="val">1 video · 0,2%</span></div>
+    <div class="bar"><span class="lbl">≥50.000</span><div class="fill" style="width:6px"></div><span class="val">3 video · 0,5%</span></div>
+    <div class="bar"><span class="lbl">≥30.000</span><div class="fill" style="width:30px"></div><span class="val">16 video · 2,6%</span></div>
+    <div class="bar"><span class="lbl">≥20.000</span><div class="fill" style="width:44px"></div><span class="val">24 video · 3,9%</span></div>
+    <div class="bar"><span class="lbl">≥10.000</span><div class="fill" style="width:88px"></div><span class="val">47 video · 7,7%</span></div>
+    <p class="small">Nghĩa là: trong ngách này, cứ 500 video manga của kênh nhỏ thì chỉ 1 video vượt 100.000 view
+      trong 5 ngày đầu. Mốc thực tế của số đông là 10.000–30.000 view.</p>
+  </div>
+</div>
+
+<div class="note">
+  <b>Vì sao chỉ 1 video “đạt đủ 4 điều kiện” mà vẫn chọn được 3?</b>
+  Điều kiện của anh là <i>video ≤5 ngày tuổi và &gt;100.000 view</i>. Chỉ <b>1 video</b> thoả đồng thời cả 4 điều kiện
+  (tuổi · view · manga · &lt;10k sub). Hai video còn lại <b>đã vượt 100.000 view ngay trong 5 ngày đầu</b> nhưng hiện
+  đã 5,8 và 6,1 ngày tuổi (đo lúc quét), nên không còn nằm trong cửa sổ 5 ngày. Con số “ngày chạm 100k” dưới đây là
+  <b>ước tính</b> từ view/ngày trung bình, không phải đo 2 mốc — em ghi rõ để anh không bị lừa bởi số đẹp.
+</div>
+
+<h2>02 · Bảng 3 video được chọn</h2>
+<table>
+  <thead>
+    <tr><th style="width:34px">#</th><th>Kênh · video</th><th class="num">View</th><th class="num">Tuổi</th>
+        <th class="num">View/ngày</th><th class="num">Chạm 100k</th><th class="num">Sub kênh</th><th>Định dạng (kiểm bằng khung hình)</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>1</b></td>
+      <td><b>他人事じゃない人生【ヒトゴト】</b><br>
+        <span class="small">Kết cục của ông 62 tuổi tiêu sạch 15 triệu yên trợ cấp thôi việc trong 5 năm — đã tiêu vào đâu, bao nhiêu?</span></td>
+      <td class="num"><b>135.098</b></td><td class="num">3,9 ngày</td><td class="num">34.379</td>
+      <td class="num" style="color:var(--ok)"><b>~2,9 ngày</b></td><td class="num">931</td>
+      <td>Manga màu + slide số liệu</td>
+    </tr>
+    <tr>
+      <td><b>2</b></td>
+      <td><b>老後のこたえ帖【漫画】</b> <span class="small">(Sổ tay đáp án tuổi già)</span><br>
+        <span class="small">Đôi vợ chồng 65 tuổi đặt tour du thuyền hạng sang qua kênh bán hàng trên TV — sự thật 10 ngày trên biển mà TV không nói</span></td>
+      <td class="num"><b>162.819</b></td><td class="num">5,8 ngày</td><td class="num">28.072</td>
+      <td class="num" style="color:var(--ok)"><b>~3,6 ngày</b></td><td class="num">3.300</td>
+      <td>Manga màu (khung truyện, ô lời dẫn)</td>
+    </tr>
+    <tr>
+      <td><b>3</b></td>
+      <td><b>源さん【定年シニアの人生相談】</b> <span class="small">(Ông Gen — tư vấn đời người sau nghỉ hưu)</span><br>
+        <span class="small">“Vào viện dưỡng lão là hết” — bà cụ 79 tuổi sống một mình và ý nghĩa câu nói đó</span></td>
+      <td class="num"><b>123.449</b></td><td class="num">6,1 ngày</td><td class="num">20.238</td>
+      <td class="num" style="color:var(--acc)"><b>~4,9 ngày</b></td><td class="num">8.340</td>
+      <td>Manga màu + bong bóng thoại</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Link từng video &amp; kênh (bấm trực tiếp)</h3>
+<div class="lnk">① <a href="https://www.youtube.com/watch?v=KCvrhcEsU_0" target="_blank">https://www.youtube.com/watch?v=KCvrhcEsU_0</a><br>
+  <span class="small">kênh: <a href="https://www.youtube.com/channel/UCTbvUrB31kE-8w-mpv2QYgw" target="_blank">youtube.com/channel/UCTbvUrB31kE-8w-mpv2QYgw</a></span></div>
+<div class="lnk">② <a href="https://www.youtube.com/watch?v=Eu0sV2ZCjr4" target="_blank">https://www.youtube.com/watch?v=Eu0sV2ZCjr4</a><br>
+  <span class="small">kênh: <a href="https://www.youtube.com/channel/UCPMLcUgy_zHsdK_K2rWtJCA" target="_blank">youtube.com/channel/UCPMLcUgy_zHsdK_K2rWtJCA</a></span></div>
+<div class="lnk">③ <a href="https://www.youtube.com/watch?v=inryFzntZa4" target="_blank">https://www.youtube.com/watch?v=inryFzntZa4</a><br>
+  <span class="small">kênh: <a href="https://www.youtube.com/channel/UCOkbo1BhQw1NhMj1sBdkt6w" target="_blank">youtube.com/channel/UCOkbo1BhQw1NhMj1sBdkt6w</a></span></div>
+
+<h2>03 · Bóc từng video</h2>
+
+<div class="card pick">
+  <div class="pick-top">
+    <img src="https://i.ytimg.com/vi/KCvrhcEsU_0/maxresdefault.jpg" alt="KCvrhcEsU_0">
+    <div class="pick-meta">
+      <span class="rank">HẠNG 1 · ĐẠT ĐỦ 4 ĐIỀU KIỆN</span>
+      <h3 style="margin:10px 0 4px">Kết cục của ông 62 tuổi tiêu sạch 15 triệu yên trợ cấp thôi việc trong 5 năm</h3>
+      <p class="small" style="margin:0">Nguyên văn: 【漫画】退職金1500万円を5年で使い切った62歳の末路…何にいくら使ったのか…</p>
+      <p style="margin:10px 0 0">
+        <span class="tag ok">135.098 view / 3,9 ngày</span>
+        <span class="tag">34.379 view/ngày</span>
+        <span class="tag">931 sub · kênh 25 ngày tuổi</span>
+        <span class="tag">21 phút 16 giây</span>
+        <span class="tag">3/11 video của kênh vượt 100k</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="quote">
+    <b>Hook thật, giây thứ 8</b> (đọc từ khung hình): “Năm năm trước, ngay chỗ này từng có 15 triệu yên.”
+    <div class="jp"> nguyên văn: 五年前　ここには千五百万円あった</div>
+    <p class="small" style="margin:8px 0 0">Cảnh: ông 62 tuổi đứng trước cây ATM, tay cầm sổ tiết kiệm, mặt bơ phờ. Hook đánh đúng một câu hỏi duy nhất:
+      <i>tiền đâu rồi?</i> — không cần lời dẫn, không cần giới thiệu kênh.</p>
+  </div>
+
+  <h3>Vì sao bùng</h3>
+  <ul>
+    <li><b>Con số lớn + mất mát thầm lặng.</b> 15 triệu yên (≈2,5 tỷ đồng) là mức trợ cấp thôi việc trung bình mà bất kỳ
+      người Nhật 55–65 tuổi nào cũng đang chờ — nên câu hỏi “tiêu thế nào mà hết” là câu hỏi tự vệ, không phải tò mò.</li>
+    <li><b>Cấu trúc “điều tra”:</b> video trả lời bằng bảng chi tiêu từng năm, kèm slide số liệu thật (ở phút thứ 8,
+      khung hình là slide dẫn nguồn Bộ Y tế – Lao động – Phúc lợi về mức trợ cấp trung bình 1.896 vạn yên cho người tốt nghiệp đại học).
+      Đây là video manga <i>có kiểm chứng số</i> — lý do người xem tin và ở lại 21 phút.</li>
+    <li><b>Kênh mới nhưng có công thức:</b> 25 ngày, 11 video, 3 video vượt 100k (27%). Công thức chủ đạo của kênh là
+      “<i>Xになるとどうなるのか</i>” (làm nghề X / sống kiểu X thì sẽ thế nào) — riêng tập này đổi sang “tiền hưu bị tiêu hết” và ăn view gấp 5 lần trung vị kênh.</li>
+  </ul>
+  <p><b>Bài học cho Lane M:</b> tiêu đề dạng <i>một số tiền + một mốc thời gian + hậu quả</i> thắng tiêu đề dạng
+    “hoàn cảnh” (nghề nghiệp, vùng miền). Và phải có <b>ít nhất một slide số liệu có nguồn</b> ở đoạn giữa để chặn cảm giác “bịa”.</p>
+</div>
+
+<div class="card pick">
+  <div class="pick-top">
+    <img src="https://i.ytimg.com/vi/Eu0sV2ZCjr4/maxresdefault.jpg" alt="Eu0sV2ZCjr4">
+    <div class="pick-meta">
+      <span class="rank">HẠNG 2 · ĐẠT NGƯỠNG TRONG ~3,6 NGÀY</span>
+      <h3 style="margin:10px 0 4px">Đôi vợ chồng 65 tuổi đặt du thuyền hạng sang qua TV — sự thật 10 ngày trên biển</h3>
+      <p class="small" style="margin:0">Nguyên văn: 【漫画】テレビ通販で豪華クルーズを申し込んだ65歳夫婦。テレビではわからない10日間の船旅の実態とは？</p>
+      <p style="margin:10px 0 0">
+        <span class="tag ok">162.819 view / 5,8 ngày</span>
+        <span class="tag">28.072 view/ngày</span>
+        <span class="tag">3.300 sub · kênh cũ bật lại (9 video)</span>
+        <span class="tag">22 phút 01 giây</span>
+        <span class="tag">2/9 video vượt 100k</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="quote">
+    <b>Hook thật, giây thứ 8:</b> “Nishimura Tatsuya, 65 tuổi, mở mắt dậy thì chiếc giường bên cạnh đã trống không.”
+    <div class="jp">nguyên văn: 西村達也、65歳が目を覚ますと、となりのベッドが空だった。</div>
+    <p class="small" style="margin:8px 0 0">Cảnh: cabin tàu, một chiếc giường trống. Hook đặt tên + tuổi + <i>một chi tiết sai lệch</i>
+      (vợ đâu?) — người xem buộc phải xem tiếp để hiểu chuyện gì xảy ra trong 10 ngày.</p>
+  </div>
+
+  <h3>Vì sao bùng</h3>
+  <ul>
+    <li><b>Đánh vào “giấc mơ bị bán” của người về hưu:</b> du thuyền mua qua kênh bán hàng trên TV là cám dỗ có thật với
+      người 65 tuổi; tiêu đề hứa “sự thật mà TV không nói” = cảnh báo, không phải quảng cáo.</li>
+    <li><b>Khung tiêu đề “nhân vật + hành động + ẩn ý”:</b> 65歳夫婦 (vợ chồng 65 tuổi) · 申し込んだ (đã đăng ký) · 実態とは？ (sự thật là gì?).
+      Đúng mốc tuổi vàng của ngách — trong 608 video manga quét được, <b>65 tuổi xuất hiện 78 lần</b>, nhiều gấp 2,8 lần mốc 60 tuổi.</li>
+    <li><b>Kênh đã có 2 tập vượt 100k</b> trong 9 video, trung vị 35.955 view — nghĩa là công thức ổn định, không phải ăn may.
+      Tập anh em cùng kênh (mua xe cắm trại 15 triệu yên, đi vòng quanh Nhật 1 năm) đạt 244.065 view.</li>
+  </ul>
+  <p><b>Bài học cho Lane M:</b> “chuyến đi đắt tiền khi về hưu” là mỏ vàng thứ hai sau “tiền hưu” — cùng một cơ chế:
+    <i>một quyết định tiêu tiền lớn + hậu quả sau N tháng/ngày</i>. Không cần bài học đạo đức, chỉ cần hệ quả cụ thể.</p>
+</div>
+
+<div class="card pick">
+  <div class="pick-top">
+    <img src="https://i.ytimg.com/vi/inryFzntZa4/maxresdefault.jpg" alt="inryFzntZa4">
+    <div class="pick-meta">
+      <span class="rank">HẠNG 3 · ĐẠT NGƯỠNG TRONG ~4,9 NGÀY</span>
+      <h3 style="margin:10px 0 4px">“Vào viện dưỡng lão là hết” — bà cụ 79 tuổi sống một mình</h3>
+      <p class="small" style="margin:0">Nguyên văn: 【漫画】老人ホームは、入ったら終わり…79歳ひとり暮らしの私は、その意味をまだ知らなかった</p>
+      <p style="margin:10px 0 0">
+        <span class="tag ok">123.449 view / 6,1 ngày</span>
+        <span class="tag">20.238 view/ngày</span>
+        <span class="tag">8.340 sub · kênh 18 ngày tuổi</span>
+        <span class="tag warn">55 phút 20 giây</span>
+        <span class="tag">9/50 video vượt 100k</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="quote">
+    <b>Hook thật, giây thứ 8:</b> “Bên trong là 3 cuốn tờ rơi viện dưỡng lão.”
+    <div class="jp">nguyên văn: 中身は老人ホームのパンフレットが3冊。</div>
+    <p class="small" style="margin:8px 0 0">Cảnh quay từ góc nhìn nhân vật: đôi tay mở phong bì, 3 cuốn brochure trên bàn.
+      Không có con số, không có tên — hook bằng <i>vật thể</i>, để người xem tự hỏi “ai gửi, và bà ấy sẽ quyết thế nào”.</p>
+  </div>
+
+  <h3>Vì sao bùng</h3>
+  <ul>
+    <li><b>Kênh mạnh nhất ngách, không phải ăn may:</b> 50 video trong 18 ngày (gần 3 video/ngày), <b>9 video vượt 100k</b>,
+      video lớn nhất 611.194 view; riêng nhóm video 3–10 ngày tuổi có trung vị <b>174.408 view</b>.</li>
+    <li><b>Tiêu đề dạng “câu nói bị hiểu sai”:</b> lấy một câu ai cũng nghe (老人ホームは入ったら終わり — vào viện dưỡng lão là hết)
+      rồi hứa giải thích lại ý nghĩa thật. Đây là mô-típ mạnh nhất trong 3 video vì nó bán <i>sự hiểu biết</i>, không bán nỗi sợ.</li>
+    <li><b>Đánh vào nỗi sợ cụ thể nhất của người 70–80 tuổi sống một mình:</b> ai sẽ lo cho mình, và mất gì khi vào viện dưỡng lão.</li>
+  </ul>
+  <p><b>Bài học cho Lane M:</b> mô-típ “câu nói quen bị hiểu sai” rẻ nhất để sản xuất (không cần dữ liệu, không cần bảng biểu)
+    và đã chứng minh ăn 100k. Nhưng <b>đánh đổi:</b> video 55 phút — nặng gấp 2,5 lần mặt bằng 20–22 phút của 2 video trên.</p>
+</div>
+
+<h2>04 · Bản đồ đề tài — cái gì vượt 100k, cái gì chặn ở 30–50k</h2>
+<p class="small">Đếm từ khoá trong tiêu đề của 608 video manga (kênh &lt;10k sub, đăng trong 5 ngày). Một tiêu đề có thể chứa nhiều từ khoá.</p>
+<table>
+  <thead><tr><th>Nhóm đề tài</th><th class="num">Số video / 5 ngày</th><th>Trần view quan sát được</th><th>Kết luận</th></tr></thead>
+  <tbody>
+    <tr><td><b>Trợ cấp thôi việc · lương hưu</b> <span class="small">(退職 58 · 年金 65)</span></td><td class="num">~120</td>
+        <td>135k–244k</td><td style="color:var(--ok)"><b>Nóng nhất</b> — chọn 2/3 video ở đây</td></tr>
+    <tr><td><b>Nghỉ hẳn hay làm tiếp · tái tuyển dụng</b> <span class="small">(定年 122)</span></td><td class="num">122</td>
+        <td>611k (video lớn nhất ngách)</td><td style="color:var(--ok)"><b>Trần cao nhất</b>, nhưng đã đông</td></tr>
+    <tr><td><b>Du lịch / mua sắm lớn khi về hưu</b> <span class="small">(du thuyền, xe cắm trại, 移住 8)</span></td><td class="num">~20</td>
+        <td>162k–244k</td><td style="color:var(--ok)"><b>Còn trống, trần cao</b> — chọn 1/3 video ở đây</td></tr>
+    <tr><td><b>Viện dưỡng lão · chăm sóc</b> <span class="small">(介護 39 · 老人ホーム 4)</span></td><td class="num">~43</td>
+        <td>123k</td><td>Trung bình — cần mô-típ mạnh như video 3</td></tr>
+    <tr><td><b>Việc làm thêm cho người 70</b> <span class="small">(バイト 6 · 再就職 5 · 再雇用 5 · シルバー 3)</span></td><td class="num">~19</td>
+        <td>37k–110k</td><td style="color:var(--acc)"><b>Gần như TRỐNG nhưng trần thấp</b> — xem cảnh báo dưới</td></tr>
+  </tbody>
+</table>
+<div class="warnbox">
+  <b>Cảnh báo về chính 2 đề tài mẫu anh đưa.</b> “7 việc làm thêm dễ được nhận ở tuổi 70” và “5 thói quen nhỏ sau nghỉ hưu”
+  thuộc nhóm <b>danh sách lời khuyên</b> — nhóm này trong 5 ngày chỉ có 6 video chứa chữ “việc làm thêm”, và trần view thấp hơn hẳn:
+  kênh ゆうき (Yuki — thông tin hữu ích cho người cao tuổi) đạt 110.480 view nhưng phải mất <b>55 ngày</b> (≈2.000 view/ngày);
+  縁側の知恵 (Hiên nhà — trí tuệ tuổi già) làm “TOP 5 việc làm thêm nhàn mà kiếm được sau nghỉ hưu” chỉ được 37.608 view / 3,3 ngày.
+  Trong khi đó video cùng kênh 縁側の知恵 về <i>“nghỉ ở 60 hay ở lại đến 65 — 5 năm sau khoảng cách”</i> đạt <b>223.201 view</b>.
+  <br><br>Tức là: <b>đề tài dạng “danh sách việc làm” không chết, nhưng không bùng</b>. Muốn vượt 100k thì phải đổi từ
+  “danh sách lời khuyên” sang “một quyết định + hậu quả sau N năm”. Nếu anh vẫn muốn giữ 2 đề tài mẫu, nên
+  <b>gắn chúng vào một nhân vật có mốc thời gian</b> (ví dụ: ông 70 tuổi thử 7 việc trong 1 năm, việc nào trả bao nhiêu, cuối cùng chọn việc gì).
+</div>
+
+<h2>05 · Video ĐẠT ngưỡng nhưng bị loại — và lý do</h2>
+<div class="card" style="border-left:4px solid var(--no)">
+  <h3 style="margin-top:0">ふたりと1匹 (Hai người và một con) · 106.844 view / 3,0 ngày · 878 sub · <span style="color:var(--no)">LOẠI</span></h3>
+  <p class="small" style="margin:0 0 8px">Nguyên văn: 少額すぎる両親の年金｜懸命に生きて来たふたりの今までとこれから｜低年金・低収入｜高齢両親の田舎暮らし</p>
+  <p><b>Lý do loại:</b> đã tải video và trích khung hình — đây là <b>phim quay người thật</b> (bố mẹ lớn tuổi làm vườn, mặt được làm mờ,
+    phụ đề chạy dưới), không phải kênh manga. Về số liệu thì video này đạt đủ ngưỡng, nhưng không dùng được cho Lane M vì
+    không clone được bằng pipeline tranh/ảnh. Ghi lại đây để anh thấy nó đã được xét, không bị bỏ sót.</p>
+</div>
+
+<h2>06 · Danh sách theo dõi (không chọn, nhưng đáng bám)</h2>
+<table>
+  <thead><tr><th>Video</th><th class="num">View</th><th class="num">Tuổi</th><th class="num">View/ngày</th><th>Vì sao đáng theo</th></tr></thead>
+  <tbody>
+    <tr><td><b>Nghỉ ở 60 hay ở lại đến 65 — 5 năm sau khoảng cách</b><br><span class="small">60歳で辞めた俺と65歳まで働いた同期。5年後の"格差"に絶望した理由【漫画】 · 縁側の知恵 · 1.410 sub</span></td>
+        <td class="num">223.201</td><td class="num">15,3 d</td><td class="num">14.588</td>
+        <td>Đúng yêu cầu mở rộng của anh (“nên tiếp hay nghỉ”), nhưng chạm 100k ở ~ngày 7 — chậm hơn ngưỡng</td></tr>
+    <tr><td><b>Người nghỉ ở 60 và người ở lại đến 65</b><br><span class="small">【漫画】60歳で辞めた男と、65歳まで会社に残った男。5年後、差がついた本当の理由… · 源さん · 8.340 sub</span></td>
+        <td class="num">611.194</td><td class="num">10,1 d</td><td class="num">60.514</td>
+        <td><b>Video lớn nhất toàn ngách</b> — khuôn đề tài mạnh nhất, nên cân nhắc làm tập chính</td></tr>
+    <tr><td><b>Lương hưu dự kiến 70.000 yên/tháng — người phụ nữ 50 tuổi sống một mình</b><br><span class="small">【漫画】年金の見込みは月7万円…結婚相談所で口にした本音 · 源さん · 8.340 sub</span></td>
+        <td class="num">45.826</td><td class="num">1,1 d</td><td class="num">43.437</td>
+        <td><b>Đang bùng mạnh nhất lúc quét</b> (43k/ngày) — dự kiến chạm 100k trong ~2,3 ngày nữa</td></tr>
+    <tr><td><b>Ông 67 tuổi chở bạn đến lớp học nước màu</b><br><span class="small">【漫画】友人を乗せていた67歳。教室へは別々に行くと伝えたあとの水彩教室 · しあわせチャンネル · 651 sub</span></td>
+        <td class="num">80.573</td><td class="num">4,2 d</td><td class="num">19.087</td>
+        <td>Sát ngưỡng (chạm 100k ~ngày 5,2), kênh chỉ 651 sub — bằng chứng ngách này không cần sub để bùng</td></tr>
+  </tbody>
+</table>
+
+<h2>07 · Chưa làm được / rủi ro — nói thẳng</h2>
+<ul>
+  <li><b>Chưa có comment thật.</b> Thư viện tải comment trả về 0 cho cả 3 video (API bị chặn ở lượt này), nên báo cáo
+    <b>không có chân dung khán giả bằng trích dẫn</b>. Nếu anh cần mục đó, em chạy lại bằng đường InnerTube.</li>
+  <li><b>“Ngày chạm 100k” là ước tính</b> từ view/ngày trung bình, không phải số đo giữa 2 mốc thời gian. Video 2 và 3 hiện
+    đã ngoài cửa sổ 5 ngày; nếu anh yêu cầu tuyệt đối “đo tại thời điểm 5 ngày”, chỉ video 1 đủ điều kiện.</li>
+  <li><b>Định dạng kiểm bằng 6 khung hình/video</b>, không xem hết 21–55 phút. Kết luận “manga màu” là chắc, nhưng tỉ lệ
+    panel truyện thật / slide số liệu trong video 1 thì chưa đếm chính xác.</li>
+  <li><b>Chưa phân tích thumbnail chi tiết</b> (màu, chữ, mặt người) — mới xem qua ảnh đại diện. Nếu anh duyệt, em bóc
+    tiếp phần thumbnail + hook 0–90 giây đầy đủ để nạp kho hook.</li>
+  <li><b>Video 3 dài 55 phút</b> — nếu lấy làm mẫu sản xuất thì chi phí gấp 2,5 lần. Video 1 (21 phút) là mẫu cân bằng nhất.</li>
+</ul>
+
+<h2>08 · Quyết định</h2>
+<div class="card">
+  <p style="margin-top:0">Ba lựa chọn, anh chọn hướng nào em làm tiếp:</p>
+  <ul>
+    <li><b>A — Duyệt 3 video này:</b> em bóc tiếp hook 0–90 giây đầy đủ + thumbnail + cấu trúc từng chương, nạp kho hook,
+      rồi viết hồ sơ bàn giao Lane M.</li>
+    <li><b>B — Đổi hạng 3:</b> lấy video <i>“nghỉ ở 60 hay ở lại đến 65”</i> (223k view, đúng ngách mở rộng) thay cho video viện dưỡng lão,
+      dù nó chạm ngưỡng chậm hơn (~ngày 7).</li>
+    <li><b>C — Đào sâu kênh 源さん (8.340 sub, 9 video vượt 100k trong 18 ngày):</b> đây là cỗ máy của ngách — em bóc toàn bộ
+      50 video, tìm khuôn tiêu đề và nhịp đăng để anh quyết có làm theo mô hình “3 video/ngày, 40–55 phút” hay không.</li>
+  </ul>
+  <p class="small" style="margin-bottom:0">Em chưa bàn giao gì sang dự án khác — chờ anh duyệt.</p>
+</div>
+
+<footer>
+  Lane M · báo cáo duyệt 20/10/2026 · dữ liệu quét trong ngày, lưu tại
+  <span class="mono">scratch_analysis/lane_M_threshold_20261020/</span> ·
+  khung 6 hình/video: <span class="mono">frames/</span> ·
+  số liệu kênh: <span class="mono">channel_history.json</span>
+</footer>
+</div>
+</body>
+</html>

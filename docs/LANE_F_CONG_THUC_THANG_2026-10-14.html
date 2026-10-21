@@ -1,0 +1,223 @@
+<title>Lane F · Công thức thắng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: một cột đọc ~780px; bảng số liệu cuộn ngang riêng; thanh giữ chân vẽ bằng CSS cùng một thang 0–100% */
+:root{
+  --bg:#f5f7f8; --panel:#ffffff; --fg:#17232b; --muted:#5a6b75; --line:#d8e0e4;
+  --accent:#0f6b70; --accent-soft:#dcefee; --good:#1d7a3e; --bad:#b4442f; --warn:#a46b00;
+  --f-body:"Be Vietnam Pro","Noto Sans JP",system-ui,sans-serif;
+  --f-jp:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1619; --panel:#172126; --fg:#e3eaed; --muted:#93a5ae; --line:#2a3a41;
+  --accent:#5cc3c6; --accent-soft:#1b3a3c; --good:#5fc884; --bad:#ec8a74; --warn:#e3b04f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1619; --panel:#172126; --fg:#e3eaed; --muted:#93a5ae; --line:#2a3a41;
+  --accent:#5cc3c6; --accent-soft:#1b3a3c; --good:#5fc884; --bad:#ec8a74; --warn:#e3b04f; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15.5px;line-height:1.65}
+.wrap{max-width:820px;margin:0 auto;padding-inline:18px;padding-block:28px 64px;display:grid;gap:34px}
+h1,h2,h3{text-wrap:balance;line-height:1.25;margin:0}
+h1{font-size:1.9rem;font-weight:800}
+h2{font-size:1.3rem;font-weight:800;padding-top:6px;border-top:2px solid var(--fg)}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0}
+section{display:grid;gap:14px;min-width:0}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.jp{font-family:var(--f-jp)}
+.vn{color:var(--muted);font-size:.9em}
+.lede{font-size:1.05rem}
+.verdict{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--accent);padding:16px 18px;display:grid;gap:10px}
+.verdict ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:.86rem;font-variant-numeric:tabular-nums}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top;white-space:nowrap}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;font-weight:600}
+td.t,th.t{text-align:left;white-space:normal;min-width:260px}
+tr.win td{background:var(--accent-soft)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.7rem;padding:1px 7px;border-radius:9px;border:1px solid currentColor}
+.pill.g{color:var(--good)}.pill.b{color:var(--bad)}.pill.w{color:var(--warn)}
+.bars{display:grid;gap:7px;background:var(--panel);border:1px solid var(--line);padding:14px 16px}
+.bar{display:grid;grid-template-columns:150px 1fr 92px;gap:10px;align-items:center;font-size:.84rem}
+.bar .lbl{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.track{height:14px;background:var(--bg);position:relative;border:1px solid var(--line)}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--muted)}
+.fill.hi{background:var(--accent)}
+.fill.lo{background:var(--bad)}
+.bar .num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);padding:14px 16px;display:grid;gap:8px;min-width:0}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:5px}
+blockquote{margin:0;padding:10px 14px;border-left:3px solid var(--line);font-family:var(--f-jp);font-size:.92rem;display:grid;gap:4px}
+blockquote .vn{font-family:var(--f-body)}
+.steps{margin:0;padding-left:1.3em;display:grid;gap:9px}
+.steps b{font-weight:700}
+.time{font-family:var(--f-mono);font-size:.78rem;color:var(--accent)}
+code,.path{font-family:var(--f-mono);font-size:.82rem;word-break:break-all}
+.note{font-size:.85rem;color:var(--muted)}
+a{color:var(--accent)}
+@media (max-width:620px){.two{grid-template-columns:1fr}.bar{grid-template-columns:96px 1fr 70px}h1{font-size:1.5rem}}
+</style>
+
+<div class="wrap">
+
+<header style="display:grid;gap:10px">
+  <div class="eyebrow">Lane F · 定年後のリアル (Thực tế sau tuổi hưu) · kênh UCIimxP275YufOXXIlu9y9Lg · 14/10/2026</div>
+  <h1>Chủ đề nào đang thắng, và vì sao</h1>
+  <p class="lede">Đọc YouTube Studio của profile GPM <b>VirgiliTraino95@gmail.com</b> (14 video đã đăng, 346 người đăng ký, 93,6K view / 28 ngày), lấy comment qua API, rồi đọc kịch bản 16 tập ở <span class="path">E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\jobs\F-teinengo-real</span> và đối chiếu từng tập với đường giữ chân của chính nó.</p>
+</header>
+
+<div class="verdict">
+  <h3>Kết luận</h3>
+  <ol>
+    <li><b>Chủ đề thắng: "ngã rẽ tuổi 60: ở lại làm tiếp hay nghỉ hẳn"</b> (再雇用 tái tuyển dụng / 早期退職 nghỉ hưu sớm / từ chối việc). 5 tập thuộc chủ đề này gom <b>59,6K / 92,7K view (64%)</b>. Hai tập duy nhất được thuật toán đẩy mạnh (ep02, ep10) đều thuộc chủ đề này. Tập ep02 cũng có nhiều comment nhất (45), người xem kể lại quyết định thật của chính họ.</li>
+    <li><b>Thuật toán thưởng cho giữ chân, không thưởng cho CTR.</b> ep02 có CTR thấp nhất kênh (3,9%) mà nhận 320K lượt hiển thị. ep14 có CTR cao nhất (8,5%) nhưng giữ chân yếu. Tập nào giữ được ~60% người xem ở phút thứ 2 và thời lượng xem trung bình từ 10 phút trở lên thì được đẩy. Tập chỉ giữ ~43% thì dừng ở khoảng 35K lượt hiển thị.</li>
+    <li><b>Công thức thắng nằm ở hook: "tôi và anh đồng kỳ chọn hai đường, ai mất nhiều hơn?"</b> hoặc "niềm tin của tôi bị lật". Kiểu này giữ 75–83% người xem ở giây 30. Kiểu hook "tiền biến đi đâu?" (bí ẩn số tiền) có CTR cao hơn nhưng chỉ giữ 59–67% ở giây 30 và 37–45% ở phút 2.</li>
+    <li><b>Cảnh báo:</b> từ ep08 trở đi kịch bản chuyển sang dạng "mỗi câu một dòng", đọc chậm hơn (213–247 chữ/phút so với 284–297), và mở bằng hook bí ẩn tiền. Cả 4 tập dạng này đã đăng đều nằm ở nhóm giữ chân thấp. <b>ep15 và ep16 chưa đăng cũng viết y kiểu đó</b>, nên sửa hook trước khi đăng.</li>
+  </ol>
+</div>
+
+<section>
+  <h2>1 · Số liệu từng tập</h2>
+  <p class="note">View/like/comment lấy từ API lúc 14/10. Lượt hiển thị, CTR, AVD (thời lượng xem trung bình) và nguồn lưu lượng lấy từ Studio, mốc "trọn đời" (Studio có dữ liệu đến 12/10). "Giữ ở 30s" là số Studio ghi thẳng. "Giữ ở 2 phút" là ước tính từ đường cong trong Studio (sai số ±3–4 điểm). Dòng tô màu là 2 tập được đẩy mạnh.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Tập</th><th class="t">Tiêu đề đã đăng</th><th>View</th><th>View/ngày</th><th>Cmt</th><th>Hiển thị</th><th>CTR</th><th>AVD</th><th>Giữ 30s</th><th>Giữ 2p</th><th>+Sub</th></tr></thead>
+    <tbody>
+<tr class="win"><td>ep02</td><td class="t"><span class="jp">【漫画】60歳で再雇用を選んだ俺…50代・60代が老後の貯金を減らさないために知るべき7つのこと</span><br><span class="vn">Tôi chọn tái tuyển dụng ở tuổi 60… 7 điều người 50–60 tuổi cần biết để không hao tiền tiết kiệm</span></td><td>24.136</td><td>1.297</td><td>45</td><td>320,5K</td><td>3,9%</td><td>10:15</td><td>79%</td><td>63%</td><td>+54</td></tr>
+<tr class="win"><td>ep10</td><td class="t"><span class="jp">【漫画】59歳で早期退職した俺…退職金2000万円で安心した翌月、計算が崩れた</span><br><span class="vn">Tôi nghỉ sớm năm 59 tuổi… yên tâm với 20 triệu yên tiền thôi việc, sang tháng sau thì phép tính sụp đổ</span></td><td>13.467</td><td>2.037</td><td>10</td><td>97,6K</td><td>5,2%</td><td>10:22</td><td>74%</td><td>64%</td><td>+44</td></tr>
+<tr><td>ep04</td><td class="t"><span class="jp">【漫画】60代で定年退職した俺…誰もが陥りやすい「老後の3つの間違い」</span><br><span class="vn">Tôi nghỉ hưu ở tuổi 60… "3 sai lầm tuổi già" ai cũng dễ mắc</span></td><td>11.834</td><td>712</td><td>3</td><td>36K</td><td>6,4%</td><td>5:25</td><td>66%</td><td>39%</td><td>+6</td></tr>
+<tr><td>ep08</td><td class="t"><span class="jp">【漫画】60歳で再雇用を断った俺…3年後、息子の一言で知った「300万円」の本当の理由</span><br><span class="vn">Tôi từ chối tái tuyển dụng năm 60… 3 năm sau, một câu của con trai cho tôi biết lý do thật của "3 triệu yên"</span></td><td>9.696</td><td>1.009</td><td>0</td><td>35,6K</td><td>6,6%</td><td>6:32</td><td>67%</td><td>44%</td><td>+20</td></tr>
+<tr><td>ep09</td><td class="t"><span class="jp">【漫画】65歳で仕事を断った俺…半年後、18万円消えた本当の理由</span><br><span class="vn">Tôi từ chối việc làm năm 65… nửa năm sau mất 180 nghìn yên, lý do thật</span></td><td>9.304</td><td>1.081</td><td>4</td><td>35,5K</td><td>7,2%</td><td>7:13</td><td>66%</td><td>43%</td><td>+30</td></tr>
+<tr><td>ep07</td><td class="t"><span class="jp">【漫画】退職時1500万円あった貯金が3年で1200万円に…66歳独身男「300万円、何に使った？」</span><br><span class="vn">15 triệu yên tiết kiệm lúc nghỉ còn 12 triệu sau 3 năm… ông 66 tuổi độc thân: "3 triệu yên tiêu vào đâu?"</span></td><td>6.619</td><td>570</td><td>2</td><td>16,5K</td><td>8,2%</td><td>5:19</td><td>65%</td><td>37%</td><td>+7</td></tr>
+<tr><td>ep11</td><td class="t"><span class="jp">【漫画】65歳で退職した元部長…「俺が払う」を続けた5年後、退職金が1700万円減っていた</span><br><span class="vn">Cựu trưởng phòng nghỉ năm 65… cứ "để tôi trả" suốt 5 năm, tiền thôi việc hụt 17 triệu yên</span></td><td>5.769</td><td>1.021</td><td>8</td><td>44,4K</td><td>5,0%</td><td>7:32</td><td>72%</td><td>50%</td><td>+26</td></tr>
+<tr><td>ep12</td><td class="t"><span class="jp">【漫画】65歳独身の俺…入院で「保証人は？」と聞かれ、147万円の契約書にサインしかけた</span><br><span class="vn">65 tuổi độc thân… nhập viện bị hỏi "người bảo lãnh đâu?", suýt ký hợp đồng 1,47 triệu yên</span></td><td>3.696</td><td>797</td><td>0</td><td>16,9K</td><td>6,4%</td><td>6:47</td><td>66%</td><td>45%</td><td>+19</td></tr>
+<tr><td>ep03</td><td class="t"><span class="jp">【漫画】60代で年金を繰り上げた俺…90％が知らない「老後を狂わせる3つの落とし穴」</span><br><span class="vn">Tôi nhận lương hưu sớm ở tuổi 60… 3 cái bẫy làm lệch tuổi già mà 90% không biết</span></td><td>3.561</td><td>202</td><td>3</td><td>15,5K</td><td>6,3%</td><td>6:41</td><td>67%</td><td>42%</td><td>+2</td></tr>
+<tr><td>ep01</td><td class="t"><span class="jp">【漫画】「60代なら余裕」の計画が崩れた…定年後をより良く変える5つのこと</span><br><span class="vn">Kế hoạch "tuổi 60 thì dư dả" sụp đổ… 5 điều làm hậu nghỉ hưu tốt hơn</span></td><td>2.851</td><td>145</td><td>11</td><td>14,7K</td><td>6,1%</td><td>9:52</td><td>77%</td><td>59%</td><td>+5</td></tr>
+<tr><td>ep14</td><td class="t"><span class="jp">【漫画】66歳で田舎に戻った俺…家賃0円でも貯金が減り続けた本当の理由</span><br><span class="vn">Tôi về quê năm 66… tiền nhà 0 yên mà tiết kiệm vẫn cứ hao, lý do thật</span></td><td>2.442</td><td>669</td><td>0</td><td>5,8K*</td><td>8,5%</td><td>4:40*</td><td>69%</td><td>~27%*</td><td>+19</td></tr>
+<tr><td>ep05</td><td class="t"><span class="jp">【漫画】62歳で妻を亡くした俺…多くの人が気づかない「老後の本当の問題」</span><br><span class="vn">Tôi mất vợ năm 62… "vấn đề thật của tuổi già" nhiều người không nhận ra</span></td><td>1.294</td><td>95</td><td>0</td><td>3,6K</td><td>5,9%</td><td>3:24</td><td>52%</td><td>27%</td><td>0</td></tr>
+<tr><td>ep06</td><td class="t"><span class="jp">【漫画】60歳で定年退職した俺…退職金が減っても、60代から人生が楽になった本当の理由</span><br><span class="vn">Tôi nghỉ hưu năm 60… dù tiền thôi việc giảm, lý do thật khiến đời nhẹ hơn từ tuổi 60</span></td><td>425</td><td>34</td><td>2</td><td>3K</td><td>5,5%</td><td>8:48</td><td>83%</td><td>62%</td><td>+1</td></tr>
+<tr><td>ep13</td><td class="t"><span class="jp">【漫画】40歳で独立した俺…多くの人が見落とす「老後の選択」の代償</span><br><span class="vn">Tôi ra làm riêng năm 40… cái giá của "lựa chọn tuổi già" nhiều người bỏ sót</span></td><td>117</td><td>71</td><td>1</td><td>788</td><td>5,1%</td><td>–</td><td>–</td><td>–</td><td>+1</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">* ep14 và ep13 mới đăng 2–4 ngày, Studio chưa có đủ dữ liệu, chưa kết luận được. ep15 <span class="jp">(年金12万円でも老後が苦しくなる3つの理由)</span> và ep16 <span class="jp">(老後資金3000万円でも安心できない)</span> chưa đăng, không có lịch hẹn giờ.</p>
+</section>
+
+<section>
+  <h2>2 · Đang lên trong 48 giờ qua</h2>
+  <div class="bars" aria-label="View 48 giờ">
+    <div class="bar"><span class="lbl">ep10 nghỉ sớm 59</span><span class="track"><span class="fill hi" style="width:100%"></span></span><span class="num">3.305</span></div>
+    <div class="bar"><span class="lbl">ep14 về quê</span><span class="track"><span class="fill hi" style="width:69%"></span></span><span class="num">2.281</span></div>
+    <div class="bar"><span class="lbl">ep12 bảo lãnh</span><span class="track"><span class="fill" style="width:41%"></span></span><span class="num">1.355</span></div>
+    <div class="bar"><span class="lbl">ep11 "tôi trả"</span><span class="track"><span class="fill" style="width:21%"></span></span><span class="num">692</span></div>
+    <div class="bar"><span class="lbl">ep09 từ chối việc</span><span class="track"><span class="fill" style="width:6%"></span></span><span class="num">196</span></div>
+  </div>
+  <p>ep10 vẫn là động cơ chính của kênh. Từ khoá tìm kiếm đưa người xem đến là <span class="jp">早期退職</span> (nghỉ hưu sớm), <span class="jp">退職金</span> (tiền thôi việc), <span class="jp">59歳で退職</span>. <b>ep14 (về quê, tiền nhà 0 yên) đang lên nhanh dù mới 4 ngày.</b> Nó được gợi ý bên cạnh các video đối thủ cùng đề tài như <span class="jp">250万円の格安古民家へ移住した62歳夫婦</span> (vợ chồng 62 tuổi chuyển về nhà cổ giá rẻ 2,5 triệu yên) và <span class="jp">50万円の山小屋なら月10万円で暮らせる？</span> (nhà gỗ trên núi 500 nghìn yên, sống 100 nghìn yên/tháng được không?). Vậy "chuyển về quê / nhà rẻ khi về già" là cụm đề tài đang nóng trong ngách, nên theo dõi tiếp 3–4 ngày rồi mới chốt.</p>
+</section>
+
+<section>
+  <h2>3 · Đường giữ chân ở phút thứ 2 tách hai nhóm rõ rệt</h2>
+  <div class="bars" aria-label="Giữ chân ở phút 2">
+    <div class="bar"><span class="lbl">ep10 · đồng kỳ</span><span class="track"><span class="fill hi" style="width:64%"></span></span><span class="num">64%</span></div>
+    <div class="bar"><span class="lbl">ep02 · đồng kỳ</span><span class="track"><span class="fill hi" style="width:63%"></span></span><span class="num">63%</span></div>
+    <div class="bar"><span class="lbl">ep06 · niềm tin lật</span><span class="track"><span class="fill hi" style="width:62%"></span></span><span class="num">62%</span></div>
+    <div class="bar"><span class="lbl">ep01 · đồng kỳ</span><span class="track"><span class="fill hi" style="width:59%"></span></span><span class="num">59%</span></div>
+    <div class="bar"><span class="lbl">ep11 · cảnh trả tiền</span><span class="track"><span class="fill" style="width:50%"></span></span><span class="num">50%</span></div>
+    <div class="bar"><span class="lbl">ep12 · cảnh ký HĐ</span><span class="track"><span class="fill" style="width:45%"></span></span><span class="num">45%</span></div>
+    <div class="bar"><span class="lbl">ep08 · bí ẩn tiền</span><span class="track"><span class="fill lo" style="width:44%"></span></span><span class="num">44%</span></div>
+    <div class="bar"><span class="lbl">ep09 · bí ẩn tiền</span><span class="track"><span class="fill lo" style="width:43%"></span></span><span class="num">43%</span></div>
+    <div class="bar"><span class="lbl">ep03 · thủ tục</span><span class="track"><span class="fill lo" style="width:42%"></span></span><span class="num">42%</span></div>
+    <div class="bar"><span class="lbl">ep04 · bí ẩn tiền</span><span class="track"><span class="fill lo" style="width:39%"></span></span><span class="num">39%</span></div>
+    <div class="bar"><span class="lbl">ep07 · bí ẩn tiền</span><span class="track"><span class="fill lo" style="width:37%"></span></span><span class="num">37%</span></div>
+    <div class="bar"><span class="lbl">ep05 · tang vợ</span><span class="track"><span class="fill lo" style="width:27%"></span></span><span class="num">27%</span></div>
+  </div>
+  <p>Bốn tập dẫn đầu đều mở bằng <b>một lựa chọn mà chính người xem đang đứng trước</b>, rồi hứa một câu trả lời trái kỳ vọng. Các tập cuối bảng mở bằng câu hỏi "tiền đi đâu", bằng thủ tục giấy tờ, hoặc bằng nỗi buồn mất vợ. ep06 giữ chân rất tốt nhưng lượt hiển thị gần như bằng 0, vì tiêu đề "đời nhẹ hơn" không khớp với nội dung (chuyện phí sửa chữa chung cư tăng gấp 4) và cũng không có xung đột nào để bấm vào.</p>
+</section>
+
+<section>
+  <h2>4 · So sánh hook: nhóm thắng và nhóm thua</h2>
+  <div class="two">
+    <div class="card">
+      <span class="pill g">Thắng · giữ 30s 74–83%</span>
+      <blockquote><span>六十歳で会社を出た俺と、六十五歳まで残った日高。どっちが幸せだったのか。五年たった今なら、答えられる。</span><span class="vn">Tôi rời công ty năm 60, còn Hidaka ở lại tới 65. Ai hạnh phúc hơn? Giờ, sau 5 năm, tôi trả lời được. (ep01)</span></blockquote>
+      <blockquote><span>黄色いヘルメットをかぶった俺と、家で新聞を読んでいる同期の日高。一年後、どっちが多くを失っていたか。</span><span class="vn">Tôi đội mũ bảo hộ vàng, còn anh đồng kỳ Hidaka ở nhà đọc báo. Một năm sau, ai mất nhiều hơn? (ep02)</span></blockquote>
+      <blockquote><span>「早く辞めた方が勝ちだ」。…本気でそう信じていた。</span><span class="vn">"Nghỉ sớm là thắng." Tôi tin thật lòng như vậy. (ep10)</span></blockquote>
+    </div>
+    <div class="card">
+      <span class="pill b">Thua · giữ 30s 52–67%</span>
+      <blockquote><span>通帳の残高は、一年で九十八万円減っていた。…何が、俺の貯金を持っていったのか。</span><span class="vn">Sổ tiết kiệm giảm 980 nghìn yên trong một năm… Cái gì đã lấy mất tiền của tôi? (ep04)</span></blockquote>
+      <blockquote><span>三年で三百万円。…この金は、何に化けたのか。</span><span class="vn">3 năm mất 3 triệu yên… Số tiền này đã biến thành gì? (ep07)</span></blockquote>
+      <blockquote><span>「年金、削られるぞ。」…半年後には、18万円が消えていた。</span><span class="vn">"Lương hưu bị cắt đấy." … Nửa năm sau, 180 nghìn yên đã biến mất. (ep09)</span></blockquote>
+    </div>
+  </div>
+  <p>Kiểu "tiền biến đi đâu" có CTR cao (7–8,5%) vì tò mò, nhưng người xem không thấy mình trong câu chuyện nên rời đi sớm. Kiểu "tôi và đồng kỳ" để người xem tự hỏi "mình sẽ chọn đường nào", và họ ở lại để biết đáp án.</p>
+</section>
+
+<section>
+  <h2>5 · Bộ khung của các tập thắng (ep01, ep02, ep10)</h2>
+  <p>Đọc trọn ba kịch bản này thì thấy cùng một bộ xương. Mốc thời gian lấy theo tốc độ đọc thực tế của từng tập.</p>
+  <ol class="steps">
+    <li><span class="time">0:00–0:40</span> <b>Hook hai con đường.</b> "Tôi chọn A, đồng kỳ chọn B, sau N năm ai mất nhiều hơn?" (hoặc một câu niềm tin bị lật). Hứa trước rằng đáp án "nằm ngoài tưởng tượng".</li>
+    <li><span class="time">0:40–1:30</span> <b>Giới thiệu bằng chi tiết cụ thể:</b> nơi sống, nghề, vợ, và <b>một đồ vật làm mô-típ</b> xuyên suốt tập (chiếc máy tính cầm tay cũ ở ep01, mũ bảo hộ vàng ở ep02, thìa đường trong cốc cà phê ở ep10).</li>
+    <li><span class="time">~1:30–2:00</span> <b>"Lá bài trên tay" (手札):</b> nói hết số thật ngay từ đầu: tiền thôi việc, nợ nhà, tiết kiệm, lương của vợ, lương hưu mấy tuổi thì nhận, chi tiêu một tháng. Ở ep01 và ep02 mục này xuất hiện ở khoảng giây 95–105.</li>
+    <li><span class="time">2–4 phút</span> <b>Một tháng "thiên đường":</b> rạp phim ngày thường chỉ có 4 khán giả, bia lúc trời còn sáng, du lịch ngày thường.</li>
+    <li><span class="time">4–8 phút</span> <b>Phong bì gây sốc từ chế độ thật:</b> thuế cư trú tính theo lương năm trước, bảo hiểm y tế quốc dân, giấy nghỉ việc ghi "tự nguyện nghỉ", trợ cấp tái tuyển dụng bị cắt từ 15% xuống 10%.</li>
+    <li><span class="time">xuyên suốt</span> <b>Các mốc sổ tiết kiệm:</b> 3 tháng, nửa năm, 1 năm, 1 năm rưỡi, mỗi mốc một con số giảm. Người xem theo dõi như xem đồng hồ đếm ngược.</li>
+    <li><span class="time">~40–50% tập</span> <b>Gặp đồng kỳ ở quán cà phê:</b> lật "lá bài" của đối thủ. Hai bên đều mất, nhưng mất thứ khác nhau (tiền với tiếng nói, thời gian, sức khoẻ, cháu).</li>
+    <li><span class="time">~55%</span> <b>Câu chốt của người vợ:</b> "Hai người chỉ nghĩ theo kiểu 0 hoặc 100."</li>
+    <li><span class="time">~60–90%</span> <b>Con đường thứ ba:</b> việc 3 ngày/tuần, vai trò nhỏ trong khu phố, khoảnh khắc lần đầu được nói "cảm ơn". Có con số mới cho thấy cầm cự được tới 65 tuổi.</li>
+    <li><span class="time">cuối</span> <b>"Cả hai đều đúng, cả hai đều sai"</b> + hỏi người xem chọn 1 trong 3 đường, mời viết vào comment.</li>
+  </ol>
+  <p class="note">ep08 và ep09 cũng có anh đồng kỳ và cũng có con đường thứ ba, nhưng hook là bí ẩn tiền, số liệu "lá bài" bị dàn mỏng thành từng dòng lẻ, và đối thủ chỉ xuất hiện như một câu nói. Kết quả là giữ chân thấp hơn khoảng 20 điểm ở phút 2.</p>
+</section>
+
+<section>
+  <h2>6 · Định dạng kịch bản: điểm cần kiểm tra</h2>
+  <div class="tbl"><table>
+    <thead><tr><th class="t">Nhóm</th><th>Tập</th><th>Chữ/dòng TB</th><th>Chữ/phút</th><th>Giữ 2p</th></tr></thead>
+    <tbody>
+      <tr><td class="t">Văn xuôi thành đoạn, hook hai con đường</td><td>ep01 ep02 ep10</td><td>128–204</td><td>244–292</td><td>59–64%</td></tr>
+      <tr><td class="t">Văn xuôi thành đoạn, hook bí ẩn tiền / thủ tục</td><td>ep03 ep04 ep07</td><td>155–171</td><td>291–297</td><td>37–42%</td></tr>
+      <tr><td class="t">Mỗi câu một dòng, hook bí ẩn tiền</td><td>ep08 ep09 ep14</td><td>12–15</td><td>213–225</td><td>~27–44%</td></tr>
+      <tr><td class="t">Chưa đăng, cùng kiểu "mỗi câu một dòng"</td><td>ep15 ep16</td><td>15</td><td>–</td><td><span class="pill w">rủi ro</span></td></tr>
+    </tbody>
+  </table></div>
+  <p>Hook là thứ tách hai nhóm rõ nhất. Ở các tập văn xuôi, chỉ riêng việc đổi kiểu hook đã chênh 20 điểm giữ chân. Kiểu "mỗi câu một dòng" chưa từng đi cùng hook hai con đường nên chưa tách được tác động riêng của nó. Nhưng nó chưa ra tập nào thắng, và tốc độ đọc chậm làm video dài thêm 3–5 phút mà không thêm nội dung.</p>
+</section>
+
+<section>
+  <h2>7 · Comment nói gì</h2>
+  <div class="two">
+    <div class="card">
+      <h3>Người xem kể chuyện thật</h3>
+      <p>Comment nhiều nhất là ở ep02 (45). Người xem kể quyết định của chính họ: nhận lương hưu sớm, giảm 24% rồi nghỉ hẳn (18 like, 5 trả lời); tái tuyển dụng 3 năm rồi bệnh tinh thần nên đổi việc; làm hợp đồng, phái cử tới 65 tuổi. <b>Chủ đề "ở lại hay nghỉ" kéo người xem kể chuyện đời mình. Các chủ đề khác thì không.</b></p>
+    </div>
+    <div class="card">
+      <h3>Chê độ tin cậy</h3>
+      <ul>
+        <li>ep10: <span class="jp">「AIにストーリまで丸投げしないで時系列ぐらいチェックしようよ」</span> <span class="vn">(đừng giao hết cho AI, ít nhất kiểm tra dòng thời gian)</span>; <span class="jp">「そんなやつおらんぞ」</span> <span class="vn">(làm gì có ai như vậy)</span></li>
+        <li>ep09: chỉ ra lỗi chế độ 加給年金 <span class="vn">(phụ cấp lương hưu cho vợ)</span>: <span class="jp">「もう少し年金制度の勉強をしてください」</span> <span class="vn">(hãy học thêm về chế độ lương hưu)</span></li>
+        <li>ep02: <span class="jp">「AIで作った動画はこんなもんだな」</span> <span class="vn">(video làm bằng AI thì chỉ được thế này)</span></li>
+        <li>ep13: tiêu đề ghi <span class="jp">40歳で独立</span> (ra làm riêng năm 40) nhưng kịch bản là <b>48 tuổi</b>. Cần sửa tiêu đề.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">Comment ghim câu hỏi của kênh chỉ có ở ep01–ep04, từ ep05 trở đi không còn. Riêng ep02 thì comment ghim có 4 trả lời.</p>
+</section>
+
+<section>
+  <h2>8 · Đề xuất cho h2dev (Lane F)</h2>
+  <ol class="steps">
+    <li><b>Giữ trục chủ đề "ngã rẽ tuổi 60" làm xương sống</b>, nhưng mỗi tập đổi một cặp lựa chọn cụ thể mà người xem đang thật sự cân nhắc: nhận tiền thôi việc một lần hay nhận dần; nghỉ năm 65 hay làm tới 70; nhận hưu sớm (繰上げ) hay nhận muộn (繰下げ), kể qua hai đồng kỳ; bán nhà về quê hay ở lại thành phố. ep14 đang lên nên cặp cuối là ứng viên số một.</li>
+    <li><b>Hook bắt buộc theo khung "tôi chọn A, đồng kỳ chọn B, sau N năm ai mất nhiều hơn?"</b>, nói "lá bài" số liệu trước giây 105, và mang theo một đồ vật mô-típ.</li>
+    <li><b>Sửa ep15 và ep16 trước khi đăng:</b> hai tập này đang mở bằng bí ẩn tiền, không có đối thủ. Thêm một đồng kỳ chọn đường ngược lại vào hook, gộp các câu lẻ thành đoạn văn, đưa tốc độ đọc về khoảng 260–290 chữ/phút.</li>
+    <li><b>Tiêu đề phải là chính lựa chọn đó</b>, giống ep02/ep10 (<span class="jp">60歳で再雇用を選んだ俺…</span> / <span class="jp">59歳で早期退職した俺…</span>). Không dùng kiểu "đời nhẹ hơn" như ep06.</li>
+    <li><b>Kiểm số liệu chế độ và dòng thời gian trước khi đăng.</b> Người xem tuổi này rành lương hưu và đã bắt lỗi hai lần. Ghim lại câu hỏi "bạn sẽ chọn đường nào" ở mọi tập.</li>
+  </ol>
+</section>
+
+<footer class="note" style="display:grid;gap:4px">
+  <span>Dữ liệu gốc: <span class="path">E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_F_studio_20261014\</span> (Studio dạng văn bản, metrics, đường giữ chân, comment).</span>
+  <span>Kịch bản: <span class="path">E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\jobs\F-teinengo-real\epXX-*\script.txt</span></span>
+</footer>
+</div>

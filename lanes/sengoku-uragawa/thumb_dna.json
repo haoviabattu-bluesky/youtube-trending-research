@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "measured": true,
+  "lane_id": "sengoku-uragawa",
+  "sheet_tab": "sengoku-uragawa",
+  "sheet_id": "1xu4iNudIPanWrUxlTODqIySGf9YxLy7rpTq9OtXDMOU",
+  "source_channels": [
+    "https://www.youtube.com/channel/UCxXV78OIGchz13GAA7RGbEQ"
+  ],
+  "sample_thumbs": [
+    "thumbs/win/h9tW20hT2ks.jpg",
+    "thumbs/win/g9NiHpRWP0g.jpg",
+    "thumbs/win/QbPKiRRXM5E.jpg",
+    "thumbs/win/BTCIRj8agB4.jpg",
+    "thumbs/win/Tun00Fq_i0w.jpg",
+    "thumbs/win/SdRuge8_gvM.jpg",
+    "thumbs/win/ki5cLTt95AM.jpg",
+    "thumbs/win/2stLwk8XXdQ.jpg",
+    "thumbs/win/G1IwYAE4jkI.jpg",
+    "thumbs/win/sSluEwazQJQ.jpg",
+    "thumbs/win/jpIYCbsQ1gk.jpg",
+    "thumbs/win/z9DmSetqjuA.jpg",
+    "thumbs/win/cicOfLfDJdU.jpg"
+  ],
+  "measured_at": "2026-09-23",
+  "layout": "bands",
+  "text_rows": [
+    {
+      "role": "top",
+      "color": "#FBEE08",
+      "stroke": "#0A0C0E",
+      "max_chars": 7,
+      "height_ratio": 0.255,
+      "width_ratio": 0.739,
+      "align": "center",
+      "required": true,
+      "seen_in": "8/13",
+      "meaning": "DÒNG VÀNG viền đen dính sát mép trên — câu NGHỊCH LÝ, KHÔNG chứa tên nhân vật",
+      "description": "TOP line: yellow type with a thick black outline, laid straight on the artwork (this channel uses NO background bar). It states the paradox that makes the viewer stop - never the character's name. Natural Japanese, 6-10 characters.",
+      "measured_px": "h 0.121–0.290 H · w 0.429–0.902 W · ký tự 4–8 (trung vị 6)",
+      "top_margin_ratio": 0.004,
+      "stroke_ratio": 0.07
+    },
+    {
+      "role": "shock",
+      "color": "#D90304",
+      "stroke": "#DEDCDA",
+      "max_chars": 7,
+      "height_ratio": 0.33,
+      "width_ratio": 0.898,
+      "align": "center",
+      "required": true,
+      "seen_in": "10/13",
+      "meaning": "DÒNG ĐỎ viền TRẮNG dính sát mép dưới — TÊN nhân vật/trận đánh + 「の最期」「の真実」",
+      "description": "BOTTOM line: red type with a thick WHITE outline, laid straight on the artwork at the very bottom. It answers 'whose story is this': the character or battle name plus an ending such as 「の最期」 or 「の真実」. Read together with the top line it must form one sentence. 4-9 characters.",
+      "measured_px": "h 0.301–0.403 H · w 0.679–0.980 W · ký tự 4–8 (trung vị 7)",
+      "bottom_margin_ratio": 0.0,
+      "stroke_ratio": 0.11
+    }
+  ],
+  "text_coverage_ratio": [
+    0.241,
+    0.482
+  ],
+  "image": {
+    "source": "ai_text2img",
+    "subject_position": "centre",
+    "require_face": false,
+    "forbid_real_person": true,
+    "face_seen_in": "11/13",
+    "art_style": "serious Japanese seinen manga / historical anime key art: adult faces at realistic proportions with wrinkles, heavy eyebrows, thick confident ink outlines and strong cel shading; ONE Sengoku-era character in close-up filling roughly 35-45% of the frame, eyes on the upper third, placed slightly right of centre, with a heavy expression (glaring, gritting teeth, sweating in horror, quiet resignation); a dramatic period background with one strong dominant colour (cold blue rain and lightning, orange-red fire and smoke, blue night snow, gold castle walls) - never a flat background; keep the top 25% and the bottom 30% readable for heavy typography. ABSOLUTELY NOT chibi, NOT cute, no big-head small-body, NO text, no letters, no logos, no watermark, no real photograph",
+    "keep_top_ratio": 0.33,
+    "keep_bottom_ratio": 0.2
+  },
+  "font": {
+    "family": "Noto Sans JP",
+    "file": "NotoSansJP-Variable.ttf",
+    "variation": "Black",
+    "fallback": "Yu Gothic Bold"
+  },
+  "content": {
+    "lenses": [
+      "paradox_then_name",
+      "final_moments",
+      "battle_turning_point"
+    ],
+    "lens_notes": "paradox_then_name = dòng vàng nêu nghịch lý KHÔNG có tên (作られた傾奇者 / 勝っていたのに総崩れ), dòng đỏ trả lời 'của AI' bằng TÊN + 「の最期」「の真実」 — 2 dòng đọc liền thành 1 câu · final_moments = cái chết/kết cục nhân vật · battle_turning_point = bước ngoặt trận đánh (賤ヶ岳の戦い / 清須会議)",
+    "forbidden_phrases": [
+      "衝撃の真実",
+      "まさかの結末",
+      "その理由とは？",
+      "chibi",
+      "cute"
+    ],
+    "audience": "nam Nhật 30-60 biết nhân vật Chiến quốc qua game/anime (信長の野望, 花の慶次), muốn biết mặt sau sách giáo khoa; xem trên điện thoại, soi kỹ tên riêng và mốc năm",
+    "brief": "Kênh mẫu どっこい日本史 (UCxXV78OIGchz13GAA7RGbEQ). Motif ĐO trên thumbnail thật của kênh: (1) DÒNG VÀNG viền đen dính sát mép trên, 6-10 ký tự, nêu nghịch lý và KHÔNG chứa tên nhân vật; (2) tranh seinen 1 mặt cận biểu cảm nặng trên nền bối cảnh kịch tính; (3) DÒNG ĐỎ viền TRẮNG dính sát mép dưới, 4-9 ký tự, là TÊN nhân vật/trận đánh + 「の最期」「の真実」. KHÔNG có banner nền sau chữ — chữ sống nhờ viền dày. 100% chữ Nhật, không chữ Latin, không số hiệu tập. Không nhồi cả tiêu đề video vào ảnh."
+  },
+  "bans": [
+    "chibi / đầu to thân nhỏ / nét dễ thương (kênh mẫu 100% seinen mặt người lớn tỉ lệ thật)",
+    "banner nền sau chữ (kênh mẫu không dùng; chữ đặt thẳng trên ảnh với viền dày)",
+    "chữ Latin, số hiệu tập, chữ do model ảnh vẽ",
+    "nền phẳng một màu (kênh mẫu luôn là bối cảnh kịch tính: mưa sét / lửa khói / tuyết đêm / vách thành)",
+    "nhồi cả tiêu đề video vào thumbnail (tiêu đề 29-47 ký tự, thumbnail chỉ 10-19)"
+  ],
+  "notes": "Đo bằng MÁY (OpenCV + rapidocr, không hỏi model ngôn ngữ) trên TOÀN BỘ 21 thumbnail thật của kênh mẫu どっこい日本史 ngày 2026-09-23: 13 mẫu THẮNG (view ≥2× trung vị kênh 25.000) + 8 mẫu THUA. Tiêu đề lấy BẢN GỐC tiếng Nhật (yt-dlp lang=ja, ghép theo video id — h2dev §3.3), 21/21 video ra tiêu đề gốc. KHUÔN ĐO ĐƯỢC: dòng VÀNG #FBEE08 viền đen sát mép trên (8/13 ảnh THẮNG máy dò được) + dòng ĐỎ #D90304 viền TRẮNG sát mép dưới (10/13); KHÔNG có băng nền sau chữ — chữ đặt thẳng trên tranh. Haar bắt mặt 11/13 nhưng Haar là bộ dò mặt NGƯỜI THẬT nên không dùng làm cổng. Panel ≥2: 0/13 — kênh này 1 khung, khác hẳn lane G. SAI SỐ ĐÃ BIẾT: bộ dò dòng chữ bỏ sót vài ảnh (chữ nằm trên tranh nhiều chi tiết, OCR đọc trượt) — h2dev soi bằng MẮT trên 21/21 ảnh thấy dòng vàng có ở 21/21 và dòng đỏ ở 18/21 (docs\\channel_dna\\dokkoi-nihonshi\\THUMBNAIL_PATTERNS.md); hai nguồn khớp nhau về MÀU và VỊ TRÍ, chỉ lệch ở tỉ lệ phát hiện, nên `seen_in` dưới đây là SÀN DƯỚI đo bằng máy.",
+  "stats": {
+    "n_win": 13,
+    "n_lose": 8,
+    "yellow_in_top": "8/8",
+    "punch_line_win": "10/13",
+    "punch_line_lose": "8/8",
+    "faces_haar": "11/13",
+    "panels_ge2": "0/13",
+    "yellow_blocks": "10/13",
+    "red_blocks_win": "5/13",
+    "red_blocks_lose": "3/8",
+    "coverage_q25_med_q75": [
+      0.241,
+      0.282,
+      0.482
+    ],
+    "top_bar_height_med": 0.328
+  }
+}

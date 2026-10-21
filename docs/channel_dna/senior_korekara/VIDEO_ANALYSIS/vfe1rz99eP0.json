@@ -1,0 +1,23 @@
+{
+ "topics": [
+  "老後の生活",
+  "介護",
+  "家族",
+  "60代の暮らし"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "これは[音楽]42年間走り続けた男が退職で買った夢に人生を狂わされた物語です。私は退職で家族を失いかけました。[音楽]佐藤誠一歳。営業一筋[音楽]42年。雨の日も風の日も家族のために走り続けてきた。よし、今日で丁年だ。[音楽]差別の夜、部下たちの拍手に包まれながら聖一の頭の中にはあるものが浮かんでいた。彼には",
+ "hook_n_segments_0_30": 9,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 212 segments, phủ ~100% độ dài video",
+ "video_id": "vfe1rz99eP0",
+ "title": "【漫画】退職金980万円でキャンピングカーを買った64歳の末路…「夫婦で日本一周」の夢が地獄に変わるまで",
+ "view_count": 37398,
+ "duration_min": 13.2,
+ "vpd": 542.0,
+ "days": 69
+}

@@ -127,7 +127,8 @@ class LlmClient:
                 res.provider, res.model, res.fallback_used = prov_name, model, idx > 0
                 try:
                     if prov["kind"] == "claude_cli":
-                        text, usage = tr.chat_claude_cli(prov, model, messages, g["timeout_s"])
+                        text, usage = tr.chat_claude_cli(prov, model, messages, g["timeout_s"],
+                                                       g.get("effort"))
                     else:
                         text, usage = tr.chat_http(prov, model, messages, g["timeout_s"],
                                                    g.get("max_tokens", 2000),

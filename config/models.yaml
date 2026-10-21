@@ -29,6 +29,10 @@ providers:
   claude_cli:
     kind: claude_cli        # subprocess `claude -p` — chạy trên máy đã đăng nhập Claude Code
     command: claude
+  claude_lite:              # "Claude gọn" (anh duyệt 21/10/2026): --tools "" --strict-mcp-config --safe-mode
+    kind: claude_cli        # --system-prompt-file → nền ~0,8k token/lượt thay vì ~7k. Model ghi TÊN ĐẦY ĐỦ,
+    command: claude         # effort khai ở gate (`effort:`). Vẫn ăn quota gói Claude — chỉ dùng model nhỏ.
+    lite: true
 
 gates:
   semantic_format:          # H4 + H5 gộp 1 call — bulk classifier, ưu tiên rẻ
@@ -67,3 +71,74 @@ gates:
     max_tokens: 4000
     temperature: 0.3
     prompt_version: feedback_v1
+  news_cluster:             # NEWS RADAR — gộp keyword 24h thành cụm sự kiện (bulk, rẻ; 1 call/lượt brief)
+    chain:
+      - [ramclouds, gemini-3.8-flash]
+      - [ns24, gemini-3.8-flash]
+      - [claude_cli, sonnet]
+    timeout_s: 240
+    max_tokens: 16000     # 150 keyword → 7.5k token output bị cụt ở 8k (đo 17/10)
+    temperature: 0.1
+    prompt_version: news_cluster_v2
+  news_brief:               # NEWS RADAR — viết tiêu đề/góc kể/rủi ro cho từng đề tài top 10
+    chain:
+      - [ramclouds, gemini-3.8-flash]
+      - [ns24, gemini-3.8-flash]
+      - [claude_cli, sonnet]
+    timeout_s: 150
+    max_tokens: 2500
+    temperature: 0.3
+    prompt_version: news_brief_v1
+
+  # ---------- TIẾT KIỆM QUOTA CLAUDE (anh duyệt 21/10/2026) ----------
+  # Đo 07–21/10: subagent Opus 48%, dữ liệu thô in vào chat 15%, Claude tự viết file dài 12%.
+  # 21/10 đổi (phương án 4, A/B data/lane_L_hunt_20261021/haiku_test): chạy chính Haiku/Sonnet 5.5 qua
+  # claude_lite, ns24 dự phòng. CẤM claude_cli thường + alias "sonnet" trong gate ext_* (test canh).
+  # Gọi qua src/ext_llm.py (ask_json / ask_text). Đổi model ở đây, không hard-code chỗ khác.
+  ext_classify:             # phân loại + dịch tiêu đề hàng loạt (title_classify.py, hunt.py)
+    chain:
+      - [claude_lite, claude-haiku-5-5]
+      - [ns24, deepseek-v4.1-flash]
+      - [ns24, gemini-3.8-flash]
+    effort: low
+    timeout_s: 180
+    max_tokens: 6000
+    temperature: 0.1
+    prompt_version: ext_classify_v1
+  ext_hook:                 # phân tích hook 0–90s → HOOK_LIBRARY (hook_auto.py)
+    chain:
+      - [claude_lite, claude-sonnet-5-5]
+      - [ns24, deepseek-v4-pro-0813]
+      - [ns24, gpt-5.6-sol]
+    effort: low
+    timeout_s: 240
+    max_tokens: 4000
+    temperature: 0.2
+    prompt_version: ext_hook_v1
+  ext_comments:             # gán bình luận vào chủ đề (comment_topics.py) — tổng like do Python cộng
+    chain:
+      - [claude_lite, claude-haiku-5-5]
+      - [ns24, deepseek-v4.1-flash]
+      - [ns24, gemini-3.8-flash]
+    timeout_s: 240
+    max_tokens: 8000
+    temperature: 0.1
+    prompt_version: ext_comments_v1
+  ext_extract:              # đọc trang tư liệu, trích số kèm câu NGUYÊN VĂN (source_extract.py)
+    chain:
+      - [claude_lite, claude-haiku-5-5]
+      - [ns24, gpt-5.6-sol]
+      - [hhtech, gpt-5.6-sol]
+    timeout_s: 240
+    max_tokens: 6000
+    temperature: 0.0
+    prompt_version: ext_extract_v1
+  ext_draft:                # viết nháp hồ sơ/báo cáo từ JSON (draft_writer.py) — trả TEXT, không JSON
+    chain:                  # A/B 21/10 cùng tu_lieu 生活保護: Sonnet 21s, 18/18 [Dn], tự ghi "(chưa có nguồn)";
+      - [claude_lite, claude-sonnet-5-5]   # Sol 80s, 18/18 — data/lane_L_hunt_20261021/haiku_test/draft_ab
+      - [ns24, gpt-5.6-sol]
+      - [hhtech, gpt-5.6-sol]
+    timeout_s: 420
+    max_tokens: 16000
+    temperature: 0.3
+    prompt_version: ext_draft_v1

@@ -1,10 +1,37 @@
 # CLAUDE.md — YouTube Trend & Outlier Hunter
 
+## ⛔⛔ QUY TẮC NGÔN NGỮ — BẮT BUỘC TUYỆT ĐỐI (user chốt 2026-10-19)
+**TẤT CẢ TIẾNG NHẬT PHẢI DỊCH SANG TIẾNG VIỆT.** Áp dụng cho MỌI output của dự án:
+báo cáo HTML/artifact, file handoff, tin nhắn chat, bảng số liệu, chú thích, log bàn giao.
+- Tiêu đề video Nhật → dịch nghĩa tiếng Việt. Muốn giữ nguyên văn để đối chiếu thì đặt
+  **sau** bản dịch, trong ngoặc: `Dân Edo ăn mì soba thế nào? (江戸っ子のそばの食べ方とは)`
+- Từ khoá tìm kiếm, tên kênh, tên nhân vật lịch sử → phiên âm/dịch tiếng Việt trước,
+  nguyên văn trong ngoặc nếu cần tra cứu.
+- Trích dẫn comment/phụ đề tiếng Nhật → dịch hết; giữ nguyên văn chỉ khi có lý do
+  chứng minh cụ thể (vd phân tích lỗi ASR nghe sai tên riêng) và phải nêu rõ lý do.
+- **CẤM** để tiếng Nhật trần làm nội dung chính của bất kỳ mục nào người dùng đọc.
+Quy tắc này thắng mọi thói quen cũ trong repo (kể cả các báo cáo trước đã lỡ để tiếng Nhật).
+
 ## 📖 BẮT BUỘC ĐỌC TRƯỚC MỌI TASK NGHIÊN CỨU/TÌM KIẾM
 `docs/RESEARCH_PLAYBOOK.md` — quy trình 7 bước dùng chung cho MỌI loại tìm kiếm (tìm ngách mới,
 tìm kênh để clone/reup, tìm đề tài trong ngách đã chọn). Đúc kết từ Lane A + Lane C, có bảng
 "cạm bẫy đã gặp" — đọc trước để không lặp lại sai sót đã trả giá thật (kênh ăn may tưởng mạnh,
 báo cáo quá nhiều tab, link ẩn không bấm được, bàn giao khi chưa được duyệt...).
+
+## 🎣 HOOK TRƯỚC TIÊN (user chốt 2026-09-23)
+Research ra video nào → đọc hook 0–90s trước, phân loại, nạp kho `E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\`
+(skill `youtube-hook-research`; xem RESEARCH_PLAYBOOK §-2). Từ 21/10 chạy `src/hook_auto.py ID ... --lane <lane>`
+(model ngoài chấm + nạp kho, in 1 dòng/video); chỉ đọc tay `src/hook_fetch.py` cho 1–2 video cần đào sâu.
+
+## ⛔ ĐỀ TÀI PHẢI SÁT ĐỜI SỐNG NGƯỜI DÂN (user chốt 2026-10-08, sau khi chê kho đề tài lane Q)
+Đề tài đề xuất cho MỌI lane phải là thứ người dân thường chạm tới và thích xem: đồ ăn (ホタテ, sushi, gạo),
+du lịch/khách sạn/phố đông, phim, anime, ca sĩ, hàng hoá, giá cả, thương hiệu ai cũng biết.
+**CẤM đề xuất làm tập chính** các đề tài chính trị/ngoại giao/quân sự/công nghiệp xa đời sống: nghị quyết LHQ,
+lá phiếu năm 1995/2005, điều khoản hiệp ước, danh sách kiểm soát xuất khẩu, tàu chiến, đất hiếm, bán dẫn.
+Chúng chỉ được làm chi tiết phụ bên trong một tập đời sống. Tự kiểm trước khi đề xuất: "bà nội trợ / ông về hưu
+xem tiêu đề có hiểu ngay và muốn bấm không?" — không thì bỏ.
+Lane Q cụ thể: khung bắt buộc **TQ chê/cấm/tẩy chay một thứ của Nhật, tưởng Nhật sẽ thiệt → Nhật làm tốt
+→ quay xe, bên thiệt là TQ** (mẫu đúng: tập 3 hãng bay TQ lỗ). Kho đề tài: `E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\q\NGHIEN_CUU.md` §12.
 
 ## ⛔ RANH GIỚI 2 DỰ ÁN (user chốt 2026-09-10)
 Dự án này **CHỈ NGHIÊN CỨU**. Việc **làm video thuộc dự án `E:\CLAUDE\YOUTUBE\h2dev`**.
@@ -29,6 +56,10 @@ Kế hoạch hiện tại: `plans/260909-1611-youtube-trend-outlier-hunter/`
 Sheet `1xu4iNudIPanWrUxlTODqIySGf9YxLy7rpTq9OtXDMOU` (tên "YOUTUBE") **đã có dữ liệu thật** ở tab `GMAIL` (974 dòng) và `NOTE`.
 
 - **CHỈ được đụng** tab `TRENDING` và tab có prefix `TRD_`. Whitelist hard-code trong `src/sheets.py`.
+- **Tab lane h2dev (chỉ ĐỌC tag/đề tài) đổi tên 2026-09-24 theo quy ước `{Lane}-{tên kênh}`:** `A-shinya_shiryoshitsu` ·
+  `Satori-Lopezzapa68` · `E-70dai-kenko` · `F-teinengo-real` · `G-teinengo-tanoshimi` (kokoro-kazoku/sengoku-uragawa/
+  teinengo-fuufu chưa đổi; tab `irogatatarukioku` không còn trên sheet lúc kiểm 24/09). Tên tab khai ở
+  `config/video_hunt.yaml` `lanes.<x>.tab`; key lane + `col` cột RESEARCH + thư mục `lanes/<kênh>/` GIỮ tên kênh không tiền tố.
 - **CẤM** mọi thao tác xoá: `delete_rows`, `delete_dimension`, `clear`, `batch_clear`, ghi đè hàng loạt.
 - Chỉ `append_rows` và `update` đúng range đã tính.
 - Trước/sau mỗi lần chạy: log số dòng của `GMAIL` và `NOTE` — phải không đổi.
@@ -57,97 +88,24 @@ py -3.13 -X utf8 src/run_probe.py --niche jp_senior,jp_satori --limit-kw 60 --ou
 py -3.13 -X utf8 src/run_daily.py --push-sheet                                                      # Phase 3+
 ```
 
-## Sự thật đã verify (2026-09-09) — đừng probe lại
-- InnerTube search keyless: HTTP 200, trả view + tuổi video + channelId. Params sort=viewCount:
-  `CAMSBAgCEAE` = today · `CAMSBAgDEAE` = this week · `CAMSBAgEEAE` = this month
-- Channel `/about` HTML: lấy được `subscriberCountText`, `viewCountText`, `joinedDateText` (ngày tạo kênh)
-- `channels.list` trả `snippet.publishedAt` chính xác tới mili-giây + `contentDetails.relatedPlaylists.uploads`
-- **pytrends CHẾT** — `429 TooManyRequestsError` ngay request đầu. Đừng đưa Google Trends vào đường chính.
-- Nhiễu đã gặp thật: kênh 7–25 subs cho `view/sub` = 2618× (vô nghĩa); CM chính phủ kênh 6 năm tuổi lọt top
-  → luôn dùng sàn `subs ≥ 300` + trần `ch_age ≤ 1095d`, và ưu tiên `breakout` (so median kênh) hơn `mult`
-- **`hit_rate` đo NGƯỢC thứ mình cần.** Kênh nào MỌI video đều 100k view sẽ có median cao nên không video
-  nào đạt 3× median → `hit_rate ≈ 0`, đúng kênh đáng học lại bị chấm 0. Dùng **`ch_mult = median/subs`**
-  (độ ỔN ĐỊNH) để nhận diện "ngách đáng test"; `hit_rate` chỉ giữ làm số tham khảo.
-- **Ngưỡng phải hiệu chỉnh trên phân phối thật.** `ch_mult≥5 + median≥20k` chỉ 2/50 kênh đạt (median-của-median
-  thật = 3.104) → chốt `≥3.0 / ≥8 video / ≥5.000`. `RISING` với ngưỡng `views_24h>0` bật cho 58/117 video.
-- **Baseline phải BỎ video <7 ngày.** Kênh faceless đăng mỗi ngày nên 12 video mới nhất luôn dính mấy cái
-  chưa kịp tích view — đo thật median 306 vs 460. Không lọc thì `breakout` của mọi video bị thổi phồng.
-- **`views_24h` phải chia cho số ngày THẬT** giữa 2 snapshot (tool có thể nghỉ vài ngày).
-- **Phân biệt "kênh có công thức" với "kênh ăn may".** シニア健康日和 có video 500.027 view nhưng 12 video
-  gần nhất chỉ 57–521 view (`ch_mult` 0,14) — KHÔNG đáng học. 他人の人生【タニジン】 median 100.863
-  (`ch_mult` 18,8) — đó mới là cỗ máy. Cột `verdict` trong `TRD_NEW` nói thẳng điều này.
-- **Chạy lại trong ngày làm nhân đôi báo cáo** → `write_daily_block()` ghi đè TẠI CHỖ khối cùng `snap_date`.
-  Không xoá được nên lượt sau ít dòng hơn thì dòng dư nằm lại — tool cảnh báo chứ không im lặng.
-- **Lượt chạy NHỎ từng đè mất báo cáo đầy đủ** (test 3 keyword xoá top 28 dòng, chương trình vẫn báo
-  thành công). `ShrinkGuard` chặn khi lượt mới < 70% số dòng khối cùng ngày; muốn đè phải `--force`.
-  → Khi test tay, LUÔN dùng `--dry-run`, đừng dùng lượt nhỏ ghi thẳng Sheet.
-- **Sheets API giới hạn 60 read/phút/user** — gspread KHÔNG tự retry. Chạy vài lượt liên tiếp là
-  429 chết giữa chừng. Mọi lời gọi Sheet phải bọc `gapi.retry_api` (backoff luỹ thừa + jitter),
-  và `guard_snapshot` dùng `values_batch_get` (1 request) chứ đừng đọc từng tab.
-- **Guard đếm cột A là SÓT.** `GMAIL` có 12 dòng trống cột A nhưng có dữ liệu cột khác → hai cách
-  đếm ra 89 vs 101, tưởng mất dữ liệu. Tab của user phải đọc `A:Z` rồi băm nội dung.
-- **Đừng gom keyword theo `niches.split("|")[0]` của video.** Video khớp keyword của 2 ngách sẽ xé
-  1 keyword thành 2 dòng số liệu, mà khoá DB là `(keyword, snap_date)` nên đè nhau, mất dữ liệu im lặng.
-- ramclouds `https://ramclouds.me/v1` + model `gemini-3.5-flash-low` là tầng insight (key trong `config/.env`).
-  API key YouTube KHÔNG gọi được Gemini (`generativelanguage` trả 403 blocked).
+## ⛔ TIẾT KIỆM QUOTA CLAUDE (anh duyệt 2026-10-21)
+Đo 07–21/10: subagent Opus 48% · ngữ cảnh nền 23% · dữ liệu thô in vào chat 15% · Claude tự viết file dài 12%;
+75% chi phí rơi vào lượt có ngữ cảnh >150k. Luật:
+- **Đọc nhiều / viết nháp → model ngoài trước** (gate `ext_*` ở `config/models.yaml`, cửa chung `src/ext_llm.py`; từ 21/10 chạy chính Haiku/Sonnet 5.5 qua provider `claude_lite` = `claude -p` gọn (--tools "" --strict-mcp-config --safe-mode --system-prompt-file, nền ~0,8k token), ns24 dự phòng):
+  dịch + phân loại tiêu đề `src/title_classify.py` · hook `src/hook_auto.py` (thay đọc tay hook_fetch) ·
+  chủ đề bình luận theo tổng like `src/comment_topics.py` · tìm + trích số [Dn] `src/source_extract.py`
+  (câu nguyên văn phải khớp trang đã tải, không khớp → `bi_loai`) · nháp hồ sơ/báo cáo `src/draft_writer.py` (Sol, tự soát [Dn]/số lạ/tiếng Nhật trần).
+  Claude chỉ: quyết, soát cảnh báo, kiểm ngẫu nhiên 2–3 [Dn] bằng cách mở `nguon/*.txt`, nói chuyện với anh.
+- **Subagent:** chỉ khi thật cần. Thu tư liệu 1 vụ → agent `thu-tu-lieu` (Haiku, effort thấp); soạn hồ sơ 1 tập → `soan-tu-lieu-tap` (Sonnet) — định nghĩa ở `.claude/agents/`. Việc khác luôn truyền `model: "sonnet"`/`"haiku"`; `.claude/settings.json` đặt CLAUDE_CODE_SUBAGENT_MODEL=claude-sonnet-5-5 làm mặc định dự phòng.
+- **Script in ≤40 dòng**, dữ liệu đủ ghi file; cấm `cat` cả transcript/JSON lớn vào chat.
+- **Mỗi việc một phiên**; giao xong nhắc anh `/clear`. Xem tốn bao nhiêu ở model ngoài: `py -3.13 -X utf8 src/ext_llm.py [YYYY-MM-DD]`.
 
-## Thiết kế báo cáo (user chốt 2026-09-09)
-Tab `TRENDING` = **10 video tinh hoa/ngày, mỗi kênh 1 video** — bản chắt lọc để đọc hết,
-KHÔNG phải bảng tra cứu 150 dòng. Cổng lọc ở `score.is_elite()`; then chốt là `ch_mult ≥ 3`
-(loại kênh ăn may). Dữ liệu thô đầy đủ vẫn nằm trong SQLite.
-Dòng thừa của khối cũ trong ngày được đánh dấu `<ngày> ⏹cũ` ở cột A — **annotate chứ không xoá**.
-
-## Lane A — 都市伝説/vũ trụ/bí ẩn (đã bàn giao sang h2dev)
-- `docs/LANE_A_BLUEPRINT.md` — cấu trúc sản xuất (khung 5 chương, số đo kịch bản, nguồn tư liệu)
-- `docs/LANE_A_NICHE_KIT.md` — 8 mục nghiên cứu ngách (khán giả, từ khoá, công thức tiêu đề +
-  thumbnail, nhịp giữ chân, 10 nguyên tắc, khoảng trống, checklist 5 video đầu)
-- **Thân video = clip stock; THUMBNAIL = ảnh AI.** Đừng lẫn hai cái.
-- **Retention của đối thủ KHÔNG lấy được** — đã thử 4 client InnerTube + trang watch + phiên đã
-  đăng nhập, đều không có heatmap. Đừng thử lại.
-
-## Lane C — 「他人の人生」nghề nghiệp/lối sống (✅ ĐÃ DUYỆT 2026-09-10, đã bàn giao)
-- Kênh mẫu: 他人の人生【タニジン】 `UCvA0jwPl5qjhsHQOWuZYe-g`
-- `docs/LANE_C_HANDOFF.md` — bàn giao đầy đủ 13 mục (khán giả, cấu trúc, quy trình sản xuất
-  10 bước, đặt tên/mô tả/hashtag/tag SEO kênh mới, checklist video đầu)
-- Đã copy sang `h2dev/docs/laneC_from_research/` cùng data gốc (transcript/comment/thumbnail) + tool
-- **`ch_mult` cao KHÔNG đủ — phải kiểm `trend` thật** (đã dính: 妻は静かに笑う `ch_mult` 34,9 nhưng
-  `trend` 0,43 đang tụt, suýt đề xuất nhầm lần 2 sau 極秘接触 ở Lane A)
-- Kênh 70代けいちゃんの台所 số liệu đẹp nhưng LOẠI HẲN vì là vlog người thật, không clone được
-
-## Lane D — 色でたどる戦争の記録 (WWII ảnh thật AI tô màu, ✅ ĐÃ DUYỆT 2026-09-10, đã bàn giao)
-- Kênh mẫu: 色でたどる戦争の記録 `UCaj1dslbibbHEnOAOh0tyYw` — 15 ngày tuổi, trend 1,57
-- `docs/LANE_D_HANDOFF.md` — bàn giao đầy đủ 14 mục, đã copy sang `h2dev/docs/laneD_from_research/`
-- **Pipeline hình ảnh thứ 3** (khác Lane A clip stock / Lane C manga AI): ảnh chiến tranh THẬT được AI
-  tô màu lại — bắt buộc ảnh có nguồn thật, KHÔNG sinh được bằng AI từ đầu (kênh lịch sử không bịa ảnh).
-- **Đã điều tra thật 6 nguồn ảnh tư liệu** (không suy diễn — đọc trang, xác nhận điều khoản): PICRYL/
-  GetArchive (NARA, miễn phí), 沖縄県公文書館 (miễn phí, 22.131 ảnh Okinawa), LOC (miễn phí, Manzanar),
-  NDL Digital Collection (miễn phí, ~336k tư liệu Nhật hết hạn bản quyền), 昭和館 (miễn phí xem, cần
-  xin phép để dùng), Getty/AP/Kyodo/Mainichi (có phí, dự phòng cuối). Xem §7 file handoff.
-- Bước AI tô màu ảnh **CHƯA thử nghiệm lần nào** — rủi ro kỹ thuật lớn nhất, phải thử trước khi cam kết
-  lịch sản xuất.
-
-## Housekeeping (2026-09-10)
-- User đã xoá hết tab tự động (TRENDING/TRD_*) trên Sheet, chỉ giữ GMAIL/NOTE gốc.
-- **Đã tạm dừng** Windows Scheduled Task `YouTubeTrendHunter` — không tự tạo lại tab. Bật lại:
-  `Enable-ScheduledTask -TaskName YouTubeTrendHunter`.
-- Từ nay báo cáo curation/chọn kênh gửi bằng **Artifact HTML** (theo khung ở `RESEARCH_PLAYBOOK.md`
-  §2 Bước 6), KHÔNG đẩy lên Sheet nhiều tab.
-- **Không tự ý mở/tắt Chrome profile của user** (`VEO3_PROFILE`, `GROK_PROFILE`...) — luôn xin phép
-  trước, kể cả khi chỉ để thử nghiệm (đã có sự cố tắt nhầm profile đang dùng lúc probe heatmap).
-
-## VIDEO HUNT V2 (2026-09-22, shadow mode)
-- Kế hoạch + mapping: `IMPLEMENTATION_PLAN.md`; guide gốc `VIDEO_HUNT_V2_CLAUDE_IMPLEMENTATION_GUIDE.md`.
-- Code: `src/hunt_v2/` (mỗi gate 1 file). Chạy SAU đường cũ trong `run_video_hunt.py`; cờ ở
-  `config/video_hunt.yaml` khối `video_hunt_v2` (`enabled`/`shadow_mode`/từng gate), threshold ở
-  `config/hunt_rules.yaml`, model ở `config/models.yaml`, hồ sơ lane ở `lanes/<lane>/` (KHÔNG regenerate).
-- **`shadow_mode: true`** → tab `RESEARCH` vẫn nhận pick CŨ; V2 chỉ ghi `TRD_HUNT_AUDIT` + `runs/<ngày>/<lane>/`
-  + `logs/llm_*.jsonl`. Bật production = đổi `shadow_mode: false` (chỉ khi Top 2 được accept ≥80%).
-- Model đã verify: gemini-3.8-flash qua ramclouds (BẮT BUỘC stream + User-Agent, key `RAMCLOUDS_API_KEY`
-  khác `LLM_API_KEY` cũ — key cũ "no access" 3.8), ns24 dự phòng, Sol qua hhtechapi.net, opportunity
-  qua `claude -p --model sonnet` (gói Claude Code, không tốn API).
-- Cột `HUMAN_DECISION`/`REJECT_REASON` trên `TRD_HUNT_AUDIT` là user gõ tay — tool CHỈ ĐỌC
-  (`src/hunt_v2/feedback.py --sync/--propose/--apply`). Không bao giờ update dòng audit.
-- Test offline 0 tiền: `py -3.13 -X utf8 -m pytest tests -q` (47 case, gồm regression lỗi owner đã bắt).
+## Chi tiết dự án (đã tách sang `docs/CLAUDE_CHI_TIET.md` — đọc đúng mục khi cần)
+Mục ở đó: Sự thật đã verify (InnerTube params, ngưỡng ch_mult/breakout, bẫy Sheet 60 read/phút, ShrinkGuard) ·
+Thiết kế báo cáo TRENDING · Lane A / C / D / P đã bàn giao · Housekeeping · VIDEO HUNT V2 · NEWS RADAR.
+Tóm tắt phải nhớ: test tay luôn `--dry-run`; mọi lời gọi Sheet bọc `gapi.retry_api`; báo cáo curation bằng Artifact HTML,
+không Sheet nhiều tab; scheduled task `YouTubeTrendHunter` đang tạm dừng; KHÔNG tự mở/tắt Chrome profile của anh;
+pytrends chết; retention đối thủ không lấy được; luôn kiểm `trend` chứ không chỉ `ch_mult`.
 
 ## Git conventions
 - Commit theo từng phase, không gộp

@@ -1,0 +1,160 @@
+{
+ "n_win": 20,
+ "n_lose": 5,
+ "bands": {
+  "top": {
+   "band": "top",
+   "n": 20,
+   "share": 1.0,
+   "seen_in": "20/20",
+   "color": "#F7F6F9",
+   "stroke": "#0B0A05",
+   "bg_color": "#000000",
+   "height_ratio": 0.19,
+   "width_ratio": 0.945,
+   "top_ratio": 0.015,
+   "bottom_margin_ratio": 0.794,
+   "left_margin_ratio": 0.016,
+   "align": "center",
+   "align_share": 0.75,
+   "chars_ocr": 7,
+   "chars_ocr_n": 19,
+   "chars_est": 8.0,
+   "chars_max": 16
+  },
+  "middle": {
+   "band": "middle",
+   "n": 4,
+   "share": 0.2,
+   "seen_in": "4/20",
+   "color": "#F3F1F0",
+   "stroke": "#1F1D18",
+   "bg_color": "#76735D",
+   "height_ratio": 0.174,
+   "width_ratio": 0.668,
+   "top_ratio": 0.424,
+   "bottom_margin_ratio": 0.386,
+   "left_margin_ratio": 0.057,
+   "align": "center",
+   "align_share": 0.5,
+   "chars_ocr": 2,
+   "chars_ocr_n": 3,
+   "chars_est": 8.0,
+   "chars_max": 9
+  },
+  "bottom": {
+   "band": "bottom",
+   "n": 11,
+   "share": 0.55,
+   "seen_in": "11/20",
+   "color": "#F9EBE9",
+   "stroke": "#0E0E0E",
+   "bg_color": "#010204",
+   "height_ratio": 0.201,
+   "width_ratio": 0.505,
+   "top_ratio": 0.743,
+   "bottom_margin_ratio": 0.008,
+   "left_margin_ratio": 0.095,
+   "align": "center",
+   "align_share": 0.55,
+   "chars_ocr": 4.0,
+   "chars_ocr_n": 10,
+   "chars_est": 5,
+   "chars_max": 14
+  }
+ },
+ "features": {
+  "thanh_nen_dac_tren": {
+   "win": "19/20",
+   "win_share": 0.95,
+   "lose": "4/5",
+   "lose_share": 0.8,
+   "verdict": "KHOÁ",
+   "chi_o_thua": false
+  },
+  "dong_chinh_duoi": {
+   "win": "11/20",
+   "win_share": 0.55,
+   "lose": "1/5",
+   "lose_share": 0.2,
+   "verdict": "tuỳ chọn",
+   "chi_o_thua": false
+  },
+  "nhan_nho_trong_tranh": {
+   "win": "16/20",
+   "win_share": 0.8,
+   "lose": "5/5",
+   "lose_share": 1.0,
+   "verdict": "KHOÁ",
+   "chi_o_thua": false
+  },
+  "o_to_nen_do": {
+   "win": "12/20",
+   "win_share": 0.6,
+   "lose": "2/5",
+   "lose_share": 0.4,
+   "verdict": "tuỳ chọn",
+   "chi_o_thua": false
+  },
+  "o_to_nen_vang": {
+   "win": "18/20",
+   "win_share": 0.9,
+   "lose": "4/5",
+   "lose_share": 0.8,
+   "verdict": "KHOÁ",
+   "chi_o_thua": false
+  },
+  "nhieu_panel": {
+   "win": "14/20",
+   "win_share": 0.7,
+   "lose": "5/5",
+   "lose_share": 1.0,
+   "verdict": "KHOÁ",
+   "chi_o_thua": false
+  },
+  "haar_thay_mat": {
+   "win": "19/20",
+   "win_share": 0.95,
+   "lose": "5/5",
+   "lose_share": 1.0,
+   "verdict": "KHOÁ",
+   "chi_o_thua": false
+  },
+  "chu_phu_tren_25pc": {
+   "win": "16/20",
+   "win_share": 0.8,
+   "lose": "4/5",
+   "lose_share": 0.8,
+   "verdict": "KHOÁ",
+   "chi_o_thua": false
+  },
+  "tu_2_dong_chinh": {
+   "win": "13/20",
+   "win_share": 0.65,
+   "lose": "2/5",
+   "lose_share": 0.4,
+   "verdict": "tuỳ chọn",
+   "chi_o_thua": false
+  }
+ },
+ "coverage_win": [
+  0.316,
+  0.21,
+  0.595
+ ],
+ "coverage_lose": 0.314,
+ "subject_cells": {
+  "dưới-giữa": 2,
+  "dưới-phải": 5,
+  "dưới-trái": 2,
+  "giữa-giữa": 5,
+  "giữa-phải": 2,
+  "giữa-trái": 4
+ },
+ "face_area_med": 0.028,
+ "palette_top": "#181715",
+ "top_bar_height": 0.255,
+ "panels_med": 3.0,
+ "n_main_med": 2.0,
+ "n_label_med": 2.0
+}

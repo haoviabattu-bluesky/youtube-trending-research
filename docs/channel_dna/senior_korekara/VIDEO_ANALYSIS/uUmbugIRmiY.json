@@ -1,0 +1,23 @@
+{
+ "topics": [
+  "定年後の仕事",
+  "就職活動",
+  "面接",
+  "60代の働き方"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "あなたは同窓会の案内が届いたら迷わず出席に丸を作られますか?これは貯金に140万円の68歳が50年ぶりの同窓会で人生を馬鹿にされた物語です。増田ミノ[音楽]さん68歳。父から継いだ自転車店マスダサイクルを45年持ってきました。伊勢は3年前に畳みました。スーパーの無料修理とネット通販に客[音楽]は少しずつ遠いていったのです。妻の和さんは8",
+ "hook_n_segments_0_30": 9,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 282 segments, phủ ~100% độ dài video",
+ "video_id": "uUmbugIRmiY",
+ "title": "【漫画】老後の同窓会で笑い者に。独り身のシニア男が同窓会に参加した末路",
+ "view_count": 109064,
+ "duration_min": 15.2,
+ "vpd": 2371.0,
+ "days": 46
+}

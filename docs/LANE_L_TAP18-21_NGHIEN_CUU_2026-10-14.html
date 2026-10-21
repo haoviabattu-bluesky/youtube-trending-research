@@ -1,0 +1,181 @@
+<title>Lane L tập 18–21</title>
+<style>
+/* Layout: một cột đọc, mỗi tập một khối thẻ; bảng số liệu cuộn ngang riêng */
+:root{
+  --bg:#f5f6f8; --panel:#ffffff; --fg:#1c2330; --muted:#5a6474; --line:#dce1e9;
+  --accent:#2a5ea0; --good:#1d7645; --warn:#9a6300; --bad:#ad372b; --hl:#e9f0f9;
+  --font-body:"Noto Sans JP","Noto Sans",system-ui,sans-serif;
+  --font-display:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;
+  --font-num:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161d; --panel:#1a2029; --fg:#e3e8ef; --muted:#9aa5b5; --line:#2c3441;
+  --accent:#72a9e6; --good:#5cc48a; --warn:#e0a640; --bad:#ec7a6c; --hl:#1d2a3b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161d; --panel:#1a2029; --fg:#e3e8ef; --muted:#9aa5b5; --line:#2c3441;
+  --accent:#72a9e6; --good:#5cc48a; --warn:#e0a640; --bad:#ec7a6c; --hl:#1d2a3b; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.7}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:28px 60px;display:flex;flex-direction:column;gap:30px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:1.65rem} h2{font-size:1.22rem;border-bottom:2px solid var(--line);padding-bottom:6px} h3{font-size:1.06rem}
+p{margin:0;max-width:74ch} ul,ol{margin:0;padding-left:1.3em;max-width:78ch} li{margin:3px 0}
+section{display:flex;flex-direction:column;gap:12px}
+a{color:var(--accent)}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.verdict{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:.86rem}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--hl);font-weight:600}
+td.n{font-family:var(--font-num);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.ep{background:var(--panel);border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.ep .tag{font-family:var(--font-num);font-size:.8rem;color:var(--muted)}
+.jp{font-weight:600}
+.hook{background:var(--hl);padding:10px 12px;font-size:.92rem;display:flex;flex-direction:column;gap:3px}
+.hook div{max-width:none}
+.pill{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:99px;border:1px solid currentColor;margin-right:4px}
+.links{display:flex;flex-direction:column;gap:4px}
+code{font-family:var(--font-num);font-size:.84em;word-break:break-all}
+</style>
+
+<div class="wrap">
+<header style="display:flex;flex-direction:column;gap:8px">
+  <div class="eyebrow">Lane L · 社会のなぜ研究室 (Phòng nghiên cứu "vì sao" của xã hội) · nghiên cứu 14/10/2026</div>
+  <h1>4 tập tiếp theo cho Lane L theo công thức thắng</h1>
+  <p class="muted">Đầu vào: công thức thắng đo trên Studio sáng nay (ep12 婚活 thắng xa, nhóm thăng chức thứ hai). Quét 62 từ khoá × tháng/tuần → 1.490 kết quả → 1.023 video ≥6 phút. Đọc hook + toàn bài 15 video (YouTube chặn phụ đề nên tự nhận dạng giọng bằng whisper), comment qua API, kiểm 55 dòng số liệu bằng cách mở từng trang nguồn.</p>
+</header>
+
+<div class="verdict">
+  <div class="eyebrow">Kết luận</div>
+  <p><b>1. Thị trường đang nóng nhất đúng ở cụm hôn nhân / "được chọn hay không".</b> Trong 30 ngày qua, cụm 婚活 có 321 video, trung vị khoảng 5.000 view, 34 video trên 100.000 view. Cụm công sở (quản lý, thăng chức, nghỉ việc trong im lặng) trung vị chỉ 100–300 view và gần như không có video 100k.</p>
+  <p><b>2. Nhưng cụm công sở lại là nhóm GIỮ NGƯỜI tốt của chính kênh mình</b> (ep01–03). Nên em đề xuất 4 tập: 2 tập hôn nhân, 1 tập hôn nhân sau tuổi hưu, 1 tập công sở. Cả 4 đều dựng đúng khung thắng: bị chấm điểm → câu đau 15 giây → lật lý do → さくら tìm bằng chứng nhìn thấy → ít số giữa bài → kết mở + câu hỏi tự thú.</p>
+  <p><b>3. Hồ sơ đã viết sẵn đủ cho h2dev</b> (series_ctx có số liệu đã kiểm, mô-típ hook gốc, nhân vật, leo thang, cấm). Đặt ở <code>E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\results\laneL_tap18-21_from_research_2026-10-14\</code>. <b>Chưa bàn giao:</b> chờ anh duyệt thứ tự/đề tài.</p>
+</div>
+
+<section>
+  <h2>1. Thị trường 30 ngày: cụm nào đang nóng</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Cụm đề tài</th><th>Số video</th><th>Trung vị view</th><th>Video ≥100k</th><th>Video nổi bật</th></tr></thead>
+    <tbody>
+    <tr><td>婚活: phía nữ, "đòi cao", 末路 (kết cục)</td><td class="n">183</td><td class="n">5.196</td><td class="n">19</td><td>来島美幸の婚活チャンネル: nhiều video 200–700k/2–4 tuần</td></tr>
+    <tr><td>婚活: đàn ông bị loại, không được chọn</td><td class="n">138</td><td class="n">4.999</td><td class="n">15</td><td>底辺なのだ 「婚活市場から男が消えた理由」 223k</td></tr>
+    <tr><td>Độc thân 40–50 tuổi</td><td class="n">71</td><td class="n">5.228</td><td class="n">10</td><td>50代トト 50代婚活 198k</td></tr>
+    <tr><td>熟年離婚 (vợ bỏ chồng sau tuổi hưu)</td><td class="n">183</td><td class="n">316</td><td class="n">2</td><td>わたしの離婚体験記 1.652.684 view/17 ngày (kênh 2.850 sub)</td></tr>
+    <tr><td>Quản lý / thăng chức</td><td class="n">94</td><td class="n">293</td><td class="n">0</td><td>2ch 管理職 罰ゲーム 34k</td></tr>
+    <tr><td>50 tuổi chuyển việc / nghỉ sớm</td><td class="n">32</td><td class="n">261</td><td class="n">0</td><td>タニジン 早期退職 58k</td></tr>
+    <tr><td>Nghỉ việc trong im lặng / người giỏi nghỉ</td><td class="n">154</td><td class="n">111</td><td class="n">1</td><td>昭和生まれの会社員 「まともな人から辞めていく」 38k (kênh 54 sub, cùng khuôn manga なぜ với mình)</td></tr>
+    </tbody></table></div>
+  <p class="muted">Tiêu đề trong cụm hôn nhân (411 video, chỉ là tương quan): mở bằng 「câu thoại」 trung vị 5.564 so với 3.111; có 年収 + số tiền 5.812 so với 3.167; có 【漫画】 thấp hơn (manga trả thù đã bão hoà). Vì vậy cả 4 tiêu đề đều mở bằng 「câu thoại」 + なぜ.</p>
+  <p class="muted">Cảnh báo đối thủ: kênh 昭和生まれの会社員 (54 sub) làm đúng khuôn manga なぜ của mình, 38k/6 ngày, và Studio cho thấy YouTube đặt nó cạnh video Lane L.</p>
+</section>
+
+<section>
+  <h2>2. Bốn tập đề xuất (hook trước, số sau)</h2>
+
+  <div class="ep">
+    <div class="tag">TẬP 18 · ep18-futsuu-no-hito · cụm hôn nhân · nối thẳng khán giả ep12</div>
+    <h3><span class="jp">「普通の人でいいんです」なぜ“普通の男性”は婚活で見つからないのか【漫画】</span></h3>
+    <p class="muted">("Chỉ cần người bình thường" — vì sao đàn ông "bình thường" lại không tìm thấy khi đi tìm bạn đời)</p>
+    <p><b>Khung:</b> <a href="https://www.youtube.com/watch?v=UNerB9htvNI">底辺なのだ — 「普通の男性でいいんです！」</a> 311.050 view/16 ngày, 762 comment. Comment top (335 like): 「男『普通の女が（本当に）居ない』」; (284 like) 「条件1つ見れば普通なんだけど、それが何個も重なれば外れ値になる」.</p>
+    <div class="hook">
+      <div>「普通の人でいいんです」 (Em chỉ cần người bình thường thôi.)</div>
+      <div>「年収は、四百万あれば」「背は、百七十五くらい」「たばこは、吸わない人」… (thu nhập 4 triệu yên là được, cao khoảng 1m75, không hút thuốc…)</div>
+      <div>Màn hình tìm kiếm tụt dần: 『一二八四人』→『六一二人』→『二一九人』→『五八人』→『九人』</div>
+      <div>「あなたの『普通』は、ここに九人しかいません」 (Cái "bình thường" của chị, ở đây chỉ có 9 người.)</div>
+      <div>「一つも、無理なことは言ってません」—「ええ。一つずつなら、ね」 (Tôi đâu có đòi gì quá — Phải. Nếu xét từng cái một.)</div>
+    </div>
+    <p><b>Cú lật:</b> không phải cô đòi cao; từng điều kiện đều bình thường, ghép lại thì chỉ còn 9 người. Và chính cô cũng bị lọc ở màn hình của người đàn ông 39 tuổi tìm "phụ nữ bình thường" (đầu 30).</p>
+    <p><b>Số chính (đã mở nguồn):</b> 73.2% phụ nữ đi 婚活 muốn ≥400万円 (ツヴァイ 2026, 149 người) ⇔ chỉ 40.8% đàn ông độc thân 30代 đang đi làm đạt mức đó (tính từ 就業構造基本調査 2022). Cuối hook: 53.8% đàn ông 30–34 tuổi chưa kết hôn (国勢調査 2025, công bố 29/09/2026). Công bằng hai phía: 91.6% nữ xét thu nhập, 81.2% nam xét ngoại hình.</p>
+  </div>
+
+  <div class="ep">
+    <div class="tag">TẬP 19 · ep19-teinen-rikon · hôn nhân sau tuổi hưu · khán giả nam + nữ 50–70</div>
+    <h3><span class="jp">「あなたの定年を、待っていました」なぜ定年後に妻は離婚を切り出すのか【漫画】</span></h3>
+    <p class="muted">("Em đã đợi đến ngày anh nghỉ hưu" — vì sao sau khi chồng nghỉ hưu, vợ lại đề nghị ly hôn)</p>
+    <p><b>Khung:</b> <a href="https://www.youtube.com/watch?v=ZKYzwWA9EQE">源さん — 熱が39度の妻に夫は「飯は？」</a> 40.399 view (manga). <b>Độ nóng:</b> <a href="https://www.youtube.com/watch?v=90PS95402Tc">わたしの離婚体験記</a> 1.652.684 view/17 ngày; comment top (502 like): 「『自分の人生を生きる』というスイッチが入ったんですよ」. Tin nóng: 人口動態統計 công bố 30/09/2026.</p>
+    <div class="hook">
+      <div>Ba mươi hai năm, câu ông nói nhiều nhất trong nhà: 「おい」「飯」「風呂」 (Này. Cơm. Tắm.)</div>
+      <div>Ngày nghỉ hưu, ông ôm bó hoa về. Trên bàn: tờ 『離婚届』 (đơn ly hôn) xoay về phía ghế ông.</div>
+      <div>「あなたの定年を、待っていました」 (Em đã đợi đến ngày anh nghỉ hưu.)</div>
+      <div>「俺が、何をした」—「何も」「何も、しなかったんです」 (Tôi đã làm gì? — Không gì cả. Anh đã không làm gì cả.)</div>
+    </div>
+    <p><b>Cú lật:</b> ông không làm gì xấu — ông không làm gì cả. Bằng chứng: hai tờ phiếu buổi hội thảo trước nghỉ hưu (công ty ông tổ chức cho hai vợ chồng). Ô "muốn người kia làm gì" của ông ghi 『特になし』 (không có gì), của bà viết kín. Cùng cuốn sổ chi tiêu 32 năm có cột tiền làm thêm bù vào tiền sinh hoạt.</p>
+    <p><b>Số chính:</b> ly hôn năm 2025 giảm (17万9073組), chỉ nhóm chung sống ≥30 năm tăng: 2901 cặp năm 1985 → 1万3126 năm 2025. Ông chồng 65+ làm việc nhà 38 phút/ngày, xem TV/báo 279 phút; bà 213 phút (社会生活基本調査 2021). <b>Không dùng</b> 24.2% (là nhóm ≥20 năm, chỉ xác nhận qua báo), không nói "số vụ 熟年離婚 tăng vọt" (sai).</p>
+  </div>
+
+  <div class="ep">
+    <div class="tag">TẬP 20 · ep20-motobuka-joushi · cụm công sở · khán giả ep01–03</div>
+    <h3><span class="jp">「元部下が、上司になった」なぜ50代は職場で口を閉ざすのか【漫画】</span></h3>
+    <p class="muted">("Cấp dưới cũ thành sếp" — vì sao người 50 tuổi im lặng ở chỗ làm)</p>
+    <p><b>Khung:</b> <a href="https://www.youtube.com/watch?v=FnrSCQFVYi4">人生、ちょっと寄り道 — 後輩が上司になった</a> 8.395 view. Chính comment kênh mình (ep02) đòi đề tài này: 「中年平社員や万年主任の惨めさはなぜ隠ぺいされるのだろうか」 (Vì sao nỗi khổ của nhân viên trung niên không chức bị che giấu?).</p>
+    <div class="hook">
+      <div>「本日付で、三好くんが課長だ」 (Từ hôm nay, Miyoshi là trưởng phòng.)</div>
+      <div>Họp chiều, ông vừa mở miệng 「その納期は——」 (Hạn giao đó—), trưởng bộ phận cắt:</div>
+      <div>「もう課長じゃないんだから」「会議では、口を出さないでください」 (Anh không còn là trưởng phòng nữa. Trong họp, đừng xen vào.)</div>
+      <div>Tối đó, tên ông biến khỏi ba cuộc họp tuần sau. 「黙っていれば、角は立たない」 (Im lặng thì không ai va chạm.)</div>
+    </div>
+    <p><b>Cú lật (số mới tinh, パーソル công bố 25/09/2026):</b> có sếp trẻ hơn tự nó KHÔNG ảnh hưởng tới việc thích nghi. Thứ quyết định là có chỗ nói hay không: có chỗ nói thì 44.2% thích nghi tốt, không có chỉ 28.0%. Cuối hook: trưởng phòng rời ghế lúc 53.9 tuổi bình quân, sau đó còn đi làm 11.1 năm, đúng bằng 11.1 năm đã làm quản lý.</p>
+    <p class="muted">⚠ Bằng chứng thị trường của tập này yếu hơn 3 tập kia (video khung chỉ 8k). Tập này dựa vào khán giả sẵn có của kênh.</p>
+  </div>
+
+  <div class="ep">
+    <div class="tag">TẬP 21 · ep21-motobuchou-konkatsu · hôn nhân + chức danh · khán giả nam 60+</div>
+    <h3><span class="jp">「元部長です」なぜ定年後の男性は婚活で選ばれないのか【漫画】</span></h3>
+    <p class="muted">("Tôi từng là trưởng phòng" — vì sao đàn ông sau tuổi hưu không được chọn khi tìm bạn đời)</p>
+    <p><b>Khung:</b> <a href="https://www.youtube.com/watch?v=Dj1vmfkL7x4">千種テンカ — 「俺は部長だったんだぞ」</a> 24.888 view. <b>Độ nóng:</b> <a href="https://www.youtube.com/watch?v=fnQPHPOrNsc">ずんだもん末路ストーリー — シニアが婚活しても結婚できない理由</a> 140.766 view.</p>
+    <div class="hook">
+      <div>Đặt danh thiếp cũ lên bàn: 「三十八年、商社におりました。最後は、部長です」 (38 năm ở công ty thương mại. Cuối cùng là trưởng phòng.)</div>
+      <div>「お食事は、ご自分で、なさいますか」 (Anh có tự nấu ăn không ạ?)</div>
+      <div>「家のことは、ずっと家内が」「これからは、それをお願いできる方を、と思いまして」 (Việc nhà xưa nay là vợ tôi lo. Giờ tôi muốn tìm người nhờ được việc đó.)</div>
+      <div>「少し、飲み物を取ってきますね」 (Tôi đi lấy chút đồ uống nhé.) — cô không quay lại bàn.</div>
+    </div>
+    <p><b>Cú lật:</b> phụ nữ không tránh đàn ông, họ tránh việc trở thành người chăm sóc: 49.4% phụ nữ độc thân 40–60 tuổi không muốn cưới vì sợ gánh việc nhà, chăm sóc; nam chỉ 25.9% (内閣府 2021). Nữ muốn người cùng lứa 79.8%, nam chỉ 50.0% (タメニー 2024).</p>
+    <p class="muted">⚠ Số liệu buộc đổi ý ban đầu: ở tuổi 60 số nam và nữ độc thân gần bằng nhau, chỉ từ 65 tuổi phụ nữ mới gấp khoảng 2,5 lần (phần lớn là người goá 80–90 tuổi). Đàn ông 60+ thực ra tái hôn NHIỀU hơn phụ nữ (gấp khoảng 3 lần), nhưng cũng chỉ khoảng 8 người trên 1.000 mỗi năm. Kịch bản đã viết theo đúng số này. ⚠ Trùng đề tài hôn nhân tuổi già với Lane N ep09; khác trục (chức danh, "ai chăm ai"), đã cấm tình tiết N ep09.</p>
+  </div>
+</section>
+
+<section>
+  <h2>3. Thứ tự và dự phòng</h2>
+  <ol>
+    <li><b>18 → 19 → 20 → 21.</b> Tập 18 đi ngay vì YouTube đang xếp ep12 cạnh cụm 婚活. Tập 20 (công sở) xen giữa để hai tập hôn nhân tuổi già (19, 21) không liền nhau.</li>
+    <li>Dự phòng 1: <span class="jp">「普通の女性でいいんです」</span> (bản soi gương phía nam của tập 18; <a href="https://www.youtube.com/watch?v=WbWa0XKZTMA">WbWa0XKZTMA</a> 103k). Làm cách tập 18 ít nhất 3 tập.</li>
+    <li>Dự phòng 2: <span class="jp">「おい、飯」なぜ定年後の夫婦は"家庭内別居"になるのか</span> (ly thân trong cùng một nhà; <a href="https://www.youtube.com/watch?v=2G0nCQTe3X0">2G0nCQTe3X0</a> 54k). Làm cách tập 19 ít nhất 3 tập.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>4. Số sai đang lan truyền (h2dev phải tránh)</h2>
+  <ul>
+    <li>"30代で年収600万の独身男性は6.7%": số cũ, không rõ mẫu số. Tính lại theo bảng 2022 là 11.2%.</li>
+    <li>"熟年離婚 tăng vọt": số vụ chung sống ≥20 năm gần như đứng yên từ 2005. Chỉ nhóm ≥30 năm tăng.</li>
+    <li>"7–8 phần người đề nghị ly hôn là phụ nữ": kinh nghiệm một tư vấn viên, không phải thống kê.</li>
+    <li>"Ly hôn thì vợ nhận nửa lương hưu của chồng": sai.</li>
+    <li>"60代は女性が余っている": sai, ở tuổi 60 nam nữ gần bằng nhau.</li>
+    <li>"Tỉ lệ tái hôn 60 tuổi nam 8.58%": đó là tỉ lệ người 60 tuổi trong số người tái hôn, không phải tỉ lệ tái hôn.</li>
+    <li>"年下上司 21.6%": số đọc từ biểu đồ; bài gốc ghi khoảng 2 phần 10. "Một nửa người 50 tuổi có sếp tuổi 30": sai, chỉ 18.0%.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>5. Đã làm gì, chưa làm gì</h2>
+  <ul>
+    <li>Đã: quét thị trường, đọc hook + toàn bài 15 video (whisper large-v3 vì YouTube chặn phụ đề), nạp 11 phân tích hook vào <code>E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\</code> (kho còn 357 video), kiểm 55 dòng số liệu, viết 4 series_ctx + title + promise + competitor + video_goc, 2 thư mục dự phòng có NOTE.</li>
+    <li>Chưa: chưa ghi sheet (không được ghi tab L); chưa có retention của các video đối thủ (không lấy được); transcript whisper chưa kiểm tay; số "phép AND" (khoảng 5% khi gộp 3 điều kiện) là ước tính của em, chỉ dùng định tính hoặc ghi 『試算』.</li>
+  </ul>
+  <div class="links">
+    <div>Hồ sơ: <code>E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\results\laneL_tap18-21_from_research_2026-10-14\HO_SO_LANE_L_TAP18-21.md</code></div>
+    <div>Phiếu giao việc (chờ anh duyệt): <code>E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\shared\GIAO_VIEC_LANE_L_TAP18-21_2026-10-14.md</code></div>
+    <div>Số liệu đầy đủ: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_deep_20261014\verify\</code></div>
+  </div>
+</section>
+
+<section>
+  <h2>6. Anh quyết</h2>
+  <ul>
+    <li><b>Duyệt cả 4 theo thứ tự 18→21:</b> anh bảo tab h2dev đọc phiếu giao việc.</li>
+    <li><b>Đổi:</b> ví dụ bỏ tập 21 (trùng Lane N), thay bằng dự phòng 1; em viết series_ctx cho dự phòng.</li>
+    <li><b>Sửa hook/tiêu đề từng tập</b> trước khi giao.</li>
+  </ul>
+</section>
+</div>

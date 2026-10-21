@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "measured": true,
+  "lane_id": "teinengo-tanoshimi",
+  "sheet_tab": "teinengo-tanoshimi",
+  "sheet_id": "1xu4iNudIPanWrUxlTODqIySGf9YxLy7rpTq9OtXDMOU",
+  "source_channels": [
+    "https://www.youtube.com/channel/UCI2cPqBmCPMxxKI4u2Gqs_Q"
+  ],
+  "sample_thumbs": [
+    "thumbs/win/Scnn76gZ8E8.jpg",
+    "thumbs/win/XbwqD2SktC0.jpg",
+    "thumbs/win/xxMKVprVh-I.jpg",
+    "thumbs/win/r4jNE1oTv8Q.jpg",
+    "thumbs/win/K8tTrxijqEo.jpg",
+    "thumbs/win/O84L0zOtrxo.jpg",
+    "thumbs/win/0YuPs8cbmMo.jpg",
+    "thumbs/win/bgUqNHYZbq0.jpg",
+    "thumbs/win/gpVr3OYPA-E.jpg",
+    "thumbs/win/VXlE3c0gqb0.jpg",
+    "thumbs/win/hyLpBbmnvIA.jpg",
+    "thumbs/win/BeIZhu1I4Tw.jpg",
+    "thumbs/win/_VXUim2J9QM.jpg",
+    "thumbs/win/AOe-E69mLzA.jpg",
+    "thumbs/win/OIeZvtYreOg.jpg",
+    "thumbs/win/_EhPtM6cRFk.jpg",
+    "thumbs/win/EANADckKWT4.jpg",
+    "thumbs/win/ASBVa_H_leI.jpg",
+    "thumbs/win/_G9s-Ig6-E8.jpg",
+    "thumbs/win/dY3HfjtmvXI.jpg"
+  ],
+  "measured_at": "2026-09-23",
+  "layout": "bands_manga",
+  "text_rows": [
+    {
+      "role": "top",
+      "color": "#FFFFFF",
+      "stroke": "#000000",
+      "stroke_ratio": 0.025,
+      "max_chars": 11,
+      "height_ratio": 0.185,
+      "width_ratio": 0.97,
+      "top_margin_ratio": 0.015,
+      "align": "center",
+      "required": true,
+      "seen_in": "19/19",
+      "meaning": "băng ĐEN ĐẶC trên (0,21 H): chữ trắng TO + cụm từ khoá tô VÀNG #FFE500",
+      "measured_px": "nét chữ cao 0,164–0,189 H (trung vị 0,185) · nền đen đặc 19/19 · 4–11 ký tự",
+      "description": "TOP line inside a solid black bar; huge white type with the 2-5 character keyword painted yellow."
+    },
+    {
+      "role": "lead",
+      "color": "#0A0A0A",
+      "stroke": null,
+      "max_chars": 7,
+      "font_ratio": 0.1,
+      "width_ratio": 0.26,
+      "align": "left",
+      "required": false,
+      "seen_in": "16/19",
+      "meaning": "nhãn nền VÀNG chữ ĐEN trong tranh (第3位 / 極上シート / 妻の家計簿)",
+      "measured_px": "cao 0,09–0,12 H",
+      "description": "Small yellow label box: a rank, a state or the object that proves the story."
+    },
+    {
+      "role": "quote",
+      "color": "#101010",
+      "stroke": null,
+      "max_chars": 8,
+      "font_ratio": 0.065,
+      "width_ratio": 0.22,
+      "align": "right",
+      "required": false,
+      "seen_in": "12/19",
+      "meaning": "bong bóng thoại TRẮNG chữ đen trong tranh (lời nhân vật 3–8 chữ)",
+      "measured_px": "2–3 bong bóng/ảnh",
+      "description": "One short line of speech in a white manga bubble."
+    },
+    {
+      "role": "shock",
+      "color": "#E01010",
+      "stroke": "#FFFFFF",
+      "stroke_ratio": 0.085,
+      "max_chars": 9,
+      "height_ratio": 0.24,
+      "width_ratio": 0.94,
+      "bottom_margin_ratio": 0.02,
+      "align": "center",
+      "required": true,
+      "seen_in": "13/19",
+      "meaning": "dòng CHỐT ở nửa dưới: chữ ĐỎ viền TRẮNG dày, KHÔNG nền",
+      "measured_px": "nét chữ cao 0,20–0,29 H · ruột chữ 93 % pixel ĐỎ · 4–9 ký tự",
+      "description": "Huge RED payoff line with a thick white outline over the artwork."
+    }
+  ],
+  "text_coverage_ratio": [
+    0.262,
+    0.446
+  ],
+  "image": {
+    "source": "ai_text2img",
+    "subject_position": "centre",
+    "require_face": false,
+    "forbid_real_person": true,
+    "face_seen_in": "19/20",
+    "art_style": "bright warm Japanese manga / anime illustration key art in the style of a retirement-life web comic: clean confident line art, flat cel shading, natural daylight or warm indoor light, an ordinary modern Japanese setting (living room, park, station, hot-spring town, supermarket, library); the main character is a Japanese man in his 60s with grey or silver hair, drawn LARGE so his expression reads on a phone; when the story compares two situations split the frame into 2-3 comic panels with thin white gutters. The top 21% and the bottom 24% must stay a PLAIN CONTINUATION OF THE SCENE (wall, floor, table, sky, ground) with no important detail — do NOT draw a coloured banner, a solid colour bar, a strip, a border or a title plate anywhere: those areas get typography laid over them later. NO text, no letters, no numbers, no speech bubbles, no logos, no watermark, no real photograph.",
+    "keep_top_ratio": 0.21,
+    "keep_bottom_ratio": 0.24
+  },
+  "font": {
+    "family": "Noto Sans JP",
+    "file": "NotoSansJP-Variable.ttf",
+    "variation": "Black",
+    "fallback": "Yu Gothic Bold"
+  },
+  "content": {
+    "lenses": [
+      "ranking_countdown",
+      "before_after_time",
+      "two_way_compare"
+    ],
+    "lens_notes": "ranking_countdown = đếm hạng N選 (第3位/5位 in nhãn vàng trong tranh; 8/20 mẫu thắng có N選 trong tiêu đề, 0/5 mẫu thua) · before_after_time = mốc thời gian đổi đời (2か月後…/5年後; 4/20 thắng, 0/5 thua) · two_way_compare = 2 khung đối lập A vs B (VS/の差; 3/20 thắng, 0/5 thua, khớp với 14/20 ảnh chia ≥2 panel)",
+    "forbidden_phrases": [
+      "衝撃の真実",
+      "まさかの結末",
+      "その理由とは？",
+      "残酷な現実",
+      "手遅れ"
+    ],
+    "audience": "người Nhật 60-75 đã hoặc sắp nghỉ hưu (và vợ/chồng họ), xem trên điện thoại, quan tâm tiền hưu · thú vui rẻ · sức khoẻ · quan hệ vợ chồng; thích truyện tranh kể chuyện đời thường, ngại nội dung doạ dẫm",
+    "brief": "Channel style measured 2026-09-23 on ALL 19 thumbnails of the reference channel 老後のお金ストーリー (UCI2cPqBmCPMxxKI4u2Gqs_Q). LOCKED look: (1) a SOLID BLACK bar over the top 21% of the frame holding ONE short headline in huge white type with the keyword painted yellow; (2) the artwork is a bright warm manga scene of a Japanese man in his 60s, usually 2-4 comic panels comparing two situations, faces large; (3) small yellow label boxes and white speech bubbles sit inside the artwork; (4) a HUGE RED line with a thick white outline across the lower artwork is the payoff. TEXT MUST BE SHORT: the reference channel uses 4-11 characters per line so the type can be enormous and readable on a phone. Never write a sentence where a phrase works. Every number, age, place and quote must come from the script; no invented figures, no generic hype (衝撃の真実 / まさかの結末 / その理由とは？). Do not spoil the final chapter."
+  },
+  "bans": [
+    "ảnh/chân dung người thật (0/25 mẫu đo là ảnh thật — kênh ngách này 100% tranh vẽ)",
+    "chữ do model ảnh vẽ (chữ luôn do PIL vẽ đè lên; 0/25 mẫu có chữ méo kiểu AI)",
+    "chỉ có cảm xúc tiêu cực: ôm đầu, gục xuống, mặt tuyệt vọng mà KHÔNG có khung mặt tươi/bình thản (5/5 mẫu THUA như vậy, 20/20 mẫu THẮNG đều có ít nhất một khung mặt thoải mái — đối chiếu bằng mắt trên 2 bảng contact)",
+    "bỏ trống nửa dưới khung, không có dòng chốt (4/5 mẫu THUA không có dòng chốt lớn, 10/20 THẮNG có)",
+    "cụm sáo rỗng 衝撃の真実 / まさかの結末 / その理由とは？ (0/20 mẫu thắng dùng)"
+  ],
+  "banner": null,
+  "notes": "ĐO LẠI 2026-09-23 trên TOÀN BỘ 19 thumbnail của kênh gốc 老後のお金ストーリー. Bản 22/09 SAI 3 chỗ: (1) màu chữ — thuật toán lấy cụm SÁNG nhất làm màu chữ nên chữ ĐỎ viền TRẮNG bị ghi thành 'trắng'; sửa bằng biến đổi khoảng cách + tô loang lỗ trong viền → ruột chữ dòng dưới 93 % pixel ĐỎ. (2) không nhận ra THANH ĐEN ĐẶC trên (19/19) vì hàng có chữ sáng làm tỉ lệ pixel tối tụt dưới ngưỡng. (3) chữ quá nhỏ: kênh gốc để nét chữ cao 0,164–0,189 H (dòng dưới tới 0,29 H) và chỉ 4–11 ký tự mỗi dòng. Khuôn mới dùng layout `bands_manga` (renderer riêng, 3 lane cũ không đổi). Prompt nền cũng phải đi nhánh art_style của lane: nhánh mặc định của satori có câu 'compatible with a strong red banner' làm gpti2 vẽ hẳn một DẢI ĐỎ ở đáy ảnh.",
+  "stats": {
+    "n_win": 20,
+    "n_lose": 5,
+    "yellow_in_top": "20/20",
+    "punch_line_win": "10/20",
+    "punch_line_lose": "1/5",
+    "faces_haar": "19/20",
+    "panels_ge2": "14/20",
+    "yellow_blocks": "18/20",
+    "red_blocks_win": "12/20",
+    "red_blocks_lose": "2/5",
+    "coverage_q25_med_q75": [
+      0.262,
+      0.316,
+      0.446
+    ],
+    "top_bar_height_med": 0.255,
+    "do_lai_2026-09-23": {
+      "n_anh_kenh_goc": 19,
+      "thanh_den_dac": "19/19",
+      "cum_chu_vang_dong_tren": "19/19",
+      "ruot_chu_dong_duoi_do": "93 % pixel",
+      "cao_net_chu_tren": "0,164–0,189 H",
+      "cao_net_chu_duoi": "0,20–0,29 H",
+      "nhan_vang": "16/19",
+      "bong_bong_thoai": "12/19",
+      "ky_tu_moi_dong": "4–11"
+    }
+  }
+}

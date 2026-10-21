@@ -1,0 +1,183 @@
+<title>Tập 8 Nút Bấm</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: một cột đọc dọc kiểu hồ sơ kỹ thuật bảng điều khiển xe — nhãn công tắc, thẻ số, bảng [Dn] */
+:root{
+ --bg:#f3f4f2; --panel:#ffffff; --ink:#1c2321; --mute:#5c6663; --line:#d5dad7;
+ --accent:#c2410c; --amber:#b45309; --ok:#15803d; --bad:#b91c1c; --chip:#e8ebe9;
+ --f-d:"Be Vietnam Pro",system-ui,sans-serif; --f-jp:"Noto Sans JP","Hiragino Sans",sans-serif; --f-m:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141816;--panel:#1c211f;--ink:#e6ebe8;--mute:#9aa5a1;--line:#2f3734;--accent:#fb923c;--amber:#fbbf24;--ok:#4ade80;--bad:#f87171;--chip:#262d2a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141816;--panel:#1c211f;--ink:#e6ebe8;--mute:#9aa5a1;--line:#2f3734;--accent:#fb923c;--amber:#fbbf24;--ok:#4ade80;--bad:#f87171;--chip:#262d2a;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.65 var(--f-d)}
+.wrap{max-width:900px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:26px}
+h1{font-size:1.9rem;line-height:1.2;margin:0;text-wrap:balance;font-weight:800}
+h2{font-size:1.2rem;margin:0 0 10px;text-wrap:balance;font-weight:800;display:flex;gap:10px;align-items:center}
+h2 .k{font:600 .72rem var(--f-m);letter-spacing:.08em;color:var(--accent);border:1.5px solid var(--accent);border-radius:4px;padding:1px 6px}
+h3{font-size:1rem;margin:14px 0 6px}
+p{margin:0 0 8px;max-width:72ch}
+.jp{font-family:var(--f-jp)}
+.vi{color:var(--mute);font-size:.92em}
+.d{font:600 .78em var(--f-m);color:var(--accent);white-space:nowrap}
+.mono{font-family:var(--f-m);font-size:.85em;word-break:break-all}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+.lead{font-size:1.02rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:12px}
+.tile{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--bg)}
+.tile b{display:block;font:800 1.5rem var(--f-m);font-variant-numeric:tabular-nums}
+.tile span{font-size:.85rem;color:var(--mute)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+th{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+td.n{font-family:var(--f-m);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font:600 .72rem var(--f-m);padding:2px 7px;border-radius:99px;background:var(--chip)}
+.pill.ok{color:var(--ok)}.pill.bad{color:var(--bad)}.pill.am{color:var(--amber)}
+.hook{display:grid;gap:6px}
+.ln{display:grid;grid-template-columns:62px 1fr;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.ln .r{font:600 .75rem var(--f-m);color:var(--mute);padding-top:3px}
+.ln.big .r{color:var(--accent)}
+ul{margin:4px 0 8px;padding-left:20px}li{margin:3px 0}
+.warn{border-left:4px solid var(--bad);padding:4px 12px;background:var(--bg);border-radius:0 6px 6px 0}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.sw{font:600 .78rem var(--f-m);border:1.5px solid var(--ink);border-radius:5px;padding:4px 8px;background:var(--bg)}
+a{color:var(--accent)}
+</style>
+<div class="wrap">
+
+<header>
+<p class="mono" style="color:var(--mute)">LANE P · MG_STUDIO · TẬP 8 · ep08-button · 17/10/2026</p>
+<h1>Tập 8: nút bấm vật lý trên ô tô (物理ボタン)</h1>
+<p class="lead"><span class="jp">中国「日本車はボタンだらけで時代遅れｗ 全部画面でやれ！」→結果、中国政府が「画面は固まる」と認めボタン義務化へｗ</span><br><span class="vi">TQ: "Xe Nhật toàn nút bấm, lỗi thời lol, làm hết bằng màn hình đi!" → Kết quả: chính phủ TQ thừa nhận "màn hình bị đơ" và tiến tới bắt buộc nút bấm.</span></p>
+<div class="btnrow"><span class="sw">ハザード</span><span class="sw">ウインカー</span><span class="sw">ワイパー</span><span class="sw">デフロスター</span><span class="sw">P · R · N · D</span><span class="sw">SOS</span><span class="sw">…19 thao tác</span></div>
+</header>
+
+<section>
+<h2><span class="k">KẾT LUẬN</span>Làm được, 7/10, nên đăng trước 10/11/2026</h2>
+<p>Cùng khuôn với tập 2 tay nắm cửa (tập thắng nhất kênh): TQ khoe màn hình to là công nghệ, coi nút bấm là đồ cổ, rồi chính nhà nước TQ bắt gắn nút lại. Cú lật mạnh nhất có văn bản gốc: bản thuyết minh chính thức của dự thảo tự viết rằng màn hình trung tâm <span class="jp">「在极端环境甚至日常使用环境中仍存在卡顿、黑屏、迟滞等故障」</span> <span class="vi">(không chỉ lúc khắc nghiệt mà <b>ngay cả khi dùng hằng ngày</b> vẫn bị đơ, đen màn hình, chậm)</span> <span class="d">[D23]</span>.</p>
+<p>Điểm trừ so với tập 2: luật <b>vẫn là dự thảo</b>, không có con số thiệt hại cỡ 427万台, và phía Nhật có bất lợi rõ (Mazda CX-5, RAV4 mới cũng đã cắt nút).</p>
+<div class="tiles">
+<div class="tile"><b>114</b><span>[Dn] từ 49 trang nguồn, máy kiểm 0 lỗi</span></div>
+<div class="tile"><b>19</b><span>thao tác phải có bộ điều khiển vật lý <span class="d">[D33][D34]</span></span></div>
+<div class="tile"><b>10,0 s / 44,9 s</b><span>Volvo 2005 có nút vs MG Marvel R (SAIC, TQ) <span class="d">[D20]</span></span></div>
+<div class="tile"><b>20% · 0%</b><span>Euro NCAP 12/10: XPeng X9, Zeekr, Aion / Leapmotor B05 <span class="d">[D60][D61]</span></span></div>
+<div class="tile"><b>0</b><span>video YouTube Nhật kể góc "TQ tự bắt gắn nút"</span></div>
+<div class="tile"><b>52.694</b><span>view video Nhật cùng đề tài (5,98× kênh)</span></div>
+</div>
+</section>
+
+<section>
+<h2><span class="k">PHÁP LÝ</span>Tình trạng thật hôm nay: dự thảo, chưa ban hành</h2>
+<div class="tbl"><table>
+<tr><th>Ngày</th><th>Việc</th><th>Trạng thái</th><th>[Dn]</th></tr>
+<tr><td class="n">12/02/2026</td><td>MIIT công bố dự thảo sửa GB 4094 (tiêu chuẩn bắt buộc về bộ điều khiển, đèn báo)</td><td><span class="pill am">dự thảo</span></td><td class="n">D30</td></tr>
+<tr><td class="n">13/04/2026</td><td>Hết hạn góp ý</td><td><span class="pill">xong</span></td><td class="n">D29</td></tr>
+<tr><td class="n">17/08 · 14/09</td><td>Báo TQ kiểm lại: "vẫn là bản lấy ý kiến", không tìm thấy văn bản ban hành</td><td><span class="pill am">dự thảo</span></td><td class="n">D45 D108</td></tr>
+<tr><td class="n">31/08/2026</td><td>GB 7258-2026 (an toàn vận hành) ĐÃ ban hành, có quy định "bộ điều khiển ảo"</td><td><span class="pill ok">đã ban hành</span></td><td class="n">D46–D48</td></tr>
+<tr><td class="n">10/10/2026</td><td>4 bộ ngành ra dự thảo thông tư: chức năng an toàn đưa lên màn hình thì phải kèm nút vật lý; hãng "chạy theo trào lưu" kiểm thử không đủ thì không duyệt mẫu</td><td><span class="pill am">góp ý đến 10/11</span></td><td class="n">D49–D54</td></tr>
+<tr><td class="n">01/07/2027</td><td>Ngày hiệu lực <b>đề xuất</b> của GB 4094 (trùng ngày GB 7258 có hiệu lực)</td><td><span class="pill am">đề xuất</span></td><td class="n">D38</td></tr>
+<tr><td class="n">~07/2028 · ~01/2029</td><td>Điều khoản nút áp cho mẫu xe mới (tháng 13) / mẫu đã duyệt (tháng 19)</td><td><span class="pill">dự kiến</span></td><td class="n">D39 D40</td></tr>
+</table></div>
+<p class="warn" style="margin-top:12px">Tiêu đề và lời thoại chỉ được dùng <span class="jp">「義務化へ」「改正案」「2027年7月の施行を提案」</span> <span class="vi">(tiến tới bắt buộc / dự thảo sửa đổi / đề xuất hiệu lực 7/2027)</span>. Cấm <span class="jp">「義務化した」「禁止した」「2026年7月から」</span>: nhiều báo TQ từng viết sai "từ 7/2026" rồi phải tự đính chính <span class="d">[D43][D44]</span>. Có 1 bài 10/9 nói "đã ban hành" nhưng không có số công bố nên không dùng. Ngay trước ngày đăng phải tìm lại 「GB 4094—2026 发布」.</p>
+</section>
+
+<section>
+<h2><span class="k">CÚ LẬT</span>Năm câu/số làm xương sống tập</h2>
+<ul>
+<li><b>Lúc khoe:</b> <span class="jp">「实体按键等于落后，全屏触控等于高级」</span> <span class="vi">(nút thật = lạc hậu, toàn cảm ứng = cao cấp)</span> <span class="d">[D2]</span>; nút bị gọi <span class="jp">「老旧、过时」</span> <span class="vi">(cũ kỹ, lỗi thời)</span> <span class="d">[D5]</span>; xe TQ bị chế <span class="jp">「冰箱、彩电、大沙发」</span> <span class="vi">(tủ lạnh, ti vi màu, sofa to)</span> <span class="d">[D4]</span>. Jiyue quảng bá "20 năm tới xe nào cũng có bóng dáng Jiyue" <span class="d">[D10]</span>, 4 tháng sau phá sản vì tiền và chiến giá <span class="d">[D12][D13]</span>.</li>
+<li><b>Nhà nước TQ tự thừa nhận:</b> màn hình dùng hằng ngày cũng đơ, đen <span class="d">[D23]</span>; chức năng bắt buộc phải làm xong bằng bộ phận vật lý, không được ghép với nút ảo trên màn hình <span class="d">[D37]</span>; nút ≥10×10 mm, vị trí cố định, bấm không cần nhìn <span class="d">[D35][D36]</span>.</li>
+<li><b>Châu Âu chấm điểm:</b> Euro NCAP 12/10/2026 viết XPeng "relies too heavily on the central touchscreen" <span class="vi">(dựa quá nhiều vào màn hình trung tâm)</span>, chỉ 20%; Leapmotor B05 0% <span class="d">[D60][D61][D63]</span>. Đây là điểm mục, X9 vẫn 5 sao.</li>
+<li><b>Hãng TQ quay đầu:</b> Geely, BYD, Changan, Chery gắn lại nút <span class="d">[D74]</span>; phó tổng Geely: ngành xe TQ "plagued by a trend of blindly following trends" <span class="vi">(khổ vì chạy theo trào lưu mù quáng)</span> <span class="d">[D77]</span>; Tesla TQ bỏ cần xi-nhan rồi bán lắp lại 2499元 <span class="d">[D69][D70]</span>; Xiaomi bán nút vật lý làm phụ kiện, video tháo ghi "价值499元" <span class="d">[D110][D111]</span>.</li>
+<li><b>Câu chốt phía Nhật (do chính KOL xe TQ viết):</b> <span class="jp">「日韩车企同样从一开始就保留空调、音量的实体控件，被同行嘲笑保守的那些年，现在看成了先见之明。」</span> <span class="vi">(Hãng Nhật–Hàn từ đầu đã giữ nút điều hoà, âm lượng; những năm bị cười là bảo thủ, nay hoá ra tầm nhìn xa)</span> <span class="d">[D79]</span>. Kỹ sư trưởng RAV4: ở TQ "They didn't want it. They wanted knobs and switches." <span class="vi">(khách không muốn dồn lên màn hình, họ muốn núm xoay và công tắc)</span> <span class="d">[D84]</span>.</li>
+</ul>
+</section>
+
+<section>
+<h2><span class="k">HOOK</span>Đề xuất theo khuôn ★ tập 2 (máy MG viết lại, anh duyệt)</h2>
+<p class="vi">Phòng <span class="mono">showroom_tq</span> (gian xe điện TQ, xe trắng không logo). Gag: màn hình khổng lồ của chủ tịch tắt đen. Câu 1–6 là hư cấu, có bóng trong [Dn]; câu 8 và 10 là số thật.</p>
+<div class="hook">
+<div class="ln"><span class="r">1 主席</span><div><span class="jp">見よ、この巨大画面！我が国の車にボタンなど要らん！日本車など、いまだにボタンだらけの昭和の箱だ！</span><br><span class="vi">Nhìn đây, màn hình khổng lồ! Xe nước ta chẳng cần nút nào! Xe Nhật vẫn là cái hộp thời Showa đầy nút!</span></div></div>
+<div class="ln"><span class="r">2 秘書</span><div><span class="jp">まあっ、さすが主席〜！我が国の画面はいつだって世界一ですわ〜！どうぞ、お触りくださいませ〜！</span><br><span class="vi">Ôi, đúng là chủ tịch! Màn hình nước ta lúc nào cũng số một thế giới! Mời ngài chạm thử ạ!</span></div></div>
+<div class="ln"><span class="r">3 主席</span><div><span class="jp">よかろう、わはは！……おや？ん？画面が…真っ黒だぞ？</span><br><span class="vi">Được, haha! …Ơ? Hửm? Màn hình… đen thui?</span></div></div>
+<div class="ln"><span class="r">4 秘書</span><div><span class="jp">まあっ、画面がお昼寝してるだけですわ〜、未来は少し眠いものですの〜！</span><br><span class="vi">Ôi, màn hình chỉ đang ngủ trưa thôi ạ, tương lai thì hay buồn ngủ một chút mà!</span></div></div>
+<div class="ln"><span class="r">5 主席</span><div><span class="jp">わはははは！そうだ、ボタンをカチカチ押している日本など、永遠に周回遅れだ！</span><br><span class="vi">Hahaha! Phải rồi, bọn Nhật còn bấm lách cách thì mãi mãi bị bỏ một vòng!</span></div></div>
+<div class="ln"><span class="r">6 秘書</span><div><span class="jp">ですわよね〜！おほほほほ〜！</span></div></div>
+<div class="ln big"><span class="r">7 担当官</span><div><span class="jp">主席、大変です！</span></div></div>
+<div class="ln big"><span class="r">8 担当官</span><div><span class="jp">工業情報化部の国家標準の改正案で、ウインカーやハザード、ワイパーなど19の操作は、画面ではなく物理的なスイッチにせよと！理由は「画面は日常でも固まる、真っ黒になる」です！</span> <span class="d">[D23][D33][D34]</span><br><span class="vi">Dự thảo sửa tiêu chuẩn quốc gia của Bộ Công nghiệp: 19 thao tác như xi-nhan, đèn khẩn cấp, gạt mưa phải là công tắc vật lý, không phải màn hình! Lý do: "màn hình dùng hằng ngày cũng đơ, đen"!</span></div></div>
+<div class="ln big"><span class="r">9 主席</span><div><span class="jp">な、なんだと！？</span></div></div>
+<div class="ln big"><span class="r">10 担当官</span><div><span class="jp">しかも今月、ヨーロッパの安全評価で、シャオペンやジーカーの車は運転操作の項目でわずか20%、リープモーターは0%です！</span> <span class="d">[D58][D60][D61]</span><br><span class="vi">Hơn nữa tháng này, ở đánh giá an toàn châu Âu, xe XPeng, Zeekr chỉ được 20% ở mục điều khiển lái, Leapmotor 0%!</span></div></div>
+<div class="ln"><span class="r">11 秘書</span><div><span class="jp">しゅ、主席〜っ！？誰か、誰かある！出会え、出会えーっ！主席をお守りしてーっ！</span></div></div>
+<div class="ln"><span class="r">12 nar</span><div><span class="jp">“未来のコックピット”と誇った中国は、なぜ自らボタンを戻させるのか。そして「保守的」と笑われた日本車のスイッチは、なぜ“先見の明”と呼ばれ始めたのか。</span> <span class="d">[D79]</span><br><span class="vi">Vì sao TQ, nước từng khoe "buồng lái tương lai", lại tự bắt gắn nút trở lại? Và vì sao công tắc xe Nhật từng bị cười là "bảo thủ" nay được gọi là "tầm nhìn xa"?</span></div></div>
+</div>
+</section>
+
+<section>
+<h2><span class="k">DÀN Ý</span>6 chương, khoảng 17 phút</h2>
+<div class="tbl"><table>
+<tr><th>#</th><th>Nội dung</th><th>Motion / hình gợi ý</th><th>[Dn]</th></tr>
+<tr><td class="n">1</td><td>Thời "màn hình = cao cấp" 2012→2024: Tesla 17 inch, 3+2 màn hình "như quán net", nút bị gọi lỗi thời, "cố chấp buồn cười"; Jiyue khoe 20 năm → 4 tháng sau phá sản (chỉ nói "sau đó"); lý do thật của trào lưu: rẻ (2 USD/nút, tiết kiệm 87%, ước tính)</td><td>Timeline số màn hình tăng dần; thẻ trích câu báo TQ</td><td class="n">D1–D18</td></tr>
+<tr><td class="n">2</td><td>Khi chạy xe thật: Volvo 2005 10,0 s vs MG Marvel R 44,9 s; TRL 57% (nói "có nghiên cứu cho rằng"); khiếu nại màn hình đen "nhiều vô kể"; Tesla bỏ rồi bán lại cần xi-nhan 2499元; Xiaomi bán nút 499元</td><td>Đồng hồ đếm 2 bên 10,0 s / 44,9 s</td><td class="n">D19–D28, D69–D71, D105, D109–D111</td></tr>
+<tr><td class="n">3</td><td>Nhà nước TQ ra tay: dự thảo GB 4094 với 19 thao tác, ≥10×10 mm, bấm không cần nhìn; lý do ghi trên giấy; chính Geely, BYD, Great Wall cùng soạn; hãng xin thêm thời gian; GB 7258-2026; thông tư 4 bộ ngành 10/10</td><td>Danh sách 19 ô hiện từng ô; thẻ giấy tờ trích [D23]; timeline 2026→2029</td><td class="n">D29–D54, D106–D108</td></tr>
+<tr><td class="n">4</td><td>Hãng TQ và thế giới quay đầu: triển lãm Thành Đô "mời nút trở lại"; "ngụy công nghệ"; Euro NCAP 20%/0%; VW "không bao giờ mắc lỗi này nữa", Tesla "có lẽ bỏ quá nhiều", Benz "hơi quá đà"</td><td>Thanh % Euro NCAP; bảng hãng "đã quay lại"</td><td class="n">D55–D68, D72–D78, D112</td></tr>
+<tr><td class="n">5</td><td>Phía Nhật: KOL TQ "tầm nhìn xa"; Toyota phe thận trọng; Honda Fit quay lại nút vì khách; Lexus nút kiểu mới; khách TQ muốn núm xoay. <b>Bắt buộc nói</b>: CX-5 mới gần như hết nút, bị chê; RAV4 nút "tối thiểu"; bZ3X "ít Toyota nhất"</td><td>Cận cảnh núm xoay, công tắc (ảnh thật không logo)</td><td class="n">D79–D104</td></tr>
+<tr><td class="n">6</td><td>Kết: gọi lại câu "hộp thời Showa"; câu công bằng "màn hình không có lỗi, vấn đề là chức năng dùng khi đang chạy"; mốc 10/11 và 1/7/2027; nối tập 2 bằng 「ドアノブに続いて」 <span class="vi">(tiếp theo tay nắm cửa)</span>; CTA 1 lần</td><td>Màn cuối</td><td class="n">D32, D38, D50, D52, D79, D84</td></tr>
+</table></div>
+<p style="margin-top:10px">CTA đề xuất: <span class="jp">「あなたの車のエアコン、画面ですか？ボタンですか？」</span> <span class="vi">(Điều hoà xe bạn chỉnh bằng màn hình hay nút bấm?)</span>. Video mẫu chính có 267 bình luận nhờ câu hỏi kiểu này.</p>
+</section>
+
+<section>
+<h2><span class="k">BẤT LỢI</span>Phía Nhật phải nói thẳng</h2>
+<ul>
+<li><b>Mazda CX-5 mới</b>: <span class="jp">「物理ボタンほぼナシ!! 残ったのはハザードスイッチとデフロスター程度」</span> <span class="vi">(gần như không còn nút, chỉ còn đèn khẩn cấp và sấy kính)</span> <span class="d">[D88]</span>; bị cả người dùng lẫn báo chí chê <span class="d">[D91]</span>. Kỹ sư trưởng Yamaguchi phản biện "nút đặt thấp, 15 công tắc giống nhau, phải cúi xuống" <span class="d">[D92]</span>, nhưng nói còn "dư địa cân nhắc" tuỳ khách <span class="d">[D93]</span>.</li>
+<li><b>Toyota RAV4 mới</b>: kỹ sư trưởng nhận số nút là "the minimum we could get away with" <span class="vi">(mức tối thiểu có thể)</span> <span class="d">[D94]</span>. bZ3X bán ở TQ: nội thất "最不丰田" <span class="vi">(ít Toyota nhất)</span> <span class="d">[D95]</span>.</li>
+<li>Cách nói đúng: <span class="jp">「多くの日本車は基本操作の物理スイッチを残してきた」</span> <span class="vi">(nhiều xe Nhật vẫn giữ công tắc vật lý cho thao tác cơ bản)</span>, không nói "xe Nhật toàn nút". Phía Nhật thắng về lý lẽ, không có số doanh số nào nhờ nút bấm.</li>
+</ul>
+</section>
+
+<section>
+<h2><span class="k">CẤM</span>Không được nói</h2>
+<ul>
+<li>"TQ đã cấm / đã bắt buộc", "từ 7/2026". Chỉ được nói "tiến tới bắt buộc", "đề xuất 7/2027".</li>
+<li>"19 cái nút": đúng ra là 19 bộ điều khiển vật lý (nút, cần, núm). Điều hoà và âm lượng KHÔNG có trong danh sách, chỉ có sấy kính <span class="d">[D34]</span>.</li>
+<li>"TQ chê đích danh xe Nhật nhiều nút": không tìm thấy câu thật nào. Chỉ 主席 hư cấu được nói.</li>
+<li>"Euro NCAP cho 0 sao", "EU đã ra luật": 20%/0% là điểm một mục; EU còn bị chê quy định "surprisingly weak" <span class="vi">(yếu đến bất ngờ)</span> <span class="d">[D65]</span>.</li>
+<li>"Jiyue phá sản vì bỏ nút" <span class="d">[D13]</span>; "Tesla bị luật ép gắn lại" (Tesla gắn lại 8/2025, trước dự thảo 2/2026).</li>
+<li>Chuyện tai nạn, người chết do màn hình: không có nguồn chính thức, không đưa vào. Số 41% khiếu nại <span class="d">[D25]</span> lấy từ bài tự truyền thông, chỉ nói 「とする報道も」 <span class="vi">(cũng có báo đưa tin)</span>.</li>
+</ul>
+</section>
+
+<section>
+<h2><span class="k">TIÊU ĐỀ</span>3 phương án (anh chốt)</h2>
+<div class="tbl"><table>
+<tr><th>#</th><th>Tiêu đề</th><th>Chữ thumbnail</th></tr>
+<tr><td class="n">1 ★</td><td><span class="jp">中国「日本車はボタンだらけで時代遅れｗ 全部画面でやれ！」→結果、中国政府が「画面は固まる」と認めボタン義務化へｗ</span><br><span class="vi">TQ: "Xe Nhật toàn nút, lỗi thời, làm hết bằng màn hình đi!" → chính phủ TQ thừa nhận "màn hình bị đơ", tiến tới bắt buộc nút</span></td><td><span class="jp">画面が固まる / ボタン義務化へ</span><br><span class="vi">màn hình bị đơ / tiến tới bắt buộc nút</span></td></tr>
+<tr><td class="n">2</td><td><span class="jp">「ボタンは古臭い」と笑った中国EV、欧州の安全評価で0点ｗ 中国政府まで「ボタンを戻せ」</span><br><span class="vi">Xe điện TQ cười "nút bấm cũ kỹ", bị chấm 0 điểm ở châu Âu; đến chính phủ TQ cũng bảo "lắp nút lại"</span></td><td><span class="jp">0% / ボタンを戻せ</span><br><span class="vi">phải ghi rõ "mục điều khiển lái 0%"</span></td></tr>
+<tr><td class="n">3</td><td><span class="jp">【ざまぁ】画面だらけの中国車、自国政府に「ボタン付けろ」と言われる→笑われた日本車の“昭和のスイッチ”が正解だった件</span><br><span class="vi">[Đáng đời] Xe TQ toàn màn hình bị chính phủ nước mình bảo "lắp nút vào" → "công tắc thời Showa" của xe Nhật bị cười lại là đúng</span></td><td><span class="jp">ボタンが正解</span><br><span class="vi">nút bấm mới đúng</span></td></tr>
+</table></div>
+</section>
+
+<section>
+<h2><span class="k">MẪU</span>Video mẫu đã bóc</h2>
+<ul>
+<li><b>Mẫu chính cùng đề tài:</b> <a href="https://www.youtube.com/watch?v=ac7VjLeiBKc">ac7VjLeiBKc</a>, AutoTech Insight, <span class="jp">「なぜ日本車は画面が小さい？」</span> <span class="vi">(Vì sao xe Nhật màn hình nhỏ?)</span>: 52.694 view, 5,98× trung vị kênh, 267 bình luận. Kể một người, không tiểu phẩm; để Euro NCAP tới phút 10:28 mới nói, còn tập mình đưa GB 4094 lên ngay trong hook.</li>
+<li><b>Mẫu định dạng tiểu phẩm:</b> <a href="https://www.youtube.com/watch?v=pzymlr7XNYM">pzymlr7XNYM</a>, ずんだ探検隊, <span class="jp">中国「安くて早い！」→結果、崩壊</span> <span class="vi">(TQ: "Rẻ mà nhanh!" → sụp đổ)</span>: 781.353 view, 2,16×. Lật lần đầu ở 28% thời lượng; khoảng 65–75% là hội thoại.</li>
+<li><b>Mẫu phụ Mazda:</b> <a href="https://www.youtube.com/watch?v=gHTCrnBwJ5g">gHTCrnBwJ5g</a> (review CX-5 mới, 70.052 view), dùng cho đoạn bất lợi. Mẫu nhịp tập 2 Y8ZPwH5WR4w dùng lại.</li>
+<li><b>Không chép:</b> "không có nút thì Euro NCAP không cho 5 sao" (sai, X9 vẫn 5 sao); nói gộp "xe Nhật giữ nút"; đùa cạnh chuyện người chết; chữ <span class="jp">「劣化コピー」</span> <span class="vi">(bản sao kém)</span>.</li>
+</ul>
+</section>
+
+<section>
+<h2><span class="k">FILE</span>Đã giao sang MG_STUDIO</h2>
+<ul class="mono">
+<li>E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep08-button\HUONG_DAN.md</li>
+<li>E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep08-button\HO_SO.md</li>
+<li>E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep08-button\tu_lieu.json (114 [Dn])</li>
+<li>E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep08-button\de_tai.json (stt 8, loi_hua)</li>
+<li>E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep08-button\nguon\ (86 trang; dự thảo gốc 34.txt, thuyết minh 33.txt)</li>
+<li>E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\tham_khao\MAU_ep08-button.md</li>
+<li>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_p_button_20261017\notes_ep08-button.md</li>
+</ul>
+</section>
+
+</div>

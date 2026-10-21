@@ -1,0 +1,152 @@
+<title>Lane L đề tài mới 21/10</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Bố cục: một cột đọc, bảng cuộn ngang riêng; phần A đề tài, phần B quota */
+:root{
+  --bg:#f6f7f4; --panel:#ffffff; --fg:#1d2420; --mute:#5d6862; --line:#d9ded8;
+  --accent:#1f6f5c; --warn:#a2541b; --bad:#a3302c; --chip:#e6efe9;
+  --f-body:"Be Vietnam Pro",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141917; --panel:#1b221f; --fg:#e4ebe6; --mute:#9aa8a0; --line:#2f3a35;
+  --accent:#5fc3a6; --warn:#e3a066; --bad:#ef8a84; --chip:#23302b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141917; --panel:#1b221f; --fg:#e4ebe6; --mute:#9aa8a0; --line:#2f3a35;
+  --accent:#5fc3a6; --warn:#e3a066; --bad:#ef8a84; --chip:#23302b; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding-block:28px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+h1{font-size:1.75rem;font-weight:800;margin:0;text-wrap:balance}
+h2{font-size:1.25rem;font-weight:800;margin:0 0 8px;text-wrap:balance;color:var(--accent)}
+h3{font-size:1.02rem;margin:14px 0 4px}
+p{margin:6px 0;max-width:72ch}
+.mute{color:var(--mute)}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:600}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 18px 20px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:760px}
+th,td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+th{font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.jp{color:var(--mute);font-size:.82rem}
+a{color:var(--accent)}
+.chip{display:inline-block;background:var(--chip);border-radius:4px;padding:0 6px;font-size:.76rem;font-weight:600;white-space:nowrap}
+.w{color:var(--warn)} .b{color:var(--bad)}
+.bar{display:flex;align-items:center;gap:10px;font-size:.88rem}
+.bar i{display:block;height:12px;background:var(--accent);border-radius:2px;flex:none}
+.bars{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.bars .lab{flex:1;min-width:0}
+code{font-family:var(--f-mono);font-size:.82rem;background:var(--chip);padding:1px 5px;border-radius:3px;word-break:break-all}
+ol,ul{margin:6px 0;padding-left:22px} li{margin:4px 0;max-width:80ch}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">TRENDING-RESEARCH · 21/10/2026</div>
+  <h1>Lane L (Phòng nghiên cứu "Vì sao" của xã hội): đề tài mới + chỗ tốn quota</h1>
+  <p class="mute">Quét 40 từ khoá + 3 kênh nguồn → 993 video → 60 video ≤21 ngày, ≥30k view, ≥8 phút, chưa dùng cho Lane L. Phân loại và dịch bằng deepseek (ns24), không tốn quota Claude.</p>
+</header>
+
+<section id="A">
+<h2>A. Cụm đề tài đang viral, hợp khuôn 「…」なぜ〜のか【漫画】</h2>
+<p class="mute">Xếp theo độ hợp Lane L (nhóm thắng: hôn nhân, công sở, người bị xã hội "chấm điểm"; nhóm yếu: kinh tế vĩ mô). <b>bo</b> = view ÷ trung vị 12 video gần nhất của kênh. Cột hook do <code>hook_auto.py</code> chấm (model ngoài).</p>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Cụm đề tài</th><th>Video mẫu</th><th>View · tuổi · bo</th><th>Hook</th><th>Ghi chú</th></tr></thead>
+<tbody id="rows">
+<tr><td>1</td><td><b>Sống bằng trợ cấp sinh hoạt</b><br><span class="jp">(生活保護)</span></td>
+<td><a href="https://www.youtube.com/watch?v=84hB7FjqjhE">Nhận trợ cấp sinh hoạt thì sẽ thế nào?</a> <span class="jp">(生活保護を受けるとどうなるのか？)</span> · Trạm quan sát xã hội (社会観測所)<br>
+<a href="https://www.youtube.com/watch?v=w8XJaY7AFYk">Những người sống dựa vào trợ cấp, pachinko và rượu</a> · Xứ sở chuyện nợ nần (借金ストーリーランド)<br>
+<a href="https://www.youtube.com/watch?v=JwJElHddytc">Vừa nhận trợ cấp vừa kiếm tiền từ video</a> · Phòng của Reina (レイナの部屋)</td>
+<td class="n">179k · 15n · 3,6<br>106k · 3n · 0,6<br>69k · 7n · 0,9</td><td class="n">4/12 · A<br>6/12 · A<br>—</td>
+<td>3 kênh cùng làm trong 2 tuần. Kênh nguồn của Lane L (dự phòng ⑥ từ 10/10, nay 123k → 179k). <span class="w">Bình luận có hướng bài ngoại, tránh góc người nước ngoài.</span></td></tr>
+
+<tr><td>2</td><td><b>Xe cắm trại / sống trong xe</b><br><span class="jp">(キャンピングカー・車上生活)</span></td>
+<td><a href="https://www.youtube.com/watch?v=GC_1VJS_M2A">"Cuộc sống tự do" trên xe cắm trại có thật sự thoải mái?</a> · Trạm quan sát xã hội<br>
+<a href="https://www.youtube.com/watch?v=i05nqtsNxow">Thuê xe cắm trại cỡ nhỏ 1 tháng trước khi mua</a><br>
+<a href="https://www.youtube.com/watch?v=_xJJlp52RjQ">Vợ chồng 65 tuổi mua xe cắm trại bằng lương hưu, 1 năm sau</a><br>
+<a href="https://www.youtube.com/watch?v=kKzleVgzGso">Đàn ông độc thân 50 tuổi sống trong xe</a> · Cuộc đời người khác (他人の人生)</td>
+<td class="n">102k · 28n<br>539k · 18n · 53<br>251k · 11n · 2,9<br>162k · 18n · 1,5</td><td class="n">6/12 · D<br>7/12 · A<br>8/12 · A<br>9/12 · A</td>
+<td>Cụm nóng nhất về tổng view (~1M / 4 video). Góc Lane L: "vì sao người 50–60 tuổi chọn sống trong xe".</td></tr>
+
+<tr><td>3</td><td><b>Không đóng lương hưu quốc dân</b><br><span class="jp">(国民年金 未払い)</span></td>
+<td><a href="https://www.youtube.com/watch?v=rgUQZAmuP8w">Đàn ông 52 tuổi độc thân không đóng lương hưu, thực nhận 18 man đổ vào pachinko</a> · Hạt giống bữa cơm (メシのタネ)</td>
+<td class="n">300k · 15n · 2,3</td><td class="n">7/12 · A</td>
+<td>213 bình luận, nhiều nhất cụm. Kênh 532k sub nên bo thấp mà view vẫn gấp đôi trung vị.</td></tr>
+
+<tr><td>4</td><td><b>Nghỉ ở 60 hay ở lại tới 65</b><br><span class="jp">(60歳で辞めた男と65歳まで残った男)</span></td>
+<td><a href="https://www.youtube.com/watch?v=Zdl2hHM2AhI">Người nghỉ ở 60 và người ở lại tới 65, 5 năm sau</a> · Ông Gen (源さん, kênh 18 ngày)<br>
+<a href="https://www.youtube.com/watch?v=iGiFtXAvOwA">Tôi nghỉ ở 60, đồng kỳ làm tới 65: khoảng cách 5 năm sau</a> · Trí khôn hiên nhà (縁側の知恵, kênh 20 ngày)</td>
+<td class="n">634k · 10n · 201<br>240k · 16n · 6,3</td><td class="n">7/12 · A<br>8/12 · A</td>
+<td>Bứt mạnh nhất cả lượt quét. <span class="w">Trùng khuôn Lane F (hook "tôi vs đồng kỳ"). Anh chọn giao F hay L.</span></td></tr>
+
+<tr><td>5</td><td><b>Công ty mai mối từ bên trong</b><br><span class="jp">(結婚相談所勤務)</span></td>
+<td><a href="https://www.youtube.com/watch?v=tFH2SVOkcUY">Thử làm ở công ty mai mối, khác hẳn tưởng tượng</a> · Trạm quan sát xã hội</td>
+<td class="n">19k · 3n</td><td class="n">5/12 · A</td>
+<td>Chưa viral, đang lên. Gần nhóm hôn nhân (ep12 婚活 là tập thắng nhất của Lane L).</td></tr>
+
+<tr><td>6</td><td><b>Giao đồ ăn rút lui hàng loạt</b><br><span class="jp">(フードデリバリー撤退)</span></td>
+<td><a href="https://www.youtube.com/watch?v=p9ptj-JcL30">Vì sao giao đồ ăn rút lui hàng loạt, vài chục công ty còn vài</a> · Hạt giống bữa cơm</td>
+<td class="n">102k · 7n · 0,8</td><td class="n">6/12 · A</td>
+<td>Đúng khuôn なぜ. Nghiêng kinh doanh; nhân vật tài xế giao hàng kéo về đời sống.</td></tr>
+
+<tr><td>7</td><td><b>Ngoài 40 chuyển sang lái xe tải lớn</b><br><span class="jp">(40代 大型トラック 転職)</span></td>
+<td><a href="https://www.youtube.com/watch?v=YYsLPOTTH6U">Ngoài 40 chuyển nghề lái xe tải lớn thì thế nào? Tuổi trung bình 47</a> · Hạt giống bữa cơm</td>
+<td class="n">79k · 1n</td><td class="n">7/12 · A</td>
+<td>79k trong 1 ngày. Gần nhóm công sở/chuyển việc trung niên.</td></tr>
+
+<tr><td>8</td><td><b>Vì sao tuổi 50 mất ý nghĩa sống</b><br><span class="jp">(なぜ50代になると生きる意味を見失うのか)</span></td>
+<td><a href="https://www.youtube.com/watch?v=zessyOsjBYI">Vì sao đến tuổi 50 lại thấy mất ý nghĩa sống?</a> · Mặt trái xã hội (社会のウラガワ)</td>
+<td class="n">55k · 9n</td><td class="n">8/12 · A</td>
+<td>Kênh nguồn gốc. <span class="w">Là phần tiếp của ep11 (video gốc 1,17M) — làm được như tập 2 nhưng dễ trùng ý.</span></td></tr>
+
+<tr><td>9</td><td><b>Phụ nữ nghiện người yêu AI</b><br><span class="jp">(AI彼氏)</span></td>
+<td><a href="https://www.youtube.com/watch?v=a7pLYK4BkOI">Cái kết của người phụ nữ nghiện bạn trai AI</a> · Phòng của Reina</td>
+<td class="n">161k · 16n · 2,2</td><td class="n">5/12 · A</td>
+<td>Hiện tượng mới, khán giả nữ. Trạm quan sát xã hội cũng vừa làm "Z世代 tin AI quá" (20k).</td></tr>
+</tbody></table></div>
+
+<h3>Dự phòng (hợp vừa)</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=8eV4jPbzHXE">Vì sao quán soba ăn thoả thích tăng nhanh, 990 yên cả tempura</a> <span class="jp">(「そば食べ放題」が急増している理由)</span> · 187k / 3 ngày · Hạt giống bữa cơm</li>
+<li><a href="https://www.youtube.com/watch?v=OVdjTaEOdfY">Vì sao trào lưu cắm trại kết thúc</a> <span class="jp">(キャンプブームはなぜ終わったのか)</span> · 50k / 7 ngày · Mặt trái xã hội (kênh nguồn)</li>
+<li><a href="https://www.youtube.com/watch?v=Qvwbmhx9nrU">Thực nhận 19 man, thuê nhà 2,8 man giữa Tokyo, 48 tuổi độc thân</a> · 111k / 13 ngày</li>
+<li><a href="https://www.youtube.com/watch?v=fJ-AdzXarS0">Sống 1.000 yên/ngày suốt 1 năm</a> · 122k / 17 ngày · kênh mới Chuyện không phải của người khác (他人事じゃない人生, 944 sub, trung vị/sub 27,6 — cỗ máy mới)</li>
+</ul>
+<h3>Đã loại</h3>
+<p class="mute">Phá sản quán nhậu SWs4kvM9pVQ (trùng ep22) · thực nhận 15 man (trùng ep15) · nghề sau hưu 65 tuổi (xếp hàng siêu thị, quản lý chung cư, quản lý toà nhà → Lane N/C) · mọi video スカッと trả đũa.</p>
+<p class="mute">Dữ liệu: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_hunt_20261021\cands.json</code> · tool <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_hunt_20261021\hunt.py</code></p>
+</section>
+
+<section id="B">
+<h2>B. Quota Claude tốn ở đâu (đo thật 07/10 → 21/10)</h2>
+<p>Đọc 35 phiên chính + 70 subagent của dự án, quy về một đơn vị (input 1 · ghi cache 1,25 · đọc cache 0,1 · output 5). Tổng 370 triệu đơn vị.</p>
+<div class="bars">
+ <div class="bar"><i style="width:calc(48% * 3)"></i><span class="lab"><b>48%</b> subagent — cả 70 đều chạy Opus 5.5 (soạn tư liệu Lane O/P/X, tìm web, đọc trang)</span></div>
+ <div class="bar"><i style="width:calc(23% * 3)"></i><span class="lab"><b>23%</b> ngữ cảnh nền 73k token gửi lại MỖI lượt (system, danh sách skill/tool, CLAUDE.md 19,5 KB, MEMORY.md 12 KB)</span></div>
+ <div class="bar"><i style="width:calc(15% * 3)"></i><span class="lab"><b>15%</b> dữ liệu thô in vào chat (cat/sed, output script, Read file, ảnh) rồi nằm lại tới hết phiên</span></div>
+ <div class="bar"><i style="width:calc(12% * 3)"></i><span class="lab"><b>12%</b> Claude tự viết file dài (hồ sơ .md, series_ctx, báo cáo HTML)</span></div>
+ <div class="bar"><i style="width:calc(4% * 3)"></i><span class="lab"><b>4%</b> tìm web (WebSearch + Chrome nền)</span></div>
+</div>
+<p class="mute">Các mục chồng nhau một phần (subagent cũng có nền + dữ liệu thô). Phát hiện quan trọng nhất: <b>75% chi phí rơi vào các lượt có ngữ cảnh &gt;150k token</b>. Một lượt ở &gt;300k tốn ~52k đơn vị, gấp 2,6 lần lượt &lt;150k. Phiên dài 300–440 lượt là thủ phạm.</p>
+
+<h3>Giao model khác được việc gì</h3>
+<div class="tbl"><table>
+<thead><tr><th>Bước</th><th>Đang dùng</th><th>Chuyển sang</th><th>Trạng thái</th></tr></thead>
+<tbody>
+<tr><td>Phân loại + dịch tiêu đề hàng loạt</td><td>Claude đọc bảng</td><td>deepseek-v4.1-flash (ns24)</td><td><span class="chip">đã chạy hôm nay</span> 60 video, 3 lô, ~19k token ns24, Claude 0</td></tr>
+<tr><td>Phân tích hook 0–90s → HOOK_LIBRARY</td><td>Claude đọc transcript 2–4k token/video</td><td>deepseek-v4-pro → gpt-5.6-sol → gemini-3.8-flash</td><td><span class="chip">tool mới</span> <code>src\hook_auto.py</code>, Claude chỉ thấy 1 dòng/video</td></tr>
+<tr><td>Gom bình luận theo chủ đề + tổng like</td><td>Claude đọc hàng trăm bình luận</td><td>deepseek-v4.1-flash</td><td>làm tiếp (cùng khuôn)</td></tr>
+<tr><td>Tìm + đọc trang tư liệu, trích số [Dn]</td><td>subagent Opus 5.5</td><td>script Python (Chrome nền 9461) + gpt-5.6-sol / deepseek-v4-pro đọc trang</td><td>làm tiếp — giữ cổng <code>kiem_nguon.py</code> chặn số không có trang thật</td></tr>
+<tr><td>Viết nháp hồ sơ / báo cáo dài</td><td>Claude viết</td><td>gpt-5.6-sol từ JSON (ep22 đã làm thế 18/10)</td><td>làm tiếp; Claude chỉ soát</td></tr>
+<tr><td>Subagent còn lại</td><td>Opus 5.5</td><td>tham số <code>model: sonnet</code> hoặc <code>haiku</code></td><td>áp ngay từ phiên sau</td></tr>
+</tbody></table></div>
+
+<h3>Thói quen giảm quota (không cần code)</h3>
+<ol>
+<li>Mỗi việc một phiên; giao xong thì <code>/clear</code>. Phiên dài tốn nhiều nhất.</li>
+<li>Script chỉ in ≤40 dòng tóm tắt; dữ liệu đầy đủ ghi file.</li>
+<li>Rút gọn MEMORY.md (12 KB) và CLAUDE.md dự án (19,5 KB): chuyển "sự thật đã verify" sang docs. Tiết kiệm ~8k token mỗi lượt (~3% tổng).</li>
+</ol>
+<p class="mute">Rủi ro: model ngoài dễ bịa số và dịch hụt tên riêng. Giữ luật "số nào cũng có trang mở được" và Claude kiểm ngẫu nhiên. Thử hook đầu tiên (84hB7FjqjhE) cho 4/12; lần 10/10 Claude chấm kênh này 5–9/12, tức model ngoài khắt khe hơn một chút.</p>
+</section>
+</div>

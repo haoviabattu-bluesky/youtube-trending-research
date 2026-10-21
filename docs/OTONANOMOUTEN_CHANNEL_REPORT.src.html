@@ -1,0 +1,477 @@
+<title>DNA kênh 大人の盲点</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --bg:#f5f4ef; --panel:#ffffff; --ink:#1c1f24; --muted:#5f6670; --line:#dcdcd2;
+  --accent:#1d3f7a; --accent-soft:#e6ecf7; --warn:#b8321f; --warn-soft:#fbe8e4;
+  --gold:#b0830f; --gold-soft:#f8efd6; --good:#2f6b3a; --good-soft:#e5f1e4;
+  --font-display:"Zen Kaku Gothic New","Hiragino Sans",sans-serif;
+  --font-serif:"Noto Serif JP",serif; --font-body:"Be Vietnam Pro",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12151a; --panel:#1a1e25; --ink:#e8ebf0; --muted:#98a1ad; --line:#2c323c;
+  --accent:#7ea6ea; --accent-soft:#1c2638; --warn:#ec8573; --warn-soft:#2e1b17;
+  --gold:#e2bb52; --gold-soft:#2b2412; --good:#86c98f; --good-soft:#1a2a1c; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#12151a; --panel:#1a1e25; --ink:#e8ebf0; --muted:#98a1ad; --line:#2c323c;
+  --accent:#7ea6ea; --accent-soft:#1c2638; --warn:#ec8573; --warn-soft:#2e1b17;
+  --gold:#e2bb52; --gold-soft:#2b2412; --good:#86c98f; --good-soft:#1a2a1c; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.65;padding-inline:16px}
+.wrap{max-width:1000px;margin:0 auto;padding-block:40px 80px}
+[lang="ja"],.ja{font-family:var(--font-display)}
+a{color:var(--accent)}
+h1,h2,h3,h4{font-family:var(--font-serif);text-wrap:balance;margin:0;line-height:1.35}
+.hero{display:flex;flex-direction:column;gap:14px;padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-size:clamp(1.55rem,4vw,2.2rem)}
+.lede{color:var(--muted);max-width:72ch}
+.statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stat .n{font-family:var(--font-mono);font-size:1.25rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}
+.stat .l{font-size:.76rem;color:var(--muted);margin-top:2px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+nav.toc a{font-size:.8rem;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px 12px;text-decoration:none;color:var(--ink)}
+nav.toc a:focus-visible{outline:2px solid var(--accent)}
+section{margin-bottom:46px;scroll-margin-top:16px}
+h2{font-size:1.3rem;margin-bottom:6px}
+h3{font-size:1.02rem;margin:18px 0 8px}
+.sl{color:var(--muted);max-width:76ch;margin:0 0 16px;font-size:.94rem}
+.vi{color:var(--muted);font-style:italic;font-size:.88rem;display:block;margin-top:3px;font-family:var(--font-body)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.86rem}
+th,td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;background:var(--bg)}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.pill{display:inline-block;font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.p-good{background:var(--good-soft);color:var(--good)} .p-warn{background:var(--warn-soft);color:var(--warn)}
+.p-gold{background:var(--gold-soft);color:var(--gold)} .p-acc{background:var(--accent-soft);color:var(--accent)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+figure img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+figcaption{padding:10px 12px;font-size:.84rem}
+figcaption b{font-family:var(--font-mono)}
+.hook{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:16px}
+.hook h4{font-size:1rem;margin-bottom:6px}
+.jp{background:var(--accent-soft);border-radius:8px;padding:10px 12px;font-family:var(--font-display);font-size:.93rem;line-height:1.8;margin:8px 0 4px}
+.lab{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:12px 0 4px;font-weight:600}
+dl.beats{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:8px 0 0;font-size:.87rem}
+dl.beats dt{color:var(--muted)} dl.beats dd{margin:0}
+.why{margin-top:10px;padding:10px 12px;border-left:3px solid var(--gold);background:var(--gold-soft);border-radius:0 8px 8px 0;font-size:.88rem}
+.formula{font-family:var(--font-mono);font-size:.84rem;background:var(--bg);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto;white-space:pre-wrap}
+.tparts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tp{border-radius:8px;padding:6px 10px;font-size:.85rem;line-height:1.4}
+.tp small{display:block;font-family:var(--font-body);font-size:.72rem;opacity:.85}
+.tp.a{background:var(--bg);border:1px dashed var(--line);color:var(--muted)}
+.tp.b{background:var(--accent-soft);color:var(--accent)}
+.tp.c{background:var(--warn-soft);color:var(--warn);font-weight:600}
+.tp.d{background:var(--gold-soft);color:var(--gold)}
+ul.plain,ol.plain{margin:6px 0 0;padding-left:20px} ul.plain li,ol.plain li{margin-bottom:6px}
+.pros li::marker{color:var(--good)} .cons li::marker{color:var(--warn)}
+.verdict{border:2px solid var(--good);border-radius:14px;padding:18px 20px;background:var(--panel)}
+.verdict h2{color:var(--good)}
+.cmt{border-bottom:1px solid var(--line);padding:9px 0;font-size:.88rem}
+.cmt:last-child{border-bottom:none}
+.cmt .v{font-family:var(--font-mono);color:var(--accent);font-size:.78rem;margin-right:6px}
+.chap{font-size:.85rem} .chap td:first-child{font-family:var(--font-mono);color:var(--accent);white-space:nowrap}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.steps li{counter-increment:s;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px 12px 52px;position:relative;font-size:.9rem}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--panel);font-family:var(--font-mono);font-size:.8rem;display:grid;place-items:center}
+code{font-family:var(--font-mono);font-size:.8rem;background:var(--bg);padding:1px 5px;border-radius:4px;word-break:break-all}
+footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Hồ sơ DNA kênh · 2026-09-26 · ứng viên chưa duyệt</div>
+  <h1><span lang="ja">大人の盲点【漫画でわかる人生の裏側】</span></h1>
+  <span class="vi" style="margin-top:-8px">"Điểm mù của người lớn — mặt trái cuộc đời hiểu qua manga"</span>
+  <p class="lede">Kênh manga drama cho đàn ông 60–65 tuổi vừa nghỉ hưu: mỗi tập là 1 bảng xếp hạng thực dụng
+    (việc làm thêm, sở thích, câu cửa miệng) được kể qua 1 nhân vật cố định là ông <b lang="ja">高瀬健一</b>
+    (Takase Kenichi, 64 tuổi, cựu trưởng phòng quỹ tín dụng). Tập đầu tiên đăng 10/09/2026 — 16 ngày sau,
+    1 video đạt 92.034 view với 526 subscriber.
+    <a href="https://www.youtube.com/@otonanomouten" target="_blank" rel="noopener">youtube.com/@otonanomouten</a>
+    · ID <code>UCsWLzQF-6knOsQlHYBNtvwg</code></p>
+  <div class="statrow">
+    <div class="stat"><div class="n">526</div><div class="l">subscriber</div></div>
+    <div class="stat"><div class="n">6</div><div class="l">video (10/09 → 25/09)</div></div>
+    <div class="stat"><div class="n">148.242</div><div class="l">tổng view 6 video</div></div>
+    <div class="stat"><div class="n">92.034</div><div class="l">video đỉnh = 175× subscriber</div></div>
+    <div class="stat"><div class="n">28–40′</div><div class="l">thời lượng mỗi tập</div></div>
+    <div class="stat"><div class="n">~3 ngày</div><div class="l">nhịp đăng</div></div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Mục lục">
+  <a href="#noidung">1 · Nội dung</a><a href="#sovideo">2 · 6 video</a><a href="#hitflop">3 · Hit vs flop</a>
+  <a href="#tieude">4 · Tiêu đề</a><a href="#mota">5 · Mô tả</a><a href="#thumb">6 · Thumbnail</a>
+  <a href="#hook">7 · Hook từng tập</a><a href="#cautruc">8 · Cấu trúc cả video</a><a href="#binhluan">9 · Bình luận</a>
+  <a href="#doithu">10 · Đối thủ</a><a href="#manh">11 · Điểm mạnh</a><a href="#yeu">12 · Điểm yếu</a>
+  <a href="#verdict">13 · Clone được không</a><a href="#quytrinh">14 · Quy trình</a><a href="#tailieu">15 · Tài liệu</a>
+</nav>
+
+<section id="noidung">
+  <h2>1 · Kênh làm về cái gì</h2>
+  <p class="sl">Không phải truyện trả thù công sở kiểu スカッと. Đây là <b>manga thông tin xếp hạng khoác áo drama gia đình</b>:
+    tiêu đề hứa 1 danh sách N選, còn thân video là 1 câu chuyện liên tục của cùng 1 ông già đi thử từng lựa chọn,
+    thất bại, được người khác chỉ ra "điểm mù", rồi chọn phương án vừa sức.</p>
+  <div class="grid2">
+    <div class="panel">
+      <h3 style="margin-top:0">3 trụ đề tài (theo 6 video)</h3>
+      <ul class="plain">
+        <li><b>Việc làm thêm sau hưu</b> — 4/6 video (7選, 13選, 7つの理由, 11選). Bóc các mỹ từ tuyển dụng
+          <span lang="ja">未経験歓迎・座り仕事・簡単作業</span> <span class="vi">("không cần kinh nghiệm · việc ngồi · việc đơn giản")</span></li>
+        <li><b>Sở thích một mình</b> — 1/6 (<span lang="ja">一生遊べる趣味7選</span> <span class="vi">"7 sở thích chơi cả đời"</span>)</li>
+        <li><b>Giao tiếp tuổi già</b> — 1/6 (<span lang="ja">魔法の口癖7選</span> <span class="vi">"7 câu cửa miệng thần kỳ"</span>)</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3 style="margin-top:0">Dàn nhân vật cố định (xuất hiện lặp lại)</h3>
+      <ul class="plain">
+        <li><b lang="ja">高瀬健一</b> 64 tuổi — người kể ngôi 1 xưng <span lang="ja">俺</span>, 38 năm ở quầy quỹ tín dụng (<span lang="ja">信用金庫</span>), sĩ diện nhưng biết nhận sai.</li>
+        <li><b lang="ja">恵子</b> (Keiko) — vợ, đi làm bán thời gian, sắc sảo, là người nói câu "lật" ảo tưởng của chồng; kết mỗi tập bằng 1 cảnh vợ chồng hài hước.</li>
+        <li>Người dẫn đường đổi theo tập: cố vấn việc làm <span lang="ja">黒田</span>, thủ thư <span lang="ja">木戸真理子</span>, tiền bối 71 tuổi <span lang="ja">松原</span>, bạn <span lang="ja">藤井</span>, hàng xóm <span lang="ja">田辺</span>.</li>
+        <li>Câu chốt của MỌI tập: <b lang="ja">「盲点だった。」</b> <span class="vi">"Đúng là điểm mù."</span> — trùng tên kênh.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sovideo">
+  <h2>2 · Toàn bộ 6 video (đo 26/09/2026 02:19 UTC)</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Ngày</th><th>Tiêu đề</th><th>View</th><th>View/ngày</th><th>Like %</th><th>Bình luận</th><th>Dài</th><th>Mục xếp hạng đầu</th></tr></thead>
+    <tbody>
+      <tr><td>10/09</td><td><a href="https://www.youtube.com/watch?v=wG4fI9voims" target="_blank" rel="noopener" lang="ja">【漫画】60代以降でも気楽に働ける人気のアルバイト・パート7選｜64歳男性が見つけた“無理なく続く仕事”</a><span class="vi">7 việc làm thêm được ưa chuộng người 60+ vẫn làm thoải mái | "việc bền mà không quá sức" ông 64 tuổi tìm ra</span></td><td class="num">92.034</td><td class="num">5.888</td><td class="num">0,50</td><td class="num">59</td><td class="num">31′</td><td class="num">9:14</td></tr>
+      <tr><td>14/09</td><td><a href="https://www.youtube.com/watch?v=do0n9Wirigs" target="_blank" rel="noopener" lang="ja">【漫画】60代以降でも一人で一生遊べる人気の娯楽・趣味7選｜定年後が待ち遠しくなる楽しみ</a><span class="vi">7 thú vui người 60+ chơi một mình cả đời | niềm vui khiến mong tới ngày nghỉ hưu</span></td><td class="num">26.982</td><td class="num">2.321</td><td class="num">0,54</td><td class="num">32</td><td class="num">40′</td><td class="num">13:31</td></tr>
+      <tr><td>17/09</td><td><a href="https://www.youtube.com/watch?v=TIoRmIZKkAg" target="_blank" rel="noopener" lang="ja">【漫画】60代が「楽そう」で選ぶと後悔するアルバイト・パート13選｜定年後の仕事選びの落とし穴</a><span class="vi">13 việc làm thêm người 60 chọn vì "trông nhàn" rồi hối hận | cạm bẫy chọn việc sau hưu</span></td><td class="num">10.442</td><td class="num">1.210</td><td class="num">0,57</td><td class="num">9</td><td class="num">38′</td><td class="num">7:17</td></tr>
+      <tr><td>20/09</td><td><a href="https://www.youtube.com/watch?v=SN2VjauDlJA" target="_blank" rel="noopener" lang="ja">【漫画】なぜ定年後も働き続けるシニアが増えたのか？60代以降が退職後に再就職・アルバイトをする7つの理由とは</a><span class="vi">Vì sao ngày càng nhiều người đã hưu vẫn đi làm? 7 lý do người 60+ đi làm lại</span></td><td class="num">6.634</td><td class="num">1.160</td><td class="num">0,21</td><td class="num">3</td><td class="num">30′</td><td class="num">(lý do lồng trong chương)</td></tr>
+      <tr><td>22/09</td><td><a href="https://www.youtube.com/watch?v=vritvBsvYjc" target="_blank" rel="noopener" lang="ja">【漫画】周りから愛される60代が使う魔法の口癖7選｜幸せな人生・人間関係を作る秘訣</a><span class="vi">7 câu cửa miệng thần kỳ của người 60 được mọi người quý | bí quyết hạnh phúc và quan hệ</span></td><td class="num">11.145</td><td class="num">2.995</td><td class="num">0,29</td><td class="num">9</td><td class="num">28′</td><td class="num">7:52</td></tr>
+      <tr><td>25/09</td><td><a href="https://www.youtube.com/watch?v=HvLbO2pqUcI" target="_blank" rel="noopener" lang="ja">【漫画】60代の再就職で月5万円を目指すには？無理なく続けやすい定年後のアルバイト・パート11選</a><span class="vi">Đi làm lại tuổi 60 muốn kiếm 5 vạn yên/tháng? 11 việc làm thêm dễ duy trì</span></td><td class="num">1.005</td><td class="num">1.589</td><td class="num">0,20</td><td class="num">1</td><td class="num">28′</td><td class="num">4:09</td></tr>
+    </tbody>
+  </table></div>
+  <p class="sl" style="margin-top:10px">View/ngày = view ÷ số ngày thật từ lúc đăng. Video 25/09 mới 0,6 ngày nên chưa so được. "Mục xếp hạng đầu" = mốc giây câu 「第N位」 đầu tiên trong transcript.</p>
+</section>
+
+<section id="hitflop">
+  <h2>3 · Bằng chứng công thức đề tài — hit vs flop</h2>
+  <p class="sl">Cùng nhân vật, cùng khuôn thumbnail, cùng độ dài — chỉ khác <b>góc đề tài</b>. So 5 video đã đủ ≥3 ngày tuổi:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Góc đề tài</th><th>Video</th><th>View/ngày</th><th>Nhận định</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill p-good">Lợi ích tích cực · nên chọn gì</span></td><td lang="ja">気楽に働ける…7選 / 穴場バイト</td><td class="num">5.888</td><td>Hit. Thumbnail chỉ nói lợi ích cụ thể (<span lang="ja">午後は自由・座れて快適</span> <span class="vi">"chiều được tự do · ngồi thoải mái"</span>)</td></tr>
+      <tr><td><span class="pill p-good">Lợi ích tích cực · nên chọn gì</span></td><td lang="ja">一生遊べる趣味7選</td><td class="num">2.321</td><td>Khá. Cùng góc tích cực, 高瀬 cười ở cả 4 khung</td></tr>
+      <tr><td><span class="pill p-acc">Lợi ích quan hệ</span></td><td lang="ja">魔法の口癖7選</td><td class="num">2.995</td><td>Nhịp đầu tốt (3,7 ngày), nhưng thumbnail không có 高瀬, dùng 4 người lạ</td></tr>
+      <tr><td><span class="pill p-warn">Cảnh báo tiêu cực · đừng chọn gì</span></td><td lang="ja">後悔する…13選 / つらすぎるバイト</td><td class="num">1.210</td><td>Rơi 80% so với hit dù cùng chủ đề việc làm — 高瀬 đổ mồ hôi nhăn nhó ở cả 4 khung</td></tr>
+      <tr><td><span class="pill p-warn">Giải thích なぜ · không có lựa chọn cho người xem</span></td><td lang="ja">なぜ辞めない？7つの理由</td><td class="num">1.160</td><td>Thấp nhất. Không cho người xem thứ để "chọn", like chỉ 0,21%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="why" style="margin-top:14px"><b>Kết luận có số liệu:</b> "danh sách thứ NÊN chọn, lợi ích cụ thể" (5.888 và 2.321 view/ngày) thắng
+    "danh sách thứ nên TRÁNH" (1.210) và "giải thích vì sao" (1.160) gấp 2–5 lần — dù cả 3 cùng đề tài việc làm tuổi 60.
+    Ở đối thủ cùng thể loại (mục 10), 4 video từ 186.807 tới 1.141.270 view đều là góc tích cực + móc tiết kiệm
+    (<span lang="ja">安く・ぜんぶ0円・1円もかからない・神バイト</span> <span class="vi">"rẻ · tất cả 0 yên · không tốn 1 yên · việc thần thánh"</span>). 大人の盲点 chưa từng dùng móc tiết kiệm.</div>
+</section>
+
+<section id="tieude">
+  <h2>4 · Công thức tiêu đề</h2>
+  <div class="formula">【漫画】 + [60代 / 60代以降 / 定年後] + [trạng thái mong muốn hoặc nỗi sợ] + [danh mục] + [N]選 ｜ [phụ đề: nhân vật cụ thể hoặc lời hứa]</div>
+  <div class="panel" style="margin-top:12px">
+    <div class="lab">Phân tách tiêu đề hit (92.034 view)</div>
+    <div class="tparts">
+      <span class="tp a">【漫画】<small>nhãn thể loại</small></span>
+      <span class="tp b" lang="ja">60代以降でも<small>đối tượng + "kể cả"</small></span>
+      <span class="tp c" lang="ja">気楽に働ける<small>trạng thái mong muốn</small></span>
+      <span class="tp b" lang="ja">人気の<small>bằng chứng xã hội</small></span>
+      <span class="tp a" lang="ja">アルバイト・パート<small>từ khoá tìm kiếm kép</small></span>
+      <span class="tp c">7選<small>con số danh sách</small></span>
+      <span class="tp d" lang="ja">｜64歳男性が見つけた<small>nhân vật thật hoá</small></span>
+      <span class="tp d" lang="ja">“無理なく続く仕事”<small>lời hứa trong ngoặc</small></span>
+    </div>
+  </div>
+  <ul class="plain">
+    <li>Độ dài 47–58 ký tự, trung bình 51 — dài vì nhồi 2 từ khoá tìm kiếm (<span lang="ja">アルバイト・パート</span>, <span lang="ja">娯楽・趣味</span>, <span lang="ja">再就職・アルバイト</span>).</li>
+    <li>Luôn có <b>60代</b> trong 6/6 tiêu đề, <b>N選 hoặc N個</b> trong 6/6 (7 · 7 · 7 · 13 · 7 · 11).</li>
+    <li>Chữ trên thumbnail KHÔNG chép tiêu đề: tiêu đề dài để SEO, thumbnail viết lại ≤12 ký tự cảm xúc hơn (mục 6).</li>
+    <li>Tag: 18–40 tag/video, lặp mọi biến thể <span lang="ja">60代 アルバイト / 60代アルバイト / 定年後 パート / シニア求人…</span>, luôn có tag tên kênh <span lang="ja">大人の盲点</span>. Toàn bộ ở <code>TAG_STATS.json</code>.</li>
+  </ul>
+</section>
+
+<section id="mota">
+  <h2>5 · Công thức mô tả</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Khối</th><th>Nội dung (trích thật)</th></tr></thead>
+    <tbody>
+      <tr><td>1 · Câu hỏi nỗi lo</td><td lang="ja">60代の再就職で、無理なく月5万円を目指すには、どんなアルバイト・パートを選べばよいのでしょうか。<span class="vi">"Đi làm lại tuổi 60 muốn kiếm 5 vạn/tháng không quá sức thì nên chọn việc gì?"</span></td></tr>
+      <tr><td>2 · So sánh 2 con số</td><td lang="ja">時給1300円でも帰るとぐったりする仕事と、時給1100円でも仕事後に動ける仕事。<span class="vi">"Việc 1.300 yên/giờ về nhà rã rời, và việc 1.100 yên/giờ mà làm xong vẫn còn sức."</span></td></tr>
+      <tr><td>3 · Giới thiệu nhân vật + tóm tập</td><td lang="ja">64歳の高瀬健一が、60代でも続けやすい11種類の仕事を「時給・通勤時間・拘束時間・体への負担・勤務日数」から比べます。<span class="vi">"Ông Takase 64 tuổi so 11 loại việc theo lương giờ · thời gian đi lại · giờ ràng buộc · gánh nặng cơ thể · số ngày làm."</span></td></tr>
+      <tr><td>4 · Danh sách "こんな方におすすめ"</td><td>5–6 gạch đầu dòng khán giả mục tiêu <span class="vi">("Dành cho người đang định đi làm lại tuổi 60…")</span></td></tr>
+      <tr><td>5 · Mục lục chương</td><td>00:00 オープニング + 第1章…第8章 (tên chương là 1 câu kịch tính)</td></tr>
+      <tr><td>6 · Câu hỏi comment A/B/C</td><td lang="ja">あなたが言われると安心する言葉はどれですか？ A. 助かりました B. … 番号だけでも、コメント欄で教えてください。<span class="vi">"Câu nào khiến bạn yên tâm khi được nói? Chỉ cần ghi chữ cái vào bình luận."</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="thumb">
+  <h2>6 · Thumbnail — đọc từ ảnh thật</h2>
+  <p class="sl">Khuôn chung 5/6 ảnh: băng đen trên (「60代」vàng + từ khoá đỏ) → 4 khung xếp hạng 5位→2位 có nhãn màu → băng đen dưới 「N選」 đỏ.
+    <b>Hạng 1 luôn bị giấu</b> để tạo tò mò. Nhân vật 高瀬 vẽ kiểu chibi đầu to, áo polo navy, kính — y hệt nhau giữa các video.
+    Ngoại lệ là video hit nhất: chỉ 2 khung to, cột chữ dọc giữa, lợi ích viết trong ô thoại.</p>
+  <div class="thumbs">
+    <figure><img src="{{TH:wG4fI9voims}}" alt="Thumbnail 60代 穴場バイト"><figcaption><b>92.034</b> · <span lang="ja">第3位 午後は自由 ｜ 60代 穴場 バイト ｜ 第2位 座れて快適</span><span class="vi">hạng 3 chiều được tự do · 60代 việc làm thêm "chỗ ngon ít người biết" · hạng 2 ngồi thoải mái</span></figcaption></figure>
+    <figure><img src="{{TH:do0n9Wirigs}}" alt="Thumbnail 60代 ひとりが楽しい"><figcaption><b>26.982</b> · <span lang="ja">60代 ひとりが楽しい ／ 一生遊べる趣味7選</span><span class="vi">60 tuổi, một mình mà vui · 7 sở thích chơi cả đời</span></figcaption></figure>
+    <figure><img src="{{TH:vritvBsvYjc}}" alt="Thumbnail 60代 この一言が言える人"><figcaption><b>11.145</b> · <span lang="ja">60代 この一言が言える人 ／ なぜか好かれます</span><span class="vi">60 tuổi, người nói được câu này · không hiểu sao lại được quý</span> — 4 người lạ, không phải 高瀬</figcaption></figure>
+    <figure><img src="{{TH:TIoRmIZKkAg}}" alt="Thumbnail 60代で始めて後悔"><figcaption><b>10.442</b> · <span lang="ja">60代で始めて後悔 ／ つらすぎるバイト13選</span><span class="vi">bắt đầu ở tuổi 60 rồi hối hận · 13 việc làm thêm quá cực</span> — 高瀬 nhăn nhó cả 4 khung</figcaption></figure>
+    <figure><img src="{{TH:SN2VjauDlJA}}" alt="Thumbnail 60代 なぜ辞めない"><figcaption><b>6.634</b> · <span lang="ja">60代 なぜ辞めない？ ／ 働き続ける7つの理由</span><span class="vi">60 tuổi sao không nghỉ? · 7 lý do tiếp tục đi làm</span></figcaption></figure>
+    <figure><img src="{{TH:HvLbO2pqUcI}}" alt="Thumbnail 60代 月5万稼ぐなら"><figcaption><b>1.005</b> (1 ngày) · <span lang="ja">60代 月5万稼ぐなら… ／ 続けやすいバイト11選</span><span class="vi">60 tuổi muốn kiếm 5 vạn/tháng thì… · 11 việc dễ duy trì</span></figcaption></figure>
+  </div>
+</section>
+
+<section id="hook">
+  <h2>7 · Hook 0–90 giây từng tập</h2>
+  <p class="sl">Công thức 5/6 tập: <b>cảnh thất bại có con số (0–30s) → tự giới thiệu 「俺の名前は高瀬健一。64歳。」 → câu hỏi なぜ + chữ 盲点 → hứa N mục (+ "mục cuối chỉ hiểu khi…") → 「第1章」 + 「話は○○に戻る」 (quay ngược thời gian)</b>.
+    Nguyên văn đã sửa lỗi nhận dạng giọng nói (<span lang="ja">信用近衡→信用金庫, 給与迷彩→給与明細</span>). Mã hook theo kho <code>HOOK_LIBRARY</code>.</p>
+
+  <div class="hook">
+    <h4><span lang="ja">気楽に働ける…7選</span> · 92.034 view <span class="pill p-good">H02 + K06 · 10/12</span></h4>
+    <div class="lab">0–30s nguyên văn</div>
+    <div class="jp">「高瀬さん、来月のシフトですが、ひとまず4日でお願いします。」「4日？週4日ではなくて、1月に4日ですか？」「はい。入電予測が下がりまして、まずは半日だけになります。」「でも面接では週3日から4日と…」「希望としては伺っています。ただ、勤務日数を保証する契約ではありません。」その言葉を聞いた瞬間、手の中の給与明細が急に薄くなった気がした。</div>
+    <span class="vi">"Anh Takase, ca tháng sau tạm thời là 4 ngày nhé." "4 ngày? Không phải 4 ngày/tuần mà 4 ngày/THÁNG à?" "Vâng, dự báo cuộc gọi giảm nên trước mắt chỉ nửa ngày." "Nhưng lúc phỏng vấn nói 3–4 ngày/tuần…" "Đó là nguyện vọng chúng tôi ghi nhận. Hợp đồng không đảm bảo số ngày làm." Nghe câu đó, tờ phiếu lương trong tay tôi bỗng như mỏng đi.</span>
+    <div class="lab">30–90s</div>
+    <div class="jp">初めて振り込まれた給料は4万8600円。俺の名前は高瀬健一。64歳。信用金庫を定年退職し、老後の足しにしようと通販会社のコールセンターで働き始めた。求人票には時給1450円、座り仕事、未経験歓迎と書かれていた。…だが求人票の掛け算通りに給料が出るとは、どこにも書いていなかったのだ。</div>
+    <span class="vi">Lương lần đầu 48.600 yên. Tôi là Takase Kenichi, 64 tuổi, nghỉ hưu ở quỹ tín dụng, đi làm tổng đài bán hàng online. Tin tuyển dụng ghi 1.450 yên/giờ, việc ngồi, không cần kinh nghiệm… Nhưng chẳng chỗ nào ghi lương sẽ về đúng như phép nhân trên tin tuyển dụng.</span>
+    <dl class="beats"><dt>Biến cố</dt><dd>Bị xếp 4 ngày/THÁNG thay vì 4 ngày/tuần</dd><dt>Mâu thuẫn</dt><dd>Phỏng vấn hứa 3–4 ngày/tuần, hợp đồng không đảm bảo</dd><dt>Cái giá</dt><dd>Kế hoạch 10 vạn/tháng rơi còn ~2 vạn</dd><dt>Vòng mở</dt><dd>Việc nào người 60 làm lâu được mà không dính bẫy tin tuyển dụng?</dd></dl>
+    <div class="why">Người xem hiểu lầm CÙNG nhân vật (週4 ↔ 月4) nên bị kéo vào ở giây 6. Bình luận nhiều like nhất (14) là 1 người kể đúng chuyện này ngoài đời: "tháng đầu 18 ca, tháng sau còn 11 ca" — hook chạm nỗi sợ thật.</div>
+  </div>
+
+  <div class="hook">
+    <h4><span lang="ja">一生遊べる趣味7選</span> · 26.982 view <span class="pill p-good">H02 + K03 · 9/12</span></h4>
+    <div class="jp">スクリーンに映された俺の予定表を見て、会議室の空気が一瞬だけ止まった。「高瀬さん、退職後の水曜日は朝から夜までテレビ、ということでよろしいですか？」「いや、違います。これは仮です。まだ考えていないだけで、やりたいことならいくらでもあります。」「では、1つだけでも書いてみましょう。」白い用紙の上で、俺のペンは動かなかった。</div>
+    <span class="vi">Lịch tuần của tôi chiếu lên màn hình, cả phòng họp khựng lại. "Anh Takase, thứ Tư sau nghỉ hưu là xem tivi từ sáng tới tối, đúng không?" "Không, đó là tạm. Chỉ chưa nghĩ tới, việc muốn làm thì đầy." "Vậy thử viết 1 việc thôi." Trên tờ giấy trắng, cây bút không nhúc nhích.</span>
+    <div class="lab">30–90s</div>
+    <div class="jp">…どれも10年以上前だった。…なぜ時間ができるはずの老後に、やりたいことが見つからないのか。俺はこの日、その盲点に初めて気づいた。</div>
+    <span class="vi">…Lần cuối làm đều hơn 10 năm trước. Vì sao tuổi già có thời gian mà không tìm ra việc muốn làm? Hôm đó lần đầu tôi nhận ra điểm mù ấy.</span>
+    <div class="why">Bị bóc trần trước đám đông (xấu hổ công khai) + cài chữ <span lang="ja">盲点</span> ngay trong hook.</div>
+  </div>
+
+  <div class="hook">
+    <h4><span lang="ja">魔法の口癖7選</span> · 11.145 view <span class="pill p-acc">H33 + K22 · 8/12</span></h4>
+    <div class="jp">60代になってから、近所で話しかけられる回数が減った。バイト先で、なぜか自分だけ相談されない。家に帰ると、妻や子供が話の途中で黙る。もし1つでも心当たりがあるなら、性格が悪いから嫌われたとは限らない。正しいことを言いすぎて、相手が「もう話さなくていい」と思っているのかもしれない。</div>
+    <span class="vi">Từ tuổi 60, hàng xóm ít bắt chuyện hơn. Chỗ làm thêm, không hiểu sao chỉ mình không được hỏi ý. Về nhà, vợ con im giữa câu. Nếu thấy mình có 1 điều thôi, chưa chắc vì tính xấu mà bị ghét — có thể vì nói điều ĐÚNG quá nhiều nên người ta nghĩ "khỏi nói nữa".</span>
+    <div class="why">Video DUY NHẤT không mở bằng cảnh kịch: checklist ngôi 2 rồi gỡ tội + hứa lợi ích. Cảnh bảng trực vệ sinh bị xoá tên bắt đầu ở giây 63.</div>
+  </div>
+
+  <div class="hook">
+    <h4><span lang="ja">後悔する…13選</span> · 10.442 view <span class="pill p-gold">H01 + K09/K04 · 9/12</span></h4>
+    <div class="jp">このシーツ、四隅あるよな。どうして5つ目が出てくるんだ？「高瀬さん、そこはもう7分です。あと6部屋あります。」7分？家なら掃除機を出すか迷っている時間だ。午前11時18分。健一の腰は、すでに午後6時だった。「枕の向きが逆です。髪の毛も1本残っています。」髪の毛1本に、私の最終職が負けるのか。</div>
+    <span class="vi">Tấm ga này 4 góc mà, sao ra góc thứ 5? "Anh Takase, chỗ đó 7 phút rồi. Còn 6 phòng." 7 phút? Ở nhà là lúc còn đang phân vân có lôi máy hút bụi ra không. 11 giờ 18 sáng — lưng Kenichi đã là 6 giờ tối. "Gối ngược. Còn sót 1 sợi tóc." Chức vụ cuối đời tôi thua 1 sợi tóc sao?</span>
+    <div class="lab">30–90s</div>
+    <div class="jp">求人票には昼間、未経験歓迎、簡単な清掃と書いてあった。だが簡単とは、誰にとって、何分で、どこまでなのか。…13の仕事を通して、その見落とした数字を1つずつ取り戻す。第1章　冷蔵庫に貼られた3日目の退職届。話は1週間前に戻る。</div>
+    <span class="vi">Tin tuyển dụng ghi ca ngày, không cần kinh nghiệm, dọn dẹp đơn giản. Nhưng "đơn giản" với ai, mấy phút, tới mức nào? … Qua 13 công việc lấy lại từng con số đã bỏ sót. Chương 1: Đơn nghỉ việc ngày thứ 3 dán trên tủ lạnh. Chuyện quay lại 1 tuần trước.</span>
+    <div class="why">Hook hay (đồng hồ + cơ thể + câu hài tự trào), nhưng góc đề tài tiêu cực nên view chỉ bằng 1/5 video hit.</div>
+  </div>
+
+  <div class="hook">
+    <h4><span lang="ja">なぜ辞めない？7つの理由</span> · 6.634 view <span class="pill p-gold">H01 + H21 + K12 · 9/12</span></h4>
+    <div class="jp">朝6時。右のふくらはぎが痛くて、目覚ましより先に目が覚めた。昨日は3時間しか働いていないのに、階段では手すりを離せない。「今日も行くの？休みだって言ってなかった？」「1人足りないそうなんだ。」「うちも1人足りないんだけど。」食卓には、2人で出かけるはずだった買い物のメモがあった。</div>
+    <span class="vi">6 giờ sáng, bắp chân phải đau làm tôi tỉnh trước chuông báo. Hôm qua chỉ làm 3 tiếng mà xuống cầu thang không buông được tay vịn. "Hôm nay lại đi à? Chẳng phải nói là nghỉ sao?" "Họ thiếu 1 người." "Nhà mình cũng thiếu 1 người đây." Trên bàn là tờ ghi đồ cần mua mà hai người định đi cùng.</span>
+    <div class="lab">30–90s</div>
+    <div class="jp">…園芸店で働いて知った7つの事情を、失敗も含めて話したい。最後の1つは、出勤を1日断ったことで、ようやくわかった。話は退職直後に戻る。</div>
+    <span class="vi">…Tôi muốn kể 7 hoàn cảnh biết được khi làm ở cửa hàng cây cảnh, cả thất bại. Điều cuối cùng tôi chỉ hiểu khi từ chối đi làm 1 ngày. Chuyện quay lại ngay sau khi nghỉ hưu.</span>
+    <div class="why">Đúng khuôn K12 (tên-tuổi → hứa N điều → điều cuối "chỉ hiểu khi…"). Hook tốt nhưng tiêu đề là câu hỏi なぜ, không cho người xem lựa chọn → thấp nhất.</div>
+  </div>
+
+  <div class="hook">
+    <h4><span lang="ja">月5万円…11選</span> · 1.005 view (mới 0,6 ngày) <span class="pill p-acc">H14 + H21 + K09 · 8/12</span></h4>
+    <div class="jp">「月5万円くらい稼げたら助かるんです。」「では週3日、朝7時から4時間でいかがでしょう？」「朝7時ですか？」「はい。開館前の準備と、終わった後に少し片付けがあります。」頭の中で時給と勤務時間をかけた。これなら月5万円になりそうだ。…初めて働いた次の朝、足が痛くて起き上がれなかった。</div>
+    <span class="vi">"Kiếm được 5 vạn/tháng là đỡ lắm." "Vậy 3 ngày/tuần, từ 7 giờ sáng, 4 tiếng?" "7 giờ sáng à?" "Vâng, có chuẩn bị trước giờ mở cửa và dọn sau đó." Tôi nhân giờ với lương, chắc đủ 5 vạn… Sáng hôm sau ngày làm đầu tiên, chân đau không dậy nổi.</span>
+    <div class="lab">30–90s</div>
+    <div class="jp">「毎回そんなに疲れるなら、月5万円稼げても続かないわよ。」…そこで俺は月5万円を目指せる仕事を11種類調べ、体の負担や通いやすさで比べてみた。…同じように仕事を探しているなら、よければ登録して、これからも一緒に考えて欲しい。</div>
+    <span class="vi">"Lần nào cũng mệt thế thì có kiếm 5 vạn cũng không bền đâu." … Tôi tìm 11 loại việc đạt được 5 vạn, so theo gánh nặng cơ thể và độ dễ đi lại. … Nếu bạn cũng đang tìm việc, hãy đăng ký để cùng suy nghĩ.</span>
+    <div class="why">Tập mới nhất đưa CTA đăng ký vào ngay giây 86 và mục đầu lên 4:09 — có vẻ chủ kênh đang sửa lỗi "vào danh sách quá muộn" bị chê ở bình luận.</div>
+  </div>
+</section>
+
+<section id="cautruc">
+  <h2>8 · Cấu trúc cả video (28–40 phút)</h2>
+  <ol class="plain">
+    <li><b>0:00–1:30 Hook</b> — cảnh thất bại có số → tự giới thiệu → câu なぜ → hứa N mục.</li>
+    <li><b>Chương 1–2</b> — flashback về lúc chưa biết gì; vợ 恵子 lật ảo tưởng bằng 1 câu.</li>
+    <li><b>Chương 3–6 · đếm ngược N→2</b> — mỗi mục có 1 ưu điểm + 1 "độc" (<span lang="ja">毒・落とし穴</span>), người dẫn đường giải thích bằng con số (kg, phút/phòng, giờ phục hồi).</li>
+    <li><b>~35–50% thời lượng · câu hỏi A/B/C</b> — dừng truyện để hỏi thẳng người xem (bằng chữ cái), cùng câu được ghim ở bình luận.</li>
+    <li><b>Hạng 1 bất ngờ</b> — không phải thứ hào nhoáng nhất mà thứ vừa sức, làm tiếp được mỗi tuần.</li>
+    <li><b>Kết</b> — thoả hiệp thực tế (không kết màu hồng) + cảnh vợ chồng hài hước + CTA xin kể trải nghiệm + 「盲点だった。」</li>
+  </ol>
+  <h3>Mục lục chương thật (từ mô tả)</h3>
+  <div class="grid2">
+    <div class="panel"><div class="lab" style="margin-top:0" lang="ja">一生遊べる趣味7選 (26.982)</div>
+      <table class="chap" style="min-width:0"><tbody>
+        <tr><td>02:47</td><td lang="ja">第1章 妻の予定には、俺がいなかった<span class="vi">Trong lịch của vợ không có tôi</span></td></tr>
+        <tr><td>07:03</td><td lang="ja">第2章 十万円使って、残ったのは箱だけ<span class="vi">Tiêu 10 vạn, còn lại mỗi cái hộp</span></td></tr>
+        <tr><td>13:23</td><td lang="ja">第3章 楽そうな七つには、すべて毒があった<span class="vi">7 thứ trông vui đều có độc</span></td></tr>
+        <tr><td>25:30</td><td lang="ja">第4章 一位を決める前に落ちた罠<span class="vi">Cái bẫy trước khi chọn hạng 1</span></td></tr>
+        <tr><td>34:11</td><td lang="ja">第5章 七つ試して、残したのは二つだけ<span class="vi">Thử 7 thứ, chỉ giữ 2</span></td></tr>
+      </tbody></table></div>
+    <div class="panel"><div class="lab" style="margin-top:0" lang="ja">魔法の口癖7選 (11.145)</div>
+      <table class="chap" style="min-width:0"><tbody>
+        <tr><td>04:04</td><td lang="ja">第1章 当番表から消えた俺の名前<span class="vi">Tên tôi biến khỏi bảng phân công</span></td></tr>
+        <tr><td>07:48</td><td lang="ja">第3章 三秒の言葉を言えなかった<span class="vi">Không nói nổi câu 3 giây</span></td></tr>
+        <tr><td>10:33</td><td lang="ja">第4章 話の続きを奪った昼休み<span class="vi">Giờ nghỉ trưa tôi cướp lời</span></td></tr>
+        <tr><td>20:10</td><td lang="ja">第6章 正しさを置く場所<span class="vi">Chỗ để đặt "sự đúng"</span></td></tr>
+        <tr><td>24:45</td><td lang="ja">第8章 愛される前に、頼れる人になる<span class="vi">Trước khi được yêu, hãy thành người đáng nhờ</span></td></tr>
+      </tbody></table></div>
+    <div class="panel"><div class="lab" style="margin-top:0" lang="ja">なぜ辞めない？7つの理由 (6.634)</div>
+      <table class="chap" style="min-width:0"><tbody>
+        <tr><td>01:21</td><td lang="ja">第1章 妻には予定があるのに、俺にはない<span class="vi">Vợ có lịch, tôi thì không</span></td></tr>
+        <tr><td>14:11</td><td lang="ja">第4章 元課長の手が初めて役に立った<span class="vi">Tay cựu trưởng phòng lần đầu có ích</span></td></tr>
+        <tr><td>18:33</td><td lang="ja">第5章 増えた給料で買えなかった午後<span class="vi">Buổi chiều không mua được bằng lương tăng</span></td></tr>
+        <tr><td>27:20</td><td lang="ja">あなたならどうする？追加出勤の選択<span class="vi">Bạn sẽ làm gì? Có nhận thêm ca không</span></td></tr>
+        <tr><td>27:46</td><td lang="ja">第7章 空けた一日に戻ってきたもの<span class="vi">Điều quay lại trong ngày để trống</span></td></tr>
+      </tbody></table></div>
+    <div class="panel"><div class="lab" style="margin-top:0" lang="ja">月5万円…11選 (mới)</div>
+      <table class="chap" style="min-width:0"><tbody>
+        <tr><td>01:32</td><td lang="ja">第1章 4時間の仕事で午後も寝ていた<span class="vi">Làm 4 tiếng mà ngủ cả chiều</span></td></tr>
+        <tr><td>02:51</td><td lang="ja">第2章 片道50分の仕事で膝が痛んだ<span class="vi">Đi 50 phút một chiều, đau gối</span></td></tr>
+        <tr><td>04:05</td><td lang="ja">第3章 座れると思った仕事で疲れた<span class="vi">Tưởng được ngồi, hoá ra mệt</span></td></tr>
+        <tr><td>22:16</td><td lang="ja">第7章 求人票で見落としていた条件<span class="vi">Điều kiện bỏ sót trên tin tuyển dụng</span></td></tr>
+        <tr><td>24:59</td><td lang="ja">第8章 5万円に届かなくても休む日を残した<span class="vi">Không đủ 5 vạn vẫn giữ ngày nghỉ</span></td></tr>
+      </tbody></table></div>
+  </div>
+  <h3>Câu hỏi A/B/C giữa video (theo DNA tool)</h3>
+  <ul class="plain">
+    <li lang="ja">趣味を選ぶ時、最初に気にするのは A費用 B続けやすさ C人からの見え方<span class="vi">Khi chọn sở thích, bạn để ý gì trước: A chi phí · B dễ duy trì · C người khác nhìn vào</span></li>
+    <li lang="ja">求人を見る時、最初に何を確認しますか？ A時給 B仕事内容 C勤務時間 D休憩と人数<span class="vi">Xem tin tuyển dụng, bạn kiểm gì trước: A lương giờ · B việc · C giờ làm · D giờ nghỉ và số người</span></li>
+    <li lang="ja">休みの日に追加出勤を頼まれたら？ A断る B引き受ける Cその場では返事をしない<span class="vi">Ngày nghỉ được nhờ đi làm thêm: A từ chối · B nhận · C chưa trả lời ngay</span></li>
+  </ul>
+  <p class="sl" style="margin-top:10px">Tốc độ đọc đo từ transcript: 231–304 ký tự/phút (trung bình ~273) — chậm hơn nhịp đọc thường, hợp khán giả lớn tuổi. Kịch bản mỗi tập ~7.900–10.200 ký tự.</p>
+</section>
+
+<section id="binhluan">
+  <h2>9 · Khán giả nói gì (103 bình luận + trả lời đọc từ 6 video)</h2>
+  <p class="sl">Chủ kênh trả lời gần như MỌI bình luận, và ghim 1 bình luận có câu hỏi A/B/C hoặc số liệu chính thức
+    (<span lang="ja">総務省「労働力調査」2025: 60〜64歳 74.9%、65〜69歳 54.5%、70〜74歳 36.2%</span> <span class="vi">"tỉ lệ đang làm việc theo độ tuổi"</span>).</p>
+  <div class="grid2">
+    <div class="panel">
+      <div class="lab" style="margin-top:0">Khen / xác nhận hook</div>
+      <div class="cmt"><span class="v">14 like</span><span lang="ja">高齢者介護施設に介護職として働き始めました。初月はシフト18日でしたが、次の月は11日でした。</span><span class="vi">"Tôi bắt đầu làm hộ lý viện dưỡng lão. Tháng đầu 18 ca, tháng sau còn 11 ca." — đúng nỗi sợ hook video hit</span></div>
+      <div class="cmt"><span class="v">5 like</span><span lang="ja">絵の感じが面白そうで視聴してみたくなりました。</span><span class="vi">"Nét vẽ trông thú vị nên muốn xem."</span></div>
+      <div class="cmt"><span lang="ja">「競合動画」と違って、みんな頭身がマンガチックで可愛いね</span><span class="vi">"Khác 'video đối thủ', tỉ lệ đầu-thân kiểu manga, dễ thương."</span></div>
+      <div class="cmt"><span lang="ja">おお…同い年😅</span><span class="vi">"Ồ… cùng tuổi" (với 高瀬) — người xem tự đặt mình vào nhân vật</span></div>
+      <div class="cmt"><b>Chủ kênh tự nói:</b> <span lang="ja">私がおそらく今のアニメ調の動画のブームの先駆けを作ったのですが、たくさんの方が模倣してくださり…</span><span class="vi">"Có lẽ tôi tạo ra bước khởi đầu trào lưu video kiểu anime hiện nay, nhiều người đã bắt chước…"</span></div>
+    </div>
+    <div class="panel">
+      <div class="lab" style="margin-top:0">Chê / bắt lỗi</div>
+      <div class="cmt"><span class="v">12 like</span><span lang="ja">BGMがマヌケやな。</span><span class="vi">"Nhạc nền ngớ ngẩn."</span></div>
+      <div class="cmt"><span class="v">12 like</span><span lang="ja">5キロの荷物を2人で持つことはない。食品倉庫で20キロの砂糖を…65歳のパート女性が普通に積み替えてる。</span><span class="vi">"Không ai 2 người khiêng 5kg. Kho thực phẩm, bà 65 tuổi vác bao đường 20kg bình thường." — khán giả bắt sai chi tiết thực tế</span></div>
+      <div class="cmt"><span class="v">1 like</span><span lang="ja">7選 出てくるの遅すぎない？コールセンターの仕事の話で前半終わる。</span><span class="vi">"7 mục ra muộn quá, nửa đầu toàn chuyện tổng đài."</span></div>
+      <div class="cmt"><span class="v">4 like</span><span lang="ja">内容はいいんだけどね。シンリコさん、てのは何とかしてくれ。</span><span class="vi">"Nội dung hay, nhưng sửa cái 'Shinriko-san' giùm" — giọng đọc máy đọc sai tên <span lang="ja">真理子</span> (Mariko)</span></div>
+      <div class="cmt"><span lang="ja">ナゼにザビエル禿げなんだ？AIにプロンプトでそう指定したのかな？</span><span class="vi">"Sao lại hói kiểu Xavier? Prompt AI thế à?" — lỗi ảnh AI, chủ kênh xác nhận "vô tình ra vậy"</span></div>
+      <div class="cmt"><span class="v">2 like</span><span lang="ja">奥さまへの口調がギリギリな気がします</span><span class="vi">"Giọng nói với vợ hơi quá."</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="doithu">
+  <h2>10 · Đối thủ cùng thể loại "manga 定年後 xếp hạng"</h2>
+  <p class="sl">Từ 403 kênh đã quét, 116 kênh có video 定年/60代/老後. Thể loại đang bùng nổ ở nhiều kênh cùng lúc — và cùng 1 khuôn thumbnail.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Kênh</th><th>Sub</th><th>Video đỉnh</th><th>View</th><th>Dài</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://www.youtube.com/channel/UCvAasPu0eaWHn2AU_vvk7og" target="_blank" rel="noopener" lang="ja">人生の知らせ</a></td><td class="num">4.720</td><td lang="ja">定年後、贅沢しなくても心は満たせる…60代から一生モノになる最高の趣味5選<span class="vi">Sau hưu không xa xỉ vẫn mãn nguyện… 5 sở thích tuyệt nhất dùng cả đời từ tuổi 60</span></td><td class="num">1.141.270</td><td class="num">17′</td></tr>
+      <tr><td><a href="https://www.youtube.com/channel/UCjlh_Ko4lEpJIqftz5mxNXQ" target="_blank" rel="noopener" lang="ja">人生の果実【漫画】</a></td><td class="num">6.190</td><td lang="ja">他で語られていない、定年後に始める特別な趣味5選！<span class="vi">5 sở thích đặc biệt bắt đầu sau hưu mà chỗ khác không nói</span></td><td class="num">422.663</td><td class="num">24′</td></tr>
+      <tr><td><a href="https://www.youtube.com/channel/UCYggX5BecFkUahyPQ-PRpVg" target="_blank" rel="noopener" lang="ja">マンガ人生ラボ</a></td><td class="num">1.320</td><td lang="ja">定年後に「シルバー人材センター」に登録すると、どんな生活になるのか<span class="vi">Sau hưu đăng ký trung tâm nhân lực cao tuổi thì sống ra sao</span></td><td class="num">236.956</td><td class="num">6′</td></tr>
+      <tr><td><a href="https://www.youtube.com/channel/UCL8PFGotC_jY_UbzfRTnnng" target="_blank" rel="noopener" lang="ja">シニアの人生これから</a></td><td class="num">2.940</td><td lang="ja">キツくないのに稼げる！？老後におすすめの仕事ランキング7選！<span class="vi">Không cực mà vẫn kiếm được!? Xếp hạng 7 việc nên làm lúc về già</span></td><td class="num">224.354</td><td class="num">16′</td></tr>
+      <tr><td><a href="https://www.youtube.com/channel/UCI2cPqBmCPMxxKI4u2Gqs_Q" target="_blank" rel="noopener" lang="ja">老後のお金ストーリー</a></td><td class="num">6.510</td><td lang="ja">定年後、最強の暇つぶし5選…実は1円もかからない楽しみ方がありました<span class="vi">5 cách giết thời gian mạnh nhất sau hưu… thật ra có cách vui không tốn 1 yên</span></td><td class="num">186.807</td><td class="num">23′</td></tr>
+      <tr style="background:var(--accent-soft)"><td lang="ja"><b>大人の盲点</b></td><td class="num">526</td><td lang="ja">60代以降でも気楽に働ける人気のアルバイト・パート7選</td><td class="num">92.034</td><td class="num">31′</td></tr>
+    </tbody>
+  </table></div>
+  <div class="thumbs" style="margin-top:14px">
+    <figure><img src="{{TH:AQcPSZ8Em_4}}" alt="人生の知らせ thumbnail"><figcaption><b>1.141.270</b> · <span lang="ja">定年後、安く楽しむ ／ 最高の趣味5選</span><span class="vi">sau hưu, vui mà rẻ · 5 sở thích tuyệt nhất</span></figcaption></figure>
+    <figure><img src="{{TH:VXlE3c0gqb0}}" alt="人生の果実 thumbnail"><figcaption><b>422.663</b> · <span lang="ja">定年後..最強の趣味 ／ ※ぜんぶ0円です！</span><span class="vi">sở thích mạnh nhất · ※tất cả 0 yên!</span></figcaption></figure>
+    <figure><img src="{{TH:BdLooNSganA}}" alt="シニアの人生これから thumbnail"><figcaption><b>224.354</b> · <span lang="ja">老後のおすすめ神バイト</span><span class="vi">việc làm thêm "thần thánh" nên làm lúc về già</span> — lưới 2×2 CÓ lộ hạng 1</figcaption></figure>
+    <figure><img src="{{TH:AOe-E69mLzA}}" alt="老後のお金ストーリー thumbnail"><figcaption><b>186.807</b> · <span lang="ja">定年後、最強の暇つぶし ／ ※1円もかからない</span><span class="vi">cách giết thời gian mạnh nhất · ※không tốn 1 yên</span></figcaption></figure>
+  </div>
+  <div class="why" style="margin-top:14px">Khác biệt rõ nhất: đối thủ dùng mỗi khung 1 ông già KHÁC nhau, tóc bạc, nét bán-thực; 大人の盲点 dùng 1 nhân vật chibi cố định (được khen "dễ thương"). Đối thủ ngắn hơn (6–24 phút) và có móc tiết kiệm/最強/神. Đây là thể loại đông, cạnh tranh trực tiếp.</div>
+</section>
+
+<section id="manh">
+  <h2>11 · Điểm mạnh</h2>
+  <ul class="plain pros">
+    <li><b>Bứt phá nhanh có số thật:</b> video thứ 1 đạt 92.034 view khi kênh mới vài trăm sub (175× subscriber) — 16 ngày sau tập đầu.</li>
+    <li><b>Lai 2 thể loại:</b> tiêu đề là danh sách N選 (bắt tìm kiếm), thân là drama (giữ chân) — có cả giá trị thông tin lẫn câu chuyện.</li>
+    <li><b>Nhân vật cố định + vợ:</b> tạo cảm giác series; người xem tự đặt mình vào ("cùng tuổi"). Nhân vật chibi được khen là khác đối thủ.</li>
+    <li><b>Con số cụ thể ở mọi cảnh:</b> 48.600 yên, 1.450 yên/giờ, 7 phút/phòng, 11h18 — nghe như chuyện thật; bình luận top xác nhận đúng trải nghiệm.</li>
+    <li><b>Thương hiệu hoá bằng câu chốt</b> 「盲点だった。」 = tên kênh, lặp 6/6 tập.</li>
+    <li><b>Cỗ máy tương tác:</b> câu hỏi A/B/C giữa video + ghim bình luận + trả lời mọi bình luận + dẫn số liệu chính phủ.</li>
+    <li><b>SEO kỹ:</b> 18–40 tag/video phủ mọi biến thể từ khoá, mô tả có mục lục chương và danh sách "dành cho ai".</li>
+    <li><b>Nhịp đăng đều ~3 ngày/tập</b> dù mỗi tập 28–40 phút — quy trình sản xuất đã chạy được.</li>
+  </ul>
+</section>
+
+<section id="yeu">
+  <h2>12 · Điểm yếu và rủi ro</h2>
+  <ul class="plain cons">
+    <li><b>Chưa chứng minh bền:</b> 1 video chiếm 62% tổng view (92.034/148.242). Sau hit, view/ngày rơi 5.888 → 2.321 → 1.210 → 1.160; chưa tập nào lặp lại được hit.</li>
+    <li><b>Chọn sai góc đề tài 3/5 tập:</b> cảnh báo tiêu cực và giải thích なぜ kém góc lợi ích 2–5 lần (mục 3).</li>
+    <li><b>Quá dài:</b> 28–40 phút, mục xếp hạng đầu ở phút 7–13; đối thủ triệu view chỉ 17 phút. Có bình luận chê vào danh sách quá muộn.</li>
+    <li><b>Lỗi sản xuất AI bị bắt:</b> giọng máy đọc sai tên <span lang="ja">真理子→シンリコ</span>, ảnh AI hói kiểu Xavier, nhạc nền bị chê (12 like), chi tiết sai thực tế (2 người khiêng 5kg). Khán giả lớn tuổi đọc rất kỹ.</li>
+    <li><b>Like rate thấp</b> 0,20–0,57%.</li>
+    <li><b>Thể loại đông và bị copy:</b> ít nhất 5 kênh cùng khuôn đã có video 186k–1,14 triệu view; chủ kênh tự nhận bị bắt chước. Lợi thế đến trước không còn.</li>
+    <li><b>Chưa thử móc tiết kiệm</b> (0 yên / rẻ / 最強 / 神) — thứ đã tạo các video triệu view ở đối thủ.</li>
+  </ul>
+</section>
+
+<section id="verdict" class="verdict">
+  <h2>13 · Clone được không — ĐƯỢC, có điều kiện</h2>
+  <p>Định dạng này làm lại được hoàn toàn bằng pipeline ảnh AI + giọng đọc máy (chính kênh gốc cũng làm vậy — lỗi ảnh AI và lỗi đọc tên là bằng chứng). Nhưng không nên sao y kênh này; nên lấy khung của nó và sửa đúng 4 chỗ nó đang yếu:</p>
+  <ol class="plain">
+    <li><b>Nhân vật riêng</b> (không dùng 高瀬健一 / 恵子 / câu 「盲点だった」) nhưng giữ cấu trúc "1 ông cố định + vợ lật ảo tưởng + người dẫn đường đổi theo tập" và 1 câu chốt thương hiệu riêng.</li>
+    <li><b>Chỉ làm góc lợi ích</b> "nên chọn gì" + móc tiết kiệm hoặc 最強/神/穴場; bỏ góc cảnh báo tiêu cực và góc なぜ.</li>
+    <li><b>18–24 phút</b>, mục xếp hạng đầu trước phút 4; hook vẫn là cảnh thất bại có con số.</li>
+    <li><b>QC trước khi đăng:</b> nghe lại mọi tên riêng qua giọng đọc máy (ghi furigana), soát ảnh AI lỗi tóc/tay, kiểm chi tiết thực tế (kg, giờ, lương) với nguồn thật.</li>
+  </ol>
+  <p><b>Liên quan dự án h2dev:</b> thể loại này chồng lên Lane F (<span lang="ja">teinengo-real</span>) và Lane G (<span lang="ja">teinengo-tanoshimi</span>) đang có. Hai hướng: (a) dùng DNA này để nâng cấp F/G (thêm khuôn N選 + nhân vật cố định), hoặc (b) mở lane mới chuyên "việc làm thêm tuổi 60". Anh chọn hướng nào thì tôi soạn hồ sơ giao việc theo hướng đó.</p>
+</section>
+
+<section id="quytrinh">
+  <h2>14 · Quy trình sản xuất 1 tập (dựng lại từ dữ liệu kênh gốc)</h2>
+  <ol class="steps">
+    <li><b>Chọn đề tài:</b> 1 câu hỏi thực dụng của đàn ông 60–65 vừa nghỉ hưu (việc làm thêm, sở thích, tiền, quan hệ) → viết thành danh sách N選 góc lợi ích. Kiểm nhu cầu bằng tag đối thủ (<code>TAG_STATS.json</code>).</li>
+    <li><b>Gom 5–8 con số thật:</b> lương giờ, số ngày ca, kg, phút/phòng từ tin tuyển dụng thật; 1 số liệu chính phủ (<span lang="ja">総務省・内閣府</span>) để ghim bình luận.</li>
+    <li><b>Viết kịch bản ~8.000–10.000 ký tự</b> (~273 ký tự/phút): hook cảnh thất bại có số (0–30s) → tự giới thiệu tên-tuổi-nghề cũ → câu なぜ + từ khoá thương hiệu → hứa N mục + "mục cuối chỉ hiểu khi…" → 第1章 + quay ngược thời gian → đếm ngược N→2 (ưu điểm + "độc") → câu hỏi A/B/C ở ~40% → hạng 1 vừa sức → kết thoả hiệp + cảnh vợ chồng hài + câu chốt.</li>
+    <li><b>Ảnh AI:</b> 1 bảng nhân vật cố định (khuôn mặt, kính, áo) dùng làm ảnh tham chiếu cho mọi cảnh; nhân vật phụ tạo 1 lần dùng lại.</li>
+    <li><b>Giọng đọc máy:</b> 1 giọng nam trầm cho người kể + giọng nữ cho vợ; tên riêng viết furigana và nghe lại.</li>
+    <li><b>Dựng video:</b> ảnh + chuyển cảnh + phụ đề; nhạc nền nhẹ (tránh nhạc hài bị chê).</li>
+    <li><b>Thumbnail:</b> băng đen trên 「60代 + từ khoá đỏ」 → 4 khung 5位→2位 (giấu hạng 1) → băng dưới 「N選」 đỏ; nhân vật cười, lợi ích cụ thể; chữ ≤12 ký tự, không chép tiêu đề.</li>
+    <li><b>Tiêu đề + mô tả + tag:</b> khuôn mục 4–5; 18–40 tag; mục lục chương.</li>
+    <li><b>Đăng mỗi ~3 ngày;</b> ghim bình luận câu hỏi A/B/C; trả lời mọi bình luận trong 24 giờ.</li>
+  </ol>
+  <p class="sl" style="margin-top:10px">Chưa xem khung hình video gốc (chỉ có transcript, mô tả, thumbnail, bình luận) — số ảnh/cảnh và kiểu chuyển cảnh chưa đo. Nếu cần, bước tiếp theo là đo bằng skill <code>video-chuyen-canh</code>.</p>
+</section>
+
+<section id="tailieu">
+  <h2>15 · Tài liệu đầy đủ</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Tài liệu</th><th>Đường dẫn</th></tr></thead>
+    <tbody>
+      <tr><td>CHANNEL_DNA.md (tool K1+K2 chuẩn h2dev, QC 12/11 đạt + bổ sung thumbnail đọc tay)</td><td><code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\docs\channel_dna\otonanomouten\CHANNEL_DNA.md</code></td></tr>
+      <tr><td>Phân tích từng video (6 file JSON)</td><td><code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\docs\channel_dna\otonanomouten\VIDEO_ANALYSIS\</code></td></tr>
+      <tr><td>Thống kê tag (144 tag, 28 từ khoá kênh)</td><td><code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\docs\channel_dna\otonanomouten\TAG_STATS.json</code></td></tr>
+      <tr><td>Metadata + mô tả đầy đủ 6 video</td><td><code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\otonanomouten\channel.json</code></td></tr>
+      <tr><td>Transcript đầy đủ theo mốc giây</td><td><code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\otonanomouten\transcripts\</code></td></tr>
+      <tr><td>Thumbnail gốc 6 video</td><td><code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\otonanomouten\thumbs\</code></td></tr>
+      <tr><td>Thumbnail 6 đối thủ + số liệu</td><td><code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\otonanomouten\competitor_thumbs\</code> · <code>competitors.json</code></td></tr>
+      <tr><td>103 bình luận + trả lời của chủ kênh</td><td><code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\otonanomouten\comments.json</code></td></tr>
+      <tr><td>6 bản ghi hook đã nạp kho chung</td><td><code>E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\hooks.jsonl</code> (nguồn: <code>data\otonanomouten\hook_records.json</code>)</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer>Nguồn: YouTube Data API + transcript (6/6) + youtube-comment-downloader + channel_analyzer.py (Gemini 3.8 flash). Số view đo 26/09/2026 02:19 UTC. Báo cáo nguồn: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\docs\OTONANOMOUTEN_CHANNEL_REPORT.html</code></footer>
+</div>

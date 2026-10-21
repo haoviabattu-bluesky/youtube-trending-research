@@ -1,0 +1,421 @@
+<title>Phân tích chuyên sâu video 1z1jBVSRYNA — 逆転ときめき漫画</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --bg:#f4f6f5; --panel:#ffffff; --ink:#16211d; --muted:#5b6b64; --line:#dbe4de;
+  --accent:#0f6b52; --accent-soft:#e3f2ec; --warn:#c0392b; --warn-soft:#fbe9e7;
+  --gold:#a8791a; --gold-soft:#fbf1da; --blue:#1f5fae; --blue-soft:#e7effa;
+  --font-display:"Zen Kaku Gothic New","Hiragino Sans",sans-serif;
+  --font-serif:"Noto Serif JP",serif; --font-body:"Be Vietnam Pro",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#101613; --panel:#182019; --ink:#e9f0eb; --muted:#94a69c; --line:#2a352e;
+  --accent:#3fb98d; --accent-soft:#16261f; --warn:#e8776a; --warn-soft:#2c1a17;
+  --gold:#e0b84e; --gold-soft:#2a2214; --blue:#6ea2e8; --blue-soft:#152232; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#101613; --panel:#182019; --ink:#e9f0eb; --muted:#94a69c; --line:#2a352e;
+  --accent:#3fb98d; --accent-soft:#16261f; --warn:#e8776a; --warn-soft:#2c1a17;
+  --gold:#e0b84e; --gold-soft:#2a2214; --blue:#6ea2e8; --blue-soft:#152232;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.65;padding-inline:16px}
+.wrap{max-width:1000px;margin:0 auto;padding-block:40px 80px}
+[lang="ja"]{font-family:var(--font-display)}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--font-serif);text-wrap:balance;margin:0;line-height:1.3}
+.hero{display:flex;flex-direction:column;gap:14px;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-size:clamp(1.55rem,3.8vw,2.1rem)}
+.lede{color:var(--muted);max-width:74ch;font-size:1rem}
+.statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(126px,1fr));gap:10px;margin-top:6px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.stat .n{font-family:var(--font-mono);font-size:1.24rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}
+.stat .n.bad{color:var(--warn)}
+.stat .l{font-size:.74rem;color:var(--muted);margin-top:2px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+nav.toc a{font-size:.82rem;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px 12px;text-decoration:none;color:var(--ink)}
+section{margin-bottom:44px;scroll-margin-top:16px}
+h2{font-size:1.26rem;margin-bottom:6px}
+h3{font-size:1.02rem;margin:20px 0 8px}
+.sectionlede{color:var(--muted);max-width:76ch;margin-bottom:16px;font-size:.94rem}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.alert{background:var(--warn-soft);border:1px solid color-mix(in srgb,var(--warn) 35%,transparent);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.alert .hd{color:var(--warn);font-weight:700;font-size:.9rem;margin-bottom:4px}
+.okbox{background:var(--accent-soft);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.okbox .hd{color:var(--accent);font-weight:700;font-size:.9rem;margin-bottom:4px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;background:var(--panel);border-radius:10px;overflow:hidden}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--accent-soft);color:var(--accent);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+td.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.win{color:var(--accent);font-weight:600}
+.lose{color:var(--warn)}
+blockquote{margin:8px 0;padding:9px 13px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:.92rem;line-height:1.7}
+blockquote.warnq{border-left-color:var(--warn);background:var(--warn-soft)}
+.vi{color:var(--muted);font-style:italic;font-size:.88rem;display:block;margin-top:3px}
+.beat{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.beat:last-child{border-bottom:none}
+.beat .t{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);font-weight:600;padding-top:2px}
+.beat .c strong{display:block;font-size:.92rem;margin-bottom:2px}
+.beat .c .why{font-size:.86rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.72rem;background:var(--blue-soft);color:var(--blue);border-radius:5px;padding:1px 7px;margin-right:5px;font-family:var(--font-mono)}
+.tag.no{background:var(--warn-soft);color:var(--warn)}
+.tag.yes{background:var(--accent-soft);color:var(--accent)}
+ul,ol{margin:8px 0 8px 20px;padding:0}
+li{margin-bottom:5px;font-size:.92rem}
+figure{margin:14px 0}
+figure img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+figcaption{font-size:.78rem;color:var(--muted);margin-top:6px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:.88rem}
+.kv:last-child{border-bottom:none}
+.kv b{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.verdict{background:var(--panel);border:2px solid var(--accent);border-radius:14px;padding:18px 20px}
+.verdict h3{margin-top:0}
+.pill{display:inline-block;font-size:.75rem;font-weight:700;border-radius:999px;padding:3px 11px;margin-bottom:8px}
+.pill.yes{background:var(--accent);color:#fff}
+.pill.no{background:var(--warn);color:#fff}
+.pill.mid{background:var(--gold);color:#fff}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+code{font-family:var(--font-mono);font-size:.85em;background:var(--bg);padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
+</style>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="eyebrow">Nghiên cứu chuyên sâu · 18/10/2026 · TRENDING-RESEARCH</div>
+  <h1>Video 117k view nhưng kênh chỉ 614 sub — bóc công thức 「深夜食堂 + 恩返し」</h1>
+  <p class="lede">
+    <span lang="ja">【漫画】大混雑の深夜食堂にボロボロの母娘「子供たちだけでも食べさせて…」接客を手伝ってもらった結果→数ヶ月後、予約の取れない名店に…</span><br>
+    Kênh <b>逆転ときめき漫画</b> · 13 ngày tuổi · 11 video. Dưới đây là toàn bộ số đo thật: hook từng giây, cấu trúc 8 nhịp,
+    lý do video này ăn view (và lý do nó <b>KHÔNG</b> ăn sub), cùng kết luận nó thuộc lane nào trong hệ thống h2dev.
+  </p>
+  <div class="statrow">
+    <div class="stat"><div class="n">117.383</div><div class="l">view (1,6 ngày)</div></div>
+    <div class="stat"><div class="n">72.904</div><div class="l">view/ngày</div></div>
+    <div class="stat"><div class="n bad">614</div><div class="l">sub kênh</div></div>
+    <div class="stat"><div class="n bad">0,22</div><div class="l">sub / 100 view</div></div>
+    <div class="stat"><div class="n">19:54</div><div class="l">thời lượng</div></div>
+    <div class="stat"><div class="n">1080p</div><div class="l">độ phân giải</div></div>
+  </div>
+</div>
+
+<nav class="toc">
+  <a href="#s0">0. Kết luận trước</a>
+  <a href="#s1">1. Video làm về gì</a>
+  <a href="#s2">2. Hook từng giây</a>
+  <a href="#s3">3. Cấu trúc 8 nhịp</a>
+  <a href="#s4">4. Vì sao nhiều view</a>
+  <a href="#s5">5. Vì sao KHÔNG nhiều sub</a>
+  <a href="#s6">6. Kỹ thuật sản xuất</a>
+  <a href="#s7">7. Áp dụng lane nào</a>
+  <a href="#s8">8. Chưa làm / rủi ro</a>
+</nav>
+
+<section id="s0">
+  <h2>0. Kết luận trước — 4 câu</h2>
+  <div class="verdict">
+    <span class="pill mid">ĐỌC 60 GIÂY</span>
+    <h3>Video này là "máy ăn view", không phải "máy ăn sub"</h3>
+    <ol>
+      <li><b>Nội dung:</b> manga AI kể chuyện <b>ngôi 1 nam</b> — chủ quán ăn đêm ế khách, cho mẹ con homeless một bát cơm, cô ấy có bằng 管理栄養士 quay lại giúp → quán thành 名店 → chồng cũ xuất hiện → phản diện tự sụp → cưới. Đây là công thức <b>恩返し (báo đáp) + ざまぁ (quả báo)</b>, không phải 恋愛.</li>
+      <li><b>Hook:</b> 3 giây đầu <b>vào thẳng thoại khách xin ăn</b>, giây 4 đã có điều kiện trao đổi, giây 8 đã nêu <b>vấn đề sống còn của quán</b>. Tự giới thiệu tên ở giây 8 (rất sớm so với mặt bằng ngách). Đo được: <b>2,2 câu/10 giây</b> trong 40 giây đầu.</li>
+      <li><b>Vì sao nhiều view:</b> tiêu đề khoá đúng một <b>đề bài đã được thị trường xác nhận</b> (cùng đề bài đã có bản 20k–309k view), thumbnail 4 người + 3 khối chữ kể hết plot, và câu chuyện chạy bằng <b>thoại</b> chứ không phải dẫn truyện.</li>
+      <li><b>Vì sao KHÔNG nhiều sub:</b> 614 sub trên tổng <b>275.862 view</b> (11 video cộng lại) = <b>0,22 sub mỗi 100 view</b>. Like chỉ 0,219% (trung vị kênh 0,501%), comment 8 cái. Đây là dấu hiệu <b>view từ feed/recommend</b> — người xem không ở lại vì kênh không có "lý do phải theo dõi" (mỗi tập một câu chuyện rời, không tuyến nhân vật).</li>
+    </ol>
+  </div>
+</section>
+
+<section id="s1">
+  <h2>1. Video làm về vấn đề gì, công việc gì</h2>
+  <p class="sectionlede">Trả lời đúng câu hỏi: đây là chuyện <b>nghề nghiệp cụ thể</b> (kinh doanh quán ăn) chứ không phải chuyện tình cảm chung chung — dù tiêu đề gắn thẻ 恋愛マンガ.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Nghề / bối cảnh</h3>
+      <div class="kv"><span>Nhân vật chính</span><b>鈴木公平 (Suzuki Kōhei)</b></div>
+      <div class="kv"><span>Nghề</span><b>chủ quán ăn đêm (深夜食堂)</b></div>
+      <div class="kv"><span>Tình trạng</span><b>chỉ khách thứ 6, sắp đóng cửa</b></div>
+      <div class="kv"><span>Nguồn nguyên liệu</span><b>thuyền cá của bố mẹ</b></div>
+      <div class="kv"><span>Ngách hẹp</span><b>hải sản giá rẻ cho khách nam</b></div>
+      <div class="kv"><span>Đối thủ</span><b>quán French của chồng cũ</b></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Vấn đề được nêu (đúng 3 cái)</h3>
+      <ul>
+        <li><b>Vấn đề 1 — tệp khách quá hẹp:</b> 「それだと男性客しか獲得できず売上が伸びない」 (04:12) — chỉ bán cho đàn ông, không lên doanh thu.</li>
+        <li><b>Vấn đề 2 — nguyên liệu bị chặn:</b> 「魚は親父たちの業次第だし、メニューを増やそうにも限界がある」 (06:17) — không chủ động được nguồn.</li>
+        <li><b>Vấn đề 3 — không có người:</b> 「昼は親父たちの水揚げの選別や紐作りを手伝ってて店に時間を取ることができない」 (06:26) — làm một mình, không mở thêm được ca.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Cái làm nên chuyện — "kỹ năng nghề" cụ thể, không phải phép màu</h3>
+    <p style="font-size:.92rem;margin:0 0 8px">Đây là điểm mình đánh giá là <b>mạnh nhất về mặt kịch bản</b>: cô ấy cứu quán bằng <b>đúng chuyên môn đã được cài từ trước</b>, không phải bằng may mắn.</p>
+    <blockquote>「みおさんが両親の魚を骨を取って臭みを抜き、魚嫌いの子供でも食べやすく改良してくれた」<span class="vi">Mio gỡ xương, khử mùi tanh con cá của bố mẹ tôi, cải tiến để đứa trẻ ghét cá cũng ăn được. (04:30)</span></blockquote>
+    <p style="font-size:.9rem;color:var(--muted);margin:8px 0 0">→ Nguyên nhân được giải thích bằng <b>chứng chỉ 管理栄養士 (dinh dưỡng viên quản lý)</b> ở giây 04:26, tức là <b>đã cài từ trước khi cần dùng</b>. Không có đoạn "đột nhiên giỏi".</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Tuyến đối kháng — phản diện tự bắn chân</h3>
+    <p style="font-size:.92rem;margin:0">Chồng cũ 黒川リョウ mở quán French, mở cả ca đêm để giành khách (05:37), đến mời vợ cũ quay lại (02:57). Cái kết anh ta sụp <b>không phải vì bị trả thù</b> mà vì chính triết lý kinh doanh của anh ta: coi service là thứ mua chuộc được. Câu chốt do bố anh ta nói:</p>
+    <blockquote class="warnq">「失敗しても謝ってサービスすれば許される。サービスがあるなら何をしてもいいという対応で不誠実さを感じた」<span class="vi">"Cho rằng cứ xin lỗi và bù service là được tha. Có service thì làm gì cũng được — tôi thấy sự bất tín." (15:24)</span></blockquote>
+    <p style="font-size:.9rem;color:var(--muted);margin:8px 0 0">→ Đây là <b>ざまぁ chuẩn Nhật</b>: hình phạt đến từ <b>cơ chế</b> (đối tác rút, khách kiện, đóng cửa), người tốt không ra tay.</p>
+  </div>
+</section>
+
+<section id="s2">
+  <h2>2. Hook — bóc từng giây (0–40s)</h2>
+  <p class="sectionlede">Lấy từ phụ đề tự động, đối chiếu hình. Đây là phần <b>quan trọng nhất</b> để clone. Chú ý: câu đầu tiên là <b>thoại của khách</b>, không phải lời dẫn của nhân vật chính.</p>
+
+  <div class="card">
+    <div class="beat"><div class="t">0–3s</div><div class="c"><strong>「すみません。何か食べさせてもらえませんか?」</strong><div class="why">Vào thẳng câu xin ăn. Không tên, không bối cảnh, không "tôi là...". Người xem buộc phải hỏi: ai đang xin? → <span class="tag">mở bằng thoại</span></div></div></div>
+    <div class="beat"><div class="t">4–7s</div><div class="c"><strong>「いいですよ。その代わりお願いが。」</strong><div class="why">Đồng ý ngay + <b>cài điều kiện</b> ("nhưng đổi lại, tôi có một yêu cầu"). Câu này tạo <b>hợp đồng treo</b> — người xem phải xem tiếp để biết yêu cầu là gì. Đây là móc giữ chân mạnh nhất của cả hook.</div></div></div>
+    <div class="beat"><div class="t">8–20s</div><div class="c"><strong>「お店手放したくないけど金曜日の夜しか稼ぎばわない。…俺の名前は鈴木公平。港町の深夜食堂の経営者だ。」</strong><div class="why">Nêu <b>vấn đề sống còn</b> (không muốn bán quán, chỉ sống được đêm thứ 6) + <b>tự giới thiệu</b> tên/nghề. Rất sớm — phần lớn video ngách này giới thiệu ở giây 15–25.</div></div></div>
+    <div class="beat"><div class="t">21–28s</div><div class="c"><strong>「あ、もしかして閉まっちゃいました。」「え、すごい格好だ。何かあったのかも。」</strong><div class="why">Chuyển cảnh + <b>miêu tả ngoại hình qua mắt nhân vật</b> ("bộ dạng thảm quá") thay vì tường thuật. Người xem tự suy ra hoàn cảnh.</div></div></div>
+    <div class="beat"><div class="t">29–34s</div><div class="c"><strong>「子供たちだけでも構わないので」</strong><div class="why">Câu <b>gây đau</b> nhất trong hook: người mẹ xin cho con trước, không xin cho mình. Đây là câu được <b>đưa lên tiêu đề + thumbnail</b>.</div></div></div>
+    <div class="beat"><div class="t">35–45s</div><div class="c"><strong>「顔をあげてください。すぐ作るから中へどうぞ。」→「おいしい。こんなふわの海鮮卵丼初めて」</strong><div class="why"><b>Payoff cảm xúc đầu tiên ở giây 35</b> — chỉ 35 giây sau khi mở video. Rất nhanh. Câu "ngon quá" do <b>đứa trẻ</b> nói, không phải người lớn → đáng tin hơn.</div></div></div>
+    <div class="beat"><div class="t">53–68s</div><div class="c"><strong>「最後に誰かの笑顔が見たかった」→「恩返しをさせてください」→「彼女の申し出が俺の運命を大きく変えた」</strong><div class="why">Khoá <b>động cơ</b> (quán sắp đóng, muốn thấy ai đó cười lần cuối) + <b>lời hứa của cả video</b> ("đã thay đổi vận mệnh tôi"). Đến đây hook đóng.</div></div></div>
+  </div>
+
+  <div class="okbox">
+    <div class="hd">Đo được — vì sao hook này nhanh</div>
+    <div class="grid2" style="margin-top:8px">
+      <div>
+        <div class="kv"><span>Câu/10 giây (0–40s)</span><b>2,2</b></div>
+        <div class="kv"><span>Câu/10 giây (toàn video)</span><b>2,4</b></div>
+        <div class="kv"><span>Payoff cảm xúc đầu tiên</span><b>giây 35</b></div>
+      </div>
+      <div>
+        <div class="kv"><span>Tự giới thiệu tên</span><b>giây 8</b></div>
+        <div class="kv"><span>Vấn đề sống còn nêu ra</span><b>giây 8</b></div>
+        <div class="kv"><span>Câu gây đau (lên tiêu đề)</span><b>giây 29</b></div>
+      </div>
+    </div>
+    <p style="font-size:.88rem;margin:10px 0 0;color:var(--muted)">Hook <b>không</b> dùng: nhạc mở, logo kênh, cảnh thiên nhiên, lời chào, "hôm nay tôi sẽ kể". Vào thẳng xung đột.</p>
+  </div>
+</section>
+
+<section id="s3">
+  <h2>3. Cấu trúc 8 nhịp (đo từ transcript 290 segment)</h2>
+  <p class="sectionlede">Đây là <b>bộ khung tái sử dụng được</b> — cùng một sườn xuất hiện ở cả 11 video của kênh.</p>
+
+  <div class="card">
+    <div class="beat"><div class="t">00:00–01:08</div><div class="c"><strong>① HOOK — cho ăn + cài điều kiện</strong><div class="why">Mẹ con vào quán, được cho ăn, cô ấy đáp lại bằng "cho tôi giúp để báo đáp". Kết hook bằng câu hứa: "vận mệnh tôi đổi".</div></div></div>
+    <div class="beat"><div class="t">01:08–01:43</div><div class="c"><strong>② THIẾT LẬP QUAN HỆ — xin việc, đặt luật</strong><div class="why">「正式に私をここで働かせてください」→ chủ quán đặt điều kiện ngược: 「無理はしないこと」 (đừng gắng quá). Chi tiết nhỏ này <b>dựng tính cách người tốt</b> mà không cần kể.</div></div></div>
+    <div class="beat"><div class="t">01:43–05:03</div><div class="c"><strong>③ PHẢN DIỆN XUẤT HIỆN + ĐÒI QUAY LẠI</strong><div class="why">Chồng cũ đến, đòi tái hôn (02:57). Nhân vật chính <b>nổi giận thay</b> cô ấy (03:15). Cô ấy từ chối tiền (03:41). → <b>Nhịp cảm xúc: bực → tự hào</b>.</div></div></div>
+    <div class="beat"><div class="t">05:03–06:13</div><div class="c"><strong>④ PHẢN DIỆN PHẢN CÔNG — mở ca đêm, cướp khách</strong><div class="why">「営業時間を拡大して深夜も店を開けてる」 (05:37). Quán chính ế. Đây là <b>điểm chìm</b> bắt buộc của công thức.</div></div></div>
+    <div class="beat"><div class="t">06:13–09:33</div><div class="c"><strong>⑤ GIẢI PHÁP NGHỀ NGHIỆP — mở ca trưa, dùng chuyên môn</strong><div class="why">Cô ấy xin giúp việc thuyền cá để chủ quán rảnh mở ca trưa; bố mẹ chủ quán nhận về ở cùng. Đây là <b>nhịp "ấm"</b> — bắt buộc phải có để nhịp ⑥ đau hơn.</div></div></div>
+    <div class="beat"><div class="t">09:33–10:07</div><div class="c"><strong>⑥ SỰ CỐ OAN — khách bị đối xử tệ</strong><div class="why">Bố mẹ chủ quán đến ăn kỷ niệm cưới, bị nhầm booking với "Suzuki" khác, phải về. Cô ấy <b>xin lỗi thay</b> dù không có lỗi → <b>điểm đau nhất</b>.</div></div></div>
+    <div class="beat"><div class="t">10:07–13:36</div><div class="c"><strong>⑦ LẬT NGƯỢC — hóa ra khách bị đối xử tệ là đối tác lớn</strong><div class="why">Người đàn ông quay lại xin lỗi thay con trai (tức phản diện), và ông ta là chủ tập đoàn thủy sản マリンズフーズ. Ông ký hợp đồng + đầu tư. → <b>payoff nghề nghiệp</b>.</div></div></div>
+    <div class="beat"><div class="t">13:36–19:54</div><div class="c"><strong>⑧ QUẢ BÁO + KẾT ĐÔI</strong><div class="why">Quán thành 名店 (khách xếp hàng), phản diện bị kiện → đóng cửa → phá sản → bị bắt (19:06). Kết: cầu hôn, cưới. Chốt bằng câu kêu gọi sub ở 19:47.</div></div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Tỉ lệ thời lượng — dùng để lên khung tập mới</h3>
+    <table>
+      <tr><th>Nhịp</th><th class="num">Thời lượng</th><th class="num">%</th><th>Vai trò</th></tr>
+      <tr><td>① Hook</td><td class="num">68s</td><td class="num">5,7%</td><td>Giữ chân</td></tr>
+      <tr><td>② Quan hệ</td><td class="num">35s</td><td class="num">2,9%</td><td>Dựng tính cách</td></tr>
+      <tr><td>③ Phản diện xuất hiện</td><td class="num">200s</td><td class="num">16,7%</td><td>Tạo bực</td></tr>
+      <tr><td>④ Phản công (điểm chìm)</td><td class="num">70s</td><td class="num">5,8%</td><td>Tạo lo</td></tr>
+      <tr><td>⑤ Giải pháp + nhịp ấm</td><td class="num">200s</td><td class="num">16,7%</td><td>Tạo hy vọng</td></tr>
+      <tr><td>⑥ Sự cố oan</td><td class="num">34s</td><td class="num">2,8%</td><td>Điểm đau</td></tr>
+      <tr><td>⑦ Lật ngược</td><td class="num">209s</td><td class="num">17,5%</td><td>Payoff chính</td></tr>
+      <tr><td>⑧ Quả báo + kết</td><td class="num">378s</td><td class="num">31,6%</td><td>Thoả mãn + giữ</td></tr>
+    </table>
+    <p style="font-size:.86rem;color:var(--muted);margin:10px 0 0">Nhận xét: <b>31,6% thời lượng dành cho quả báo</b>. Ngách này người xem đến để xem <b>kẻ xấu sụp</b>, không phải để xem chuyện tình. Đây là con số quan trọng nhất khi viết tập mới.</p>
+  </div>
+</section>
+
+<section id="s4">
+  <h2>4. Vì sao video này được nhiều view — 5 lý do có số</h2>
+
+  <div class="card">
+    <h3 style="margin-top:0">Lý do 1 — Đề bài đã được thị trường xác nhận trước đó</h3>
+    <p style="font-size:.92rem;margin:0 0 8px">Cùng câu chuyện "quán ăn đêm + mẹ con bơ vơ + giúp đỡ → thành名店" đã có nhiều bản ăn view trước. Mình tìm bằng InnerTube (keyless) và đây là các bản cùng đề bài:</p>
+    <table>
+      <tr><th>Kênh</th><th class="num">View</th><th>Biến thể (đo trực tiếp bằng InnerTube 18/10)</th></tr>
+      <tr><td>噂のスカッと</td><td class="num">309.031</td><td>洋食屋 + mẹ con nghèo + nhóm nữ đua xe</td></tr>
+      <tr><td>2ch馴れ初めで愛を語る</td><td class="num">222.675</td><td>うどん屋 + mẹ bế em bé, cho ở + thuê</td></tr>
+      <tr><td>人生のしおりTV</td><td class="num">101.393</td><td>ファミレス + mẹ con bơ vơ, cho ngủ 1 đêm</td></tr>
+      <tr><td>最高の人生</td><td class="num">34.992</td><td>町中華 + mẹ con bị trộm ví</td></tr>
+      <tr><td>人生食堂</td><td class="num">31.601</td><td>定食屋 + "ăn đi" rồi nhận lại thứ quý hơn tiền</td></tr>
+      <tr><td>2ch馴れ初めで愛を語る</td><td class="num">20.394</td><td>bản 2ch <b>cùng đề bài gần nhất</b> (深夜食堂 + bà lão)</td></tr>
+      <tr><td>2ch馴れ初めストーリー</td><td class="num lose">4</td><td><span class="lose">copy y hệt tiêu đề — chết</span></td></tr>
+      <tr><td>ひだまり朗読</td><td class="num lose">4</td><td><span class="lose">cùng đề bài, kể khác — chết</span></td></tr>
+    </table>
+    <p style="font-size:.88rem;color:var(--muted);margin:10px 0 0">→ Kết luận: <b>đề bài đã thắng (309k, 222k, 101k view)</b>, nhưng bản copy nguyên văn tiêu đề chỉ được <b>4 view</b>. Cái ăn view là <b>đề bài + cách kể</b>, không phải câu chữ tiêu đề.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Lý do 2 — Thumbnail kể hết plot trong 1 khung</h3>
+    <p style="font-size:.92rem;margin:0">Thumbnail chia 3 vùng: trái = chủ quán đang nấu (hành động), phải = mẹ con rách rưới chắp tay xin (cảm xúc), giữa = khối chữ 3 dòng kể đúng trình tự <b>「大混雑の深夜海鮮食堂に来た」→「ボロボロ親子に接客を手伝ってもらったら」→「いいですよ その代わり お願いが…」</b>. Không có mũi tên đỏ, không khoanh tròn, không số — chỉ <b>chữ + 2 nửa đối lập</b>. Màu: cam ấm (quán) đấu với be rách (nghèo).</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Lý do 3 — Chuyện chạy bằng thoại, không bằng dẫn truyện</h3>
+    <p style="font-size:.92rem;margin:0">Đếm trên 290 segment: phần lớn là <b>thoại trực tiếp</b>; lời dẫn chỉ xuất hiện ở các mốc chuyển thời gian (「数ヶ月後」「翌日」「1ヶ月後」「数日後」). Tức là người xem <b>nghe người ta nói chuyện</b>, không bị ai đó kể lại. Đây là lý do video 20 phút vẫn xem được.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Lý do 4 — Nhịp hình nhanh hơn mặt bằng ngách</h3>
+    <div class="grid2">
+      <div>
+        <div class="kv"><span>Số lần cắt cảnh (scene cut)</span><b>~100</b></div>
+        <div class="kv"><span>Thời gian mỗi hình (trung vị)</span><b>11,5s</b></div>
+        <div class="kv"><span>Dài nhất</span><b>30,8s</b></div>
+      </div>
+      <div>
+        <div class="kv"><span>Độ phân giải gốc</span><b>1920×1080</b></div>
+        <div class="kv"><span>Chuyển động trong 1 cảnh</span><b>có (16–20% pixel/0,3s)</b></div>
+        <div class="kv"><span>Phụ đề cứng</span><b>không có</b></div>
+      </div>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin:10px 0 0">Lưu ý kỹ thuật: hình <b>không phải slideshow tĩnh</b> — có vi chuyển động (tóc, ánh sáng, tay) nhưng <b>không pan/zoom toàn ảnh</b>. Đây là kiểu <b>ảnh AI + hiệu ứng động nhẹ</b> (living still), không phải clip quay.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Lý do 5 — Tiêu đề khoá đúng 3 thứ người xem tìm</h3>
+    <p style="font-size:.92rem;margin:0">Cấu trúc tiêu đề: <code>【漫画】</code> + <b>bối cảnh</b> (大混雑の深夜食堂) + <b>câu thoại gây đau</b> (「子供たちだけでも食べさせて…」) + <b>hành động</b> (接客を手伝ってもらった結果) + <b>kết quả có số</b> (数ヶ月後、予約の取れない名店に). Đủ 4 thành phần trong 1 câu, không cần xem thumbnail cũng hiểu.</p>
+  </div>
+</section>
+
+<section id="s5">
+  <h2>5. Vì sao video này <span class="lose">KHÔNG</span> được nhiều sub — phần quan trọng nhất</h2>
+  <p class="sectionlede">Đề bài giả định "video này được nhiều sub". Số đo nói ngược lại. Mình nêu rõ để anh không quyết định sai.</p>
+
+  <div class="alert">
+    <div class="hd">Số đo thật (18/10/2026)</div>
+    <table style="background:transparent">
+      <tr><th>Chỉ số</th><th class="num">Video này</th><th class="num">Trung vị 10 video khác của kênh</th></tr>
+      <tr><td>Like / view</td><td class="num lose">0,219%</td><td class="num">0,501%</td></tr>
+      <tr><td>Comment / view</td><td class="num lose">0,0068% (8 cái)</td><td class="num">0,0335%</td></tr>
+      <tr><td>Sub / 100 view (11 video cộng lại)</td><td class="num lose">0,22</td><td class="num">—</td></tr>
+      <tr><td>Tỉ trọng view của video trong kênh</td><td class="num">42,6%</td><td class="num">—</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">4 nguyên nhân (theo thứ tự quan trọng)</h3>
+    <ol>
+      <li><b>Không có lý do phải theo dõi.</b> Mỗi tập một nhân vật mới, một câu chuyện đóng. Xem xong không còn gì để chờ. So sánh: kênh セカイノフシギ (86,6万 sub) giữ người bằng series/tuyến nhân vật.</li>
+      <li><b>Tương tác thấp bất thường so với chính kênh.</b> Like 0,219% trong khi các video khác của kênh 0,501% — <b>thấp hơn một nửa</b>. Comment 8 cái trên 117k view. Đây là dấu hiệu view đến từ <b>feed/recommend</b> (người lạ bấm vào rồi đi), không phải từ người quan tâm.</li>
+      <li><b>Có lỗi sản xuất lộ liễu.</b> Comment người xem bắt lỗi thật, mình đã kiểm chứng bằng transcript: tại <b>10:08</b> câu thoại bị lặp tên 3 lần — 「私は飯田覇斗の父親。黒川り涼の父親。黒川りの父親。」 (sai cả tên nhân vật). Cùng lúc có 2 đoạn lặng bất thường (615,8s và 621,5s). Người xem comment: <span lang="ja">「10:08 音声バグってるよ。セリフも合ってない。」</span> và <span lang="ja">「10:10じいさんバグってるぞw」</span>.</li>
+      <li><b>Nội dung bị chê là "nhảy cóc".</b> Trên video khác cùng kênh, comment: <span lang="ja">「いい話なのに所々飛び飛びなのがきになりました」</span> / <span lang="ja">「会話が飛びまくりで意味が解らない」</span> / <span lang="ja">「飛び酷い、ちゃんと作れよ」</span>. Tức là khán giả <b>nhận ra</b> chất lượng lắp ghép.</li>
+    </ol>
+  </div>
+
+  <div class="okbox">
+    <div class="hd">Bài học rút ra (quan trọng cho mình)</div>
+    <p style="margin:0;font-size:.92rem">View và sub là <b>hai chỉ số khác nhau</b>, phải đo riêng. Một video có thể ăn 117k view nhờ đề bài + thumbnail mà <b>không hề chuyển được người xem thành sub</b>. Nếu đánh giá "kênh mẫu đáng clone" bằng view, mình sẽ clone nhầm một cỗ máy không giữ được khán giả.</p>
+  </div>
+</section>
+
+<section id="s6">
+  <h2>6. Kỹ thuật sản xuất — clone được bằng gì</h2>
+  <p class="sectionlede">Mình kiểm bằng khung hình full-res, không suy đoán từ thumbnail.</p>
+
+  <table>
+    <tr><th>Thành phần</th><th>Đo được</th><th>Clone bằng</th></tr>
+    <tr><td>Hình</td><td>Manga/anime màu, <b>AI-generated</b> (chữ trong bong bóng bị méo, viền bong bóng không đều, tay/vải có lỗi)</td><td>gpti2 / Flow Tool — <span class="tag yes">có sẵn</span></td></tr>
+    <tr><td>Chữ trên hình</td><td><b>AI vẽ luôn vào ảnh</b> (chữ mờ, sai nét), không phải máy chèn</td><td><span class="tag no">KHÔNG nên copy</span> — Lane K/N đang chèn bằng máy, nét và đúng chính tả hơn</td></tr>
+    <tr><td>Chuyển động</td><td>Vi chuyển động trong cảnh, <b>không pan/zoom</b></td><td>Ảnh tĩnh + hiệu ứng nhẹ (rẻ hơn clip)</td></tr>
+    <tr><td>Nhịp ảnh</td><td><b>11,5s/hình</b> (trung vị)</td><td>Lane K: 8s · Lane N: 7,5s → <b>nhanh hơn kênh này</b></td></tr>
+    <tr><td>Giọng</td><td>Đa giọng (nam dẫn + nữ + trẻ em), có lỗi sync ở 10:08</td><td>VOICEVOX đa vai — <span class="tag yes">có sẵn</span></td></tr>
+    <tr><td>Phụ đề cứng</td><td><b>Không có</b></td><td>—</td></tr>
+    <tr><td>Độ phân giải</td><td>1920×1080</td><td>—</td></tr>
+    <tr><td>Thời lượng</td><td>19:54</td><td>Dài hơn Lane K/N thường làm</td></tr>
+    <tr><td>Kêu gọi cuối</td><td>19:47 「チャンネル登録もよろしくね」</td><td>Chỉ 1 câu, không có end-screen</td></tr>
+  </table>
+
+  <div class="alert" style="margin-top:14px">
+    <div class="hd">Cảnh báo kỹ thuật</div>
+    <p style="margin:0;font-size:.92rem">Kênh này <b>để AI vẽ chữ vào ảnh</b> → chữ sai, méo, có lỗi chính tả Nhật. Đó là lý do có comment bắt lỗi. <b>Đừng copy cách này.</b> Pipeline h2dev đã tách chữ ra khỏi ảnh (Lane K: <code>bong_thoai.py</code>, Lane N: <code>tate_text.py</code>) — đó là bản nâng cấp, không phải thiếu sót.</p>
+  </div>
+</section>
+
+<section id="s7">
+  <h2>7. Áp dụng cho lane nào</h2>
+  <p class="sectionlede">Đối chiếu với danh bạ lane thật trong <code>h2dev/docs/DANH_BA_LANE.md</code> (12 lane đang chạy), không đề xuất lane mới nếu lane cũ đã phủ.</p>
+
+  <div class="verdict" style="margin-bottom:14px">
+    <span class="pill yes">KẾT LUẬN</span>
+    <h3>Không phải lane mới. Đây là <b>biến thể đề tài cho Lane K + Lane N</b>, và là <b>bài học hook cho tất cả lane manga</b>.</h3>
+    <p style="margin:8px 0 0;font-size:.94rem">Video thuộc nhóm <b>"quả báo nghề nghiệp + báo đáp"</b> — trùng khung với Lane K (薬局スカッと帳) và Lane O (介護スカッと), nhưng <b>khác ngành</b> (quán ăn thay vì nhà thuốc/điều dưỡng) và <b>khác cấu trúc nhân vật</b> (mỗi tập một nhân vật mới giống Lane N).</p>
+  </div>
+
+  <table>
+    <tr><th>Lane</th><th>Khớp ở đâu</th><th>Lệch ở đâu</th><th>Dùng được gì</th></tr>
+    <tr>
+      <td><b>Lane K</b><br><code>yakkyoku-sukatto</code></td>
+      <td>Quả báo nghề nghiệp, phản diện có câu cửa miệng, nhân vật chính ngôi 3, đa giọng VOICEVOX</td>
+      <td>Lane K cố định nhân vật dược sĩ; video này <b>mỗi tập một nhân vật</b>. Ngành khác.</td>
+      <td class="win">✔ Sườn 8 nhịp · ✔ Câu "phản diện tự sụp vì triết lý của chính nó" · ✔ Tỉ lệ 31,6% thời lượng cho quả báo</td>
+    </tr>
+    <tr>
+      <td><b>Lane O</b><br><code>kaigo-sukatto</code></td>
+      <td>Cùng kênh mẫu 千種テンカ với K, cùng khung "nhân viên có câu cửa miệng xấu → nhận quả từ cơ chế"</td>
+      <td>Chưa có kênh. Ngành điều dưỡng.</td>
+      <td class="win">✔ Cùng lý do như K</td>
+    </tr>
+    <tr>
+      <td><b>Lane N</b><br><code>senior_korekara</code></td>
+      <td>Manga ảnh AI + slideshow + narration đa giọng, <b>mỗi tập một nhân vật mới</b>, 6 chương có tên chứa số liệu</td>
+      <td>Lane N kết <b>NGHIỆM TÙNG</b> (không quả báo); video này kết <b>quả báo + cưới</b>. Lane N nhân vật 60–70 tuổi; đây nhân vật trẻ.</td>
+      <td class="win">✔ Cấu trúc "mỗi tập nhân vật mới" · ✔ Nhịp ảnh · ✔ Cách cài chuyên môn trước khi dùng</td>
+    </tr>
+    <tr>
+      <td><b>Lane F</b><br><code>teinengo-real</code></td>
+      <td>Manga story kịch tính, 2 nhân vật đối lập</td>
+      <td>Lane F chủ đề <b>tiền/hưu trí</b>; video này chủ đề <b>kinh doanh + tình cảm</b></td>
+      <td class="win">✔ Cặp đối lập người tốt/kẻ xấu · ✔ Cách để phản diện tự nói ra triết lý xấu</td>
+    </tr>
+  </table>
+
+  <div class="card" style="margin-top:14px">
+    <h3 style="margin-top:0">Nếu muốn làm đúng "chất" video này — 3 hướng, theo mức độ can thiệp</h3>
+    <div class="kv"><span><b>A. Không đổi gì</b> — chỉ lấy hook + sườn 8 nhịp, nạp vào kho hook</span><b>rẻ nhất</b></div>
+    <div class="kv"><span><b>B. Thêm đề tài vào Lane K</b> — "quán ăn/quán ăn đêm" thành 1 bối cảnh mới trong kho đề tài Lane K (dược sĩ vẫn là nhân vật chính)</span><b>trung bình</b></div>
+    <div class="kv"><span><b>C. Mở lane mới "quả báo ngành F&B"</b> — mỗi tập một quán/một nghề ăn uống, phản diện tự sụp</span><b>đắt nhất, cần duyệt</b></div>
+    <p style="font-size:.88rem;color:var(--muted);margin:10px 0 0">Mình <b>không</b> đề xuất hướng C ngay: kênh mẫu chỉ 614 sub, chưa chứng minh được khả năng giữ khán giả. Muốn mở lane mới thì nên tìm kênh mẫu <b>vừa ăn view vừa ăn sub</b> cùng ngách trước.</p>
+  </div>
+
+  <div class="okbox">
+    <div class="hd">Đề xuất cụ thể — làm ngay được</div>
+    <ol style="margin:8px 0 0">
+      <li><b>Nạp hook vào kho:</b> <code>hook_library.py add</code> với pattern <span class="tag">H</span> mở bằng thoại người lạ + <span class="tag">K</span> "đồng ý giúp nhưng đổi lại…" — câu này <b>chưa có</b> trong kho hiện tại.</li>
+      <li><b>Thêm 1 luật vào prompt S2 của Lane K:</b> phản diện phải <b>tự nói ra triết lý kinh doanh sai</b> ở nửa sau, và cái sụp của hắn phải đến <b>từ chính triết lý đó</b> — không phải từ nhân vật chính ra tay. Đây là điểm mạnh nhất của video này.</li>
+      <li><b>Đo lại tỉ lệ:</b> hiện Lane K dành bao nhiêu % cho nhịp quả báo? Video này là 31,6%. Nếu Lane K thấp hơn nhiều thì đó là chỗ chỉnh.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="s8">
+  <h2>8. Chưa làm / rủi ro</h2>
+  <div class="alert">
+    <div class="hd">Nói thẳng giới hạn</div>
+    <ul style="margin:6px 0 0">
+      <li><b>Không lấy được retention.</b> Như đã ghi trong CLAUDE.md — heatmap đối thủ không lấy được bằng mọi cách đã thử. Nên <b>không biết</b> người xem rời ở giây nào. Suy luận "hook giữ chân tốt" dựa trên cấu trúc + view/ngày, không dựa trên retention thật.</li>
+      <li><b>View 117k có thể còn tăng.</b> Số chốt lúc 18/10, video 1,6 ngày tuổi. Các kết luận về tỉ lệ like/comment có thể đổi khi video đủ 7 ngày.</li>
+      <li><b>Chưa nghe toàn bộ audio.</b> Transcript lấy từ phụ đề tự động, có chỗ sai chữ (ví dụ 「回線卵丼」 đúng ra là 「海鮮卵丼」, 「キらめき食堂」 là 「きらめき食堂」). Các trích dẫn trong báo cáo đã đối chiếu với mô tả video gốc, nhưng <b>không phải bản nghe tay 100%</b>.</li>
+      <li><b>Chưa kiểm 10 video còn lại của kênh ở mức transcript đầy đủ.</b> Chỉ lấy hook 0–40s của cả 11 video + transcript đầy đủ của video này.</li>
+      <li><b>Comment trên video này chỉ có 8</b> — không đủ mẫu để kết luận về tệp khán giả. Các nhận định về khán giả dựa trên comment của video khác cùng kênh.</li>
+      <li><b>Chưa xác minh nguồn gốc câu chuyện.</b> Có thể là chuyển thể từ 2ch/note. Nếu là chuyển thể thì vấn đề bản quyền cần xem riêng — mình chưa kiểm.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  Nguồn dữ liệu: YouTube Data API v3 (metadata, view/like/comment) · InnerTube keyless (search đối chứng, trang /about) ·
+  <code>src/hook_fetch.py</code> (transcript 290 segment) · <code>youtube-comment-downloader</code> (comment thật) ·
+  ffmpeg scene-detect + frame sampling (nhịp hình, chuyển động) · đọc khung hình full-res bằng vision.<br>
+  File thô: <code>scratch_kb/</code> (kinh_1z1.json · hooks/*.json · transcript_1z1.txt · cm_*.json · thumb_*.jpg · grid.jpg · motion_cmp.png).<br>
+  Báo cáo này <b>không</b> ghi lên Google Sheet — theo quy tắc báo cáo curation bằng Artifact.
+</footer>
+
+</div>

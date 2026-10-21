@@ -1,0 +1,23 @@
+{
+ "topics": [
+  "退職金",
+  "老後資金",
+  "年金",
+  "60代の家計"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "東京の西のはれ、駅から歩いて12分、35年住んだ一建が3600万円[音楽]で売れました。篠原正明さん68歳食品会社の総務で40年働きました。妻のゆき子さん66[音楽]歳。駅前の店で30年パートしていました。この春2人は軽いへ移りすぎます。[音楽]この写真ずっと机の引き出しに入れてたの。いつか住みたい40年思ってた。去年の秋、ゆき子さんが軽井沢の中古住宅の",
+ "hook_n_segments_0_30": 10,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 384 segments, phủ ~100% độ dài video",
+ "video_id": "yTH_8ls9Jgg",
+ "title": "【漫画】老後に軽井沢移住して1年後「もう帰りたい」東京の家は売却済みで帰る場所もなく…",
+ "view_count": 87031,
+ "duration_min": 19.3,
+ "vpd": 5802.1,
+ "days": 15
+}

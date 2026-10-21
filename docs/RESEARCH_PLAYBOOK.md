@@ -7,6 +7,53 @@
 
 ---
 
+## -3. NGÔN NGỮ ĐẦU RA — TIẾNG VIỆT, DỊCH HẾT TIẾNG NHẬT (user chốt 2026-10-19)
+
+**Mọi thứ người dùng đọc phải là tiếng Việt.** Tiếng Nhật chỉ được xuất hiện trong ngoặc,
+đứng SAU bản dịch, và chỉ khi cần đối chiếu nguyên văn.
+
+Áp dụng cho: báo cáo HTML/artifact · file handoff · bảng số liệu · nhãn biểu đồ ·
+tin nhắn chat · tên file nếu tên file là tiếng Nhật.
+
+| Sai (cấm) | Đúng |
+|---|---|
+| `【江戸体験】旅籠の風呂とトイレは、どうなっていたのか` | `Trải nghiệm thời Edo: nhà trọ có phòng tắm và nhà vệ sinh thế nào?` |
+| `江戸 — nhu cầu đời sống chiếm áp đảo` | `Thời Edo — nhu cầu về đời sống chiếm áp đảo` |
+| `戦国 (clone)` | `Chiến Quốc (bản sao)` |
+| `犬鳴村 都市伝説` | `truyền thuyết đô thị làng Inunaki` |
+
+Quy ước cố định dùng trong repo:
+- `戦国` → **Chiến Quốc** · `江戸` → **Thời Edo** · `幕末・明治` → **Mạt Kỳ – Minh Trị**
+- `信長` → Tín Trường · `秀吉` → Tú Cát · `家康` → Gia Khang · `謙信` → Khiêm Tín · `元就` → Nguyên Tựu
+- `大名` → lãnh chúa · `武将` → võ tướng · `長屋` → nhà dãy cho thuê · `旅籠` → nhà trọ · `宿場` → trạm nghỉ
+- `勢力図` → bản đồ thế lực · `領土` → lãnh thổ · `石高` → sản lượng lúa (thạch cao)
+
+Nếu một mục buộc phải trích nguyên văn tiếng Nhật (vd chứng minh ASR nghe sai tên riêng),
+phải nêu rõ lý do ngay cạnh trích dẫn.
+
+---
+
+## -2. HOOK TRƯỚC TIÊN (user chốt 2026-09-23)
+
+Mỗi khi research ra video/kênh nào — **việc đầu tiên là vào từng video đọc hook** (0–90s), phân loại,
+rồi nạp vào kho dùng chung `E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\` (bản đọc: `HOOK_LIBRARY.md`). Quy trình đầy đủ
+ở skill `youtube-hook-research` (`C:\Users\admin\.claude\skills\youtube-hook-research\SKILL.md`).
+
+```bash
+py -3.13 -X utf8 src/hook_fetch.py <id> [<id> ...] --sec 90        # tải + in hook theo mốc giây
+py -3.13 -X utf8 src/hook_library.py add <lo_phan_tich.json>       # nạp kho + sinh lại HOOK_LIBRARY.md
+py -3.13 -X utf8 src/hook_library.py lane <id-kênh-h2dev>          # tra kiểu hook hợp 1 kênh của mình
+```
+Báo cáo research: mục hook đứng TRƯỚC mục số liệu.
+
+## -1b. Đề tài phải sát đời sống người dân (user chốt 2026-10-08)
+Khi đề xuất đề tài tập: chọn thứ dân thường chạm tới (đồ ăn, du lịch, phim, anime, ca sĩ, hàng hoá, giá cả,
+thương hiệu quen). Chính trị/ngoại giao/quân sự/công nghiệp (nghị quyết LHQ, điều khoản hiệp ước, danh sách
+xuất khẩu, tàu chiến, đất hiếm) KHÔNG được làm tập chính — kể cả khi số liệu cú lật rất mạnh. Đã trả giá:
+lane Q tập 1 "TQ bỏ phiếu thuận năm 1995" bị anh chê "ai quan tâm". Cổng kiểm: người xem phổ thông đọc
+tiêu đề có hiểu ngay và muốn bấm không? Đo thêm trong corpus: đề tài đời sống ít kênh làm mà trung vị cao
+(vd ホタテ: 4 video, trung vị 252k) là khoảng trống tốt nhất.
+
 ## -1. Ưu tiên NỘI DUNG TỐT hơn là bám đúng ngách xuất phát (user chốt 2026-09-11)
 
 Mục tiêu dự án mở rộng ngách là tìm nội dung TỐT/có tiềm năng phát triển — ngách gốc (simbot2/người già) chỉ là điểm khởi đầu lịch sử, KHÔNG phải giới hạn cứng. Khi so sánh ứng viên, đừng chấm theo "đúng ngách ban đầu không" — chấm theo bằng chứng thật: công thức đề tài đã chứng minh lặp lại được, **momentum THẬT (view/ngày trong 7-30 ngày gần nhất, không phải tổng view lịch sử)**, và kho đề tài có mở rộng được không. Ngách liền kề/họ hàng (trung niên, kinh tế-xã hội, tâm lý học...) đều chấp nhận được nếu nội dung/tăng trưởng tốt hơn ngách gốc. Xem [[uu-tien-noi-dung-tot-hon-bam-nganh]] trong memory.
@@ -93,6 +140,7 @@ Kiểm tra nhanh: kênh có phải **người thật xuất hiện/quay** (vlog 
 ### Bước 4 — Đào sâu 3–5 ứng viên còn lại
 
 Với mỗi ứng viên:
+0. **Hook trước tiên** — `hook_fetch.py` cho top view + 1–2 video mới + 1 video view thấp nhất; phân tích và nạp `HOOK_LIBRARY` (mục -2)
 1. **Titles** — 8–15 video gần nhất → phân tích công thức tiêu đề, đo tương quan độ dài tiêu đề với view
 2. **Transcript đầy đủ** — 2–4 video top (`youtube-transcript-api`) → cấu trúc kịch bản, hook, nhịp thiết bị giữ chân (đếm theo từng khoảng 10% thời lượng, không chỉ đọc lướt)
 3. **Comment gốc** — 50–70/video (`src/deepdive.py::fetch_comments`) → chân dung khán giả, và **luôn tìm 2 loại comment**: đồng cảm (nhiều like) + bắt lỗi (số học, tính thực tế) — loại thứ 2 chỉ ra đúng cổng QC cần thêm
@@ -131,6 +179,33 @@ Dùng skill `artifact-design` khi dựng trang này — đây là tài liệu c�
 5. **Nếu artifact duyệt có mục nào chưa nằm trong file `.md`** (như mục Đặt tên/SEO ở Lane C) → bổ sung vào cả 2 bản (gốc + bản copy) trước khi coi là xong
 6. Không tự ý gửi/kích hoạt phiên bên kia — để user chủ động
 
+### Bước 7b — Giao gói HOOK · TIÊU ĐỀ · THUMBNAIL cho h2dev (chuẩn từ 2026-09-23)
+
+**Khi nào làm:** (a) vừa duyệt kênh mẫu mới cho 1 lane; (b) lane đã có thêm ~5 tập hoặc anh yêu cầu audit;
+(c) kênh mẫu đổi công thức tiêu đề/thumbnail (view/ngày tụt rõ ở video mới).
+
+**Làm gì (theo skill `youtube-hook-research`, SKILL.md + `references\NGUYEN_TAC_HOOK_GOI_DANG.md`):**
+1. Thu TOÀN BỘ video kênh mẫu qua YouTube Data API (tiêu đề gốc, publishedAt, view) → view/ngày; video <11 ngày để riêng.
+2. Hook 0–120s bằng `src\hook_fetch.py` — **1 tiến trình tuần tự** (3 song song bị chặn IP); mở ẢNH thumbnail chép chữ.
+3. Phân tích: hook 5 mục · gói đăng (khớp/lệch 3 cặp) · tinh tuý tiêu đề (cặp cùng chủ đề thắng/thua → công thức + cơ chế + khuôn tiếng Nhật).
+4. Lane đã có tập: so TỪNG TẬP → vấn đề trích nguyên văn + cách sửa + đề xuất tiêu đề (grep số N/tuổi/tiền trong script.txt).
+5. Nạp kho `E:\CLAUDE\YOUTUBE\HOOK_LIBRARY` (`hook_library.py add`).
+6. Tự kiểm theo cổng nghiệm thu của h2dev (đơn `YEU_CAU_TU_H2DEV_2026-09-23.md` §5) + 3 điều của mình: không khối rỗng; tiêu đề là bản GỐC;
+   mọi số tra ngược được; trích từ phụ đề tự động gắn `[auto-caption, chưa kiểm]`; thumbnail đọc từ ảnh; mốc giây ước tính ghi rõ;
+   mẫu có cả video THUA; đề xuất tiêu đề đã grep script.
+
+**Đặt ở đâu (Syncthing chỉ sync `FlowHandoff_local\{jobs,results,shared}` + `CHANEL` — `h2dev\docs\` KHÔNG sync sang máy 1):**
+- Hồ sơ nặng → `E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\results\hook_from_research\` (hoặc `results\<lane>_hook_<ngày>\`):
+  bản `.md` cho agent đọc · bản `.html` có ảnh cho anh xem · `data\analysis_<kênh>.json` · bản sao `NGUYEN_TAC_HOOK_GOI_DANG.md`
+  · `HOOK_LIBRARY_snapshot\` (vì kho và skill nằm trên máy này).
+- Phiếu việc ngắn → `E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\shared\GIAO_VIEC_HOOK_<lane|ngày>.md`, mọi đường dẫn tuyệt đối trỏ vào `results\`.
+- Bản gốc giữ ở research: `docs\` + `data\hook_audit_<ngày>\` (kèm tool tạo lại báo cáo).
+- h2dev trả lời vào `shared\BAO_CAO_H2DEV_HOOK_<ngày>.md`.
+
+**Ranh giới:** `CHANNEL_DNA`, profile, gate, SOP là của h2dev. Research giao **bằng chứng + đề xuất cụ thể từng tập**, không giao luật thay h2dev.
+Không tự kích hoạt phiên h2dev — anh bảo tab h2dev đọc phiếu `shared\GIAO_VIEC_HOOK_...md`.
+Mẫu đã làm: `E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\shared\GIAO_VIEC_HOOK_TIEU_DE_2026-09-23.md`.
+
 ---
 
 ## 3. Cạm bẫy đã gặp — đừng lặp lại
@@ -146,16 +221,34 @@ Dùng skill `artifact-design` khi dựng trang này — đây là tài liệu c�
 | Trình bày như đã bàn giao xong dù chưa được duyệt | Luôn có bước duyệt tường minh trước khi đóng gói gửi đi |
 | Sửa artifact nhưng quên đồng bộ file `.md`/bản copy | Sau khi duyệt, kiểm tra chéo artifact vs handoff doc trước khi coi là xong |
 | Báo cáo dài dòng, nhiều tab, nhiều cột | Tối đa 3–5 lựa chọn, 1 khuyến nghị rõ, phần còn lại nói rõ vì sao loại |
+| **`youtube_comment_downloader` trả về 0 comment IM LẶNG** (không exception) khi bị chặn — tưởng video tắt comment | Đừng tin "0 comment". Dùng InnerTube `youtubei/v1/next` (xem `data/lane_p_v800_20261017/d6_comments.py`) |
+| **Continuation token comment**: `max(tokens, key=len)` bắt token "related videos" (dài hơn) → 0 comment im lặng | Token comment là token **ĐẦU TIÊN** trong watch page, hoặc giải mã base64 tìm `"comments-section"` |
+| Comment YouTube đã đổi format sang `commentEntityPayload` (không còn `commentRenderer` cũ đủ field) | Parse `frameworkUpdates.entityBatchUpdate.mutations[].payload.commentEntityPayload` |
+| InnerTube `window` chỉ có `today`/`week`/`month` — thêm `year`/`allv` phải tự đăng ký `WINDOW_PARAMS` | Đăng ký params trước: `year`=`CAMSBAgFEAE`, `allv`=`CAMSAhAB` |
+| Lọc video theo tiêu đề để đếm "có bao nhiêu video JP" → hụt video mà tiêu đề không chứa tên model (vd 頼むぜ đặt "打倒日本車の中国ミニバン") | Lọc theo `defaultAudioLanguage`/`lang` của Data API, rồi đếm tay; đừng lọc bằng regex tên model. **Đo thật 17/10: lọc `尊界|V800` chỉ bắt 1/5 video JP ≥200k** (RCB), hụt ザワつく/頼むぜ/柯隆/さささ |
+| **So số ĐÃ LỌC với số CHƯA lọc** → tỉ lệ sai gấp nhiều lần (vụ V800: "JP lớn hơn Nhật 48 lần" lấy 239.065 từ bộ lọc hụt 4/5 video; số đúng 4,9–8,8 lần) | Khi báo cáo tỉ lệ, phải nêu **quy tắc đếm** ngay cạnh con số. Nếu hai bên dùng quy tắc khác nhau thì không được chia cho nhau |
+| **Tổng trong báo cáo không cộng lại được** (vụ V800: ghi "top-12 = 8.236.066" nhưng chỉ liệt 10 dòng cộng được 6.171.123; còn 1 dòng 310.461 không tồn tại trong data) | Trước khi giao báo cáo, **script cộng lại từng bảng** và đối chiếu với file data gốc. Đừng tin số đã viết tay từ lượt trước |
+| Transcript lấy được nhưng là **ASR tự động, sai tên riêng** (vụ RCB: 公和記者→江淮汽車, 海V800→尊界V800, 生命→声明, 自価総額→時価総額) | Được phép chuẩn hoá, nhưng **phải công bố bảng chuẩn hoá** trong báo cáo. Không lặng lẽ sửa rồi quote như transcript gốc |
 
 ---
 
 ## 4. Công cụ liên quan
+
+**Tiết kiệm quota (anh duyệt 21/10/2026):** các bước đọc nhiều (tiêu đề, hook, bình luận, trang tư liệu) và viết nháp
+dài chạy bằng model ngoài qua gate `ext_*` (`config/models.yaml`). Claude chỉ đọc bảng tóm tắt + cảnh báo, kiểm ngẫu nhiên
+2–3 [Dn] bằng file `nguon/*.txt`. Subagent (nếu buộc phải dùng) truyền `model: "sonnet"`.
 
 | Việc | Lệnh |
 |---|---|
 | Chấm điểm ngách | `py -3.13 -X utf8 src/explore_niches.py --detail` |
 | Dò khoảng trống đề tài | `py -3.13 -X utf8 src/topic_gap.py --topics config/topics_<ten>.yaml` |
 | Tải tư liệu hình an toàn bản quyền | `py -3.13 -X utf8 src/stockfetch.py --q "..." --n 8 --sources nasa,commons` |
+| Dịch + phân loại tiêu đề hàng loạt (model ngoài) | `py -3.13 -X utf8 src/title_classify.py <videos.json> --lane-file <mo_ta_lane.txt> --top 30` |
+| Hook 0–90s → HOOK_LIBRARY (model ngoài, 1 dòng/video) | `py -3.13 -X utf8 src/hook_auto.py ID [ID ...] --lane <lane>` |
+| Chủ đề bình luận theo tổng like (model ngoài) | `py -3.13 -X utf8 src/comment_topics.py ID [ID ...] --out <dir>/comment_topics.json` |
+| Tìm + trích số [Dn] có câu nguyên văn khớp trang | `py -3.13 -X utf8 src/source_extract.py --q "..." --search "truy vấn JP" [--urls ...] --grep kw1,kw2 --out <dir>/tu_lieu` |
+| Viết nháp hồ sơ/báo cáo từ JSON (Sol) | `py -3.13 -X utf8 src/draft_writer.py --task "..." --instr <khung.md> --data <dir>/tu_lieu/tu_lieu.json --out <file.md>` |
+| Token model ngoài đã dùng | `py -3.13 -X utf8 src/ext_llm.py 2026-10-21` |
 | Đào sâu 1 kênh (titles/transcript/comment/thumbnail) | Viết script tổ hợp `ytapi.YouTubeAPI` + `deepdive.fetch_comments` + `youtube_transcript_api` + `PIL` — xem code mẫu trong lịch sử phiên Lane A/Lane C, chưa đóng gói thành script dùng lại được (việc cần làm ở §5) |
 
 ---

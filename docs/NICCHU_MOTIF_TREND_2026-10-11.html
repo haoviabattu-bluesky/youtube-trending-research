@@ -1,0 +1,323 @@
+<title>Bản đồ mô-típ Nhật–Trung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: một cột đọc 880px, bảng cuộn ngang trong khung riêng; vạch xanh kiểu sọc tàu Shinkansen làm dấu mục */
+:root{
+  --bg:#f3f5f8; --card:#ffffff; --fg:#17213a; --muted:#5a6580; --line:#d8dee9;
+  --accent:#1f4fa3; --accent-soft:#e3ebf8; --good:#1d7a4c; --good-soft:#e2f3ea;
+  --warn:#9a5b00; --warn-soft:#fbf0dc; --bad:#b3261e; --bad-soft:#fbe5e3;
+  --f-body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif; --f-jp:"Noto Sans JP","Yu Gothic","Meiryo",sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1420; --card:#171e2e; --fg:#e4e9f3; --muted:#9aa6bf; --line:#2a3550;
+  --accent:#7ea6ec; --accent-soft:#1d2a47; --good:#5fcf95; --good-soft:#143022;
+  --warn:#e9b25a; --warn-soft:#33270f; --bad:#f08a80; --bad-soft:#3a1a18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1420; --card:#171e2e; --fg:#e4e9f3; --muted:#9aa6bf; --line:#2a3550;
+  --accent:#7ea6ec; --accent-soft:#1d2a47; --good:#5fcf95; --good-soft:#143022;
+  --warn:#e9b25a; --warn-soft:#33270f; --bad:#f08a80; --bad-soft:#3a1a18; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15.5px;line-height:1.65}
+.wrap{max-width:880px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:flex;flex-direction:column;gap:34px}
+h1{font-size:1.9rem;line-height:1.25;font-weight:800;margin:0;text-wrap:balance}
+h2{font-size:1.28rem;font-weight:800;margin:0 0 12px;text-wrap:balance;display:flex;gap:10px;align-items:baseline}
+h2 .no{font-family:var(--f-num);font-size:.85rem;color:var(--accent);border-bottom:3px solid var(--accent);padding-bottom:1px}
+h3{font-size:1.02rem;margin:18px 0 6px}
+p{margin:0 0 10px;max-width:68ch}
+.jp{font-family:var(--f-jp)}
+.vi{color:var(--muted);font-size:.9em;display:block}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.lede{color:var(--muted);max-width:70ch}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.key{background:var(--accent-soft);border-radius:10px;padding:16px 18px}
+.key ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-family:var(--f-num);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:.74rem;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.p-good{background:var(--good-soft);color:var(--good)} .p-warn{background:var(--warn-soft);color:var(--warn)} .p-bad{background:var(--bad-soft);color:var(--bad)} .p-acc{background:var(--accent-soft);color:var(--accent)}
+a{color:var(--accent)} a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn{display:inline-block;font-size:.78rem;font-weight:700;padding:3px 9px;border:1px solid var(--accent);border-radius:6px;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--accent-soft)}
+.bar{height:8px;background:var(--accent);border-radius:4px;min-width:2px}
+.barcell{width:120px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.grid2>*{min-width:0}
+.hook .q{font-family:var(--f-jp);font-size:.92rem;border-left:3px solid var(--accent);padding-left:10px;margin:6px 0}
+.small{font-size:.85rem;color:var(--muted)}
+ul.tight{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;flex-direction:column;gap:6px}
+.opt h3{margin:0}
+code{font-family:var(--f-num);font-size:.84em;background:var(--accent-soft);padding:1px 5px;border-radius:4px;word-break:break-all}
+</style>
+
+<div class="wrap">
+
+<header style="display:flex;flex-direction:column;gap:10px">
+  <div class="eyebrow">Nghiên cứu lane mới kiểu Q · 11/10/2026 · cửa sổ 35 ngày (06/09–10/10)</div>
+  <h1>Kênh "yêu Nhật ghét Trung" đang ăn view bằng mô-típ nào, đề tài nào</h1>
+  <p class="lede">Quét 79 từ khoá × 2 cửa sổ thời gian, gom 400 kênh, lấy 9.363 video dài đăng trong 35 ngày. 3.756 video có nhắc Trung Quốc, máy phân loại từng tiêu đề theo 10 mô-típ + 12 lĩnh vực (1.718 video dạng faceless kể chuyện). Đọc hook 0–75 giây của 13 video, kiểm chứng tin gốc của 6 đề tài nóng nhất, đọc bình luận.</p>
+</header>
+
+<section class="key">
+  <div class="eyebrow" style="margin-bottom:8px">Kết luận cho anh</div>
+  <ol>
+    <li><b>Mô-típ anh nêu (TQ chê công nghệ Nhật → Nhật quay xe → TQ cầu xin) có ăn, nhưng phần "chê" một mình không phải thứ kéo view.</b> Video chỉ có khung "chê → bẽ mặt" (M1) chỉ đạt <b>0,92 lần</b> trung vị của chính kênh. Thứ kéo view là cái kết <b>"phải quay về cầu cứu Nhật"</b> (M4 nước thứ ba chọn TQ rồi hối hận, M6 TQ phụ thuộc linh kiện Nhật) gắn vào <b>một tin thật vừa nổ trong 7 ngày</b>.</li>
+    <li><b>Ô tô là biển đỏ nhất.</b> 757 video/~60 kênh trong 35 ngày nói về BYD, EV TQ, xe Nhật, trung vị chỉ 126–891 view. Cùng một tiêu đề "BYD ラッコ (Racco) tháng 9 bán 99 xe" có <b>11 kênh</b> đăng lại: bản đầu 531k view, bản chép kịch bản gần y hệt chỉ 32 view. Con số 99 là <b>sai</b>: tháng 9 đăng ký thật 442 xe.</li>
+    <li><b>Đường sắt (Indonesia, Saudi, Hà Lan…) là đề tài nóng nhất về tổng view</b>: video top 699k, 517k, 442k. Nhưng 330 video/~80 kênh đã chen vào, và phần lớn bản thắng là <b>truyện bịa</b> (email, cục trưởng, "tai nạn va chạm" không có thật).</li>
+    <li><b>Khoảng trống thật: đề tài ít kênh làm mà trung vị cao.</b> Visa TQ tăng 7 lần (5 video, trung vị 6,8k, 67% vượt 100k), thể thao Asian Games (trung vị 37k), phát ngôn quan chức TQ (33% vượt 100k), nước thứ ba bỏ TQ (23% vượt 100k). Ô tô chỉ đáng làm khi kể <b>câu chuyện một hãng Nhật</b> (kiểu "ものづくり", nghề chế tạo), không chạy theo tin doanh số BYD mỗi ngày.</li>
+    <li><b>Đề xuất:</b> lane mới tách khỏi Q theo trục <b>"đồ Nhật trong đời sống bị TQ chê/thách → số thật cho thấy Nhật thắng"</b> (xe con, xe kei, máy may, khoá kéo, mì ăn liền, tàu). Kênh mẫu để học: 日本の誇りドキュメンタリー (Kênh tài liệu niềm tự hào Nhật Bản), trung vị 30k, đều tay, không phụ thuộc 1 video. Chi tiết ở mục 09.</li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="no">01</span>Hook đang thắng</h2>
+  <p>Đọc 13 video (8 video thắng lớn, 1 video thua cùng kịch bản, 4 video so sánh). Kiểu hook nạp vào kho <code>E:\CLAUDE\YOUTUBE\HOOK_LIBRARY</code> (nay 304 video), thêm kiểu mới <b>H46</b>.</p>
+  <div class="grid2">
+    <div class="box hook">
+      <span class="pill p-acc">H46 · mới</span>
+      <h3>Lời đáp của Nhật bị giấu</h3>
+      <p class="small">Bên kia cầu cứu, huỷ hoặc đòi hỏi → thư trả lời đến → nhân vật chết lặng, chưa nói nội dung thư. 3/3 video dùng kiểu này đều vượt 100k.</p>
+      <div class="q">日本側からの返答は理解しがたいものだった<span class="vi">"Câu trả lời từ phía Nhật thật khó hiểu" — 誇れる日本, 699k</span></div>
+      <div class="q">返信はわずか1分後に届きました…彼女は何も言えなくなりました<span class="vi">"Thư trả lời đến chỉ sau 1 phút… cô ấy không nói nên lời" — huỷ 3.000 phòng, 305k</span></div>
+    </div>
+    <div class="box hook">
+      <span class="pill p-acc">H43 trên tin thật</span>
+      <h3>Tiểu phẩm 15–30 giây tua cả vòng</h3>
+      <p class="small">TQ tuyên bố → thuộc hạ báo hậu quả → câu hỏi "vì sao". Mạnh nhất khi neo vào tin thật có ngày tháng.</p>
+      <div class="q">ジクロロシランの保証金は最大99.2%に決まりました。見たか？これで日本も思い知るだろう<span class="vi">"Tiền ký quỹ chống bán phá giá khí dichlorosilane tối đa 99,2%. Thấy chưa? Nhật sẽ biết tay" — すんだ観察所 (Trạm quan sát Sunda), 257k sau 1 ngày</span></div>
+      <div class="q">そっちが5倍ならこっちは7倍だ。しかもターゲットは日本だけ<span class="vi">"Bên đó tăng 5 lần thì bên này 7 lần, mà chỉ nhắm Nhật" — 天子のワダイ (Chuyện của Tenshi), 234k</span></div>
+    </div>
+    <div class="box hook">
+      <span class="pill p-acc">H44</span>
+      <h3>Số thành công rồi lật bằng số thất bại</h3>
+      <p class="small">Không bịa nhân vật, chỉ đặt 2 dãy số cạnh nhau.</p>
+      <div class="q">開業から2年で1200万人…ところが数千億円の借金を抱え、毎年赤字<span class="vi">"Sau 2 năm chở 12 triệu khách… nhưng gánh nợ hàng trăm tỷ yên, năm nào cũng lỗ" — 新幹線ラボ (Phòng thí nghiệm Shinkansen), 442k, gấp 129 lần trung vị kênh</span></div>
+    </div>
+    <div class="box hook">
+      <span class="pill p-acc">H45</span>
+      <h3>Chê đồ Nhật đắt → trả giá bằng con số</h3>
+      <p class="small">Đúng mô-típ anh hỏi. Người kể ngôi thứ nhất là chủ xưởng nước thứ ba.</p>
+      <div class="q">日本のミシンなんて高いだけ…82万着が突き返されました。不良は6.2%、基準は0.5%以下<span class="vi">"Máy may Nhật chỉ được cái đắt… 820.000 áo bị trả lại, lỗi 6,2%, chuẩn là dưới 0,5%" — 日本の技彩 (Sắc màu kỹ thuật Nhật), 145k</span></div>
+    </div>
+  </div>
+  <p class="small" style="margin-top:10px">Video thua làm mốc: bản chép kịch bản "ラッコ99台" <span class="vi" style="display:inline">(BYD Racco 99 xe)</span> ở kênh 日本自動車業界のMA <span class="vi" style="display:inline">(kênh "Ngành ô tô Nhật")</span> có hook gần như từng chữ giống bản 531k nhưng chỉ <b>32 view</b>. Kịch bản giống nhau không mang theo view; kênh đăng trước và thumbnail mới quyết định.</p>
+</section>
+
+<section>
+  <h2><span class="no">02</span>10 mô-típ và sức kéo thật</h2>
+  <p>"Sức kéo" = view của video chia cho trung vị mọi video cùng kênh trong 35 ngày. So trong cùng kênh nên không bị kênh to/kênh nhỏ làm lệch. Số mẫu: 799 video ở 81 kênh có trung vị ≥2.000 view.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Mô-típ</th><th class="n">Video / kênh</th><th class="n">Sức kéo</th><th class="n">≥2 lần</th><th>Ví dụ đang chạy</th></tr></thead>
+    <tbody>
+      <tr><td><b>M10</b> Thể thao Nhật–TQ</td><td class="n">22 / 10</td><td class="n">2,16</td><td class="n">50%</td><td class="jp">【卓球】中国代表監督が張本智和の試合後の行動に衝撃！<span class="vi">HLV tuyển TQ sốc trước hành động của Harimoto sau trận — 123k</span></td></tr>
+      <tr><td><b>M7</b> Người/quan chức TQ nói bậy → bị bóc</td><td class="n">82 / 46</td><td class="n">1,59</td><td class="n">40%</td><td class="jp">中国外交官が日本に放った暴言が世界を震撼！<span class="vi">Lời lẽ thô bạo của nhà ngoại giao TQ với Nhật làm thế giới chấn động — 217k</span></td></tr>
+      <tr><td><b>M6</b> TQ phụ thuộc đồ Nhật → phải xin</td><td class="n">75 / 43</td><td class="n">1,28</td><td class="n">33%</td><td class="jp">日本、中国へ供給していた鉄道車両を停止！<span class="vi">Nhật ngừng cấp linh kiện toa tàu cho TQ — 153k</span></td></tr>
+      <tr><td><b>M9</b> Người nước ngoài so Nhật với TQ</td><td class="n">175 / 46</td><td class="n">1,27</td><td class="n">33%</td><td class="jp">中国に6年間住んだアメリカ人女性が日本に移住<span class="vi">Phụ nữ Mỹ sống 6 năm ở TQ chuyển sang Nhật — 376k</span></td></tr>
+      <tr><td><b>M2</b> TQ trả đũa/cấm → tự thiệt</td><td class="n">65 / 43</td><td class="n">1,08</td><td class="n">31%</td><td class="jp">中国「ビザ代で報復してやる！」→結果、日本中から鼻で笑われてしまうｗ<span class="vi">TQ "trả đũa bằng phí visa" → cả Nhật cười khẩy — 594k</span></td></tr>
+      <tr><td><b>M4</b> Nước thứ ba chọn TQ → hối hận, quay về Nhật</td><td class="n">225 / 72</td><td class="n">1,06</td><td class="n">32%</td><td class="jp">『日本に頼るしかない』11年前に日本を蹴り中国を選んだ国、高速鉄道が借金まみれ<span class="vi">"Chỉ còn trông vào Nhật" — nước đá Nhật chọn TQ 11 năm trước, tàu cao tốc ngập nợ — 518k</span></td></tr>
+      <tr><td><b>M3</b> TQ khoe vượt Nhật → sụp</td><td class="n">464 / 86</td><td class="n">1,05</td><td class="n">22%</td><td class="jp">中国「安くて早い！」→結果、崩壊してしまうw<span class="vi">TQ "rẻ mà nhanh!" → kết quả sụp đổ — 764k</span></td></tr>
+      <tr><td><b>M8</b> TQ tự suy thoái (không có Nhật)</td><td class="n">281 / 52</td><td class="n">0,94</td><td class="n">20%</td><td class="jp">国が失業率60%超えで借金5000兆円…<span class="vi">Thất nghiệp trên 60%, nợ 5.000 nghìn tỷ yên… — 166k (số phóng đại)</span></td></tr>
+      <tr><td><b>M1</b> TQ chê đồ/công nghệ Nhật → bẽ mặt</td><td class="n">52 / 31</td><td class="n">0,92</td><td class="n">28%</td><td class="jp">「日本の新幹線は遅い」と嘲笑した中国人技術者が日本技術をコピー！<span class="vi">Kỹ sư TQ cười "Shinkansen chậm" rồi chép công nghệ Nhật — 50k</span></td></tr>
+      <tr><td><b>M5</b> Doanh nghiệp Nhật rút → TQ hoảng</td><td class="n">44 / 30</td><td class="n">0,81</td><td class="n">16%</td><td class="jp">日立・ブリヂストン・スズキまで消えて中国が詰むｗ<span class="vi">Hitachi, Bridgestone, Suzuki đều rút, TQ bí — 109k (kênh 80k sub)</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="small" style="margin-top:8px">Đọc bảng: M1 là đúng câu anh mô tả ("TQ chê công nghệ Nhật") nhưng đứng gần cuối. Video thắng thường ghép M1 làm phần mở và kết bằng M4/M6 ("phải quay về xin Nhật"). M3 nhiều video nhất (464) vì các kênh BYD đăng mỗi ngày, nên sức kéo chỉ ở mức trung bình.</p>
+</section>
+
+<section>
+  <h2><span class="no">03</span>Đề tài nóng: cung và cầu</h2>
+  <p>Gom tiêu đề theo đề tài cụ thể. Cột "trung vị" là view của video ở giữa, phản ánh một video bình thường được bao nhiêu. Thanh xanh vẽ theo trung vị (thang tuyến tính, tối đa 40.000).</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Đề tài</th><th class="n">Video</th><th class="n">Kênh</th><th class="n">Trung vị</th><th class="barcell"></th><th class="n">≥100k</th><th>Nhận định</th></tr></thead>
+    <tbody>
+      <tr><td>Thể thao (Asian Games, bóng bàn, bóng chuyền)</td><td class="n">31</td><td class="n">13</td><td class="n">37.025</td><td class="barcell"><div class="bar" style="width:93%"></div></td><td class="n">13%</td><td><span class="pill p-good">ít kênh</span> nguội nhanh, hay nhắm cá nhân</td></tr>
+      <tr><td>Visa TQ tăng 7 lần cho người Nhật</td><td class="n">5</td><td class="n">5</td><td class="n">6.806</td><td class="barcell"><div class="bar" style="width:17%"></div></td><td class="n">67%</td><td><span class="pill p-good">khoảng trống</span> tin thật 14/9; thuộc lane Q</td></tr>
+      <tr><td>Hải sản / thực phẩm</td><td class="n">50</td><td class="n">36</td><td class="n">3.806</td><td class="barcell"><div class="bar" style="width:10%"></div></td><td class="n">9%</td><td>lane Q đang làm</td></tr>
+      <tr><td>Chính trị (Takaichi, Đài Loan)</td><td class="n">93</td><td class="n">48</td><td class="n">3.770</td><td class="barcell"><div class="bar" style="width:9%"></div></td><td class="n">10%</td><td><span class="pill p-bad">cấm</span> theo luật đề tài của anh</td></tr>
+      <tr><td>Phát ngôn quan chức/ngoại giao TQ</td><td class="n">7</td><td class="n">5</td><td class="n">3.507</td><td class="barcell"><div class="bar" style="width:9%"></div></td><td class="n">33%</td><td>chỉ làm chi tiết phụ</td></tr>
+      <tr><td>Đường sắt nước khác (Saudi, Hà Lan, Séc…)</td><td class="n">98</td><td class="n">35</td><td class="n">2.720</td><td class="barcell"><div class="bar" style="width:7%"></div></td><td class="n">10%</td><td><span class="pill p-warn">đông</span></td></tr>
+      <tr><td>Du lịch / huỷ phòng / khách TQ</td><td class="n">89</td><td class="n">46</td><td class="n">1.295</td><td class="barcell"><div class="bar" style="width:3%"></div></td><td class="n">5%</td><td>lane Q</td></tr>
+      <tr><td>Đường sắt Indonesia</td><td class="n">58</td><td class="n">30</td><td class="n">1.238</td><td class="barcell"><div class="bar" style="width:3%"></div></td><td class="n">8%</td><td><span class="pill p-warn">đông</span> đỉnh 699k nhưng đa số bịa</td></tr>
+      <tr><td>Nước thứ ba bỏ TQ (nợ, Vành đai – Con đường)</td><td class="n">49</td><td class="n">31</td><td class="n">1.206</td><td class="barcell"><div class="bar" style="width:3%"></div></td><td class="n">23%</td><td>tỉ lệ hit cao, nhiều bản bịa</td></tr>
+      <tr><td>Tàu cao tốc TQ / chép Shinkansen</td><td class="n">174</td><td class="n">51</td><td class="n">892</td><td class="barcell"><div class="bar" style="width:2%"></div></td><td class="n">4%</td><td><span class="pill p-bad">bão hoà</span></td></tr>
+      <tr><td>BYD / Racco</td><td class="n">363</td><td class="n">48</td><td class="n">891</td><td class="barcell"><div class="bar" style="width:2%"></div></td><td class="n">1%</td><td><span class="pill p-bad">bão hoà</span> số sai lan truyền</td></tr>
+      <tr><td>Bán dẫn / vật liệu / linh kiện</td><td class="n">64</td><td class="n">52</td><td class="n">799</td><td class="barcell"><div class="bar" style="width:2%"></div></td><td class="n">5%</td><td>xa đời sống</td></tr>
+      <tr><td>Doanh nghiệp Nhật rút khỏi TQ</td><td class="n">71</td><td class="n">42</td><td class="n">606</td><td class="barcell"><div class="bar" style="width:2%"></div></td><td class="n">5%</td><td>yếu</td></tr>
+      <tr><td>Xe Nhật (Toyota, Honda, Nissan…)</td><td class="n">108</td><td class="n">45</td><td class="n">200</td><td class="barcell"><div class="bar" style="width:1%"></div></td><td class="n">2%</td><td><span class="pill p-bad">bão hoà</span></td></tr>
+      <tr><td>EV TQ (Xiaomi, Huawei…)</td><td class="n">286</td><td class="n">59</td><td class="n">126</td><td class="barcell"><div class="bar" style="width:1%"></div></td><td class="n">4%</td><td><span class="pill p-bad">bão hoà</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2><span class="no">04</span>Mô-típ anh hỏi: TQ chê công nghệ, ô tô Nhật → Nhật quay xe → TQ cầu xin</h2>
+  <div class="grid2">
+    <div class="box">
+      <span class="pill p-bad">Cách đang làm tràn lan</span>
+      <h3>Tin doanh số BYD mỗi ngày</h3>
+      <ul class="tight">
+        <li>3 kênh nhóm này đăng 45–48 video trong 35 ngày (khoảng 1,3 video/ngày): 日本車の逆襲 <span class="vi" style="display:inline">(Xe Nhật phản công)</span>, 日本自動車研究所 <span class="vi" style="display:inline">(Viện nghiên cứu ô tô Nhật)</span>, クルマ新報 <span class="vi" style="display:inline">(Tin xe mới)</span>.</li>
+        <li>Trung vị toàn nhóm BYD 891 view. Chỉ kênh đăng sớm nhất ăn được; kênh chép đứng ở 32–6.000 view.</li>
+        <li>Số liệu sai: "tháng 9 chỉ 99 xe". Thật: tháng 9 đăng ký 442 xe (tháng 8: 81), đơn tích luỹ 1.832 xe tính đến 27/9. Kịch bản tự rào trước <span class="jp">「もしこの数字が確認されれば」</span><span class="vi" style="display:inline"> ("nếu con số này được xác nhận")</span> và kênh tắt bình luận.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="pill p-good">Cách đang ăn bền</span>
+      <h3>Câu chuyện một hãng Nhật, có đối thủ TQ</h3>
+      <ul class="tight">
+        <li class="jp">「日本の車ちっさーーｗｗ」中国自動車産業から突如追い出された日本→5秒後、中国に在庫の山<span class="vi">"Xe Nhật bé tí ww" — Nhật bị đá khỏi ngành ô tô TQ → 5 giây sau TQ ngập hàng tồn — おもてなしJAPAN, 1,19 triệu view (chuyện Suzuki rút 2018)</span></li>
+        <li class="jp">中国BYDが日本市場に参入するも？トランプすら作りたがる日本の軽自動車が最強な理由<span class="vi">BYD vào Nhật thì sao? Vì sao xe kei Nhật mạnh nhất, đến Trump cũng muốn làm — 172k</span></li>
+        <li class="jp">中国からコマツは逃げ出した！？値下げ競争から降りたコマツが売上4兆円を超えた理由<span class="vi">Komatsu "bỏ chạy" khỏi TQ? Rời cuộc đua giảm giá mà doanh thu vượt 4 nghìn tỷ yên — 349k</span></li>
+      </ul>
+      <p class="small" style="margin-top:8px">Điểm chung: một nhân vật chính là hãng Nhật quen tên, đối thủ TQ chê hoặc ép, kết bằng con số doanh thu/thị phần của hãng Nhật. Không cần tin nóng hằng ngày.</p>
+    </div>
+  </div>
+  <p style="margin-top:12px"><b>Kết luận mục này:</b> làm ô tô theo kiểu tin doanh số BYD là đi vào chỗ đông nhất, rẻ nhất và dễ dính số sai. Làm ô tô theo kiểu chuyện một hãng Nhật (Suzuki, Toyota, Komatsu, xe kei) vẫn ăn và ít người làm đúng cách. Phần "TQ cầu xin" chỉ dùng khi có lời thật (thông cáo, phát biểu, số nhập khẩu); các bản "TQ cầu xin" đang chạy hầu hết là bịa.</p>
+</section>
+
+<section>
+  <h2><span class="no">05</span>Video tiêu biểu (35 ngày)</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Video</th><th class="n">View</th><th>Mô-típ</th><th>Link</th></tr></thead>
+    <tbody>
+      <tr><td class="jp">「日本の車ちっさーーｗｗ」中国自動車産業から突如追い出された日本→5秒後、中国に在庫の山が爆誕した理由<span class="vi">"Xe Nhật bé tí" — Nhật bị đá khỏi ngành ô tô TQ → TQ ngập hàng tồn · おもてなしJAPAN (Omotenashi Japan) · 26/9</span></td><td class="n">1.187.936</td><td>M1→M5 · ô tô</td><td><a class="btn" href="https://www.youtube.com/watch?v=XvBkKSN1NEI" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">中国製鉄道で事故、インドネシアが日本にSOS――その直後、日本側から届いた"想定外の返答"<span class="vi">Đường sắt TQ gặp sự cố, Indonesia cầu cứu Nhật — câu trả lời "ngoài dự đoán" của Nhật · 誇れる日本 (Nhật Bản đáng tự hào) · 27/9</span></td><td class="n">699.500</td><td>M4 · đường sắt</td><td><a class="btn" href="https://www.youtube.com/watch?v=CTlJlMQxRaM" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">中国「ビザ代で報復してやる！」→結果、日本中から鼻で笑われてしまうｗ<span class="vi">TQ "trả đũa bằng phí visa" → cả Nhật cười khẩy · すんだ観察所 · 5/10</span></td><td class="n">594.153</td><td>M2 · visa</td><td><a class="btn" href="https://www.youtube.com/watch?v=acc_9sQx_a0" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">【衝撃】BYD軽EV「ラッコ」9月販売がまさかの99台…撤退カウントダウンか!?<span class="vi">BYD Racco tháng 9 chỉ 99 xe… sắp rút? (số sai) · 日本車の逆襲 · 29/9</span></td><td class="n">531.509</td><td>M3 · ô tô</td><td><a class="btn" href="https://www.youtube.com/watch?v=p_pyCx4Fyco" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">『日本に頼るしかない』11年前に日本を蹴り中国を選んだ国、高速鉄道が借金まみれ<span class="vi">"Chỉ còn trông vào Nhật" — Indonesia ngập nợ tàu cao tốc · 頼むぜエディタ (Nhờ cả vào biên tập viên) · 6/10</span></td><td class="n">517.581</td><td>M4 · đường sắt</td><td><a class="btn" href="https://www.youtube.com/watch?v=Gthf6q5Rq7E" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">日本を裏切って中国を選んだ結果!! インドネシア高速鉄道、巨額債務と延伸問題が直撃!!<span class="vi">Phản Nhật chọn TQ → nợ khổng lồ, kéo dài tuyến bế tắc · 新幹線ラボ · 7/9</span></td><td class="n">442.186</td><td>M4 · đường sắt</td><td><a class="btn" href="https://www.youtube.com/watch?v=cSfsbkajC7M" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">フランス「中国製の方が安い！」→日本を選ばなかった結果、後悔することにw<span class="vi">Pháp "đồ TQ rẻ hơn!" → không chọn Nhật rồi hối hận · 世界のJAPAN (Japan của thế giới) · 6/9</span></td><td class="n">329.017</td><td>M4</td><td><a class="btn" href="https://www.youtube.com/watch?v=23l6AXHQzUY" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">「3000室もキャンセルしたら大打撃だろ？」中国の旅行会社が日本のホテル一斉キャンセル<span class="vi">"Huỷ 3.000 phòng thì Nhật lãnh đủ nhé?" — hãng lữ hành TQ huỷ loạt khách sạn Nhật · 世界が驚いた日本のリアル · 25/9</span></td><td class="n">305.679</td><td>M2 · du lịch</td><td><a class="btn" href="https://www.youtube.com/watch?v=kPqISSqyN28" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">中国「日本を干上がらせてやる！」→結果、なぜか自分たちの工場が悲鳴を上げてしまうｗ<span class="vi">TQ "cho Nhật chết khô!" → nhà máy của chính TQ kêu cứu · すんだ観察所 · 9/10</span></td><td class="n">256.939</td><td>M2→M6</td><td><a class="btn" href="https://www.youtube.com/watch?v=d7AAaoCOzNY" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">アジア大会で日本人スタッフに暴言を吐いた中国人女性の正体が判明<span class="vi">Lộ danh tính phụ nữ TQ chửi nhân viên Nhật ở Asian Games · 熱スポ 360 (Thể thao nóng 360) · 7/10</span></td><td class="n">247.853</td><td>M7 · thể thao</td><td><a class="btn" href="https://www.youtube.com/watch?v=0g1EWBD0rTA" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">中国が日本人のビザ料金のみ7倍にするも全く意味なし・・・ｗ<span class="vi">TQ tăng phí visa riêng người Nhật 7 lần mà chẳng tác dụng · 天子のワダイ · 20/9</span></td><td class="n">234.394</td><td>M2 · visa</td><td><a class="btn" href="https://www.youtube.com/watch?v=5BFYE6tBXOQ" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">「中国が日本製ミシンに負けるわけないw」…それでも船積み前に82万着が突き返された理由<span class="vi">"TQ sao thua máy may Nhật được" — vì sao 820.000 áo bị trả lại · 日本の技彩 · 7/9</span></td><td class="n">144.676</td><td>M1 · đồ dùng</td><td><a class="btn" href="https://www.youtube.com/watch?v=hLNQh3gTSrQ" target="_blank" rel="noopener">Xem</a></td></tr>
+      <tr><td class="jp">【衝撃ニュース】BYD軽EV「ラッコ」9月販売がまさかの99台…（同じ台本の複製）<span class="vi">Bản chép cùng kịch bản 99 xe — video THUA làm mốc · 日本自動車業界のMA · 1/10</span></td><td class="n">32</td><td>M3 · ô tô</td><td><a class="btn" href="https://www.youtube.com/watch?v=954bPiXbpaE" target="_blank" rel="noopener">Xem</a></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2><span class="no">06</span>Kênh mới phát hiện (chưa có trong báo cáo trước)</h2>
+  <p>Đã loại mọi kênh có trong 9 báo cáo trước (506 mã kênh). "Video đầu" tính trên 50 video gần nhất nên là số gần đúng (≈) với kênh có ≥50 video. Sức tăng = trung vị 8 video mới / 8 video trước đó.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Kênh</th><th class="n">Sub</th><th class="n">Video đầu</th><th class="n">Trung vị</th><th class="n">Sức tăng</th><th class="n">Top1</th><th>Nội dung</th><th>Kết luận</th><th>Link</th></tr></thead>
+    <tbody>
+      <tr><td class="jp">日本の誇りドキュメンタリー<span class="vi">Tài liệu niềm tự hào Nhật Bản</span></td><td class="n">83.300</td><td class="n">≈16/8</td><td class="n">29.918</td><td class="n">1,22</td><td class="n">13%</td><td>Chuyện hãng Nhật (Komatsu, YKK, Mazda, xe kei, Nissin) đối đầu TQ/Âu, 35–49 phút, dữ kiện thật nhiều</td><td><span class="pill p-good">mẫu nên học</span></td><td><a class="btn" href="https://www.youtube.com/channel/UCgCN7t-Qn6vVOdGHhHWnrcg" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">世界のJAPAN<span class="vi">Japan của thế giới</span></td><td class="n">208.000</td><td class="n">≈20/4</td><td class="n">22.280</td><td class="n">1,14</td><td class="n">14%</td><td>"Nước X chọn TQ vì rẻ → hối hận", trộn chuyện Hàn; 16–21 phút</td><td><span class="pill p-good">ổn định</span> lẫn đề tài Hàn</td><td><a class="btn" href="https://www.youtube.com/channel/UCWHItulqY-uQJwKoOb91YmQ" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">誇れる日本<span class="vi">Nhật Bản đáng tự hào</span></td><td class="n">5.060</td><td class="n">≈16/9</td><td class="n">16.753</td><td class="n">0,64</td><td class="n">22%</td><td>Kịch bịa đường sắt "cầu cứu Nhật", ~2 video/ngày</td><td><span class="pill p-warn">nhanh nhưng bịa</span> đang chững</td><td><a class="btn" href="https://www.youtube.com/channel/UC6aVj947PMcCP3gKPnMXjrw" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">新幹線ラボ<span class="vi">Phòng thí nghiệm Shinkansen</span></td><td class="n">3.020</td><td class="n">20/8</td><td class="n">3.271</td><td class="n">7,81</td><td class="n">34%</td><td>Bình luận dữ kiện thật về tàu cao tốc TQ ở nước ngoài</td><td><span class="pill p-warn">hit rải rác</span> 1 video 442k</td><td><a class="btn" href="https://www.youtube.com/channel/UCohjh7EX34D89K2WwRYaQLQ" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">世界が驚いた日本のリアル<span class="vi">Sự thật Nhật Bản làm thế giới kinh ngạc</span></td><td class="n">1.090</td><td class="n">≈10/8</td><td class="n">6.884</td><td class="n">1,64</td><td class="n">29%</td><td>Truyện bịa người TQ làm bậy, huỷ phòng</td><td><span class="pill p-warn">đang lên, bịa</span></td><td><a class="btn" href="https://www.youtube.com/channel/UCJG4LVhHCmaoDivVj-01ofA" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">日本EV魂<span class="vi">Hồn EV Nhật</span></td><td class="n">792</td><td class="n">22/8</td><td class="n">4.596</td><td class="n">1,39</td><td class="n">33%</td><td>BYD, xe kei, EV TQ</td><td><span class="pill p-warn">hit rải rác</span></td><td><a class="btn" href="https://www.youtube.com/channel/UCexw7i4uEvGHxQSv8gu33yg" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">日本車の逆襲<span class="vi">Xe Nhật phản công</span></td><td class="n">950</td><td class="n">10/9</td><td class="n">20.758</td><td class="n">0,62</td><td class="n">26%</td><td>Tin doanh số BYD Racco mỗi ngày, số sai</td><td><span class="pill p-bad">loại</span></td><td><a class="btn" href="https://www.youtube.com/channel/UCD8UKU_KAkC17AKHltOpARA" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">熱スポ 360<span class="vi">Thể thao nóng 360</span></td><td class="n">3.710</td><td class="n">≈24/9</td><td class="n">16.516</td><td class="n">0,48</td><td class="n">13%</td><td>Asian Games, ~3 video/ngày, nhắm cá nhân thật</td><td><span class="pill p-bad">loại</span> theo ranh giới</td><td><a class="btn" href="https://www.youtube.com/channel/UCQP-Xa1Mg2_51BUMFTOkCng" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">日本毎日経済<span class="vi">Kinh tế Nhật mỗi ngày</span></td><td class="n">4.010</td><td class="n">11/9</td><td class="n">4.910</td><td class="n">4,99</td><td class="n">46%</td><td>TQ suy thoái, Vành đai – Con đường</td><td><span class="pill p-warn">hit rải rác</span></td><td><a class="btn" href="https://www.youtube.com/channel/UCOPAnZJWLdLnI0VRKearn2Q" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">SMOKINGxKUSH<span class="vi">(tên cũ, kênh đổi nội dung)</span></td><td class="n">6.630</td><td class="n">≈28/9</td><td class="n">2.113</td><td class="n">1,06</td><td class="n">48%</td><td>"Bí sử cảm động", châu Phi bỏ TQ (sự kiện bịa), ~4 video/ngày</td><td><span class="pill p-bad">loại</span></td><td><a class="btn" href="https://www.youtube.com/channel/UCQK8Ng6G9jc-6cNhLtY1YhQ" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">日本鉄道技術探訪<span class="vi">Khám phá kỹ thuật đường sắt Nhật</span></td><td class="n">86</td><td class="n">3/10</td><td class="n">371</td><td class="n">–</td><td class="n">71%</td><td>8 video, 1 video 127k sau 1 ngày</td><td><span class="pill p-warn">quá mới</span></td><td><a class="btn" href="https://www.youtube.com/channel/UCtAWINGB6_HzRsV3oqvef2g" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">東アジアリアクションズ<span class="vi">East Asia Reactions</span></td><td class="n">56.000</td><td class="n">≈10/9</td><td class="n">51.462</td><td class="n">–</td><td class="n">17%</td><td>Dịch lại vlog người nước ngoài đi TQ rồi sang Nhật</td><td><span class="pill p-bad">không clone</span> footage người khác</td><td><a class="btn" href="https://www.youtube.com/channel/UCzupirhQYRojxve-gpUvIRw" target="_blank" rel="noopener">Kênh</a></td></tr>
+      <tr><td class="jp">海外から見た日本<span class="vi">Nhật Bản trong mắt nước ngoài</span></td><td class="n">105.000</td><td class="n">≈23/8</td><td class="n">148.332</td><td class="n">–</td><td class="n">14%</td><td>Dịch lại phỏng vấn đường phố, vlog</td><td><span class="pill p-bad">không clone</span> footage người khác</td><td><a class="btn" href="https://www.youtube.com/channel/UCfrOpKvZ9lBBY95lHN5vPUw" target="_blank" rel="noopener">Kênh</a></td></tr>
+    </tbody>
+  </table></div>
+  <p class="small" style="margin-top:8px">Đã báo trước đây, chỉ dùng làm mốc (không tính là kênh mới): すんだ観察所 (Trạm quan sát Sunda), ニッポンすんだ村 (Làng Sunda Nippon), おもてなしJAPAN (Omotenashi Japan), 頼むぜエディタ (Nhờ cả vào biên tập viên), ずんだ探検隊 (Đội thám hiểm Zunda), ずんだ実話 (Chuyện thật Zunda), クルマ新時代 (Thời đại xe mới). Kênh chính trị 国政アーカイブ (Kho lưu trữ quốc chính, 1,53 triệu view) bỏ qua vì đề tài chính trị bị cấm làm tập chính.</p>
+</section>
+
+<section>
+  <h2><span class="no">07</span>Thật hay bịa: kiểm 6 đề tài nóng</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Đề tài trong video</th><th>Sự thật kiểm được</th><th>Đánh giá</th></tr></thead>
+    <tbody>
+      <tr><td>BYD Racco tháng 9 "chỉ 99 xe"</td><td>Đăng ký tháng 9: 442 xe (tháng 8: 81, tháng 7: 125); đơn tích luỹ 1.832 xe tính đến 27/9; thị phần xe kei 0,3% (bảng 全軽自協 — Hiệp hội xe kei toàn quốc, dẫn qua kakaku.com và b-otaku.com). BYD từng hứa 100 cửa hàng trong năm (中日BIZ).</td><td><span class="pill p-bad">số sai</span> nhưng bản thật vẫn là chuyện "Nhật thắng": 442 xe so với N-BOX ~14.000 xe/tháng</td></tr>
+      <tr><td>Tàu cao tốc Indonesia "va chạm", "nứt trụ cầu 14", Nhật từ chối sửa</td><td>Thật: Indonesia được kéo dài trả nợ TQ tới 80 năm (毎日新聞 — báo Mainichi, 9/9/2026); ngân sách gánh ~100 tỷ yên/năm (日経 — Nikkei). Vụ va chạm thật là tàu ngoại ô Jakarta 4/2026 (dùng tàu cũ của Nhật), không phải tàu cao tốc.</td><td><span class="pill p-warn">nửa thật</span> nợ là thật, cảnh cầu cứu là bịa</td></tr>
+      <tr><td>TQ tăng phí visa riêng người Nhật 7 lần</td><td>Thật, áp dụng từ 14/9/2026 (日経, 人民網 — Nhân dân nhật báo bản tiếng Nhật), TQ gọi là "có đi có lại" vì Nhật tăng phí trước.</td><td><span class="pill p-good">thật</span></td></tr>
+      <tr><td>TQ áp thuế chống bán phá giá khí dichlorosilane của Nhật</td><td>Thật, ký quỹ 80,8–99,2% từ 9/2026 (JETRO, Reuters, 新華網 — Tân Hoa xã).</td><td><span class="pill p-good">thật</span> nhưng là đề tài công nghiệp</td></tr>
+      <tr><td>Võ sĩ judo TQ cắn tay tuyển thủ Nhật 20 giây</td><td>Thật, Asian Games 1–2/10/2026, bị xử thua (AFPBB, 日刊スポーツ — Nikkan Sports).</td><td><span class="pill p-good">thật</span> nhắm cá nhân</td></tr>
+      <tr><td>14 nước châu Phi bỏ TQ ký với Nhật; xưởng may Bangladesh bị trả 820.000 áo; hãng lữ hành Thượng Hải huỷ 3.000 phòng</td><td>Không tìm thấy nguồn; nhân vật đều là người kể ngôi thứ nhất không tên thật.</td><td><span class="pill p-bad">truyện bịa</span> trình bày như thật</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small" style="margin-top:8px">Sửa 11/10 chiều: bản đầu ghi 3 video này "đã tắt bình luận" là SAI — lúc đó máy tải bình luận bị YouTube chặn. Tải lại được: video 699k có 267 bình luận, bình luận top là <span class="jp">「こんな工事を引き受けるわけない。フィクションだろ」</span><span class="vi" style="display:inline"> ("Làm gì có chuyện nhận công trình kiểu này. Truyện bịa thôi")</span> — 226 like. Người xem nhận ra truyện bịa.</p>
+</section>
+
+<section>
+  <h2><span class="no">08</span>Ai đang xem</h2>
+  <p>Đọc 120 bình luận ở 2 video còn mở bình luận (visa 7 lần, máy may). Người xem là người Nhật trung niên trở lên, ghét chính quyền TQ, thích thấy hàng Nhật thắng bằng chất lượng, và bắt lỗi kỹ thuật rất nhanh.</p>
+  <div class="grid2">
+    <div class="box">
+      <h3 style="margin-top:0">Đồng tình (nhiều like)</h3>
+      <div class="q jp">相互主義だから、不動産取得禁止でいいじゃない<span class="vi">"Có đi có lại thì cấm luôn họ mua bất động sản đi" — 510 like</span></div>
+      <div class="q jp">40年もビザ発給手数料更新してないとかむしろ怠慢だろ<span class="vi">"40 năm không chỉnh phí visa mới là lười" — 263 like</span></div>
+      <div class="q jp">確かな技術と品質を持つ良い製品には、相応の対価を払う、そんな国になっていってほしい<span class="vi">"Mong nước mình trả đúng giá cho sản phẩm có kỹ thuật và chất lượng thật" — 8 like</span></div>
+    </div>
+    <div class="box">
+      <h3 style="margin-top:0">Bắt lỗi (cổng QC cần có)</h3>
+      <div class="q jp">おいおい「JUKIミシン」は日本の老舗工業用ミシンメーカーだよ。何で中国の旗付いてんの<span class="vi">"Ơ, JUKI là hãng máy may công nghiệp lâu đời của Nhật mà, sao lại gắn cờ TQ" — 17 like</span></div>
+      <div class="q jp">いい加減、お粗末な動画で日本アゲやめないか？<span class="vi">"Thôi đừng tâng bốc Nhật bằng mấy video cẩu thả nữa được không?" — 15 like</span></div>
+      <div class="q jp">中国製のミシンに日本の部品を付ける？<span class="vi">"Lắp linh kiện Nhật vào máy may TQ á?" (nghi kịch bản vô lý) — 44 like, bình luận nhiều like nhất</span></div>
+    </div>
+  </div>
+  <p class="small" style="margin-top:8px">Rủi ro giọng: bình luận top ở video visa nghiêng sang bài ngoại. Lane mình giữ giọng khen Nhật, chê chính sách TQ, không kích động như ranh giới đã khoá ở Lane P và Q.</p>
+</section>
+
+<section>
+  <h2><span class="no">09</span>Đề xuất lane mới</h2>
+  <p>Lane Q đang giữ trục "TQ chê/cấm đồ ăn, du lịch, giải trí của Nhật". Lane P giữ phim trường tranh luận. Lane mới nên lấy phần chưa ai trong nhà làm: <b>đồ Nhật dân dùng hằng ngày và công nghệ quen tên</b>.</p>
+  <div class="grid2">
+    <div class="box opt">
+      <span class="pill p-good">Khuyên chọn · A</span>
+      <h3>"Đồ Nhật bị chê → số thật"</h3>
+      <p>Mỗi tập một món dân Nhật dùng (xe kei, xe con, máy may, khoá kéo, mì ly, nồi cơm, tàu). TQ hoặc nước thứ ba chê đắt/lỗi thời → chọn hàng TQ → số liệu thật cho thấy hàng Nhật thắng. Hook H46/H44, mở bằng tiểu phẩm 20 giây.</p>
+      <p class="small">Học: 日本の誇りドキュメンタリー (Tài liệu niềm tự hào Nhật Bản — cấu trúc chuyện hãng), おもてなしJAPAN (câu chê làm tiêu đề). Dựng bằng bộ motion ゆっくり寸劇 (tiểu phẩm giọng Yukkuri) của MG_STUDIO như lane Q, 18–25 phút.</p>
+    </div>
+    <div class="box opt">
+      <span class="pill p-warn">B</span>
+      <h3>"Chọn TQ rồi hối hận" (đường sắt, hạ tầng)</h3>
+      <p>Đang nóng nhất về tổng view, nhưng 330 video/80 kênh đã chen vào và bản thắng chủ yếu bịa. Làm thật sẽ thua tốc độ của kênh bịa. Hạ tầng cũng xa đời sống hơn A.</p>
+    </div>
+    <div class="box opt">
+      <span class="pill p-warn">C</span>
+      <h3>Thể thao Nhật–TQ</h3>
+      <p>Trung vị cao nhất (37k) nhưng tin nguội trong 1–2 tuần và hầu hết video nhắm vận động viên có tên thật, trái ranh giới. Hợp làm tập lẻ của lane Q khi có giải lớn.</p>
+    </div>
+  </div>
+
+  <h3>Kho đề tài cho phương án A (6 tập đầu)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>Đề tài</th><th>Khung</th><th>Neo sự thật</th><th>Trạng thái</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td>BYD Racco và xe kei Nhật</td><td>BYD tuyên bố đánh chiếm xe kei → 3 tháng: 648 xe; N-BOX bán ~14.000 xe một tháng</td><td>全軽自協 (Hiệp hội xe kei toàn quốc, đăng ký theo tên xe), BYD Auto Japan (đơn 1.832), 中日BIZ (hứa 100 cửa hàng)</td><td><span class="pill p-warn">cần đối bảng gốc</span></td></tr>
+      <tr><td class="n">2</td><td>Tay nắm cửa ẩn của EV TQ</td><td>Xe Nhật bị chê "lỗi thời" vì tay nắm thường → chính TQ cấm tay nắm ẩn từ 2027, triệu hồi hơn 4,2 triệu xe</td><td>Reuters 4/2/2026, 日経 (Nikkei) 8/2026, CNN</td><td><span class="pill p-warn">cần tìm câu chê thật</span></td></tr>
+      <tr><td class="n">3</td><td>Toyota ở thị trường TQ</td><td>Báo TQ: "xe Nhật hết thời ở TQ" → Toyota bZ3X bán 7.700 xe tháng 8/2026</td><td>CHINA CASE (dẫn số liệu hiệp hội TQ), 日経 (Nikkei) xếp hạng EV thế giới</td><td><span class="pill p-warn">cần nguồn gốc số</span></td></tr>
+      <tr><td class="n">4</td><td>Tàu cao tốc Indonesia</td><td>Chọn TQ vì "không cần bảo lãnh chính phủ" → nợ kéo dài 80 năm, ngân sách gánh ~100 tỷ yên/năm</td><td>毎日新聞 (báo Mainichi) 9/9/2026, 日経 (Nikkei)</td><td><span class="pill p-good">đã kiểm</span> không dùng cảnh va chạm</td></tr>
+      <tr><td class="n">5</td><td>Khoá kéo YKK</td><td>"2.000 hãng TQ làm được" → hãng thời trang cao cấp vẫn gọi tên YKK</td><td>Báo cáo tài chính YKK, thị phần</td><td><span class="pill p-warn">chưa kiểm</span></td></tr>
+      <tr><td class="n">6</td><td>Máy may JUKI</td><td>Máy TQ rẻ 1/3 → xưởng may nước thứ ba quay lại máy Nhật</td><td>Báo cáo JUKI, số liệu xuất khẩu dệt may</td><td><span class="pill p-warn">chưa kiểm</span> không dựng nhân chứng bịa</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small" style="margin-top:8px">Visa 7 lần và huỷ phòng khách sạn là đề tài tốt nhưng thuộc trục du lịch của lane Q, nên em chuyển sang kho lane Q chứ không đưa vào lane mới.</p>
+</section>
+
+<section>
+  <h2><span class="no">10</span>Giới hạn của lần quét này</h2>
+  <ul class="tight">
+    <li>Chỉ tính video dài ≥5 phút, đăng 06/9–10/10/2026. Shorts không tính.</li>
+    <li>Mô-típ và lĩnh vực do máy (Claude Sonnet) gán theo tiêu đề, 3.438/3.538 tiêu đề được gán; sai lẻ tẻ có thể có, số tổng vẫn đúng chiều.</li>
+    <li>"Video đầu" và sức tăng của kênh tính trên 50 video gần nhất; chưa phân trang đủ cho kênh mẫu. Khi anh chọn kênh để đào sâu em sẽ lấy đủ 100%.</li>
+    <li>Hook của 日本の誇りドキュメンタリー (Tài liệu niềm tự hào Nhật Bản) và 世界のJAPAN (Japan của thế giới): đã bổ sung ở báo cáo so sánh visa vs đồ Nhật (đọc bằng nhận dạng giọng nói).</li>
+    <li>6 đề tài ở mục 09 mới kiểm 1 tập đủ nguồn; các tập còn lại cần tìm nguồn gốc trước khi soạn.</li>
+  </ul>
+</section>
+
+<section class="key">
+  <div class="eyebrow" style="margin-bottom:8px">Anh chọn</div>
+  <ul class="tight">
+    <li><b>A</b> — mở lane "đồ Nhật bị chê → số thật"; em đào sâu 日本の誇りドキュメンタリー (Tài liệu niềm tự hào Nhật Bản; đủ video, hook, bình luận) và soạn nguồn cho tập 1–2.</li>
+    <li><b>B</b> hoặc <b>C</b> — đi theo đường sắt hoặc thể thao, em đào sâu kênh tương ứng.</li>
+    <li><b>Chuyển đề tài cho lane Q</b> — em ghi visa 7 lần và huỷ phòng vào kho lane Q.</li>
+  </ul>
+  <p class="small" style="margin-top:8px">Dữ liệu: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_nicchu_motif_20261011\</code></p>
+</section>
+
+</div>

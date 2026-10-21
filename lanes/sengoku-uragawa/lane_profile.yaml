@@ -1,5 +1,5 @@
 lane_id: sengoku-uragawa
-label: Lane I — 戦国の裏側 (Sengoku history, chibi manga + narration, myth-busting)
+label: Lane I — 戦国の裏側 (Sengoku history, manga seinen / anime lịch sử nghiêm túc + narration, myth-busting)
 draft: true
 market:
   country: Japan
@@ -21,7 +21,7 @@ content_identity:
 wanted_topics:
 - 戦国武将の真実
 - 通説の嘘
-- 織田信長・豊臣秀吉・徳川家康の裏話
+- 織田信長・豊臣秀吉の裏話
 - 合戦の真相
 - 戦国の生活
 - 裏切りと謀略
@@ -60,4 +60,11 @@ excluded_subjects:
 duration:
   min_minutes: 8
   max_minutes: 45
-notes: 'draft=true: soạn từ seed_tags + ô B1 tab, chưa có handoff — user duyệt sau lượt shadow đầu'
+art_style_note: 'manga seinen / anime lịch sử NGHIÊM TÚC: mặt người lớn tỉ lệ thật, nếp nhăn, lông mày rậm,
+  nét viền dày, cel-shading đậm, biểu cảm nặng (trừng mắt, nghiến răng, toát mồ hôi, cam chịu).
+  CẤM chibi / cute / đầu to thân nhỏ. Nguồn: 21/21 thumbnail thật của kênh mẫu どっこい日本史, soi bằng mắt
+  (E:\CLAUDE\YOUTUBE\h2dev\docs\channel_dna\dokkoi-nihonshi\THUMBNAIL_PATTERNS.md) + đo bằng máy
+  (E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\lanes\sengoku-uragawa	humb_dna.json).'
+burned_topics: ['徳川家康 (kênh mẫu đã làm, 213k view — bỏ khỏi wanted_topics 2026-09-23)']
+notes: 'draft=true: soạn từ seed_tags + ô B1 tab, chưa có handoff — user duyệt sau lượt shadow đầu.
+  2026-09-23 theo đơn h2dev §3.5: sửa label chibi manga → manga seinen; bỏ 徳川家康 khỏi wanted_topics.'

@@ -1,0 +1,169 @@
+<title>Lane L 社会のなぜ研究室 — Studio 14/10</title>
+<style>
+/* Layout: một cột đọc ~72ch, bảng số liệu tràn ngang trong khung cuộn riêng */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --fg:#1d2430; --muted:#5b6575; --line:#dde2ea;
+  --accent:#1f5fa8; --good:#1e7a46; --warn:#a86a00; --bad:#b03a2e; --hl:#e8f0fa;
+  --font-body:"Noto Sans JP","Noto Sans",system-ui,sans-serif;
+  --font-display:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;
+  --font-num:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161d; --panel:#1a2029; --fg:#e4e8ef; --muted:#9aa5b5; --line:#2c3441;
+  --accent:#6fa8e8; --good:#5cc48a; --warn:#e0a640; --bad:#ec7a6c; --hl:#1d2a3b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161d; --panel:#1a2029; --fg:#e4e8ef; --muted:#9aa5b5; --line:#2c3441;
+  --accent:#6fa8e8; --good:#5cc48a; --warn:#e0a640; --bad:#ec7a6c; --hl:#1d2a3b; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.7}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:28px 60px;display:flex;flex-direction:column;gap:30px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:1.7rem} h2{font-size:1.25rem;border-bottom:2px solid var(--line);padding-bottom:6px}
+h3{font-size:1.05rem;margin-top:6px}
+p{margin:0;max-width:72ch} ul,ol{margin:0;padding-left:1.3em;max-width:76ch} li{margin:4px 0}
+section{display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)} .jp{font-weight:600}
+.verdict{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:.86rem}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{background:var(--hl);font-weight:600;position:sticky;top:0}
+td.t,th.t{text-align:left;white-space:normal;min-width:190px}
+td{font-family:var(--font-num);font-variant-numeric:tabular-nums}
+td.t{font-family:var(--font-body)}
+tr.win td{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.g{color:var(--good);font-weight:600}.w{color:var(--warn);font-weight:600}.b{color:var(--bad);font-weight:600}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pill{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:99px;border:1px solid currentColor}
+code{font-family:var(--font-num);font-size:.85em;word-break:break-all}
+.bar{display:inline-block;height:8px;background:var(--accent);vertical-align:middle;border-radius:2px}
+</style>
+
+<div class="wrap">
+
+<header style="display:flex;flex-direction:column;gap:8px">
+  <div class="eyebrow">Lane L · kênh 社会のなぜ研究室 (Phòng nghiên cứu "vì sao" của xã hội) · số liệu YouTube Studio lấy ngày 14/10/2026</div>
+  <h1>Chủ đề nào đang thắng và công thức kịch bản thắng của Lane L</h1>
+  <p class="muted">Nguồn: Studio kênh UCjy5fWoigvtCfduJDJ3jTbg (GPM profile SyedualiBajwa92@gmail.com), 15 video đã đăng (ep01–ep14, ep16), YouTube Data API cho comment/like, và 17 kịch bản trong <code>E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\jobs\L-shakai-no-naze\</code> (đọc toàn bộ, ep01 đọc từ voice.srt).</p>
+</header>
+
+<div class="verdict">
+  <div class="eyebrow">Kết luận</div>
+  <p><b>1. Chủ đề thắng rõ nhất là ep12 婚活 (tìm bạn đời):</b> 3.200 lượt xem thật, 427 giờ xem (30% tổng giờ xem 28 ngày của kênh chỉ trong 4 ngày), 50 comment, 88 like, giữ 74% người xem ở giây 30, xem trung bình 7:54 (42%). YouTube đặt nó cạnh các video 婚活 lớn của kênh khác (55% lượt xem đến từ "video đề xuất").</p>
+  <p><b>2. Nhóm thắng thứ hai là "nấc thang công sở"</b> (ep01 không muốn thăng chức, ep02 quản lý là trò phạt, ep03 nghỉ việc trong im lặng): giữ người tốt nhất sau ep12, xem 6–7 phút, còn 46–52% người xem ở phút 5.</p>
+  <p><b>3. Cột "lượt xem" trong Studio đang đánh lừa.</b> ep05 (lương 30 năm) đứng đầu với 6.152 view nhưng chỉ 945 lượt xem thật, 0 comment, 4 like, giữ người tệ nhất kênh (phút 2 còn 26%). ep14 có 2.503 view nhưng chỉ 157 lượt xem thật. Phải chấm theo <b>lượt xem thật (engaged views) + giờ xem + comment</b>, không theo view.</p>
+  <p><b>4. Công thức thắng:</b> một người bị "chấm điểm" về giá trị bản thân (được chọn / được thăng / được tin) → câu nói đau của chính người đó trong 15 giây đầu → lật lý do ("vấn đề không phải bị từ chối") → さくら tìm ra bằng chứng nhìn thấy được trên màn hình → tối đa 2 con số đặt giữa bài → kết mở + câu hỏi bắt người xem tự thú.</p>
+</div>
+
+<section>
+  <h2>1. Bảng số liệu 15 tập (trọn đời video, đến 12/10)</h2>
+  <p class="muted">"Xem thật" = engaged views (người ở lại quá vài giây đầu). "% thật" = xem thật / view. Mốc 30s là số Studio; 2 phút, 5 phút đọc từ đường giữ chân. Hàng xanh = tập thắng.</p>
+  <div class="tbl"><table>
+  <thead><tr><th>Tập</th><th class="t">Đề tài (tiêu đề đã đăng)</th><th>Đăng</th><th>View</th><th>Xem thật</th><th>% thật</th><th>Hiển thị</th><th>CTR</th><th>Xem TB</th><th>% xem</th><th>30s</th><th>2 ph</th><th>5 ph</th><th>Giờ xem</th><th>Cmt</th><th>Like</th></tr></thead>
+  <tbody>
+  <tr><td>01</td><td class="t">「出世なんてしたくない」若者の90%が抱える悩み (Không muốn thăng chức)</td><td>25/9</td><td>4.339</td><td>1.700</td><td>39%</td><td>24,2K</td><td>3,9%</td><td>6:23</td><td>31,8%</td><td class="g">69</td><td>47</td><td>46</td><td>181</td><td class="g">25</td><td>15</td></tr>
+  <tr class="win"><td>02</td><td class="t">部下は定時、課長は22時… (Cấp dưới về đúng giờ, trưởng phòng 10 giờ đêm — quản lý là trò phạt)</td><td>26/9</td><td>3.802</td><td>1.500</td><td>39%</td><td>20,7K</td><td>4,0%</td><td>6:56</td><td class="g">38,2%</td><td>67</td><td class="g">57</td><td class="g">52</td><td>173</td><td>7</td><td>14</td></tr>
+  <tr><td>03</td><td class="t">会社を辞めずに「期待すること」をやめる (Không nghỉ việc mà thôi kỳ vọng — 静かな退職)</td><td>27/9</td><td>3.277</td><td>804</td><td>25%</td><td>13,1K</td><td class="g">5,0%</td><td>6:45</td><td>36,3%</td><td>66</td><td>55</td><td class="g">52</td><td>92</td><td>2</td><td>11</td></tr>
+  <tr><td>04</td><td class="t">なぜ「普通の人」がカスハラ客に (Vì sao người bình thường thành khách quấy rối)</td><td>30/9</td><td>2.193</td><td>458</td><td>21%</td><td>7,6K</td><td>4,4%</td><td>6:02</td><td>30,9%</td><td>55</td><td>46</td><td>44</td><td>47</td><td>4</td><td>7</td></tr>
+  <tr><td>05</td><td class="t">29歳会社員、父と給料がほぼ同じ⁉ (Lương 29 tuổi gần bằng bố năm xưa)</td><td>28/9</td><td class="w">6.152</td><td>945</td><td class="b">15%</td><td>19K</td><td>3,9%</td><td class="b">2:33</td><td class="b">14,1%</td><td class="b">48</td><td class="b">26</td><td class="b">22</td><td>44</td><td class="b">0</td><td class="b">4</td></tr>
+  <tr><td>06</td><td class="t">正社員の副業が急増する理由 (Vì sao nhân viên làm nghề tay trái tăng vọt)</td><td>1/10</td><td class="b">395</td><td>136</td><td>34%</td><td class="b">1,7K</td><td>5,3%</td><td>3:39</td><td>21,3%</td><td class="b">49</td><td>33</td><td>29</td><td>8,5</td><td>3</td><td>2</td></tr>
+  <tr><td>07</td><td class="t">若者は車が欲しくないわけじゃない (Giới trẻ không phải không muốn có xe)</td><td>3/10</td><td>2.880</td><td>939</td><td>33%</td><td>15,8K</td><td>3,8%</td><td>5:47</td><td>30,2%</td><td>55</td><td>47</td><td>39</td><td>92</td><td>0</td><td>16</td></tr>
+  <tr><td>08</td><td class="t">義父と嫁は、なぜ「当たり前」でぶつかるのか (Bố chồng và con dâu — thiệp Tết)</td><td>6/10</td><td>1.656</td><td>662</td><td>40%</td><td>9,6K</td><td>3,8%</td><td>4:32</td><td>27,7%</td><td>63</td><td>39</td><td>36</td><td>51</td><td>5</td><td>5</td></tr>
+  <tr><td>09</td><td class="t">なぜ会社の都合で、家族の人生まで変わるのか (Từ chối chuyển công tác)</td><td>7/10</td><td class="w">5.552</td><td>1.200</td><td>22%</td><td>19,2K</td><td>4,8%</td><td>4:22</td><td>25,5%</td><td>56</td><td>39</td><td>34</td><td>87</td><td>5</td><td>12</td></tr>
+  <tr><td>10</td><td class="t">『リーダーの器じゃなかった』真面目な人ほど燃え尽きる (Người nghiêm túc kiệt sức)</td><td>8/10</td><td>1.620</td><td>330</td><td>20%</td><td>6,4K</td><td>3,6%</td><td>4:02</td><td>23,0%</td><td>51</td><td>37</td><td>33</td><td>23</td><td>2</td><td>5</td></tr>
+  <tr><td>11</td><td class="t">50代になると、なぜ何をしても楽しくなくなる (Tuổi 50 làm gì cũng chẳng vui)</td><td>9/10</td><td class="w">5.864</td><td>1.500</td><td>26%</td><td>26,3K</td><td>4,8%</td><td>4:22</td><td>22,7%</td><td>54</td><td>40</td><td>36</td><td>109</td><td>5</td><td>9</td></tr>
+  <tr class="win"><td>12</td><td class="t">婚活男性が「見られる前」に諦めてしまう理由 (Đàn ông tìm vợ bỏ cuộc trước cả khi được nhìn thấy)</td><td>9/10</td><td>4.890</td><td class="g">3.200</td><td class="g">65%</td><td class="g">53K</td><td>4,6%</td><td class="g">7:54</td><td class="g">42,2%</td><td class="g">74</td><td class="g">73</td><td class="g">55</td><td class="g">427</td><td class="g">50</td><td class="g">88</td></tr>
+  <tr><td>13</td><td class="t">【職場の深刻な実態】退勤後の飲み会を強要！ (Bị ép đi nhậu sau giờ làm)</td><td>10/10</td><td class="b">265</td><td>190</td><td class="g">72%</td><td class="b">2,7K</td><td>3,9%</td><td>5:26</td><td>32,8%</td><td>67</td><td>56</td><td>50</td><td>17</td><td>3</td><td>4</td></tr>
+  <tr><td>14</td><td class="t">ベテラン社員はなぜ突然辞める？ (Nhân viên kỳ cựu đột ngột nghỉ)</td><td>12/10</td><td>2.503</td><td>157</td><td class="b">6%</td><td>2,7K</td><td>5,1%</td><td>4:44</td><td>—</td><td>—</td><td>—</td><td>—</td><td>13</td><td>0</td><td>3</td></tr>
+  <tr><td>16</td><td class="t">50代会社員、1200万円上乗せでも早期退職を後悔 (Hối hận vì nghỉ hưu sớm dù được cộng 12 triệu yên)</td><td>14/10</td><td>1</td><td colspan="12" class="muted" style="text-align:left">đăng hôm nay, chưa có số</td></tr>
+  </tbody></table></div>
+  <p class="muted">Kênh 28 ngày: 42.127 view, 1.400 giờ xem, +78 người đăng ký. ep15 (tiền thực nhận) và ep17 (sếp ngừng nhắc nhở) chưa đăng.</p>
+</section>
+
+<section>
+  <h2>2. Chủ đề nào đang thắng</h2>
+  <div class="tbl"><table>
+  <thead><tr><th class="t">Nhóm chủ đề</th><th>Tập</th><th>Xem thật</th><th>Giờ xem</th><th>% xem TB</th><th>Cmt</th><th class="t">Nhận xét</th></tr></thead>
+  <tbody>
+  <tr class="win"><td class="t"><b>Hôn nhân: có được chọn hay không</b></td><td>12</td><td>3.200</td><td>427</td><td>42%</td><td>50</td><td class="t">1 tập bằng cả nhóm 3 tập bên dưới. Đi theo cụm 婚活 khổng lồ trên YouTube Nhật.</td></tr>
+  <tr><td class="t"><b>Nấc thang công sở</b> (thăng chức, quản lý, kỳ vọng)</td><td>01 · 02 · 03</td><td>4.000</td><td>446</td><td>32–38%</td><td>34</td><td class="t">Giữ người ổn định nhất. Được đề xuất cạnh video Z世代/パワハラ (thế hệ Z/quấy rối quyền lực) của kênh khác.</td></tr>
+  <tr><td class="t"><b>Gia đình vs công ty, tuổi 50</b></td><td>08 · 09 · 11</td><td>3.400</td><td>247</td><td>23–28%</td><td>15</td><td class="t">Được đẩy lên bảng tin mạnh (ep11 1.435 view/48h) nhưng người xem rơi nhanh sau phút 1.</td></tr>
+  <tr><td class="t"><b>Tiền / kinh tế vĩ mô</b> (lương, nghề tay trái, ô tô)</td><td>05 · 06 · 07</td><td>2.000</td><td>144</td><td>14–30%</td><td>3</td><td class="t">Yếu nhất. Tiêu đề kéo click nhưng nội dung thành bài giảng kinh tế.</td></tr>
+  <tr><td class="t">Bức xúc nơi làm việc (khách quấy rối, kiệt sức, ép nhậu)</td><td>04 · 10 · 13</td><td>980</td><td>87</td><td>23–33%</td><td>9</td><td class="t">ep13 giữ người tốt (30s 67%) nhưng YouTube gần như không hiển thị (2,7K lần), xem lỗi mô tả ở mục 5.</td></tr>
+  </tbody></table></div>
+
+  <h3>Vì sao ep12 thắng: comment nói gì</h3>
+  <ul>
+    <li>Comment được like nhiều nhất (19 like): 「婚活女性は男性の『年収』が最重要で家事とかは二の次なんだよ」 (Phụ nữ tìm chồng coi thu nhập là quan trọng nhất, việc nhà là thứ yếu). Tập mở ra một cuộc <b>tranh luận nam–nữ</b>, mỗi phe vào cãi.</li>
+    <li>Comment thứ 2 (17 like) là tự thú: 「僕も、主人公（相葉渉）さんと同じです…もう人生、どうでも良い気がしてます」 (Tôi cũng giống nhân vật chính Aiba… cảm thấy cuộc đời sao cũng được). Người xem thấy chính mình.</li>
+    <li>「相談員が見ない情報を婚活女性が見るわけないわな」 (Thông tin mà người tư vấn còn không đọc thì phụ nữ đâu có đọc) — họ bám vào đúng chi tiết hình ảnh của kịch bản (mục nấu ăn, ủi đồ nằm dưới cùng).</li>
+    <li>Một người 60 tuổi kể bị trung tâm mai mối từ chối vì cao 162cm. Đề tài chạm cả người già nhớ lại thời trẻ.</li>
+    <li>Từ khoá tìm kiếm đưa tới: 婚活, 婚活 男性, 婚活 漫画. Video đề xuất dẫn tới toàn là video 婚活 "末路" (kết cục bi thảm) của kênh khác.</li>
+  </ul>
+  <p class="muted">Cảnh báo: phần lớn comment ep12 chê phụ nữ khá nặng. Kênh hưởng lợi từ tranh luận nhưng kịch bản không nên đứng về phe nào. ep12 làm đúng việc này: kịch bản nói cả hai phía đều nâng điều kiện, lỗi là ở màn hình tìm kiếm.</p>
+</section>
+
+<section>
+  <h2>3. Công thức thắng (rút từ ep12, ep02, ep01, ep03 so với các tập thua)</h2>
+  <div class="grid2">
+    <div class="card"><span class="pill" style="color:var(--good)">Đề tài</span>
+      <p><b>Một người bị chấm điểm giá trị bản thân bởi một "bộ lọc"</b>: thu nhập trên màn hình mai mối (ep12), ghế trưởng phòng (ep01, ep02), bảng thành tích bị cướp công (ep03). Người xem tự hỏi "mình có đang bị chấm như vậy không". Đề tài vĩ mô (lương quốc gia, số người làm thêm, giá xe) không tạo được câu hỏi đó.</p></div>
+    <div class="card"><span class="pill" style="color:var(--good)">Hook 0–15 giây</span>
+      <p>Câu nói đau từ chính nạn nhân hoặc người phán xét, rồi <b>lật lý do</b>: 「問題は、断られていることじゃないんです」 (Vấn đề không phải là anh bị từ chối), 「課長を、降りさせてください」 (Xin cho tôi thôi làm trưởng phòng). ep12 giữ 84% ở giây 15, cao nhất kênh. Không cần số liệu trong hook: ep12 không có số, ep05 có số nhưng giữ người tệ nhất.</p></div>
+    <div class="card"><span class="pill" style="color:var(--good)">Thân bài</span>
+      <p>Cấu trúc <b>điều tra</b>: さくら tìm ra một bằng chứng nhìn thấy được, như cuộn màn hình hồ sơ thấy "nấu ăn, ủi đồ" nằm dưới cùng (ep12), giờ đăng nhập máy tính khác giờ bấm thẻ và hai phiếu lương đặt cạnh nhau (ep02), hồ sơ cũ ghi thành tích cho người khác (ep03). Nguyên nhân thật giấu đến 35–60% mới lộ.</p></div>
+    <div class="card"><span class="pill" style="color:var(--good)">Số liệu</span>
+      <p><b>Tối đa 2 con số, đặt khoảng 50%</b>, gắn vào bằng chứng trong truyện. ep12 chỉ dùng 2 số (tỉ lệ chưa kết hôn ở tuổi 50; 17,3% nam trẻ không định cưới). ep05 dùng 6 cụm khoảng 10 số và ep10 dùng khoảng 12 số: hai tập này giữ người kém nhất.</p></div>
+    <div class="card"><span class="pill" style="color:var(--good)">Cú đánh cảm xúc</span>
+      <p>Cú quay xe đến từ <b>người trong gia đình</b> của người sai: con trai người tư vấn nói 「俺も、出てこない側なんだよ」 (Con cũng là người không hiện lên màn hình) ở ep12. Cùng kiểu: vợ ở ep02 「あなたの顔、朝しか見てない」 (Em chỉ thấy mặt anh buổi sáng).</p></div>
+    <div class="card"><span class="pill" style="color:var(--good)">Kết</span>
+      <p>Kết mở, không ngọt (Aiba chưa quay lại) và câu hỏi bắt người xem tự thú: 「あなたは、誰かに見つけてもらう前に、探すことをやめたことがありますか」 (Bạn đã từng thôi tìm trước khi có ai tìm thấy mình chưa?). Câu hỏi "chọn A hay B" của ep07 không kéo được comment nào.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>4. Những gì làm tập thua</h2>
+  <ul>
+    <li><b>ep05 lương:</b> hook là cảnh kotatsu yên tĩnh, không có người phán xét. Sau phút 1 thành bài giảng của trưởng phòng 小川 về 3 nguyên nhân kinh tế. Tiêu đề hứa chuyện cá nhân (bố–con) nhưng nội dung là kinh tế vĩ mô, nên người ta bấm vào rồi thoát (phút 2 còn 26%).</li>
+    <li><b>ep06 nghề tay trái:</b> hook là lời kể, không có câu thoại, không có cảnh ai bị tổn thương. Chỉ 1.700 lần hiển thị, giữ 49% ở giây 30.</li>
+    <li><b>ep11 tuổi 50:</b> bí mật "chiều thứ Sáu chăm mẹ" lộ ở 20%, nên từ đó tới 61% người xem đã biết hết. Phút 1 còn 48%.</li>
+    <li><b>ep10 kiệt sức:</b> câu mở 「たかが残業で潰れるなら…」 (Gục chỉ vì chút làm thêm giờ…) không được diễn lại trong thân bài, người xem chờ mà không được trả. Thêm một khối khoảng 10 con số liền nhau.</li>
+    <li><b>ep09 chuyển công tác:</b> nhân vật chính thụ động suốt tập, quay xe do người khác mang lại. Bảng tin đẩy mạnh (19K lần hiển thị) nhưng % xem chỉ 25%.</li>
+    <li><b>Khuôn lặp:</b> câu 「でも、Xは、ただの冷たいYではなかった」 (Nhưng X không chỉ là Y lạnh lùng) lặp gần nguyên văn ở ep14, ep15, ep16. Phản ứng của さくら 「そんなに、ですか」 (Nhiều vậy sao) lặp qua nhiều tập. Người xem cày nhiều tập sẽ nhận ra công thức.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>5. Lỗi cần sửa ngay</h2>
+  <ol>
+    <li><b class="b">ep13 (YA9tuTvW9wo) đang dùng nhầm mô tả của Lane O ep04.</b> Tiêu đề nói chuyện ép đi nhậu, còn mô tả kể chuyện trưởng viện dưỡng lão 志村修司 "代わりはいくらでもいる" (thay người lúc nào cũng có), lấy từ <code>E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\jobs\Lane-O\ep04-kawari-ikurademo\TIEU_DE_MO_TA.txt</code>. Có thể đây là lý do YouTube chỉ hiển thị tập này 2.700 lần dù giữ người tốt (30s 67%). Cần thay bằng mô tả trong <code>E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\jobs\L-shakai-no-naze\ep13-atama-ii-hitori\TIEU_DE_MO_TA.txt</code>.</li>
+    <li><b>ep14 (đang được đẩy, 2.666 view/48h):</b> chỉ 6% là xem thật. Nên theo dõi tiếp 2 ngày khi Studio có đường giữ chân. Tiêu đề trong kịch bản hứa "3つの理由" (3 lý do) mà thân bài không đếm ra 3.</li>
+    <li><b>ep15 (chưa đăng):</b> hook tốt (đối đầu ở quầy, tiền gửi mẹ chữa bệnh). Nên rút đoạn giải thích 46–67% (khoảng 20% thời lượng toàn cơ chế thuế, bảo hiểm) và bỏ câu khuôn "ただの冷たい事務長ではなかった".</li>
+    <li><b>ep17 (chưa đăng):</b> dài nhất (7.654 ký tự), phần kết 77–100% lặp lời xin lỗi, cần cắt. Chữ 『育成キャンセル』 (huỷ đào tạo) trên tiêu đề không có trong kịch bản.</li>
+    <li>Lệch nhỏ khác: ep03 <code>HOOK_TAP.md</code> ghi 46,5% nhưng kịch bản ghi 46,7%; ep07 tiêu đề hứa "5つの理由" (5 lý do) nhưng kịch bản chỉ có 3–4.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>6. Đề tài nên làm tiếp theo công thức thắng</h2>
+  <p class="muted">Bám hai cụm đang thắng (hôn nhân và nấc thang công sở), đều là chuyện người bình thường chạm tới. Hai đề tài đầu lấy thẳng từ comment của người xem.</p>
+  <ol>
+    <li><span class="jp">「年下上司」になった日、50代平社員は何を失うのか</span> (Ngày sếp nhỏ tuổi hơn mình, nhân viên 50 tuổi mất đi điều gì). Comment ep01 và ep02 hỏi thẳng: 「中年平社員や万年主任の惨めさはなぜ隠ぺいされるのだろうか」 (Vì sao nỗi khổ của nhân viên trung niên không chức bị che giấu?).</li>
+    <li><span class="jp">定年の翌日、妻が離婚届を置いた理由</span> (Ngày sau khi về hưu, vợ đặt đơn ly hôn lên bàn). Cùng cụm hôn nhân, khán giả 50–60 tuổi đã có sẵn ở ep11.</li>
+    <li><span class="jp">婚活で「いい人止まり」と言われる男性が、選ばれない本当の理由</span> (Lý do thật khiến người đàn ông bị gọi là "người tốt thôi" không được chọn). Đi tiếp từ comment 17 like của ep12.</li>
+    <li><span class="jp">なぜ「年収600万円」の女性は、婚活で相手が見つからないのか</span> (Vì sao phụ nữ thu nhập 6 triệu yên khó tìm được bạn đời). Lật phía nữ để cân lại cuộc tranh luận nam–nữ và kéo khán giả nữ vào.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>7. File dữ liệu</h2>
+  <ul class="muted">
+    <li>Số Studio từng video: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_studio_20261014\studio_metrics.json</code></li>
+    <li>Đường giữ chân: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_studio_20261014\retention.json</code></li>
+    <li>Comment (API): <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_studio_20261014\comments_api.json</code></li>
+    <li>Trang Studio gốc + ảnh chụp: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_studio_20261014\studio\</code></li>
+  </ul>
+</section>
+
+</div>

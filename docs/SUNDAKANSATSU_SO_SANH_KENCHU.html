@@ -1,0 +1,267 @@
+<title>Tự làm tự chịu vs 嫌中</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: một cột đọc 46rem, khối bằng chứng (ảnh/bảng) được tràn rộng 64rem; màu lấy từ thumbnail kênh: dải đen-vàng + chữ tím hồng */
+:root{
+  --paper:#f6f5f2; --ink:#1d1a22; --muted:#5d5866; --rule:#d9d5df; --panel:#ffffff;
+  --accent:#a01a74; --accent-soft:#f6e3ef; --band:#16131a; --band-fg:#ffd83a;
+  --good:#1f7a4a; --good-soft:#e2f2e9; --bad:#b03a2e; --bad-soft:#f8e4e1; --warn:#946200; --warn-soft:#fbf0d6;
+  --f-display:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;
+  --f-body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;
+  --f-jp:"Noto Sans JP","Yu Gothic","Meiryo",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#16141a; --ink:#ece9f1; --muted:#a9a3b4; --rule:#34303c; --panel:#1f1c25;
+  --accent:#e66bb8; --accent-soft:#3a1f33; --band:#0c0a0e; --band-fg:#ffd83a;
+  --good:#6fcf98; --good-soft:#173326; --bad:#f08a7e; --bad-soft:#3a1d1a; --warn:#e6b94f; --warn-soft:#352a12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#16141a; --ink:#ece9f1; --muted:#a9a3b4; --rule:#34303c; --panel:#1f1c25;
+  --accent:#e66bb8; --accent-soft:#3a1f33; --band:#0c0a0e; --band-fg:#ffd83a;
+  --good:#6fcf98; --good-soft:#173326; --bad:#f08a7e; --bad-soft:#3a1d1a; --warn:#e6b94f; --warn-soft:#352a12; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65;margin:0}
+.wrap{max-width:64rem;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+.read{max-width:46rem}
+.jp{font-family:var(--f-jp)}
+.vi{display:block;color:var(--muted);font-size:.92em}
+header.top{background:var(--band);color:#fff;padding-block:28px 26px;margin-bottom:28px}
+header.top .wrap{padding-block:0}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--band-fg)}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,5vw,44px);line-height:1.15;margin:.3em 0 .2em;text-wrap:balance}
+h1 .jp{color:var(--band-fg)}
+header.top p{color:#d9d4e2;max-width:46rem;margin:.4em 0}
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(21px,3vw,27px);line-height:1.25;margin:2.4em 0 .5em;text-wrap:balance;display:flex;gap:.6em;align-items:baseline}
+h2 .n{font-family:var(--f-mono);font-size:.62em;color:var(--accent);font-weight:600}
+h3{font-size:18px;margin:1.6em 0 .4em}
+a{color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.btn{display:inline-block;padding:9px 14px;border-radius:6px;background:var(--band-fg);color:#16131a;text-decoration:none;font-weight:700;font-size:14px}
+.btn.alt{background:transparent;color:#fff;border:1px solid #6d6578}
+.verdict{border-left:4px solid var(--accent);background:var(--accent-soft);padding:16px 20px;margin:18px 0;border-radius:0 8px 8px 0}
+.verdict p{margin:.4em 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.kpi b{display:block;font-family:var(--f-mono);font-size:22px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;color:var(--muted)}
+.tbl{overflow-x:auto;margin:14px 0;border:1px solid var(--rule);border-radius:8px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--paper)}
+td.num,th.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.hot{color:var(--good);font-weight:700}.cold{color:var(--bad);font-weight:700}
+.quote{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;margin:10px 0}
+.quote .jp{display:block;font-size:15px}
+.quote .who{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.chip{display:inline-block;font-family:var(--f-mono);font-size:12px;padding:1px 8px;border-radius:99px;border:1px solid var(--rule);background:var(--panel);white-space:nowrap}
+.chip.new{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.chip.re{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.chip.risk{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+figure{margin:18px 0}
+figure img{display:block;width:100%;border-radius:6px;border:1px solid var(--rule)}
+figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.cols>div{min-width:0}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:14px 18px}
+.box h3{margin-top:.2em}
+ul,ol{padding-left:1.3em}
+li{margin:.3em 0}
+.steps li{margin:.55em 0}
+.ep{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:14px 18px;margin:12px 0}
+.ep .t{font-family:var(--f-jp);font-weight:700;font-size:16px}
+.ep .meta{font-size:14px;margin-top:6px}
+.ep .meta b{color:var(--muted);font-weight:600}
+.pri{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:600}
+.small{font-size:13px;color:var(--muted)}
+.decide{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.decide>div{border:2px solid var(--rule);border-radius:8px;padding:14px;background:var(--panel)}
+.decide>div.rec{border-color:var(--accent)}
+code{font-family:var(--f-mono);font-size:.88em;background:var(--accent-soft);padding:1px 5px;border-radius:4px;word-break:break-all}
+</style>
+<header class="top"><div class="wrap">
+<div class="eyebrow">So sánh trước khi mở lane · 07/10/2026 · số đo lại hôm nay</div>
+<h1>Lane “tự làm tự chịu” hay <span class="jp">嫌中</span>?</h1>
+<p>Anh hỏi: lane “tiền bạc tự làm tự chịu” là lane nào, chỉ số view có cao không, và có tốt hơn kiểu <span class="jp">嫌中</span> (yêu Nhật ghét Trung, như 13/18 video của すんだ観察所) không. Em đo lại bằng 4 cách: so ngay trong một kênh, quét toàn thị trường 1 tháng, so 23 kênh cạnh tranh, và kiểm dấu hiệu quảng cáo trên 80 video.</p>
+<div class="links">
+<a class="btn" href="https://claude.ai/artifact/7Wsr6eS5D9XNuQGqWoBpzg">Hồ sơ kênh すんだ観察所 (sáng nay)</a>
+<a class="btn alt" href="https://www.youtube.com/channel/UCEaNC-I0as6FhFHzBgWDxMw">Kênh すんだ観察所 ↗</a>
+</div>
+</div></header>
+
+<div class="wrap">
+<div class="read">
+
+<h2><span class="n">00</span>Trả lời nhanh</h2>
+<div class="verdict">
+<p><b>Lane nào?</b> Đây là <b>lane MỚI</b>, chưa có trong 13 lane đang chạy. Em đề xuất sáng nay: giữ khung tiểu phẩm của すんだ観察所, đổi chủ đề từ Trung Quốc sang đời sống người Nhật. Chữ cái lane do h2dev đặt khi mở.</p>
+<p><b>View có cao không?</b> Cao, và <b>ngang kiểu 嫌中 khi tính từng video</b>. Trên chính hai kênh tiểu phẩm lớn nhất, video không đánh Trung Quốc có trung vị gần bằng hệt video đánh Trung Quốc (263k so với 267k; 166k so với 166k). Riêng ở すんだ観察所, video nội địa còn cao hơn (123k so với 89k).</p>
+<p><b>Có tốt hơn 嫌中 không?</b> Về view mỗi video thì <b>ngang nhau</b>. Về tổng thị trường thì <b>嫌中 lớn hơn khoảng 5 lần</b>, nhưng 3 kênh đã chiếm 70% lượng view và đề tài phụ thuộc vào căng thẳng Trung–Nhật. Về độ bền, rủi ro chính sách và giá quảng cáo thì <b>lane đời thường tốt hơn</b>. Nói gọn: không thua về view mà an toàn hơn.</p>
+<p><b>Có nên làm không?</b> <b>Nên</b>, nhưng em sửa đề xuất sáng nay ở 2 điểm. (1) Mở rộng từ “tiền bạc” thành <b>“tự làm tự chịu đời thường”</b>, gồm tiền bạc cá nhân và công ty/tổ chức đối xử tệ với khách hoặc nhân viên. (2) Cho phép <b>khoảng 1/5 số tập</b> nói về chính phủ hoặc hãng nước ngoài tự chuốc hậu quả, nhắm vào <b>chính sách</b>, không nhắm vào người theo quốc tịch. Số liệu ở mục 02 và 06.</p>
+</div>
+
+<h2><span class="n">01</span>Lane này là gì</h2>
+</div>
+<div class="tbl"><table>
+<tr><th>Phần</th><th>Lấy từ すんだ観察所</th><th>Ở lane mình</th></tr>
+<tr><td>Khung truyện</td><td>Kẻ kiêu ngạo nói câu ngạo mạn → làm theo → trả giá bằng con số → narrator giảng cơ chế → bài học</td><td>Giữ nguyên</td></tr>
+<tr><td>Hook</td><td>H44 (khoe → con số ngược trong 15 giây), H45 (mở ở cảnh trả giá rồi tua lại)</td><td>Giữ nguyên</td></tr>
+<tr><td>Hình</td><td>Nhân vật phẳng kiểu いらすとや (Irasutoya, kho hình minh hoạ miễn phí), bóng thoại viền màu, ảnh tĩnh đổi mỗi 2–2,5 giây</td><td>Giữ kiểu hình, nhân vật tự sinh (kit đã có, xem dưới)</td></tr>
+<tr><td>Thumbnail, tiêu đề</td><td><span class="jp">{chủ thể}「{câu ngạo mạn}！」→{kết cục}ｗ</span> ({chủ thể}: “{câu ngạo mạn}!” → {kết cục} (cười)), thumbnail trước → sau</td><td>Giữ nguyên</td></tr>
+<tr><td>Kẻ kiêu ngạo</td><td>Chủ tịch, chính phủ hoặc người Trung Quốc (13/18 video)</td><td><b>Người Nhật nguyên mẫu</b> (vợ chồng mua xe trả góp, dân buôn lại), <b>công ty hoặc tổ chức bị ghét</b> (nhà mạng, NHK, công ty sa thải người 45 tuổi trở lên), thỉnh thoảng <b>chính phủ/hãng nước ngoài</b></td></tr>
+</table></div>
+<div class="read">
+<p><b>Ranh giới với các lane đang chạy</b> (để h2dev không làm trùng):</p>
+<ul>
+<li><b>Lane F</b> (<span class="jp">定年後のリアル</span> — Sự thật sau khi nghỉ hưu) đã có từ khoá <span class="jp">年金 繰り上げ 後悔</span> (hối hận vì nhận lương hưu sớm). Tập 4 đợt 1 sáng nay (<span class="jp">年金繰り上げ</span> — nhận lương hưu sớm) đụng F, nên em <b>bỏ khỏi đợt 1 và nhường cho F</b>.</li>
+<li><b>Lane K/O</b> (<span class="jp">スカッと</span> — truyện hả giận) là manga kể chuyện trong một nghề. Lane mới là tiểu phẩm nhiều vai, có narrator giảng số. Khác dạng nhưng cùng cảm xúc “hả giận”, nên không chọn đề tài thuộc nghề của K/O.</li>
+<li><b>Lane keizai-doc</b> (tư liệu kinh tế doanh nghiệp) giữ mảng “công ty X ra chiến lược sai”. Lane mới <b>tránh</b> mảng này, vì dạng tiểu phẩm chỉ đạt 0,14× khi nói về chiến lược (mục 02).</li>
+</ul>
+<p><b>Dựng được ngay:</b> kit dựng đúng kiểu video này đã có ở <code>C:\Users\admin\.claude\skills\motion_graphics\kits\sunkeki\</code> (chỉ sửa <code>script.json</code>). Video chạy thử: <code>E:\CLAUDE\MOTION GRAPHICS\kaigai_kit_test\renders\kit_test_34s_30fps.mp4</code>. Chi phí 0đ (ima2 + VOICEVOX + HyperFrames).</p>
+
+<h2><span class="n">02</span>Phép thử chính: cùng một kênh, đổi chủ đề</h2>
+<p>So hai kênh khác nhau thì sức mạnh của kênh lẫn vào kết quả. Cách sạch nhất là lấy <b>chính một kênh</b> (cùng khuôn, cùng giọng, cùng giai đoạn) rồi so video đánh Trung Quốc với video không đánh Trung Quốc. Chỉ tính video dài, 7–90 ngày tuổi, bỏ bản tổng hợp <span class="jp">総集編</span>.</p>
+</div>
+
+<div class="tbl"><table>
+<tr><th>Kênh</th><th class="num">Video TQ</th><th class="num">Trung vị TQ</th><th class="num">Video khác</th><th class="num">Trung vị khác</th><th>Video “khác” mạnh nhất</th></tr>
+<tr><td>ずんだ探検隊 (Đội thám hiểm Zunda) · 146k sub</td><td class="num">48</td><td class="num">266.986</td><td class="num">10</td><td class="num">263.337</td><td><span class="jp">CEO「日本人はクソ！」→大赤字</span><span class="vi">CEO: “Người Nhật tệ hại!” → lỗ nặng · 712k</span><span class="jp">携帯会社「新規を優遇！」→既存客に見捨てられる</span><span class="vi">Nhà mạng: “Ưu đãi khách mới!” → bị khách cũ bỏ · 280k</span><span class="jp">NHK「救急車も受信料払え！」</span><span class="vi">NHK: “Xe cứu thương cũng phải nộp phí thu sóng!” · 219k</span></td></tr>
+<tr><td>ニッポンすんだ村 (Làng Nippon すんだ) · 80k sub</td><td class="num">30</td><td class="num">165.864</td><td class="num">14</td><td class="num">165.528</td><td><span class="jp">「トヨタは時代遅れｗ」EVに全振りしたノルウェー</span><span class="vi">Na Uy: “Toyota lỗi thời” rồi dồn hết vào xe điện · 431k</span><span class="jp">愛媛FC 新スタ構想</span><span class="vi">CLB Ehime FC và kế hoạch sân mới · 198k</span></td></tr>
+<tr><td>すんだ観察所 (Trạm quan sát すんだ) · 2,5k sub</td><td class="num">10</td><td class="num">89.404</td><td class="num">5</td><td class="num hot">122.834</td><td><span class="jp">【残クレの末路】</span><span class="vi">Kết cục mua xe trả góp chừa giá trị còn lại · 197k</span><span class="jp">救急車にまで受信料を請求したNHK</span><span class="vi">NHK đòi phí thu sóng cả xe cứu thương · 147k</span><span class="jp">卸業者「今買えばボロ儲けだ！」</span><span class="vi">Nhà buôn sỉ gạo: “Mua giờ là lãi đậm!” · 123k</span></td></tr>
+</table></div>
+
+<div class="read">
+<div class="box">
+<p style="margin-top:0"><b>Cách đọc:</b> người xem các kênh này bấm vì <b>khuôn</b> (kẻ kiêu ngạo bị số liệu vả mặt), không vì quốc tịch của kẻ đó. Bỏ Trung Quốc đi thì view không giảm. Thêm một bằng chứng: ở ゆっくり機密情報局 (Cục thông tin mật Yukkuri, 91k sub), video Trung Quốc và video khác <b>cùng lên, cùng xuống theo tháng</b> (tháng 2/2026: 87k và 52k; tháng 9/2026: 14k và 14k). View đi theo kênh, không đi theo đề tài Trung Quốc.</p>
+</div>
+<p>Phép đo sáng nay trên 210 video của 5 kênh tiểu phẩm (so mỗi video với trung vị của chính kênh đó) cũng ra kết luận này, và cho thấy <b>chủ đề nào thắng, chủ đề nào thua</b>:</p>
+</div>
+<div class="tbl"><table>
+<tr><th>Kẻ kiêu ngạo là…</th><th class="num">Số video</th><th class="num">So với trung vị kênh</th><th class="num">% video ≥1,5×</th></tr>
+<tr><td>Chính phủ/hãng Âu Mỹ (xe điện Đức, Merkel, CEO phương Tây)</td><td class="num">7</td><td class="num hot">1,48×</td><td class="num">43%</td></tr>
+<tr><td>Nội địa Nhật: người thường hoặc tổ chức bị ghét, mất tiền cụ thể (残クレ — mua xe trả góp chừa giá trị còn lại, gạo, NHK, nhà mạng)</td><td class="num">5</td><td class="num hot">1,34×</td><td class="num">40%</td></tr>
+<tr><td>Trung Quốc (chính phủ, BYD, người Trung Quốc)</td><td class="num">122</td><td class="num">1,02×</td><td class="num">33%</td></tr>
+<tr><td>Hàn Quốc</td><td class="num">12</td><td class="num cold">0,77×</td><td class="num">25%</td></tr>
+<tr><td>Nội địa Nhật: chiến lược doanh nghiệp (KADOKAWA, Toshiba, Nitori, Nissan…)</td><td class="num">7</td><td class="num cold">0,14×</td><td class="num">0%</td></tr>
+</table></div>
+<div class="read"><p class="small">Nhóm con nội địa chỉ có 5 và 7 video, nên đọc như xu hướng. Trung Quốc là đề tài “trung bình” của dòng này (1,02×): nhiều video nhất nhưng không kéo view mạnh nhất.</p>
+
+<h2><span class="n">03</span>Toàn thị trường 1 tháng: 嫌中 lớn hơn, nhưng đã có chủ</h2>
+<p>Quét InnerTube các video đăng trong 30 ngày, xếp theo view: 12 từ khoá 嫌中 và 15 từ khoá tiền bạc đời thường, mỗi từ khoá 2 trang. Đã bỏ kênh báo đài và video lệch đề tài.</p>
+</div>
+<div class="kpis">
+<div class="kpi"><b>14,6M</b><span>tổng view 嫌中 (174 video, 70 kênh)</span></div>
+<div class="kpi"><b>2,9M</b><span>tổng view tiền bạc (133 video, 81 kênh)</span></div>
+<div class="kpi"><b>44 / 8</b><span>số video ≥100k: 嫌中 / tiền bạc</span></div>
+<div class="kpi"><b>70% / 52%</b><span>phần view của 3 kênh lớn nhất: 嫌中 / tiền bạc</span></div>
+</div>
+<div class="read">
+<ul>
+<li><b>嫌中 có cầu lớn hơn rõ rệt</b>: trung vị 30 video đầu là 338k, nhóm tiền bạc là 36k. Đây là điểm mạnh thật của 嫌中.</li>
+<li><b>Nhưng đã có chủ</b>: ずんだ探検隊 (6,2M), ニッポンすんだ村 (2,7M) và すんだ観察所 (1,3M) chiếm 70% tổng view. ずんだ探検隊 đăng khoảng 6 video/tuần, <span class="jp">【衝撃の中国】ゆっくり未報道JAPAN</span> (Tin Trung Quốc gây sốc chưa được đưa) đăng 8 video/tuần. Kênh mới vào phải đấu với những cỗ máy đăng hằng ngày.</li>
+<li><b>Nhóm tiền bạc bị đếm thiếu</b>: từ khoá kiểu <span class="jp">末路</span> (kết cục) bỏ sót những tiêu đề như <span class="jp">残クレで大暴落したアルファードで経済を学ぶのだ</span> (Học kinh tế qua chiếc Alphard trả góp mất giá, 354k). Quét thêm 10 từ khoá ずんだもん (Zundamon) đời thường thì ra thêm <b>15 kênh</b> có video ≥50k trong tháng. Ngoài ra, 2 trong 6 kênh có video ≥100k ở nhóm tiền bạc là người thật quay mặt (<span class="jp">不動産Gメン滝島</span> — thanh tra bất động sản Takishima, <span class="jp">元ベンツ営業</span> — cựu nhân viên bán Mercedes), không phải đối thủ trực tiếp.</li>
+</ul>
+
+<h2><span class="n">04</span>“View rate”: đo trên 23 kênh</h2>
+<p>Em hiểu “view rate” là mỗi video được bao nhiêu view và kênh giữ chân người xem tốt đến đâu, nên đo 6 chỉ số. Mỗi kênh lấy 20 video dài gần nhất, ít nhất 7 ngày tuổi.</p>
+</div>
+<div class="tbl"><table>
+<tr><th>Chỉ số (trung vị các kênh)</th><th class="num">嫌中 · 13 kênh</th><th class="num">Đời thường · 10 kênh</th><th>Bên hơn</th></tr>
+<tr><td>View mỗi video (trung vị của trung vị kênh)</td><td class="num">61.019</td><td class="num">75.392</td><td>Đời thường, hơn chút</td></tr>
+<tr><td>% video đạt ≥100k</td><td class="num">20%</td><td class="num">33%</td><td>Đời thường</td></tr>
+<tr><td>Kênh có trung vị ≥50k</td><td class="num">8/13</td><td class="num">6/10</td><td>Ngang</td></tr>
+<tr><td>Like trên view</td><td class="num">0,96%</td><td class="num">0,86%</td><td>Ngang</td></tr>
+<tr><td>Comment trên 1.000 view</td><td class="num">1,35</td><td class="num">1,68</td><td>Đời thường, hơn chút</td></tr>
+<tr><td>View/sub (<code>ch_mult</code>)</td><td class="num">2,54</td><td class="num">0,96</td><td>嫌中 (xem chú thích)</td></tr>
+</table></div>
+<div class="read">
+<p class="small"><code>ch_mult</code> của 嫌中 cao vì người xem đến từ đề xuất nhưng ít đăng ký (ずんだ探検隊 có 146k sub mà trung vị 370k view/video). Đó là lượng khách vãng lai lớn, không phải khán giả trung thành hơn. Nhóm 13 kênh 嫌中 được chọn theo kết quả tìm kiếm nên lẫn vài kênh <span class="jp">海外の反応</span> (phản ứng nước ngoài) chung chung; con số tổng hợp chỉ nên đọc như xu hướng.</p>
+</div>
+<div class="tbl"><table>
+<tr><th>Kênh tốt nhất mỗi bên</th><th>Mở</th><th class="num">Sub</th><th class="num">Trung vị view</th></tr>
+<tr><td>嫌中 · ずんだ探検隊 (Đội thám hiểm Zunda)</td><td>10/2023</td><td class="num">146.000</td><td class="num">370.424</td></tr>
+<tr><td>嫌中 · ニッポンすんだ村 (Làng Nippon すんだ)</td><td>10/2023</td><td class="num">79.800</td><td class="num">212.762</td></tr>
+<tr><td>嫌中 · すんだ観察所 (Trạm quan sát すんだ)</td><td>08/2026</td><td class="num">2.460</td><td class="num">91.662</td></tr>
+<tr><td>Đời thường · 底辺なのだ (Tầng đáy đây mà)</td><td>12/2025</td><td class="num">15.600</td><td class="num">182.708</td></tr>
+<tr><td>Đời thường · ずんだもん末路ストーリー (Chuyện kết cục của Zundamon)</td><td>08/2023</td><td class="num">196.000</td><td class="num">129.962</td></tr>
+<tr><td>Đời thường · 世界まる見えずんだもん (Zundamon nhìn thấu thế giới)</td><td>07/2023</td><td class="num">320.000</td><td class="num">116.862</td></tr>
+<tr><td>Đời thường · 限界だもん (Hết chịu nổi rồi)</td><td>03/2026</td><td class="num">6.400</td><td class="num">97.054</td></tr>
+</table></div>
+<div class="read">
+<p><b>Kênh mở trong năm 2026</b> là chỉ số sát với hoàn cảnh của mình nhất. Bên 嫌中: すんだ観察所 92k, <span class="jp">海外の反応スカッとJapan</span> (Phản ứng nước ngoài hả giận Japan) 16k, <span class="jp">新幹線ラボ</span> (Phòng thí nghiệm Shinkansen) 3k. Bên đời thường: 底辺なのだ 183k, 限界だもん 97k, <span class="jp">ずんだもんとまなぼう</span> (Học cùng Zundamon) 31k. Kênh mới làm đời thường lên được không kém, thậm chí tốt hơn.</p>
+<p>限界だもん đáng chú ý cho mình: kẻ kiêu ngạo là <b>công ty coi thường nhân viên lớn tuổi</b>. Ví dụ <span class="jp">【悲報】45歳で整理対象…黒字なのにコスト削減でベテランを次々切った会社、半年後に起きたこと</span> (Tin buồn: 45 tuổi bị đưa vào diện cắt giảm… công ty có lãi vẫn lần lượt sa thải người kỳ cựu, nửa năm sau chuyện gì xảy ra) đạt 171k. Đúng tệp khán giả trung niên và người già mà các lane của mình đang nuôi.</p>
+
+<h2><span class="n">05</span>Độ bền đề tài</h2>
+<ul>
+<li><b>嫌中 sống nhờ thời sự.</b> Dòng đề tài này bùng lên từ 11/2025, sau câu trả lời ở Quốc hội của Thủ tướng Takaichi về Đài Loan, khi Trung Quốc liên tục ra đòn (khuyến cáo không du lịch Nhật, cấm hải sản, tăng phí visa). Nếu quan hệ dịu lại, nguồn tin “Trung Quốc tự chuốc” sẽ thưa dần. Đây là suy luận, chưa đo được.</li>
+<li><b>Đời thường có lịch riêng mỗi năm:</b> lãi suất ngân hàng (tháng 4 và 10), thưởng hè/đông, quyết toán thuế (tháng 2–3), chuyển khoản lương hưu (tháng chẵn), mùa hết hợp đồng xe, mùa tuyển dụng. Đề tài lặp lại hằng năm mà không cần tin quốc tế.</li>
+<li><b>Ngắn hạn, cả hai dòng đều chững nhẹ:</b> <code>trend</code> (nửa mới chia nửa cũ của 20 video) có trung vị 0,81 ở cả hai nhóm. Tính theo tháng thì cả dòng tiểu phẩm đang lên từ 05/2026 (ずんだ探検隊 tháng 4 được 72–119k, tháng 9 được 321–339k). Không bên nào đang chết.</li>
+</ul>
+
+<h2><span class="n">06</span>Tiền quảng cáo và chính sách</h2>
+<p><b>Đo trực tiếp:</b> em mở trang xem của 80 video (cả hai nhóm, 23 kênh), mỗi video 3 lần, tìm dấu hiệu quảng cáo trong trang. <b>79/80 video có quảng cáo</b> cả 3 lần, mỗi video 3–7 vị trí quảng cáo. Video duy nhất không có là một video tiếng Thái lạc kênh. Nghĩa là <b>hiện tại video 嫌中 chưa bị tắt quảng cáo</b>; phép đo này không cho thấy bên nào bị cắt tiền.</p>
+<p><b>Chưa đo được</b> giá quảng cáo (RPM, tiền nhận trên 1.000 view), chỉ ước tính được. Video có ngữ cảnh tiền bạc (vay, bảo hiểm, xe, ngân hàng) thu hút nhóm nhà quảng cáo tài chính, nhóm trả giá cao nhất. Bảng chuẩn ở Mỹ: ngách tài chính/kinh doanh 8–35 USD, giải trí chung 1–5 USD (<a href="https://outlierkit.com/resources/youtube-rpm-benchmarks/">OutlierKit</a>). Tiểu phẩm hài vẫn là giải trí nên chênh lệch thực tế nhỏ hơn nhiều; lần trước em ước khoảng 1,3–1,7 lần. Chưa có số liệu tài khoản thật để kiểm.</p>
+<p><b>Chính sách YouTube</b> (<a href="https://support.google.com/youtube/answer/6162278?hl=ja">quy định nội dung phù hợp quảng cáo</a>):</p>
+<div class="quote"><span class="jp">保護対象グループに対する誹謗を目的とする発言</span><span class="vi">Phát ngôn nhằm phỉ báng một nhóm được bảo vệ → <b>không có quảng cáo</b>. “Nhóm được bảo vệ” gồm chủng tộc, dân tộc, <b>quốc tịch</b>, tôn giáo, tuổi, giới…</span></div>
+<div class="quote"><span class="jp">保護対象グループに言及しているコンテンツ、または個人の言動を批判しているコンテンツで、中傷的でないもの</span><span class="vi">Nội dung nhắc tới nhóm được bảo vệ, hoặc phê phán hành vi của một cá nhân, mà không phỉ báng → <b>có quảng cáo</b>.</span></div>
+<ul>
+<li>Video chê <b>chính sách của chính phủ</b> Trung Quốc nằm trong vùng an toàn. Video chế giễu <b>người Trung Quốc</b> nằm sát vạch “không quảng cáo”, ví dụ <span class="jp">中国人「無許可で商売しよ！」→逮捕</span> (người Trung Quốc: “Buôn bán không phép đi!” → bị bắt), hay video về người Trung Quốc lấy vĩnh trú của すんだ観察所. Kênh 嫌中 khó giữ mình khỏi vạch đó, vì khán giả thưởng view cho đúng những câu như thế.</li>
+<li>Lane đời thường cũng có bẫy tương tự. 底辺なのだ nhắm cả một nhóm người (<span class="jp">フェミ</span> — nhóm nữ quyền, <span class="jp">婚活女性</span> — phụ nữ đi tìm chồng, <span class="jp">Z世代</span> — thế hệ Z), tức là giới và tuổi, cũng thuộc nhóm được bảo vệ. Luật cho lane mình: <b>kẻ kiêu ngạo là một lựa chọn hoặc một tổ chức, không bao giờ là một nhóm người</b>.</li>
+<li>Đợt tắt kiếm tiền hàng loạt 01–02/2026 nhắm vào dạng <span class="jp">紙芝居型のゆっくり解説</span> (giọng máy kể trên ảnh tĩnh lật như tranh kể chuyện) và nội dung lặp một khuôn (<a href="https://gegelog.com/youtube20260131">げげログ</a>, <a href="https://bloomeria.jp/blog/youtube-ban-wave-2026">Bloomeria</a>). Rủi ro này <b>như nhau ở cả hai lựa chọn</b> vì cùng dạng hình. Cách giảm: nhân vật tự sinh, kịch bản viết mới, narrator phân tích số của riêng mình, không đăng nhiều video trong một ngày.</li>
+</ul>
+
+<h2><span class="n">07</span>Bảng chấm cuối</h2>
+</div>
+<div class="tbl"><table>
+<tr><th>Tiêu chí</th><th>嫌中 thuần</th><th>Tự làm tự chịu đời thường</th></tr>
+<tr><td>View mỗi video (trong cùng kênh)</td><td>Ngang (267k, 166k, 89k)</td><td>Ngang (263k, 166k, 123k)</td></tr>
+<tr><td>% video ≥100k (cấp kênh)</td><td>20%</td><td class="hot">33%</td></tr>
+<tr><td>Tổng thị trường 1 tháng</td><td class="hot">14,6M view, 44 video ≥100k</td><td>≥2,9M view (đếm thiếu), 8 video ≥100k</td></tr>
+<tr><td>Mức độ đã có chủ</td><td class="cold">3 kênh giữ 70%, đăng 6–8 video/tuần</td><td>3 kênh giữ 52%, nhiều kênh mở 2026 lên được</td></tr>
+<tr><td>Kênh mở 2026 tốt nhất</td><td>92k (すんだ観察所)</td><td class="hot">183k (底辺なのだ), 97k (限界だもん)</td></tr>
+<tr><td>Phụ thuộc thời sự</td><td class="cold">Cao (căng thẳng Trung–Nhật)</td><td class="hot">Thấp (lịch tiền bạc hằng năm)</td></tr>
+<tr><td>Quảng cáo hiện tại</td><td>Có (đo 79/80 video)</td><td>Có</td></tr>
+<tr><td>Rủi ro chính sách “nhóm được bảo vệ”</td><td class="cold">Cao: quốc tịch là trục của thể loại</td><td>Thấp nếu không nhắm nhóm người</td></tr>
+<tr><td>Giá quảng cáo (ước tính)</td><td>Giải trí, chính trị</td><td class="hot">Có ngữ cảnh tài chính, cao hơn (chưa đo)</td></tr>
+<tr><td>Hợp tệp khán giả lane mình</td><td>Nam lớn tuổi thích hả giận</td><td class="hot">Trung niên và người già lo tiền, lo việc làm (trùng F/G/J)</td></tr>
+</table></div>
+
+<div class="read">
+<h2><span class="n">08</span>Phạm vi lane (đã sửa sau khi đo)</h2>
+<div class="verdict">
+<p><b>Tên làm việc:</b> lane “tự làm tự chịu đời thường” (<span class="jp">自業自得</span> — gieo gió gặt bão). Cơ cấu mỗi 10 tập:</p>
+<ul>
+<li><b>5 tập tiền bạc cá nhân:</b> 残クレ (mua xe trả góp chừa giá trị còn lại), lãi thả nổi, <span class="jp">リボ払い</span> (trả góp quay vòng), dân buôn lại, vợ chồng cùng vay mua chung cư cao tầng… Mở bằng H45.</li>
+<li><b>3 tập công ty/tổ chức đối xử tệ với khách hoặc nhân viên:</b> nhà mạng bỏ rơi khách cũ (mẫu 280k), NHK (mẫu 147–219k), công ty sa thải người 45 tuổi trở lên (mẫu 171k). Mở bằng H44.</li>
+<li><b>2 tập chính phủ/hãng nước ngoài tự chuốc</b>, chỉ nói về chính sách: xe điện châu Âu (mẫu 247–431k, nhóm Âu Mỹ đạt 1,48×), hoặc một chính sách Trung Quốc có số liệu thật. Không chọn Hàn Quốc (0,77×). Không chế giễu người theo quốc tịch.</li>
+<li><b>Tránh:</b> chiến lược doanh nghiệp khô khan (0,14×, để cho keizai-doc), nhắm cả một nhóm người (giới, tuổi, quốc tịch), đề tài lương hưu (trùng Lane F).</li>
+</ul>
+</div>
+<p><b>Thứ tự tập:</b> giữ 5 tập ở mục 17 của <a href="https://claude.ai/artifact/7Wsr6eS5D9XNuQGqWoBpzg">hồ sơ sáng nay</a>, chỉ thay tập 4. Thứ tự mới:</p>
+<ol>
+<li><span class="jp">変動金利</span> (lãi thả nổi)</li>
+<li>残クレ, cảnh ngày trả xe</li>
+<li><span class="jp">転売ヤー ポケカ</span> (dân buôn lại thẻ Pokémon)</li>
+<li><span class="jp">退職代行業者</span> (công ty nghỉ việc hộ bị kết án)</li>
+<li><b>Công ty sa thải người 45 tuổi trở lên</b> (thay cho <span class="jp">年金繰り上げ</span> — nhận lương hưu sớm, nhường cho Lane F)</li>
+</ol>
+
+<h2><span class="n">09</span>Giới hạn của phép đo</h2>
+<ul class="small">
+<li>Quét thị trường dựa trên từ khoá; nhóm tiền bạc bị đếm thiếu vì tiêu đề đa dạng hơn.</li>
+<li>Nhóm 13 kênh 嫌中 chọn theo kết quả tìm kiếm, có lẫn kênh 海外の反応 (phản ứng nước ngoài) chung chung (bóng đá, đường sắt).</li>
+<li>Dấu hiệu quảng cáo chỉ cho biết video <b>có</b> quảng cáo khi xem ẩn danh, không cho biết giá hay việc bị “hạn chế quảng cáo”.</li>
+<li>Chưa đo RPM thật; thời gian xem không đo được (YouTube không công khai).</li>
+<li>Phép so trong cùng kênh mới có 3 kênh; nhóm con nội địa chỉ 5 và 7 video.</li>
+</ul>
+<p class="small">Dữ liệu: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\sundakansatsu\compare_kenchu_vs_money\</code> gồm <code>scan.json</code> và <code>scan_money2.json</code> (quét thị trường), <code>summary.json</code>, <code>channels.json</code> (23 kênh), <code>ads.json</code> (80 video), các script từ <code>s1_scan.py</code> đến <code>s5_ads_sample.py</code>.</p>
+
+<h2><span class="n">10</span>Anh quyết</h2>
+</div>
+<div class="decide">
+<div class="rec"><b>A · Mở lane “tự làm tự chịu đời thường” (em khuyên)</b><p>Phạm vi như mục 08. Em soạn hồ sơ lane, gói tư liệu có nguồn cho tập 1–2, và phiếu giao h2dev dựng thử 60 giây bằng kit sunkeki.</p></div>
+<div><b>B · Làm 嫌中 thuần</b><p>Thị trường lớn hơn nhưng đã có chủ, phụ thuộc thời sự, sát vạch chính sách. Em không khuyên.</p></div>
+<div><b>C · Đào sâu thêm trước</b><p>Đào sâu 底辺なのだ và 限界だもん (hai kênh đời thường mở 2025–2026 lên nhanh nhất) để chốt khuôn.</p></div>
+</div>
+</div>

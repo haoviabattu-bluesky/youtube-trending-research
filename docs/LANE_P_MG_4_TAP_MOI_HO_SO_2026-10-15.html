@@ -1,0 +1,212 @@
+<title>Lane P — hồ sơ 4 tập mới</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Be+Vietnam+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Bố cục: một cột đọc; mỗi tập là một phiếu hồ sơ, trong phiếu: tiêu đề JP → lời hứa → dàn 6 chương → mẫu → bẫy */
+:root{
+  --bg:#f6f7f9; --paper:#ffffff; --ink:#1b2230; --muted:#5b6577; --line:#dde2ea;
+  --accent:#b8321f; --ok:#1f7a4d; --warn:#a86a00; --soft:#f1e7e4; --chip:#eef1f5;
+  --f-body:"Be Vietnam Pro","Noto Sans JP",system-ui,sans-serif;
+  --f-jp:"Noto Sans JP","Be Vietnam Pro",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161d; --paper:#1a2029; --ink:#e6e9ef; --muted:#9aa4b5; --line:#2c3441;
+  --accent:#ef7a63; --ok:#5cc58f; --warn:#e3a640; --soft:#2a1f1d; --chip:#232a35; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161d; --paper:#1a2029; --ink:#e6e9ef; --muted:#9aa4b5; --line:#2c3441;
+  --accent:#ef7a63; --ok:#5cc58f; --warn:#e3a640; --soft:#2a1f1d; --chip:#232a35; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.65 var(--f-body)}
+.wrap{max-width:880px;margin:0 auto;padding-inline:16px;padding-block:28px 60px;display:flex;flex-direction:column;gap:24px}
+h1{font-size:1.65rem;line-height:1.25;margin:0;text-wrap:balance}
+h2{font-size:1.2rem;margin:0;text-wrap:balance}
+h3{font-size:.95rem;margin:0;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+p{margin:0}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lead{color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.8rem;word-break:break-all}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.alert{border-left:4px solid var(--accent);background:var(--soft)}
+ul,ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.ep{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.ephead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px}
+.order{font-variant-numeric:tabular-nums;font-weight:700;color:var(--accent);font-size:1.4rem}
+.chip{font-size:.75rem;padding:2px 9px;border-radius:99px;background:var(--chip);color:var(--muted)}
+.jp{font-family:var(--f-jp);font-weight:700;line-height:1.55}
+.vi{color:var(--muted);font-size:.9rem}
+.promise{border-left:3px solid var(--line);padding-left:12px;display:flex;flex-direction:column;gap:4px}
+.promise .jp{font-weight:400}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid2>div{display:flex;flex-direction:column;gap:6px;min-width:0}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+pre{background:var(--chip);border-radius:8px;padding:10px 12px;overflow-x:auto;margin:0;font:12.5px/1.6 var(--f-mono)}
+@media (max-width:640px){.grid2{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<header style="display:flex;flex-direction:column;gap:8px">
+  <span class="eyebrow">日本企業ウォッチ · MG_STUDIO Lane P · anh duyệt 15/10/2026</span>
+  <h1>Hồ sơ 4 tập mới — đã vào thư mục Syncthing, sẵn cho máy 2</h1>
+  <p class="lead">Mỗi tập: ~100 số/câu trích có nguồn (máy kiểm 0 lỗi), HO_SO.md đủ mục, lời hứa đã ghi, video mẫu bóc theo phút, hook đã nạp kho. Máy kiểm chặng hồ sơ (S1) của MG chạy thử: cả 4 tập không lỗi.</p>
+</header>
+
+<section class="box alert">
+  <h2>Đã đổi gì ở Lane P</h2>
+  <ul>
+    <li>ep03-benz-tesla (trùng tập 1) và ep02-nikkei-tettai (lại là ô tô) → <b>KHO</b>. Không xoá, không tự chạy (lane P chạy tay từng tập).</li>
+    <li>Thứ tự ra: tập 1 Suzuki · tập 2 tay nắm cửa (đã dựng) → <b>3 YKK · 4 ミスド · 5 味の素 · 6 キティ/ラブブ</b>.</li>
+    <li>Tin mới khi đóng gói: kênh 世界まる見えずんだもん vừa đăng video cùng đề tài LABUBU (14/10). Nếu anh muốn giữ chỗ trống, đẩy tập キティ lên trước 味の素.</li>
+  </ul>
+</section>
+
+<!-- TẬP 3 -->
+<article class="ep">
+  <div class="ephead"><span class="order">3</span><h2>Khoá kéo YKK</h2><span class="chip">ep07-ykk · stt 6 · 100 [Dn]</span><span class="chip">cầu lớn nhất</span></div>
+  <p class="jp">中国「ファスナーなんて3000社あるから余裕ｗ YKKは高すぎ」→結果、中国ブランドが「YKKで一番進化したやつを持ってきて」と指名ｗ</p>
+  <p class="vi">TQ: "Khoá kéo có 3.000 hãng, dễ ợt, YKK đắt quá" → chính thương hiệu TQ chỉ định "mang loại YKK tiến hoá nhất ra đây". Phương án 2: 「中国のYKKになる！」と宣言したファスナー王→会社は売られ赤字・逮捕…本家YKKは売上2倍 (vua khoá kéo TQ muốn làm "YKK Trung Quốc" → bị bán, lỗ, bị bắt; YKK doanh thu gấp đôi).</p>
+  <div class="promise"><span class="eyebrow">Lời hứa</span>
+    <p class="jp">中国には3000社近いファスナーメーカーがあり、1本3毛の安値で押し寄せたのに、なぜ「高い」と言われたYKKは売上をほぼ2倍に伸ばし、中国の人気ブランドから指名されるようになったのか。そして「中国のYKK」を目指した会社はどうなったのか。</p>
+    <p class="vi">Gần 3.000 hãng TQ bán 3 hào/chiếc, sao YKK "đắt" vẫn gấp đôi doanh thu và được thương hiệu TQ chỉ định? Công ty muốn làm "YKK Trung Quốc" ra sao?</p></div>
+  <div class="tbl"><table><thead><tr><th>Chương</th><th>Nội dung</th><th>[Dn]</th></tr></thead><tbody>
+    <tr><td class="n">1</td><td>YKK cũng từng bị coi thường: 1934, xưởng cháy 1945, 1950 nhập máy Mỹ</td><td>D1–D11</td></tr>
+    <tr><td class="n">2</td><td>3.000 hãng TQ, giá 3 hào, 浔兴 SBS muốn làm 「中国YKK」</td><td>D13–D24</td></tr>
+    <tr><td class="n">3</td><td>YKK sợ thật (2012: "mảng khoá kéo nguy rồi") → lao xuống giành cả hàng rẻ</td><td>D25–D31</td></tr>
+    <tr><td class="n">4</td><td>Số Nhật: 2.242億円 → 4.314億円; ANTA, Li-Ning đòi "YKK tiến hoá nhất"</td><td>D53–D78</td></tr>
+    <tr><td class="n">5</td><td>そのころ (cùng lúc, KHÔNG nhân quả): SBS bị bán, lỗ 6,77億元, chủ tịch bị bắt</td><td>D33–D46</td></tr>
+    <tr><td class="n">6</td><td>1 câu bất lợi (lợi nhuận khoá kéo −17,3%) + kết, mời khán giả nhìn khoá kéo trên áo</td><td>D58–D60, D97</td></tr>
+  </tbody></table></div>
+  <div class="grid2">
+    <div><h3>Video mẫu</h3><ul>
+      <li>Nhịp: <a href="https://www.youtube.com/watch?v=cv-J6I59tb8">ずんだ実話 cv-J6I59tb8</a> 35k (chỉ học nhịp)</li>
+      <li>Sức hút: <a href="https://www.youtube.com/watch?v=MzCDJGCNka4">まるっと世界情勢 MzCDJGCNka4</a> 1.142.663 view, 13×</li>
+      <li><a href="https://www.youtube.com/watch?v=h5PViK4VjTw">日本の誇りドキュメンタリー h5PViK4VjTw</a> 129k, 5,4×</li></ul></div>
+    <div><h3>Không được nói</h3><ul>
+      <li>"TQ đã vượt YKK" — không ai nói; câu coi thường là của nhân vật hư cấu</li>
+      <li>"SBS sụp vì YKK" — sụp vì mua ngoài ngành; chủ tịch không bị truy tố</li>
+      <li>40% giá trị là số Nikkei 2017 — phải ghi năm</li></ul></div>
+  </div>
+  <p class="vi">Mốc: tuần lễ khoá kéo YKK ở KidZania Tokyo 23/10–5/11.</p>
+</article>
+
+<!-- TẬP 4 -->
+<article class="ep">
+  <div class="ephead"><span class="order">4</span><h2>Mister Donut trở lại Thượng Hải</h2><span class="chip">ep08-misdo · stt 7 · 100 [Dn]</span><span class="chip">tin mới 17 ngày</span></div>
+  <p class="jp">中国「ミスドは時代遅れ、油っこくて客に捨てられて当然ｗ」→7年後、上海で最大4時間待ち・初日6700個の大行列ｗ</p>
+  <p class="vi">TQ: "Mister Donut lỗi thời, nhiều dầu, bị khách bỏ là đương nhiên" → 7 năm sau chờ tới 4 tiếng, ngày đầu 6.700 chiếc. Phương án 2: 中国で大流行の"生ドーナツ"は日本生まれだった件 (donut tươi đang sốt ở TQ hoá ra gốc Nhật).</p>
+  <div class="promise"><span class="eyebrow">Lời hứa</span>
+    <p class="jp">「ドーナツは消費者に捨てられて当然」と言われて中国から撤退したミスドに、なぜ7年後の上海で最大約4時間待ちの行列ができたのか。そして、いま中国で流行している“生ドーナツ”は、どこの国から来たものなのか。</p>
+    <p class="vi">Bị phán "bị khách bỏ là đương nhiên", sao 7 năm sau lại xếp hàng 4 tiếng? Donut tươi TQ đang mê đến từ đâu?</p></div>
+  <div class="tbl"><table><thead><tr><th>Chương</th><th>Nội dung</th><th>[Dn]</th></tr></thead><tbody>
+    <tr><td class="n">1</td><td>Vào TQ 1999–2000, đỉnh 25 cửa hàng, 2019 đóng 10 cửa hàng cuối — lý do thật: nhân công + tiền thuê</td><td>D1–D14</td></tr>
+    <tr><td class="n">2</td><td>Bị coi thường: 第一财经, 朱丹蓬 「品牌老化」「被消费者抛弃是必然的」 + 6 câu mạng</td><td>D18–D38</td></tr>
+    <tr><td class="n">3</td><td>Duskin chưa từng bỏ TQ: 2019 đã nói sẽ quay lại; 28/09/2026 mở lại, chờ 4 tiếng</td><td>D12–D13, D39–D75</td></tr>
+    <tr><td class="n">4</td><td>Số Nhật: lợi nhuận mảng đồ ăn 3,2億円 → 100億円 (có cả Boston House)</td><td>D16–D17, D82–D87</td></tr>
+    <tr><td class="n">5</td><td>同じころ: 生ドーナツ 「源自日本」, tiệm bánh TQ giảm ròng 81.700 (KHÔNG do ミスド)</td><td>D73–D100</td></tr>
+    <tr><td class="n">6</td><td>Kết: mới 1 cửa hàng, Duskin giải thể 1 công ty con ở Thượng Hải — chưa phải thắng lợi</td><td>D79–D81, D88</td></tr>
+  </tbody></table></div>
+  <div class="grid2">
+    <div><h3>Video mẫu</h3><ul>
+      <li>Nhịp: <a href="https://www.youtube.com/watch?v=PzbaA1FiBkE">ニッポンすんだ村 PzbaA1FiBkE</a> (chưa có tiểu phẩm cùng đề tài)</li>
+      <li>Nội dung: <a href="https://www.youtube.com/watch?v=yGwy42bnfdw">読売テレビ yGwy42bnfdw</a> 39k, 8,5×</li>
+      <li><a href="https://www.youtube.com/watch?v=51dH2zhjRxg">中国の闇 51dH2zhjRxg</a> 63k, 2,9×</li></ul></div>
+    <div><h3>Không được nói</h3><ul>
+      <li>"Mister Donut bị TQ đuổi" — rút vì chi phí</li>
+      <li>"Lợi nhuận ミスド ×31" — là cả mảng đồ ăn</li>
+      <li>"Tiệm bánh TQ đóng vì ミスド" — chỉ cùng thời điểm</li></ul></div>
+  </div>
+  <p class="vi">Hạn: đăng trước cửa hàng thứ 2 (美羅城, 12/2026).</p>
+</article>
+
+<!-- TẬP 5 -->
+<article class="ep">
+  <div class="ephead"><span class="order">5</span><h2>味の素 (bột ngọt) và màng chip</h2><span class="chip">ep06-ajinomoto · stt 8 · 100 [Dn]</span></div>
+  <p class="jp">中国「味の素の独占なんてウチの味精工場が打ち破るｗ」→結果、3年後も味の素がシェア95％で上場来高値ｗ</p>
+  <p class="vi">TQ: "Độc quyền của Ajinomoto à, nhà máy bột ngọt bên tao phá cho" → 3 năm sau Ajinomoto vẫn 95%, cổ phiếu cao nhất lịch sử. Phương án 2: 中国の味精大王「味の素に追いつく！」→30年遅れと自国メディアに言われる始末 (bị chính báo nước mình gọi "chậm 30 năm").</p>
+  <div class="promise"><span class="eyebrow">Lời hứa</span>
+    <p class="jp">中国の企業とメディアが「日本の味の素の独占を打ち破る」と宣言してから3年。なぜ“調味料の会社”の味の素はシェア95％超のまま上場来高値をつけ、“中国版味の素”は半年の売上467万元にとどまっているのか。</p>
+    <p class="vi">3 năm sau lời tuyên bố, sao "hãng gia vị" vẫn giữ trên 95% và lập đỉnh, còn "Ajinomoto bản TQ" nửa năm chỉ bán 467万元 (467 vạn tệ)?</p></div>
+  <div class="tbl"><table><thead><tr><th>Chương</th><th>Nội dung</th><th>[Dn]</th></tr></thead><tbody>
+    <tr><td class="n">1</td><td>Lọ 味の素 trong bếp → hai lời tuyên bố của TQ: 天和防務 2023, 莲花 2026</td><td>D1–D3, D23–D27, D44–D46</td></tr>
+    <tr><td class="n">2</td><td>Từ phụ phẩm bột ngọt tới màng chip (1970s, suýt bị bỏ, "nhẫn 10 năm")</td><td>D4–D16</td></tr>
+    <tr><td class="n">3</td><td>Số Nhật: >95%, 事業利益 1811億円 +13,7%, điện tử lãi 546億円 ≈ 30%</td><td>D17–D22, D62–D76</td></tr>
+    <tr><td class="n">4</td><td>Lời hứa 2023 sau 3 năm: TQ vẫn chạy thử, "tiến triển hạn chế"</td><td>D28–D32, D53</td></tr>
+    <tr><td class="n">5</td><td>Hai hãng bột ngọt, hai con đường: 莲花 phá sản 2019 (vì lấn ngành khác), Nufeis 467万元</td><td>D33–D61</td></tr>
+    <tr><td class="n">6</td><td>1 câu bất lợi (lãi ròng tăng nhờ bán toà nhà, năm nay dự báo giảm) + kết</td><td>D80–D83, D91–D96</td></tr>
+  </tbody></table></div>
+  <div class="grid2">
+    <div><h3>Video mẫu</h3><ul>
+      <li>Nhịp: <a href="https://www.youtube.com/watch?v=erfXnTkysVs">ずんだ実話 erfXnTkysVs</a> 195k, 2,9× (tiểu phẩm bán dẫn)</li>
+      <li>Sức hút: <a href="https://www.youtube.com/watch?v=tRAKTsvJNso">まるっと世界情勢 tRAKTsvJNso</a> 252k, 2,9× — hook 「答えは画面の中に」 (câu trả lời nằm trong màn hình anh đang xem)</li>
+      <li><a href="https://www.youtube.com/watch?v=JrwDDuCurac">JrwDDuCurac</a> 59k, 0,7× (kể khô thì không ăn)</li></ul></div>
+    <div><h3>Không được nói</h3><ul>
+      <li>"Lãi ròng kỷ lục nhờ chip" — dùng 事業利益</li>
+      <li>"味の素 cắt 30% hàng cho TQ" — chỉ 1 bài báo</li>
+      <li>"100% thị phần" — nói ">95%"; 天和防務 lỗ từ trước khi tuyên bố</li></ul></div>
+  </div>
+</article>
+
+<!-- TẬP 6 -->
+<article class="ep">
+  <div class="ephead"><span class="order">6</span><h2>Hello Kitty đấu LABUBU</h2><span class="chip">ep09-sanrio · stt 9 · 99 [Dn]</span><span class="chip">đối thủ vừa làm 14/10</span></div>
+  <p class="jp">中国「ラブブがキティを超えたｗ日本のキャラはもう古い」→結果、転売価格9割近く暴落・株価6割近く減…キティは過去最高益</p>
+  <p class="vi">TQ: "LABUBU vượt Kitty, nhân vật Nhật cũ rồi" → giá bán lại sụp gần 90%, cổ phiếu giảm gần 60%… Kitty lãi cao nhất lịch sử. Phương án 2: 社長も「去年は運だった」…50歳のキティは利益5割増 (chính CEO nói "năm ngoái nhờ vận may", Kitty 50 tuổi lợi nhuận +50%).</p>
+  <div class="promise"><span class="eyebrow">Lời hứa</span>
+    <p class="jp">「次のハローキティ」と持ち上げられた中国発のラブブは、なぜわずか1年で人気の隠しキャラの転売価格が9割近く下がり、株価も6割近く落ちたのか。そして同じ時期、「古い」と見られた50歳のキティは、なぜ過去最高の利益を出せたのか。</p>
+    <p class="vi">Được tung hô "Kitty tiếp theo", sao 1 năm sau giá chợ đen −87% và cổ phiếu −58%? Kitty 50 tuổi bị coi là cũ sao lại lãi kỷ lục?</p></div>
+  <div class="tbl"><table><thead><tr><th>Chương</th><th>Nội dung</th><th>[Dn]</th></tr></thead><tbody>
+    <tr><td class="n">1</td><td>"Hello Kitty tiếp theo": cơn tung hô 2025 (JPMorgan, báo TQ)</td><td>D1–D30</td></tr>
+    <tr><td class="n">2</td><td>Thứ được mua như "Mao Đài của Gen Z": mẫu ẩn 本我 4.522,5元 → 569,9元</td><td>D31–D55</td></tr>
+    <tr><td class="n">3</td><td>Số Nhật: Sanrio FY3/2026 lợi nhuận 778,59億円, +50,3%, kỷ lục</td><td>D77–D92</td></tr>
+    <tr><td class="n">4</td><td>Cái giá phía tung hô: cổ phiếu −57,74% từ đỉnh, CEO 「去年确实有运气」</td><td>D40–D75</td></tr>
+    <tr><td class="n">5</td><td>1 câu bất lợi của Nhật: bê bối thù lao cựu giám đốc, hoãn công bố</td><td>D76–D90</td></tr>
+    <tr><td class="n">6</td><td>Kết: báo TQ "muốn hiểu Pop Mart, phải đọc Sanrio" — gọi lại "con mèo 50 tuổi"</td><td>D93–D99</td></tr>
+  </tbody></table></div>
+  <div class="grid2">
+    <div><h3>Video mẫu</h3><ul>
+      <li>Nhịp: <a href="https://www.youtube.com/watch?v=N6WYqfSEVag">えだまめじゃぽん N6WYqfSEVag</a> 128k, 11,1×</li>
+      <li>Sức hút: <a href="https://www.youtube.com/watch?v=2RJl9JT6fMI">佐倉あましん 2RJl9JT6fMI</a> 599k · <a href="https://www.youtube.com/watch?v=HGiOilcvYLc">田吾与作 HGiOilcvYLc</a> 576k, 2,8×</li>
+      <li>Đối thủ mới: <a href="https://www.youtube.com/watch?v=UmFnfzmkqnA">世界まる見えずんだもん UmFnfzmkqnA</a> (14/10)</li></ul></div>
+    <div><h3>Không được nói</h3><ul>
+      <li>"Pop Mart sụp / thua doanh thu" — vẫn lớn hơn và H1/2026 +23,8%</li>
+      <li>"Chính phủ TQ nói vượt Kitty" — gốc là JPMorgan</li>
+      <li>"Sanrio thắng vì LABUBU thua" — chỉ cùng thời điểm</li></ul></div>
+  </div>
+  <p class="vi">Mốc: báo cáo quý 3 Pop Mart (năm ngoái ~21/10), giữa kỳ Sanrio (năm ngoái ~5/11).</p>
+</article>
+
+<section class="box">
+  <h2>Giao máy 2 (hoặc cả 2 máy)</h2>
+  <p>Mọi thứ đã nằm trong <span class="mono">E:\CLAUDE\YOUTUBE\MG_STUDIO</span> — thư mục Syncthing máy 1 ↔ máy 2. Phiếu giao việc:</p>
+  <p class="mono">E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\GIAO_VIEC_4_TAP_MOI_2026-10-15.md</p>
+  <ul>
+    <li><b>Cách A — máy 2 làm hết:</b> lần lượt YKK → ミスド → 味の素 → キティ, mỗi tập tới điểm duyệt hook rồi gửi anh.</li>
+    <li><b>Cách B — 2 máy cùng làm:</b> máy 1 nhận YKK + 味の素, máy 2 nhận ミスド + キティ. Không bao giờ chạy cùng 1 tập ở 2 máy (Syncthing ghi đè). Phiếu có bảng "máy đang làm" để ghi tên.</li>
+    <li>Lane P không chạy theo lô (<span class="mono">mg.py lo</span> bỏ qua), phải chạy tay:</li>
+  </ul>
+<pre>py -3.13 E:\CLAUDE\YOUTUBE\MG_STUDIO\mg.py chay --tap E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep07-ykk
+py -3.13 E:\CLAUDE\YOUTUBE\MG_STUDIO\mg.py chay --tap E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep08-misdo
+py -3.13 E:\CLAUDE\YOUTUBE\MG_STUDIO\mg.py chay --tap E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep06-ajinomoto
+py -3.13 E:\CLAUDE\YOUTUBE\MG_STUDIO\mg.py chay --tap E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep09-sanrio</pre>
+  <div class="tbl"><table><thead><tr><th>Đã đặt vào Syncthing</th><th>Đường dẫn</th></tr></thead><tbody>
+    <tr><td>4 thư mục tập (HO_SO.md, tu_lieu.json, nguon\, de_tai.json có stt + lời hứa)</td><td class="mono">E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep06-ajinomoto · ep07-ykk · ep08-misdo · ep09-sanrio</td></tr>
+    <tr><td>4 file bóc video mẫu + 11 gói video (transcript, thumbnail, khung hình)</td><td class="mono">E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\tham_khao\MAU_ep0[6-9]-*.md</td></tr>
+    <tr><td>Phiếu giao việc + ghi chú đổi thứ tự ở BAT_DAU_LANE_P.md, NGHIEN_CUU.md, tham_khao\README.md (bản cũ cất *.truoc_20261015.md)</td><td class="mono">E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="box">
+  <h2>Đã kiểm</h2>
+  <ul>
+    <li>Câu trích: 100 / 100 / 100 / 99, tất cả là chuỗi con của trang nguồn đã tải (tl_build 0 lỗi).</li>
+    <li>Chặng hồ sơ S1 của MG chạy thử trên cả 4 tập: không lỗi (đủ [Dn], đủ mục "Không được nói" + "vào miệng ai", có lời hứa).</li>
+    <li>Mọi [Dn] trong dàn chương và hook đều có trong tu_lieu.json.</li>
+    <li>Đơn vị: đã sửa 12 chỗ 億 bị dịch thành "tỷ" (sai ×10) ở ghi chú 2 tập; HO_SO có dòng cảnh báo đơn vị.</li>
+    <li>Hook 0–90s của các video mẫu đã nạp kho HOOK_LIBRARY nhãn <span class="mono">mg-lane-p</span> (kho 366 video).</li>
+  </ul>
+</section>
+</div>

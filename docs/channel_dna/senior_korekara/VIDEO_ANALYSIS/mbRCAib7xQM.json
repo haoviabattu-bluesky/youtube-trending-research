@@ -1,0 +1,23 @@
+{
+ "topics": [
+  "定年後の仕事",
+  "再就職",
+  "収入減",
+  "60代の生活"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "あなたが結婚を意識したのは何歳の時ですか?これは[音楽]66歳で初めての婚活を始めた独身女性の物語です。関さん66歳。法制工場でミシンを[音楽]42年踏み、今は自宅で洋服のお直しをしています。はい。裾上げ3本ね。木曜までにやっておきますよ。[音楽]木さんは1度も結婚したことがありません。理由の1つが[音楽]24歳の時お父さんが急に亡くなったからです。ミシン1本でお母さんと弟[音楽]",
+ "hook_n_segments_0_30": 16,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 286 segments, phủ ~100% độ dài video",
+ "video_id": "mbRCAib7xQM",
+ "title": "【漫画】婚活パーティーで年金目当ての男が大量発生。シニア婚活に希望を抱いた66歳独身女性の末路",
+ "view_count": 142953,
+ "duration_min": 15.4,
+ "vpd": 3863.6,
+ "days": 37
+}

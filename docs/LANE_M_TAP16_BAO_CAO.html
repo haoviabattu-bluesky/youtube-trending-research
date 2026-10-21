@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lane M · Tập 16 — công thức kịch bản & hook (VOx2qqJpEHQ)</title>
+<style>
+:root{
+  --bg:#0d1117; --panel:#161b22; --panel2:#1c2230; --line:#2d3748;
+  --fg:#e6edf3; --dim:#8b949e; --accent:#58a6ff; --gold:#f0b429;
+  --red:#f85149; --green:#3fb950; --purple:#bc8cff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.65 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 28px 96px}
+h1{font-size:2.05rem;line-height:1.25;margin:0 0 8px;letter-spacing:-.02em}
+h2{font-size:1.35rem;margin:56px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:1.06rem;margin:28px 0 10px;color:var(--gold)}
+p{margin:10px 0}
+.sub{color:var(--dim);font-size:.95rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.tag{background:var(--panel2);border:1px solid var(--line);border-radius:999px;
+  padding:4px 12px;font-size:.82rem;color:var(--dim)}
+.tag b{color:var(--fg)}
+.grid{display:grid;gap:14px;margin:18px 0}
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.card .n{font-size:1.75rem;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.card .l{font-size:.82rem;color:var(--dim);margin-top:4px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:var(--dim);font-weight:600;font-size:.82rem;
+  text-transform:uppercase;letter-spacing:.04em}
+tbody tr:hover{background:#1a2029}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{position:relative;height:22px;background:var(--panel2);border-radius:5px;overflow:hidden}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#1f6feb,#58a6ff)}
+.bar span{position:absolute;left:8px;top:0;line-height:22px;font-size:.76rem;font-weight:600}
+.warn{background:rgba(248,81,73,.09);border:1px solid rgba(248,81,73,.4);
+  border-left:4px solid var(--red);border-radius:10px;padding:16px 18px;margin:18px 0}
+.warn h4{margin:0 0 8px;color:var(--red);font-size:1rem}
+.ok{background:rgba(63,185,80,.08);border:1px solid rgba(63,185,80,.35);
+  border-left:4px solid var(--green);border-radius:10px;padding:16px 18px;margin:18px 0}
+.ok h4{margin:0 0 8px;color:var(--green);font-size:1rem}
+.note{background:rgba(240,180,41,.07);border:1px solid rgba(240,180,41,.32);
+  border-left:4px solid var(--gold);border-radius:10px;padding:16px 18px;margin:18px 0}
+.note h4{margin:0 0 8px;color:var(--gold);font-size:1rem}
+code{background:var(--panel2);padding:2px 6px;border-radius:4px;font-size:.88em;
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.jp{color:var(--accent)}
+.vi{color:var(--dim);font-size:.9em;display:block;margin-top:2px}
+.thumb{max-width:100%;border-radius:12px;border:1px solid var(--line);display:block;margin:16px 0}
+.hookstep{display:grid;grid-template-columns:64px 1fr;gap:16px;margin:14px 0;
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.hookstep .pct{font-size:1.15rem;font-weight:700;color:var(--gold);text-align:center;
+  padding-top:2px;font-variant-numeric:tabular-nums}
+.hookstep .body{font-size:.94rem}
+.hookstep .role{font-weight:600;margin-bottom:4px}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--dim);font-size:.85rem}
+ul{margin:8px 0;padding-left:22px}
+li{margin:5px 0}
+.pill{display:inline-block;padding:2px 8px;border-radius:5px;font-size:.75rem;
+  font-weight:600;letter-spacing:.02em}
+.pill.no{background:rgba(248,81,73,.15);color:var(--red)}
+.pill.yes{background:rgba(63,185,80,.15);color:var(--green)}
+.pill.mid{background:rgba(240,180,41,.15);color:var(--gold)}
+@media (max-width:820px){
+  .wrap{padding:28px 14px 64px}
+  h1{font-size:1.55rem}
+  table{font-size:.84rem}
+  th,td{padding:7px 8px}
+  .hookstep{grid-template-columns:48px 1fr;gap:10px;padding:12px}
+  .hookstep .pct{font-size:1rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Lane M · Tập 16 — công thức kịch bản &amp; hook</h1>
+<p class="sub">Nghiên cứu video gốc <code>VOx2qqJpEHQ</code> · kênh <b>人生の知らせ</b> (Tin tức của đời người) ·
+TRENDING-RESEARCH 19/10/2026</p>
+
+<div class="meta">
+  <span class="tag">Đo trên <b>8.969 chữ</b> / 23:21 / 448 segment</span>
+  <span class="tag">168.196 view / <b>4 ngày</b></span>
+  <span class="tag">846 like · 54 comment</span>
+  <span class="tag">Kênh <b>6.360 sub</b> · mở 28/08/2026</span>
+</div>
+
+<h2>0. Kết luận trong 30 giây</h2>
+
+<div class="grid g4">
+  <div class="card"><div class="n">42.049</div><div class="l">view/ngày (4 ngày tuổi)</div></div>
+  <div class="card"><div class="n">26,4×</div><div class="l">trung vị view / sub — kênh có công thức</div></div>
+  <div class="card"><div class="n">25,0%</div><div class="l">kịch bản trước khi vào mục 1</div></div>
+  <div class="card"><div class="n">58,9%</div><div class="l">5 mục + nhịp sẹo, chia KHÔNG đều</div></div>
+</div>
+
+<p><b>Video này bán 5 THÓI QUEN, không bán chiếc đồng hồ.</b> Tiêu đề hứa
+<span class="jp">「小さな習慣」5選</span> — <i>5 "thói quen nhỏ", ai cũng làm được</i>. Người xem bấm vào vì <b>thói quen</b>.
+Chiếc 腕時計 automatic chỉ là <b>cách giảng</b>: ông thợ già tháo nó ra 5 bộ phận, mỗi bộ phận minh hoạ 1 thói quen.</p>
+
+<div class="warn">
+<h4>Đừng đảo món hàng với cách giảng</h4>
+<p style="margin:0">Nếu đội dựng đọc "5 bộ phận" như <b>nội dung</b> thì sẽ làm ra một video về <b>cấu tạo đồng hồ</b>:
+23 phút, không nêu một thói quen nào thành mệnh lệnh. Đó là video chết. Đồng hồ sống ở tầng <i>giữ chân</i>,
+không được lấn sang tầng <i>bán hàng</i>. Tiêu đề không nhắc đồng hồ.</p>
+</div>
+
+<h3>Năm thói quen — toàn bộ món hàng (đoạn tổng kết 22:12 đọc lại đủ 5 câu, đúng thứ tự)</h3>
+<table>
+<thead><tr><th style="width:30px">#</th><th>Thói quen (dịch trước)</th><th>Nguyên văn + vế chốt</th><th>Hành động làm được sáng mai</th><th class="num">Con số</th><th>Vật neo</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td><b>Sáng dậy cùng một giờ, làm đúng một việc nhỏ</b></td><td class="jp">毎朝同じ時刻に起きて小さなことを1つやる</td><td>Đặt báo thức 1 giờ cố định + chọn 1 việc 5 phút làm mỗi ngày</td><td class="num"><b>6:00</b><br>5 phút</td><td>ゼンマイ</td></tr>
+<tr><td class="num">2</td><td><b>Nhận một việc người khác nhờ, ngoài chức danh</b></td><td class="jp">肩書きの外で頼まれ事を1つ引き受ける。<b>回せば回される</b></td><td>Nhận 1 việc không ai muốn làm, không liên quan chức vụ</td><td class="num"><b>1 việc</b></td><td>歯車</td></tr>
+<tr><td class="num">3</td><td><b>Đi bảo dưỡng mắt–tai–răng TRƯỚC khi mờ</b></td><td class="jp">曇りになる前に目も耳も歯も手入れに出す</td><td>Đặt lịch khám mắt, đo tai, cạo vôi răng — dù chưa thấy đau</td><td class="num"><b>6 tháng/lần</b></td><td>風防</td></tr>
+<tr><td class="num">4</td><td><b>Chỉnh diện mạo mỗi sáng, dù không gặp ai</b></td><td class="jp">誰に会わなくても顔を整える。<b>1番長く会う相手は自分だから</b></td><td>Cạo râu + áo có cổ + ủi, mỗi sáng, một mình</td><td class="num"><b>mỗi sáng</b></td><td>文字盤</td></tr>
+<tr><td class="num">5</td><td><b>Dừng thì lên dây lại ngay, không tự trách</b></td><td class="jp">止まったら焦らずにすぐ巻き直す</td><td>Tái phát (ốm/bận/chán) thì làm lại việc nhỏ <b>ngay hôm sau</b></td><td class="num"><b>20 vòng</b></td><td>リューズ</td></tr>
+</tbody>
+</table>
+
+<div class="note">
+<h4>Câu chốt của cả 5 — 22:12, câu quan trọng nhất video</h4>
+<p class="jp" style="margin:0;font-size:1.02rem">「どれも勤めていた頃は職場が勝手に回してくれていた歯車だ。」</p>
+<p class="vi" style="margin-top:6px">Cả 5 thứ này, hồi còn đi làm, công ty tự quay hộ mình: phòng vật tư tạo ra buổi sáng,
+có người nhờ thì mình có vai, khám sức khoẻ định kỳ kiểm tra thân thể, ngày nào cũng gặp người thì mặt mũi tự được chỉnh.</p>
+<p style="margin:8px 0 0">Đây là lý do 5 thói quen này <b>không phải lời khuyên chung</b>. Chúng là <b>5 thứ công ty từng
+làm hộ, và nghỉ hưu thì mất</b>. Chuyển thể thì đổi danh sách "công ty từng làm hộ" cho khớp nghề mới, nhưng phải giữ nghĩa.</p>
+</div>
+
+<h3>Ba câu chốt rải trong 5 thói quen — bỏ là mất nghĩa</h3>
+<table>
+<thead><tr><th style="width:70px">Ở thói quen</th><th>Nguyên văn</th><th>Dịch</th><th>Chức năng</th></tr></thead>
+<tbody>
+<tr><td class="num">②</td><td class="jp">回せば回される</td><td>Mình quay nó thì nó quay lại mình</td><td>trả lời "nhận việc thì được gì?" — <b>cơ chế ăn khớp</b>, không phải lòng tốt</td></tr>
+<tr><td class="num">④</td><td class="jp">1番長く会う相手は自分だから</td><td>Vì người mình gặp lâu nhất là chính mình</td><td>trả lời "không ai nhìn thì chỉnh làm gì?"</td></tr>
+<tr><td class="num">⑤</td><td class="jp">定年後の一流に、先に始めるも追い越されるもない</td><td>Sau nghỉ hưu, chuyện "hạng nhất" không còn ai khởi đầu trước hay bị vượt qua</td><td><b>mở cửa cho khán giả 63 tuổi</b>: hết đi làm thì ai cũng làm 一流 được từ sáng mai</td></tr>
+</tbody>
+</table>
+
+<div class="warn">
+<h4>Phát hiện cấu trúc: đoạn chốt chỉ liệt kê 4/5</h4>
+<p style="margin:0">Đoạn 22:12 đọc lại <b>chỉ 4 thói quen đầu</b> trong danh sách "công ty từng làm hộ":
+資材課 tạo buổi sáng · có người nhờ thì có vai · khám sức khoẻ kiểm tra thân thể · gặp người mỗi ngày thì mặt mũi tự chỉnh.
+<b>Thói quen 5 không nằm trong danh sách đó</b> — vì nó là thứ duy nhất công ty <b>không bao giờ</b> làm hộ được.
+Đó là lý do nó đứng cuối, ngắn nhất (5,8%), và mang câu lật nghĩa. Người viết phải hiểu chỗ này, nếu không sẽ
+vô tình thêm thói quen 5 vào danh sách và làm mất điểm sắc.</p>
+</div>
+
+<p>Đây là lý do lấy nó: khuôn này <b>rẻ hơn</b> (không cần 7 nghề có tin tuyển thật, không cần số liệu chế độ)
+và <b>giữ chân tốt hơn</b> (23 phút so với 17 phút). Nhưng nó <b>xung đột</b> với <code>CONG_THUC_WIN_LANE_M.md</code> —
+xem mục 5.</p>
+
+<h2>1. Bằng chứng: kênh có công thức, không ăn may</h2>
+
+<table>
+<thead><tr><th>Video (dịch tiêu đề)</th><th class="num">View</th><th class="num">Tuổi</th><th class="num">View/ngày</th></tr></thead>
+<tbody>
+<tr><td>Sau nghỉ hưu, không xa hoa mà lòng vẫn đầy — 5 sở thích "cả đời" từ tuổi 60<br><span class="sub">【漫画】定年後、贅沢しなくても心は満たせる…60代から一生モノになる最高の趣味5選</span></td><td class="num">1.270.888</td><td class="num">1 tháng</td><td class="num">42.363</td></tr>
+<tr><td>5 thói quen để nửa sau cuộc đời không hối tiếc<br><span class="sub">【漫画】人生の後半を後悔なく生きるための習慣5選…定年後に見つける幸せな生き方【60代】</span></td><td class="num">272.938</td><td class="num">3 tuần</td><td class="num">12.997</td></tr>
+<tr><td><b>Sau nghỉ hưu, người hạng nhất không bỏ 5 "thói quen nhỏ"</b> ← <b>tập này</b><br><span class="sub">【漫画】定年後、一流の人ほど欠かさない「小さな習慣」5選【誰でも出来る】</span></td><td class="num"><b>168.196</b></td><td class="num">4 ngày</td><td class="num"><b>42.049</b></td></tr>
+<tr><td>Sau nghỉ hưu, một lần phải đến — 5 tuyệt cảnh đẹp khó quên của Nhật<br><span class="sub">【漫画】定年後に一度は訪れたい…人生で忘れられない日本の絶景・秘境5選</span></td><td class="num">170.912</td><td class="num">1 tháng</td><td class="num">5.697</td></tr>
+<tr><td>Sau nghỉ hưu, không tốn tiền mà đời rộng ra — 7 sở thích đặc biệt từ tuổi 60<br><span class="sub">【漫画】定年後、お金をかけずに人生が広がる！60代から始めたい特別な趣味7選</span></td><td class="num">89.217</td><td class="num">4 tuần</td><td class="num">3.186</td></tr>
+<tr><td>Sau nghỉ hưu vẫn "não trẻ hơn 10 tuổi" — 5 thói quen người đó lặng lẽ tận hưởng<br><span class="sub">【漫画】定年後も「脳が10歳若い人」がこっそり楽しんでいる習慣5選</span></td><td class="num">78.204</td><td class="num">2 tuần</td><td class="num">5.586</td></tr>
+<tr><td>Từ 65 tuổi, nỗi cô đơn mỏng dần — 5 sở thích đổi thay mỗi ngày một mình<br><span class="sub">【漫画】65歳から孤独が薄れていく人の共通点｜ひとりの毎日を変えた5つの趣味【幸せな人の共通点】</span></td><td class="num">19.373</td><td class="num">10 ngày</td><td class="num">1.937</td></tr>
+</tbody>
+</table>
+
+<p class="sub">Trung vị = 168.196. Không có video nào dưới 19k. Tổng kênh: 1.999.645 view / 7 video / 52 ngày tuổi.</p>
+
+<h2>2. Cấu trúc đo được (% SỐ CHỮ, không phải % thời lượng)</h2>
+
+<table>
+<thead><tr><th>Khối</th><th class="num">Từ → đến</th><th class="num">%</th><th>Nội dung</th></tr></thead>
+<tbody>
+<tr><td><b>A. Hook</b></td><td class="num">0:00 → 0:17</td><td class="num"><b>1,4%</b></td><td>châm ngôn của thợ + chia 2 loại người + tự chiếu vào mình</td></tr>
+<tr><td>B. Tự giới thiệu + nỗi đau</td><td class="num">1,4 → 8,6%</td><td class="num">7,2%</td><td>tên·tuổi·nghề · tự hạ · tiệc 11 người · quà · đồng hồ dừng · cất hộp</td></tr>
+<tr><td>C. Đời sống mất nhịp</td><td class="num">8,6 → 12,3%</td><td class="num">3,7%</td><td>mất thứ/ngày · 年賀状 17→8 · vợ thúc đi sửa</td></tr>
+<tr><td><b>D. Gặp thầy</b></td><td class="num">12,3 → 24,3%</td><td class="num"><b>12,0%</b></td><td>vào tiệm · "không hỏng" · <b>giảng cơ chế 4,3%</b> · 2 loại khách · định nghĩa 一流 · lời mời</td></tr>
+<tr><td><b>E. 5 THÓI QUEN</b></td><td class="num">25,0 → 83,9%</td><td class="num"><b>58,9%</b></td><td>① dậy cùng giờ + 1 việc nhỏ · ② nhận 1 việc ngoài chức danh · ③ khám mắt/tai/răng trước khi mờ · ④ chỉnh diện mạo mỗi sáng · ⑤ dừng thì lên dây lại — độ dài 10,4 · 14,6 · 15,2 · 11,5 · 5,8 = <b>57,5%</b> + nhịp sẹo thợ <b>1,4%</b></td></tr>
+<tr><td>F. Khủng hoảng</td><td class="num">83,9 → 87,4%</td><td class="num">3,5%</td><td>ốm 2 ngày → nghỉ 5 ngày → giọng cũ trong đầu → tự lên dây</td></tr>
+<tr><td>G. Nửa năm sau</td><td class="num">87,4 → 90,8%</td><td class="num">3,4%</td><td>montage 6 dòng, mỗi dòng 1 thói quen + 1 số nhỏ</td></tr>
+<tr><td>H. Vòng tròn</td><td class="num">90,8 → 94,7%</td><td class="num">3,9%</td><td>khách mới y hệt mình ở phút 0 → mình thành người trao lại</td></tr>
+<tr><td>I. Tổng kết</td><td class="num">94,7 → 97,3%</td><td class="num">2,6%</td><td>đọc lại 5 câu</td></tr>
+<tr><td>J. Luận đề + CTA</td><td class="num">97,3 → 100%</td><td class="num">2,7%</td><td>"khác nhau ở sáng hôm sau" + mất mát + mời bình luận</td></tr>
+</tbody>
+</table>
+
+<div class="note">
+<h4>Ba con số phải nhớ</h4>
+<ul>
+<li><b>Phần dẫn = 25,0%</b> — 1/4 video trước khi vào mục 1. Lane M hiện chỉ cho ~13%.</li>
+<li><b>5 thói quen = 58,9%</b>, chia <b>không đều</b>: 10,4 · 14,6 · 15,2 · 11,5 · <b>5,8</b> → cộng <b>57,5%</b>; phần còn lại tới 83,9% là <b>nhịp sẹo của thợ 1,4%</b> (125 chữ, ngay sau thói quen 5, vẫn trong khối E). Thói quen 5 ngắn nhất vì là mục cảm xúc.</li>
+<li><b>Phần kết = 16,1%</b> — video <b>không kết ở mục 5</b> mà kết bằng biến cố rồi mới đóng vòng.</li>
+</ul>
+</div>
+
+<h3>Độ dài 5 thói quen (so sánh trực quan)</h3>
+<table>
+<tbody>
+<tr><td style="width:210px">① Dậy cùng giờ · ゼンマイ</td><td><div class="bar"><i style="width:68%"></i><span>936 chữ · 10,4%</span></div></td></tr>
+<tr><td>② Nhận việc ngoài chức danh · 歯車</td><td><div class="bar"><i style="width:96%"></i><span>1.309 chữ · 14,6%</span></div></td></tr>
+<tr><td>③ Khám mắt/tai/răng · 風防</td><td><div class="bar"><i style="width:100%"></i><span>1.365 chữ · 15,2%</span></div></td></tr>
+<tr><td>④ Chỉnh diện mạo mỗi sáng · 文字盤</td><td><div class="bar"><i style="width:76%"></i><span>1.031 chữ · 11,5%</span></div></td></tr>
+<tr><td>⑤ Dừng thì lên dây lại · リューズ</td><td><div class="bar"><i style="width:38%"></i><span>519 chữ · 5,8%</span></div></td></tr>
+</tbody>
+</table>
+
+<h2>3. Công thức kịch bản — 7 quy tắc (bán thói quen, giảng bằng vật)</h2>
+
+<table>
+<thead><tr><th style="width:34px">#</th><th>Quy tắc</th><th>Vì sao ăn</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td><b>Món hàng là 5 THÓI QUEN, mỗi thói quen = 1 câu mệnh lệnh làm được sáng mai.</b> Đồ vật (đồng hồ) chỉ là <b>vật neo để giảng</b>: 5 bộ phận, mỗi bộ phận giải một cơ chế bằng lời thường, cơ chế đó ám đúng một nỗi đau của người nghỉ hưu. Thứ tự theo cung cảm xúc, không theo kỹ thuật; mục 5 ngắn nhất và chứa câu lật nghĩa.</td><td>Không phải "5 thói quen hay" (ai cũng nói được) mà là 5 thứ <i>cầm được trên tay</i> để nhớ. Đồng hồ tự lên dây = chỉ sống khi chủ nhân còn cử động; nhân vật vừa nghỉ hưu = vừa ngừng cử động. <b>Nhưng thứ bán ra vẫn là thói quen</b> — vật neo mà lấn lên thành nội dung là hỏng video.</td></tr>
+<tr><td class="num">2</td><td><b>Mỗi mục 5 nhịp cố định:</b> ① vật (1 câu tả hình dáng) → ② thợ <b>hỏi ngược</b> nhân vật 1 câu về đời sống → ③ thói quen = 1 mệnh lệnh ngắn → ④ <b>1 ví dụ thuận + 1 phản ví dụ</b> (người thật: tuổi + nghề + 1 chi tiết lạ) → ⑤ <b>nhân vật tự làm ngay</b>, có 1 chi tiết hài hoặc 1 câu của vợ.</td><td>Không mục nào chỉ liệt kê đặc điểm. Có người nói, có nhân vật làm → không phải bài giảng.</td></tr>
+<tr><td class="num">3</td><td><b>Mỗi mục đúng 1 con số nhỏ làm được ngay hôm sau</b> (5 phút · 1 cốc · 6 giờ sáng · 20 vòng · 450円). Số nhục ở phần B, số thân phận phần C, số nghề phần D, số trả giá phần F.</td><td>155 lượt số / 8.969 chữ = 17,3 số/1.000 chữ. Vị trí số quan trọng hơn số lượng.</td></tr>
+<tr><td class="num">4</td><td><b>Tự hạ bằng giọng hài, không bi thảm.</b> Gốc: 「容量の悪い男は諦めだけは容量がいい」 (thằng não kém thì riêng khoản bỏ cuộc là rộng lượng).</td><td>Cười ra nước mắt mua được đồng cảm mà không cần khóc. Cả video gần như không có từ 寂しい/悲しい — cảm xúc đi qua hành vi.</td></tr>
+<tr><td class="num">5</td><td><b>Vợ đẩy truyện, không an ủi.</b> 春江 xuất hiện 4 lần, mỗi lần 1 câu ngắn đẩy nhân vật đi tiếp.</td><td>Không có "anh cố lên". Câu ngắn, đúng, hơi cụt — và câu cuối làm nhân vật bật cười.</td></tr>
+<tr><td class="num">6</td><td><b>Kết 3 tầng không rút gọn:</b> khủng hoảng (tự cứu, không ai cứu) → montage nửa năm (6 dòng có số) → <b>vòng tròn</b> (người mới bước vào y hệt mình ở phút 0, mình lặp lại câu của thầy). Cộng 1 mất mát không lấy lại.</td><td>Vòng tròn lấy nước mắt mà không cần nhân vật nói "tôi đã thay đổi".</td></tr>
+<tr><td class="num">7</td><td><b>Câu lật nghĩa đổi nghĩa từ khoá tiêu đề, đặt 79,2%.</b> Gốc: 「一流ってのはね、沼田さん、止まらない人のことじゃない。巻き直しの早い人のことです。」</td><td>Câu được trích nhiều nhất trong bình luận. Không có nó thì video chỉ là "5 lời khuyên".</td></tr>
+</tbody>
+</table>
+
+<h2>4. Hook — sườn 4 nhịp, 17 giây, 123 chữ</h2>
+
+<img class="thumb" src="thumbs/VOx2qqJpEHQ.jpg" alt="thumbnail gốc VOx2qqJpEHQ">
+
+<div class="hookstep">
+  <div class="pct">16%</div>
+  <div class="body">
+    <div class="role">Nhịp 1 — câu khẳng định như chân lý, về một ĐỒ VẬT, không nói về người</div>
+    <span class="jp">「定年した男の時計は1度止まるんです。」</span>
+    <span class="vi">Đồng hồ của người đàn ông đã nghỉ hưu, kiểu gì cũng dừng một lần.</span>
+    <span class="vi" style="margin-top:6px">Bí mật: nó <b>hứa một quy luật</b> mà người xem 55+ tin ngay vì họ thấy đúng.</span>
+  </div>
+</div>
+
+<div class="hookstep">
+  <div class="pct">23%</div>
+  <div class="body">
+    <div class="role">Nhịp 2 — ai nói, ở đâu, nghề bao lâu</div>
+    <span class="jp">商店街の外れの小さな時計屋で74歳の店主はそう言った。</span>
+    <span class="vi">Ở tiệm đồng hồ nhỏ cuối phố chợ, ông chủ 74 tuổi nói vậy.</span>
+    <span class="vi" style="margin-top:6px">Uy tín đến từ <b>tuổi + số năm nghề</b>, không từ tính từ. Không tả cảnh, không tả mùa.</span>
+  </div>
+</div>
+
+<div class="hookstep">
+  <div class="pct">57%</div>
+  <div class="body">
+    <div class="role">Nhịp 3 — nhịp nặng nhất: chia thế giới làm 2 → mốc thời gian → đặt tên cho 1 nửa</div>
+    <span class="jp">そのまま止めておく人と自分の指で巻き直す人がいる。5年経つと顔つきまで別人ですよ。巻き直す方の人を私は一流と呼んでます。</span>
+    <span class="vi">Có người để nguyên cho dừng, có người tự tay lên dây lại. 5 năm sau mặt mũi khác hẳn. Người lên dây lại, tôi gọi là hạng nhất.</span>
+    <span class="vi" style="margin-top:6px">Cấu trúc: <code>có A / có B</code> → <code>5 năm sau khác hẳn</code> → <code>tôi gọi B là [từ khoá]</code>. Từ khoá = từ khoá tiêu đề → hook và tiêu đề khoá vào nhau. <b>Chưa lộ 5 thói quen, chưa lộ bộ phận nào.</b></span>
+  </div>
+</div>
+
+<div class="hookstep">
+  <div class="pct">14%</div>
+  <div class="body">
+    <div class="role">Nhịp 4 — tự chiếu vào mình, nửa XẤU</div>
+    <span class="jp">俺の時計も3年前から止まったままだ。</span>
+    <span class="vi">Đồng hồ của tôi cũng dừng từ 3 năm trước, đến giờ.</span>
+    <span class="vi" style="margin-top:6px">Câu mua thiện cảm: người kể <b>không dạy khán giả</b>, anh ta đang ở đáy giống khán giả. Rồi mới vào tên/tuổi/nghề ở giây 17.</span>
+  </div>
+</div>
+
+<h3>Thông số hook</h3>
+<table>
+<tbody>
+<tr><td style="width:190px"><b>Động cơ chính</b></td><td><code>TO_MO</code> — so sánh 2 người + "kết cục ra sao". Phụ: <code>BI_AN</code> (đồ vật "không hỏng mà vẫn dừng").</td></tr>
+<tr><td><b>Cách mở giây 0</b></td><td>trích lời người khác trong ngoặc kép — KHÔNG tả cảnh, KHÔNG câu hỏi người dẫn, KHÔNG tự giới thiệu</td></tr>
+<tr><td><b>Hook kết thúc</b></td><td>giây <b>17</b> → vào tuyến tính</td></tr>
+<tr><td><b>Khuôn lane</b></td><td><span class="pill mid">MỚI — M-D</span> Không khớp M-A (cần "cảnh việc làm thất bại + なぜ + hứa N việc") / M-B (cú sốc ca-lương) / M-C (phóng sự câu hỏi). Theo <code>00_CHUNG.md</code> §1.4 → <b>sườn hook gốc thắng</b>. Cần anh duyệt để ghi vào <code>M_teinengo-anaba.md</code>.</td></tr>
+<tr><td><b>Cấm trong hook</b></td><td>nhắc 65歳 bị cắt hợp đồng bằng lời · nhắc "5 thói quen" · nhắc tên bộ phận · xin đăng ký</td></tr>
+</tbody>
+</table>
+
+<h2>5. ⚠️ Xung đột với công thức win của lane</h2>
+
+<div class="warn">
+<h4>Hai khuôn KHÔNG trộn được</h4>
+<p style="margin:0">Nếu máy 1 chỉ đọc <code>CONG_THUC_WIN_LANE_M.md</code> rồi viết theo <code>第7位 → 第1位</code> thì tập sẽ <b>sai hoàn toàn</b>.
+Ngược lại, nếu giữ nguyên 100% khuôn 7選 thì <b>đừng dùng video này</b> — nó không có <code>第7位</code> nào.</p>
+</div>
+
+<table>
+<thead><tr><th>Hạng mục</th><th>Khuôn 7選 (hiện hành)</th><th>Tập 16</th></tr></thead>
+<tbody>
+<tr><td>Dạng</td><td>TOP7, đếm ngược</td><td><b>5 thói quen</b>, đánh số 1→5, không xếp hạng</td></tr>
+<tr><td>Đơn vị giá trị</td><td>1 mục = 1 món/địa điểm</td><td><b>1 mục = 1 hành động làm được sáng mai</b></td></tr>
+<tr><td><code>第N位</code></td><td><span class="pill yes">bắt buộc</span></td><td><span class="pill no">không có</span></td></tr>
+<tr><td>A/B/C ở 42–47% + <code>コメントで教えてください</code></td><td><span class="pill yes">bắt buộc</span></td><td><span class="pill no">không có</span></td></tr>
+<tr><td>「俺の答えは、最後に言う」</td><td><span class="pill yes">bắt buộc</span></td><td><span class="pill no">không có</span></td></tr>
+<tr><td>Phần dẫn trước mục 1</td><td>~13% (第7位 trước phút 4)</td><td><b>25%</b> (mục 1 ở 5:39)</td></tr>
+<tr><td>Cảnh 春江 + 家計簿 + 緑のノート 8–12%</td><td><span class="pill yes">bắt buộc</span></td><td>không có sổ; 春江 rải rác 4 lần</td></tr>
+<tr><td>Nút 38–40% (người gây bất công quay lại)</td><td><span class="pill yes">bắt buộc</span></td><td>thay bằng 三上 gọi lại ở <b>~62%</b></td></tr>
+<tr><td>Cao trào tự trọng 55–60%</td><td><span class="pill yes">bắt buộc</span></td><td>dời xuống ~62% (trong mục 3)</td></tr>
+<tr><td>第1位 76–80% trả lời nhá hook</td><td><span class="pill yes">bắt buộc</span></td><td>thay bằng <b>câu lật nghĩa 79,2%</b></td></tr>
+<tr><td>Kết 95% trả lời A/B/C</td><td><span class="pill yes">bắt buộc</span></td><td>khủng hoảng + vòng tròn + tổng kết 5 câu</td></tr>
+</tbody>
+</table>
+
+<div class="ok">
+<h4>Hệ quả cụ thể cho h2dev</h4>
+<ul>
+<li><code>pipeline\kiem_cong_thuc_win.py --profile teinengo-anaba --slug ep16-…</code> <b>sẽ báo ❌ ở mốc 9 và 10</b>. Đây là <b>đúng thiết kế</b>, không phải lỗi viết. Ghi lý do vào <code>viec_tay.txt</code> / báo cáo, <b>KHÔNG sửa kịch bản để đối phó máy kiểm</b>.</li>
+<li><b>Override <code>script.structure_block</code></b> bằng khối ở hồ sơ §7 — không dùng khối <code>7選</code> đang nạp trong profile.</li>
+<li>Ghi vào <code>promise.txt</code> + <code>series_ctx.txt</code>: <i>"Tập này miễn mốc A/B/C và 第N位 (khuôn 5 thói quen, vật neo = đồng hồ)."</i></li>
+<li><b>Vẫn giữ 3 yếu tố lane M</b> — xem mục 6.</li>
+</ul>
+</div>
+
+<h2>6. Chuyển thể — đổi gì, giữ gì</h2>
+
+<h3>6.0 Ba yếu tố lane M phải bơm vào (gốc KHÔNG có)</h3>
+<p>Bơm vào chỗ <b>đã có sẵn</b> để không đổi nhịp: phần B (7,2%) và phần F/G. <b>Không bơm vào 5 thói quen</b> — 5 thói quen phải giữ nguyên nội dung gốc.</p>
+
+<table>
+<thead><tr><th>Yếu tố</th><th>Cách bơm</th><th class="num">Đặt ở %</th></tr></thead>
+<tbody>
+<tr><td><b>Bị hạ giá vì tuổi, có người có quyền</b></td><td>田島 63, 定年 60, làm 再雇用 3 năm; <b>tháng 9 vừa rồi 課長 三上 41 tuổi báo qua màn hình: 「65歳で、更新は終わりです」</b> — lịch sự, không nhìn mặt, không xúc phạm, không パワハラ</td><td class="num">~5,5%<br><span class="sub">(thay chỗ "đồng hồ dừng")</span></td></tr>
+<tr><td><b>Mất mát bằng con số</b></td><td>再雇用 18万円 → 年金 14万円 = hụt <b>4万円/tháng</b>, 3 năm hụt <b>144万円</b>. 年賀状 <b>21→9</b>. Tiệc chia tay <b>9 người</b> (sếp cùng đợt: <b>40 người</b>)</td><td class="num">3,8–8,6%</td></tr>
+<tr><td><b>Quyết định tự trọng</b></td><td>~62%: 三上 gọi mời quay lại 3 tháng hợp đồng ngắn, điều kiện 「前と同じで」 → 田島 từ chối <b>bình tĩnh</b>, để lại sổ bàn giao ở <b>ngăn kéo thứ ba</b></td><td class="num">~62%<br><span class="sub">(trong mục 3)</span></td></tr>
+</tbody>
+</table>
+
+<p class="sub">Ba thứ này <b>thay thế</b> chi tiết kịch tính của gốc (tiệc 11→9 người · 年賀状 17→8 thành 21→9 · ốm 38° thành 帯状疱疹) chứ không cộng thêm → tổng độ dài và nhịp không đổi.</p>
+
+<h3>6.1 Bảng đổi</h3>
+<table>
+<thead><tr><th>Hạng mục</th><th>Gốc</th><th>Tập 16</th></tr></thead>
+<tbody>
+<tr><td>Nhân vật chính</td><td>沼田豊 63 · 資材課 42 năm · 平社員</td><td><b>田島誠 63 · 総務 38 năm · 平社員</b></td></tr>
+<tr><td>Vợ</td><td>静</td><td><b>春江 61</b> (part-time siêu thị)</td></tr>
+<tr><td>Thợ</td><td>片岡 74 tuổi · 50 năm</td><td><b>大隅源治（おおすみ げんじ）76 tuổi · 48 năm</b></td></tr>
+<tr><td>Đồ vật</td><td>腕時計 automatic, quà 11 người</td><td><b>腕時計 automatic, quà 9 người</b>, khắc 裏蓋 「田島さんへ 総務一同」</td></tr>
+<tr><td>Nghề thợ</td><td>時計店</td><td>時計店 <b>(giữ)</b> — đổi là mất 5 vật neo</td></tr>
+<tr><td>Khủng hoảng</td><td>風邪 38° 2 ngày · nghỉ 5 ngày</td><td><b>帯状疱疹 3 ngày không ngồi dậy</b> · nghỉ 5 ngày</td></tr>
+<tr><td>Khách vòng tròn</td><td>60代 giữa · 3 ngày râu</td><td><b>58 tuổi</b> (trẻ hơn 田島 — đau hơn) · 2 ngày râu</td></tr>
+<tr><td>Số</td><td>42年 · 11人 · 50人 · 17→8 · 100点 · 半月 · 450円 · 3000円</td><td>38年 · 9人 · 40人 · 21→9 · 90点 · 10日 · 480円 · 2.400円</td></tr>
+</tbody>
+</table>
+
+<h3>6.2 Năm thói quen — bản chuyển thể</h3>
+<table>
+<thead><tr><th style="width:30px">#</th><th>Thói quen (MÓN HÀNG)</th><th>Vật neo</th><th>Cơ chế dùng để giảng</th><th>Ví dụ thuận / phản ví dụ</th><th class="num">Chữ</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td><b>6 giờ sáng dậy, 1 việc nhỏ cố định</b> (5 phút)</td><td><b>ゼンマイ</b><br><span class="sub">dây cót</span></td><td>cót lên thì chạy; không ai lên hộ</td><td><span class="pill yes">thuận</span> 元・給食調理員 79: 5:30 nấu 1 bát canh cho mình, 12 năm chưa bỏ<br><span class="pill no">phản</span> 元・運転手: quyết chạy 5km → 3 tuần đau khớp → bỏ</td><td class="num">930</td></tr>
+<tr><td class="num">2</td><td><b>Nhận 1 việc người khác nhờ, ngoài chức danh</b></td><td><b>歯車</b><br><span class="sub">bánh răng</span></td><td>1 bánh răng quay một mình vô nghĩa; phải ăn khớp</td><td><span class="pill yes">thuận</span> 元・郵便局員 74: tự nhận dán bảng tin, dọn kho<br><span class="pill no">phản</span> 元・工場長 78: vẫn đòi gọi "giám đốc" → không ai nhờ nữa</td><td class="num">1.300</td></tr>
+<tr><td class="num">3</td><td><b>Đi khám mắt/tai/răng TRƯỚC khi thấy mờ, đau</b> (6 tháng/lần)</td><td><b>風防</b><br><span class="sub">kính mặt</span></td><td>kính mờ dần nên chủ nhân không biết mình nhìn mờ</td><td><span class="pill yes">thuận</span> 元・タクシー運転手 78: nghe kém → tháng đó lắp máy trợ thính, vẫn giữa câu chuyện<br><span class="pill no">phản</span> 元・工場長 78: giả vờ nghe được → nửa năm sau không ai rủ</td><td class="num">1.360</td></tr>
+<tr><td class="num">4</td><td><b>Không gặp ai vẫn chỉnh mặt mũi mỗi sáng</b></td><td><b>文字盤</b><br><span class="sub">mặt số</span></td><td>mặt số bẩn thì máy tốt cũng bị coi là rẻ</td><td><span class="pill yes">thuận</span> 元・理容師 84: đến lấy đồng hồ vẫn sơ mi là phẳng<br><span class="pill no">phản</span> 元・営業 76: từ ngày vợ mất mặc đồ ngủ cả ngày, không mở cửa</td><td class="num">1.030</td></tr>
+<tr><td class="num">5</td><td><b>Dừng thì lên dây lại ngay, không tự chửi</b> (20 vòng)</td><td><b>リューズ</b><br><span class="sub">núm lên dây</span></td><td>đồ tự lên dây vẫn có ngày dừng; dừng thì lên tay</td><td><span class="pill yes">thuận</span> 元・バス運転手 81: bị từ chối 6 chỗ, chỗ 7 nhận, "đi muộn 1 tháng thôi"<br><span class="pill no">phản</span> chính 田島 trong khủng hoảng</td><td class="num">520</td></tr>
+</tbody>
+</table>
+
+<div class="note">
+<h4>Câu lật nghĩa (79,2%, cuối thói quen 5)</h4>
+<p class="jp" style="margin:0;font-size:1.05rem">「一流ってのはね、沼田さん、止まらない人のことじゃない。<b>巻き直しの早い人</b>のことです。」</p>
+<p class="vi" style="margin-top:6px">Hạng nhất không phải người không bao giờ dừng — mà là người lên dây lại nhanh.</p>
+</div>
+
+<h2>7. Gói đăng</h2>
+
+<h3>Tiêu đề</h3>
+<table>
+<tbody>
+<tr><td style="width:30px"><span class="pill yes">1</span></td><td><b>【漫画】定年後、一流の人ほど欠かさない「小さな習慣」5選｜止まった時計を巻き直せない63歳</b><br><span class="sub">Sau nghỉ hưu, người hạng nhất không bao giờ bỏ 5 "thói quen nhỏ" | Người đàn ông 63 tuổi không lên dây lại được chiếc đồng hồ đã dừng</span></td></tr>
+<tr><td><span class="pill mid">2</span></td><td>【漫画】定年後、時計が止まったままの男が変わるまで｜50代・60代が知らない5つの習慣<br><span class="sub">Sau nghỉ hưu, cho tới khi người đàn ông có chiếc đồng hồ dừng hẳn thay đổi | 5 thói quen người 50–60 không biết</span></td></tr>
+<tr><td><span class="pill mid">3</span></td><td>【漫画】定年後、一流と二流を分ける5つの習慣｜再雇用を切られた63歳、4年ぶりに時計を巻く<br><span class="sub">Sau nghỉ hưu, 5 thói quen phân biệt hạng nhất và hạng nhì | 63 tuổi bị cắt tái tuyển, 4 năm mới lên dây lại đồng hồ</span></td></tr>
+</tbody>
+</table>
+
+<h3>Thumbnail — khuôn KHOẢNG CÁCH 2 panel</h3>
+<table>
+<tbody>
+<tr><td style="width:120px">băng trên</td><td>「定年後の過ごし方」 <span class="sub">(cách sống sau nghỉ hưu) — chữ vàng, viền đen</span></td></tr>
+<tr><td><b>panel trái</b></td><td>田島 ngồi 炬燵, áo samue, nhìn điện thoại, mặt bơ phờ · nhãn đen 「そのままの人」</td></tr>
+<tr><td><b>panel phải</b></td><td>田島 áo sơ mi trắng + gile, cầm nhíp sửa đồng hồ, mặt tập trung · nhãn đen 「巻き直す人」</td></tr>
+<tr><td>mũi tên</td><td>đỏ, phải → trái, chỉ vào người bên phải</td></tr>
+<tr><td>băng dưới</td><td>「5年で顔つきが変わる」 <span class="sub">(5 năm là mặt mũi khác) — chữ đỏ, viền trắng</span></td></tr>
+<tr><td><b>CẤM</b></td><td>1 mặt lo âu + chữ to (khuôn thua đã đo) · chữ che mặt · ghi "5選" nếu kịch bản không đủ 5 mục</td></tr>
+</tbody>
+</table>
+
+<h2>8. Rủi ro / chưa làm</h2>
+<ol>
+<li><b>Chưa có bản dịch chính thức</b> — toàn bộ dựa trên ASR tiếng Nhật. ASR sai (はれ→外れ · 天手→店主 · 裏豚→裏蓋 · 容量→要領 · 相別会→送別会). Đã sửa khi trích, <b>không</b> dùng nguyên văn ASR để chép câu.</li>
+<li><b>Chưa xác minh 帯状疱疹</b> bằng nguồn y khoa → chỉ dùng định tính ("đau, 3 ngày không ngồi dậy"), không tỉ lệ, không tên thuốc.</li>
+<li><b>Chưa kiểm 10 nhân vật ví dụ mới</b> có trùng danh sách CẤM nghề ep01–15 không (đây là <i>nhân vật ví dụ</i>, không phải mục xếp hạng, nhưng vẫn nên soát).</li>
+<li><b>Xung đột công thức (mục 5) là rủi ro lớn nhất</b> — nếu máy 1 chạy máy kiểm mặc định rồi sửa kịch bản cho đạt, tập sẽ hỏng.</li>
+<li><b>Rủi ro lớn thứ hai: hiểu sai món hàng.</b> Nếu kịch bản mở bằng "hôm nay tôi giới thiệu 5 bộ phận của chiếc đồng hồ" thì đã trượt — đó là video cấu tạo đồng hồ. Kiểm: đọc 5 câu mệnh lệnh của 5 thói quen, nếu không đọc ra được thành hành động làm sáng mai thì viết lại.</li>
+<li><b>Khối giảng cơ chế 4,3%</b> (382 chữ liền không có cảnh hành động) là chỗ dễ mất người xem nhất. Gốc vẫn thắng nên giả định giữ được, nhưng nếu bản của mình tụt giữ chân thì đây là chỗ cắt đầu tiên — và cắt thì mất luôn vật neo của cả 5 thói quen.</li>
+<li><b>Chưa thử khuôn M-D trên kênh mình lần nào.</b> Đây là tập đầu → nên xem giữ chân 30 giây đầu sau khi đăng.</li>
+</ol>
+
+<h2>9. Quyết định cần anh</h2>
+<div class="note">
+<h4>Ba câu hỏi</h4>
+<ol style="margin:6px 0">
+<li><b>Duyệt khuôn 5 thói quen (vật neo = đồng hồ) cho tập 16?</b> (nếu không, phải đổi video gốc — video này không có <code>第7位</code>)</li>
+<li><b>Duyệt khuôn hook M-D</b> để ghi vào <code>docs\HOOK_CAU_TRUC\M_teinengo-anaba.md</code> thành khuôn thứ 4 của lane?</li>
+<li><b>Tiêu đề số 1</b> — hay đổi sang phương án khác / giữ nguyên tiêu đề gốc?</li>
+</ol>
+</div>
+
+<footer>
+TRENDING-RESEARCH · Lane M <code>teinengo-anaba</code> · tập 16 · 19/10/2026<br>
+Dữ liệu thật: Data API (metadata, 7 video kênh) + InnerTube keyless (transcript 448 segment, 29 comment) + thumbnail gốc.<br>
+Hồ sơ đầy đủ: <code>E:\CLAUDE\YOUTUBE\h2dev\FlowHandoff_local\results\laneM_tap16_2026-10-19\HO_SO_BAN_GIAO_LANE_M_TAP16.md</code>
+</footer>
+
+</div>
+</body>
+</html>

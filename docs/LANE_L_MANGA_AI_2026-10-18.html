@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lane L — Video manga AI quả báo · 3 ngày · &gt;100k view · kênh ≤5.000 sub</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',Roboto,'Noto Sans JP',sans-serif;
+  background:#0d1117;color:#c9d1d9;line-height:1.65;padding:32px 20px 72px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:26px;color:#f0f6fc;letter-spacing:-.4px;margin-bottom:6px}
+.sub{color:#8b949e;font-size:13.5px;margin-bottom:26px}
+.sub b{color:#e6edf3}
+
+.verdict{background:linear-gradient(135deg,#12261a,#0d1a2b);border:1px solid #2d4a35;
+  border-left:4px solid #3fb950;border-radius:10px;padding:20px 22px;margin-bottom:26px}
+.verdict h2{font-size:15px;color:#3fb950;text-transform:uppercase;letter-spacing:1.1px;
+  margin-bottom:10px;font-weight:700}
+.verdict p{font-size:14px;color:#c9d1d9}
+.verdict .big{font-size:17px;color:#f0f6fc;font-weight:600;margin:8px 0}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:28px}
+.stat{background:#161b22;border:1px solid #30363d;border-radius:9px;padding:14px 16px}
+.stat .k{font-size:11px;color:#8b949e;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px}
+.stat .v{font-size:23px;font-weight:700;color:#f0f6fc;font-variant-numeric:tabular-nums}
+.stat .v.g{color:#3fb950}
+.stat .v.y{color:#d29922}
+.stat .n{font-size:11.5px;color:#6e7681;margin-top:3px}
+
+h3{font-size:16px;color:#f0f6fc;margin:32px 0 4px;padding-bottom:8px;border-bottom:1px solid #21262d}
+h3 .tag{font-size:11px;background:#1f6feb;color:#fff;padding:2px 8px;border-radius:20px;
+  vertical-align:middle;margin-left:8px;font-weight:600;letter-spacing:.4px}
+h3 .tag.r{background:#8b2c2c}
+h3 .tag.y{background:#8a6d1f}
+.lead{font-size:13px;color:#8b949e;margin:8px 0 16px}
+
+.hit{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:0;
+  margin-bottom:18px;overflow:hidden}
+.hit.win{border-color:#2d4a35;box-shadow:0 0 0 1px #23863622}
+.hit-head{display:flex;gap:16px;padding:16px 18px;background:#12171e;border-bottom:1px solid #21262d}
+.hit-rank{flex:0 0 40px;height:40px;border-radius:8px;background:#238636;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700}
+.hit-rank.y{background:#9e6a03}
+.hit-rank.g{background:#30363d;color:#8b949e}
+.hit-title{flex:1;min-width:0}
+.hit-title a{color:#58a6ff;text-decoration:none;font-size:14.5px;font-weight:600;line-height:1.45;
+  display:block}
+.hit-title a:hover{text-decoration:underline}
+.hit-title .ch{font-size:12.5px;color:#8b949e;margin-top:5px}
+.hit-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:1px;
+  background:#21262d}
+.hit-body .s{background:#161b22;padding:11px 14px}
+.hit-body .s .k{font-size:10.5px;color:#6e7681;text-transform:uppercase;letter-spacing:.5px}
+.hit-body .s b{display:block;font-size:16px;color:#f0f6fc;font-variant-numeric:tabular-nums;
+  margin-top:2px}
+.hit-body .s b.g{color:#3fb950}
+.hit-note{padding:12px 18px;font-size:12.5px;color:#8b949e;border-top:1px solid #21262d;
+  background:#0f141a}
+.hit-note b{color:#c9d1d9}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0 8px}
+th{background:#161b22;color:#8b949e;font-size:11px;text-transform:uppercase;letter-spacing:.6px;
+  padding:9px 10px;text-align:left;border-bottom:1px solid #30363d;font-weight:600;
+  position:sticky;top:0}
+td{padding:9px 10px;border-bottom:1px solid #21262d;vertical-align:top}
+tr:hover td{background:#161b22}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.num b{color:#f0f6fc}
+td.num.g b{color:#3fb950}
+td.num.y b{color:#d29922}
+a.lnk{color:#58a6ff;text-decoration:none}
+a.lnk:hover{text-decoration:underline}
+.ch-name{color:#e6edf3;font-weight:500}
+.muted{color:#6e7681;font-size:12px}
+
+.box{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:18px 20px;
+  margin:18px 0;font-size:13.5px}
+.box.warn{border-left:3px solid #d29922;background:#1c1710}
+.box.info{border-left:3px solid #1f6feb;background:#0d1626}
+.box.ok{border-left:3px solid #3fb950;background:#0f1a14}
+.box h4{font-size:13px;color:#f0f6fc;margin-bottom:8px;text-transform:uppercase;
+  letter-spacing:.8px}
+.box ul{margin:8px 0 0 18px}
+.box li{margin-bottom:6px;color:#c9d1d9}
+.box code{background:#21262d;color:#79c0ff;padding:1px 5px;border-radius:4px;font-size:12px}
+.box .x{color:#f85149;font-weight:600}
+.box .v{color:#3fb950;font-weight:600}
+
+.foot{margin-top:36px;padding-top:16px;border-top:1px solid #21262d;font-size:11.5px;
+  color:#6e7681}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Lane L — Video manga AI quả báo / công sở</h1>
+<div class="sub">
+  Điều kiện cứng: <b>≤72 giờ</b> · <b>&gt;100.000 view</b> · <b>kênh ≤5.000 sub</b> ·
+  <b>chỉ manga ảnh AI</b> (loại footage thật / dashcam / bình luận tin tức)<br>
+  Quét ngày 18/10/2026 · 2 đường độc lập: channel-first 2.493 kênh (21.019 video) +
+  mô-típ 恩返し 90 kênh (842 video) · <b>0 quota search</b> (dùng <code>videos.list</code>/<code>channels.list</code>)
+</div>
+
+<div class="verdict">
+  <h2>Kết luận</h2>
+  <p>Trong toàn bộ ngách, <b>đúng 1 video</b> thoả cả 4 điều kiện (3 số + format manga AI):</p>
+  <div class="big">逆転ときめき漫画 · 615 sub · 118.744 view · 39,3 giờ</div>
+  <p>Đây là kênh <b>13 ngày tuổi</b>, mới 11 video, và <b>2 video bùng</b> (118k + 76k) đều cùng
+  một mô-típ: <b>làm ơn lúc hoạn nạn → vài tháng sau được đền đáp</b>. Không phải trả thù,
+  không phải ざまぁ — đúng nghĩa "quả báo không trả thù".</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="k">Video ĐẠT</div><div class="v g">1</div>
+    <div class="n">trong 981 video đúng ngách (1.487 manga AI)</div></div>
+  <div class="stat"><div class="k">Kênh đã quét</div><div class="v">2.493</div>
+    <div class="n">1.522 kênh ≤5.000 sub</div></div>
+  <div class="stat"><div class="k">Video đã soi</div><div class="v">21.019</div>
+    <div class="n">uploads 72h của kênh nhỏ</div></div>
+  <div class="stat"><div class="k">Video 50–100k</div><div class="v y">2</div>
+    <div class="n">gần ngưỡng, cùng format</div></div>
+</div>
+
+<h3>1. Video ĐẠT cả 4 điều kiện <span class="tag">DUY NHẤT</span></h3>
+<div class="lead">Đã xác minh thumbnail bằng vision: manga AI, không phải footage thật.</div>
+
+<div class="hit win">
+  <div class="hit-head">
+    <div class="hit-rank">1</div>
+    <div class="hit-title">
+      <a href="https://youtu.be/1z1jBVSRYNA" target="_blank">【漫画】大混雑の深夜食堂にボロボロの母娘「子供たちだけでも食べさせて…」接客を手伝ってもらった結果→数ヶ月後、予約の取れない名店に…【恋愛マンガ動画】</a>
+      <div class="ch">逆転ときめき漫画 · <a class="lnk" href="https://www.youtube.com/channel/UC-xq-30Dlt4zsbpPxl7nwFg" target="_blank">UC-xq-30Dlt4zsbpPxl7nwFg</a> · tạo 05/10/2026 (13 ngày)</div>
+    </div>
+  </div>
+  <div class="hit-body">
+    <div class="s"><div class="k">View</div><b class="g">118.744</b></div>
+    <div class="s"><div class="k">Tuổi</div><b>39,3 giờ</b></div>
+    <div class="s"><div class="k">Sub kênh</div><b class="g">615</b></div>
+    <div class="s"><div class="k">Like</div><b>258</b></div>
+    <div class="s"><div class="k">Comment</div><b>8</b></div>
+    <div class="s"><div class="k">View/sub</div><b class="g">193×</b></div>
+  </div>
+  <div class="hit-note">
+    <b>Mô-típ:</b> quán ăn đêm đông khách → mẹ con rách rưới xin ăn → chủ cho ăn và nhờ phụ bàn
+    → vài tháng sau quay lại thành khách VIP, quán đổi đời.<br>
+    <b>Vì sao đáng học:</b> không có ác nhân, không có báo thù — phần thưởng đến từ <b>lòng tốt
+    được đền đáp</b>. Đây là biến thể "quả báo" dễ lên nhất mà vẫn sạch về đạo đức.<br>
+    <b>Cấu trúc kênh:</b> 11 video / 192.133 tổng view → <b>1 video chiếm 62% toàn kênh</b>
+    (median kênh chỉ 13.806). Đây là <b>hit đơn lẻ</b>, chưa phải cỗ máy ổn định.
+  </div>
+</div>
+
+<h3>2. Video 50–100k — gần ngưỡng, cùng format manga AI <span class="tag y">THEO DÕI</span></h3>
+<div class="lead">Chưa đạt 100k nhưng đúng ngách + đúng format. Đáng đưa vào watchlist vì có thể vượt ngưỡng trong 1–2 ngày.</div>
+
+<table>
+<thead><tr><th style="width:34%">Tiêu đề</th><th>Kênh</th><th class="num">View</th>
+<th class="num">Tuổi</th><th class="num">Sub</th><th class="num">View/sub</th></tr></thead>
+<tbody>
+<tr><td><a class="lnk" href="https://youtu.be/KCvrhcEsU_0" target="_blank">【漫画】退職金1500万円を5年で使い切った62歳の末路…何にいくら使ったのか…</a></td>
+<td><span class="ch-name">他人事じゃない人生【ヒトゴト】</span><br><span class="muted">10 video · 825 sub</span></td>
+<td class="num y"><b>73.713</b></td><td class="num">37,5h</td><td class="num">825</td><td class="num y"><b>89×</b></td></tr>
+<tr><td><a class="lnk" href="https://youtu.be/rJTnnbkVCjY" target="_blank">【漫画】友人を乗せていた67歳。教室へは別々に行くと伝えたあとの水彩教室</a></td>
+<td><span class="ch-name">シニアのお金と暮らし劇場</span><br><span class="muted">37 video · 602 sub</span></td>
+<td class="num y"><b>63.767</b></td><td class="num">44,5h</td><td class="num">602</td><td class="num y"><b>106×</b></td></tr>
+</tbody>
+</table>
+
+<h3>3. Bảng kênh manga AI ≤5k sub — xếp theo median view <span class="tag">WATCHLIST</span></h3>
+<div class="lead">Median = độ ổn định (kênh có công thức). Cột <code>max</code> = ăn may. Kênh nào median cao <b>và</b> max gần median là cỗ máy thật.</div>
+
+<table>
+<thead><tr><th>Kênh</th><th class="num">Median</th><th class="num">Max</th><th class="num">n</th>
+<th class="num">Sub</th><th class="num">Tổng vid</th><th class="num">Ngày tạo</th></tr></thead>
+<tbody>
+<tr><td class="ch-name">他人事じゃない人生【ヒトゴト】</td><td class="num"><b>73.713</b></td><td class="num">73.713</td><td class="num">1</td><td class="num">825</td><td class="num">10</td><td class="num muted">—</td></tr>
+<tr><td class="ch-name">人には言えない話</td><td class="num"><b>26.293</b></td><td class="num">26.293</td><td class="num">1</td><td class="num">1.800</td><td class="num">19</td><td class="num muted">—</td></tr>
+<tr><td class="ch-name">女を舐めるな【スカッと漫画】</td><td class="num"><b>25.621</b></td><td class="num">25.621</td><td class="num">1</td><td class="num">826</td><td class="num">14</td><td class="num muted">—</td></tr>
+<tr><td class="ch-name">しおりの恋灯り文庫</td><td class="num"><b>15.799</b></td><td class="num">17.993</td><td class="num">2</td><td class="num">4.770</td><td class="num">36</td><td class="num muted">2021-07</td></tr>
+<tr><td class="ch-name">逆転ときめき漫画 <span class="muted">← hit</span></td><td class="num g"><b>13.806</b></td><td class="num g">118.417</td><td class="num">3</td><td class="num">615</td><td class="num">11</td><td class="num muted">2026-10</td></tr>
+<tr><td class="ch-name">夜更けの恋便り【BLストーリー】</td><td class="num"><b>12.699</b></td><td class="num">15.293</td><td class="num">3</td><td class="num">110</td><td class="num">10</td><td class="num muted">—</td></tr>
+<tr><td class="ch-name">妻のスカッと【ツマスカ】</td><td class="num"><b>11.164</b></td><td class="num">11.331</td><td class="num">3</td><td class="num">702</td><td class="num">18</td><td class="num muted">—</td></tr>
+<tr><td class="ch-name">隠れ大富豪チャンネル</td><td class="num"><b>10.152</b></td><td class="num">12.679</td><td class="num">3</td><td class="num">1.800</td><td class="num">161</td><td class="num muted">2026-03</td></tr>
+<tr><td class="ch-name">独身男の人生マンガ</td><td class="num"><b>13.849</b></td><td class="num">21.798</td><td class="num">3</td><td class="num">1.260</td><td class="num">15</td><td class="num muted">2026-08</td></tr>
+<tr><td class="ch-name">絶対に許さないからな【スカっと】</td><td class="num"><b>6.271</b></td><td class="num">17.126</td><td class="num">3</td><td class="num">760</td><td class="num">34</td><td class="num muted">—</td></tr>
+<tr><td class="ch-name">人生家計簿</td><td class="num"><b>5.819</b></td><td class="num">16.489</td><td class="num">3</td><td class="num">1.470</td><td class="num">25</td><td class="num muted">—</td></tr>
+<tr><td class="ch-name">シニアのお金と暮らし劇場</td><td class="num"><b>5.673</b></td><td class="num">63.767</td><td class="num">3</td><td class="num">602</td><td class="num">37</td><td class="num muted">—</td></tr>
+<tr><td class="ch-name">男の逆転劇場</td><td class="num"><b>5.512</b></td><td class="num">11.424</td><td class="num">3</td><td class="num">963</td><td class="num">19</td><td class="num muted">2026-09</td></tr>
+<tr><td class="ch-name">逆転恋ものがたり</td><td class="num"><b>5.372</b></td><td class="num">6.310</td><td class="num">3</td><td class="num">721</td><td class="num">11</td><td class="num muted">2026-10</td></tr>
+<tr><td class="ch-name">恋結び物語</td><td class="num"><b>6.428</b></td><td class="num">9.169</td><td class="num">7</td><td class="num">440</td><td class="num">336</td><td class="num muted">—</td></tr>
+</tbody>
+</table>
+
+<h3>4. Đã loại những gì <span class="tag r">FORMAT GATE</span></h3>
+<div class="lead">Theo yêu cầu: chỉ lấy manga ảnh AI như mình làm. Các dạng dưới đây bị loại thẳng, dù đạt đủ 3 số.</div>
+
+<div class="box warn">
+<h4>Loại vì footage thật — ví dụ anh chỉ ra</h4>
+<table style="margin:6px 0 0">
+<thead><tr><th>Video</th><th class="num">View</th><th class="num">Sub</th><th>Lý do loại</th></tr></thead>
+<tbody>
+<tr><td>【結果報告】煽り運転犯の因果応報 後ろからつけられたので警察に誘導してあげた…<br><span class="muted">PENGUINWATCH-NEO</span></td>
+<td class="num"><b>247.147</b></td><td class="num">4.780</td>
+<td><span class="x">Footage thật</span> — dashcam + bình luận cảnh sát. Đạt đủ 3 số nhưng <b>bỏ</b>.</td></tr>
+<tr><td>阪神ファン「あと1球！あと1球！」三森「ｶｷｰﾝ」<br><span class="muted">やきうの時間</span></td>
+<td class="num"><b>198.993</b></td><td class="num">3.600</td>
+<td><span class="x">Clip thể thao thật</span> — không phải manga.</td></tr>
+<tr><td>【放送事故級】感情的になったTBSアナの簗大臣批判…<br><span class="muted">Hổ Vương</span></td>
+<td class="num"><b>117.211</b></td><td class="num">360</td>
+<td><span class="x">Bình luận tin tức</span> — không phải manga.</td></tr>
+<tr><td>【北斗の拳転生の章2】#パチンコ #スロット #生配信<br><span class="muted">ぱちめん@パチスロメンヘラまさ</span></td>
+<td class="num"><b>115.299</b></td><td class="num">2.750</td>
+<td><span class="x">Livestream pachinko</span> — không phải manga.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="box info">
+<h4>Loại vì sai ngách — isekai / fantasy / Thái Lan</h4>
+<p style="margin-bottom:6px">3 kênh Thái (ธรรมะ…) đăng manga isekai tiếng Nhật, 45–120k view, kênh 1.340–2.510 sub.
+Đạt 3 số nhưng <span class="x">sai ngách</span> — không phải công sở/quả báo đời thường.</p>
+<p class="muted">Từ khoá loại tự động: 異世界 · 転生 · 無双 · スキル · ダンジョン · 魔法 · 魔王 · 勇者 ·
+レベル · 追放 · 成り上が · チート · 王宮 · 令嬢 · 悪役 · 聖女 · ファンタジー</p>
+</div>
+
+<h3>5. Cách đọc kết quả này</h3>
+
+<div class="box ok">
+<h4>Vì sao chỉ có 1 video — và điều đó nói lên gì</h4>
+<ul>
+<li>Trong 72h có <b>1.487 video manga AI</b> từ kênh ≤5k sub; lọc thêm từ khoá lane L
+(công sở/quả báo/hôn nhân/gia đình) còn <b>981</b>. Nhưng chỉ <b>1</b> vượt 100k — tỷ lệ
+<code>0,1%</code> (trên nền 981). Nghĩa là ngưỡng anh đặt <b>rất khắt khe</b>, và đó là tin tốt:
+nó lọc đúng những cú bùng thật.</li>
+<li>Video đạt <b>không</b> đến từ kênh mạnh nhất (median cao nhất là 他人事じゃない人生 73k).
+Nó đến từ kênh <b>13 ngày tuổi</b> — tức ngách này vẫn còn cửa cho kênh mới.</li>
+<li>Nhưng: <b>1 hit / 11 video</b> với median 13,8k = <b>chưa phải cỗ máy</b>. Cần theo dõi
+thêm 10–15 video nữa để biết kênh này có công thức hay chỉ ăn may (bài học シニア健康日和:
+500k view nhưng median 0,14× → không đáng học).</li>
+</ul>
+</div>
+
+<div class="box warn">
+<h4>Giới hạn của lần quét này — nói thẳng</h4>
+<ul>
+<li><b>0 quota search.list</b> (đã cạn 100/100 trong ngày). Nên không quét được "toàn bộ YouTube
+theo keyword". Thay vào đó dùng <b>channel-first</b>: gom 2.493 kênh từ 8 vòng quét trước,
+lọc ≤5k sub, soi uploads. Cách này <b>bắt được video không chứa keyword</b> (đúng bài học
+video 117k bị lọt ở vòng 1–5).</li>
+<li>Vẫn có thể sót kênh <b>chưa từng xuất hiện</b> trong 8 vòng quét trước — nhất là kênh
+mới tinh chưa rank được từ khoá nào. Muốn chắc 100% cần quota search ngày mai.</li>
+<li>Format gate làm bằng <b>từ khoá tiêu đề + vision thumbnail</b>, không phải xem hết video.
+Với 981 video thì không thể xem từng cái — nên lọc theo tiêu đề trước, vision 3 ứng viên đầu.</li>
+</ul>
+</div>
+
+<div class="foot">
+Nguồn: <code>cf_all_small_videos.json</code> (21.019 video · 2.493 kênh) ·
+<code>onkaeshi_all.json</code> (842 video · 90 kênh) · <code>allmanga_enriched.json</code> (43 video) ·
+thumbnail <code>thumbs/</code> (vision-verified).<br>
+Script: <code>scan_channel_first.py</code> · <code>scan_onkaeshi.py</code> · <code>enrich_all_manga.py</code> ·
+<code>scan_win_niche2.py</code><br>
+Báo cáo ngách WIN gốc: <code>h2dev/FlowHandoff_local/results/BAO_CAO_WIN_LANE_L_2026-10-16.html</code>
+</div>
+
+</div>
+</body>
+</html>

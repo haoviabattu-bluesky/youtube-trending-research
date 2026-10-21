@@ -1,0 +1,24 @@
+{
+ "topics": [
+  "定年後の仕事",
+  "7つの仕事",
+  "年金",
+  "生活費",
+  "60代の働き方"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "俺は関口正尾65歳今日で42[音楽]年いた会社を出たとは言っても定年後も働かなければお金が足りない。ここから俺は7つの仕事をすることになる。今日はその7つを俺なりのおすすめ[音楽]順に話す。俺の年金は月13万円だった。妻のかず子は63歳。学校給食のパートをしていて[音楽]年金は月6万円。2人で月19万円。3万なら私のパートで何度かなるわよ。",
+ "hook_n_segments_0_30": 10,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 305 segments, phủ ~100% độ dài video",
+ "video_id": "BdLooNSganA",
+ "title": "【漫画】キツくないのに稼げる！？老後におすすめの仕事ランキング7選！定年後でも働きやすい仕事はコレ",
+ "view_count": 242757,
+ "duration_min": 16.2,
+ "vpd": 13486.5,
+ "days": 18
+}

@@ -9,3 +9,11 @@ config/proxies.txt
 runs/
 logs/
 .pytest_cache/
+
+# 2026-10-21: dữ liệu thô/nháp quá nặng cho GitHub (data/ 5.8G, scratch_* 1.8G) — chỉ giữ ở máy 1
+data/
+scratch_*/
+*.bak
+*.bak.*
+.vscode/
+docs/scratch/

@@ -1,0 +1,200 @@
+<title>Hồ sơ Lane P (MG)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: một cột đọc, bảng số kiểu bảng thống kê đăng ký xe; mỗi tập là một "phiếu" có thanh điểm */
+:root{
+  --bg:#f5f7f8; --paper:#ffffff; --ink:#15202b; --mute:#5a6874; --line:#d6dde2;
+  --accent:#0e6e64; --accent-soft:#e0f0ed; --warn:#9a5b00; --warn-soft:#fbf0dc; --bad:#a3342b; --bad-soft:#f8e4e1;
+  --f-body:"Be Vietnam Pro","Noto Sans JP",system-ui,sans-serif; --f-jp:"Noto Sans JP","Be Vietnam Pro",sans-serif; --f-num:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10161b; --paper:#172027; --ink:#e4eaee; --mute:#9aa8b3; --line:#2b3741;
+  --accent:#4cc3b3; --accent-soft:#163631; --warn:#e2a54a; --warn-soft:#352a17; --bad:#ef8a7f; --bad-soft:#3a1f1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10161b; --paper:#172027; --ink:#e4eaee; --mute:#9aa8b3; --line:#2b3741;
+  --accent:#4cc3b3; --accent-soft:#163631; --warn:#e2a54a; --warn-soft:#352a17; --bad:#ef8a7f; --bad-soft:#3a1f1c; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.65 var(--f-body)}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:grid;gap:34px}
+h1,h2,h3{text-wrap:balance;line-height:1.25;margin:0}
+h1{font-size:30px;font-weight:800;letter-spacing:-.01em}
+h2{font-size:21px;font-weight:800;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+h3{font-size:17px;font-weight:700}
+p{margin:0;max-width:72ch}
+section{display:grid;gap:14px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.lead{font-size:16.5px;color:var(--ink)}
+.mute{color:var(--mute)}
+.jp{font-family:var(--f-jp)}
+.vi{color:var(--mute);font-size:13.5px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+code,.path{font-family:var(--f-num);font-size:12.5px;word-break:break-all;background:var(--accent-soft);padding:1px 5px;border-radius:3px}
+.note{border-left:3px solid var(--warn);background:var(--warn-soft);padding:10px 14px}
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);font-weight:700;background:var(--bg)}
+td.r,th.r{text-align:right}
+.eps{display:grid;gap:16px}
+.ep{background:var(--paper);border:1px solid var(--line);padding:16px 18px;display:grid;gap:10px;min-width:0}
+.ep header{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between}
+.ep .meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;white-space:nowrap}
+.chip.hot{border-color:var(--bad);color:var(--bad)}
+.chip.ok{border-color:var(--accent);color:var(--accent)}
+.score{display:flex;align-items:center;gap:8px;font-family:var(--f-num)}
+.bar{width:110px;height:8px;background:var(--line)}
+.bar i{display:block;height:100%;background:var(--accent)}
+.flip{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.flip>div{padding:10px 12px;min-width:0}
+.flip .then{background:var(--bad-soft)}
+.flip .now{background:var(--accent-soft)}
+.flip .arrow{align-self:center;font-weight:800;color:var(--mute)}
+.lbl{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);font-weight:700;display:block;margin-bottom:2px}
+ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.dont li::marker{color:var(--bad)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two>div{min-width:0}
+.ask{background:var(--paper);border:2px solid var(--accent);padding:16px 18px;display:grid;gap:8px}
+a{color:var(--accent)}
+@media (max-width:640px){.flip{grid-template-columns:1fr}.flip .arrow{display:none}.two{grid-template-columns:1fr}h1{font-size:25px}}
+</style>
+
+<div class="wrap">
+<header style="display:grid;gap:10px">
+  <span class="eyebrow">MG_STUDIO · Lane P · TRENDING-RESEARCH 11/10/2026</span>
+  <h1>Lane P: hãng và đồ Nhật bị coi thường, số thật trả lời</h1>
+  <p class="lead">Lane P dùng nhịp tiểu phẩm ゆっくり của ニッポンすんだ村 nhưng kể chuyện thật. Đối thủ bịa lý do, ví dụ “Suzuki rút vì TQ đòi công nghệ”. Em đã soạn tư liệu cho 5 tập: <b class="num">479</b> câu trích [Dn] từ <b class="num">214</b> trang nguồn, máy kiểm 5/5 tập <b>0 lỗi</b>. Kèm luật kịch bản tiếng Nhật, khuôn hook và bản nháp <code>lane.json</code> để dự án MG mở lane.</p>
+  <p class="note"><b>Trùng tên:</b> h2dev đã có một “Lane P” khác (おもてなしJAPAN, phim trường tranh luận). Lane này nằm ở MG, mã <code>p</code>. Em đề nghị đặt tên tab Sheet là <code>MG-P</code>.</p>
+</header>
+
+<section>
+  <h2>Thứ tự ra và độ mạnh từng tập</h2>
+  <div class="eps">
+
+  <article class="ep">
+    <header><h3>1 · Suzuki rút khỏi TQ → số 1 xe nhập khẩu Nhật</h3>
+      <div class="meta"><span class="chip hot">ra trước 06/11</span><span class="chip num">114 [Dn]</span><div class="score"><span class="bar"><i style="width:80%"></i></span>8/10</div></div></header>
+    <p class="jp">中国「スズキは時代遅れ、1元で売って逃げたｗ」→結果、インド製ジムニーで日本の輸入車No.1、ベンツまで抜いてしまう</p>
+    <p class="vi">TQ: “Suzuki lỗi thời, bán 1 tệ rồi bỏ chạy” → kết quả: nhờ Jimny làm ở Ấn Độ thành số 1 xe nhập khẩu Nhật, vượt cả Mercedes</p>
+    <div class="flip">
+      <div class="then"><span class="lbl">2018 · TQ nói</span>Thôi Đông Thụ (崔東樹), tổng thư ký Hiệp hội xe du lịch TQ: rút khỏi TQ là <span class="jp">「非常に危険な選択」</span> (lựa chọn rất nguy hiểm). Suzuki bán 50% liên doanh với giá <b class="num">1 tệ</b> vì công ty âm vốn.</div>
+      <div class="arrow">→</div>
+      <div class="now"><span class="lbl">2026 · số JAIA (06/10)</span>Đăng ký xe nhập khẩu tháng 1–9: Suzuki <b class="num">50.307</b> &gt; Mercedes <b class="num">36.267</b>. Nhà máy TQ tiếp quản còn bán <b class="num">452</b> xe/tháng rồi đổi tên.</div>
+    </div>
+    <ul class="dont"><li>Không nói “TQ đòi công nghệ”. Lý do Suzuki tự nói: thị trường TQ chuyển sang xe lớn.</li><li>Không nói “số 1 mọi tháng”: tháng 6 Toyota đứng đầu, lũy kế Toyota <span class="num">34.519</span> đang bám sát. Không lẫn kỳ 1–6 / năm tài chính / 1–9.</li><li>Nói 1 câu bất lợi: thị phần Maruti <span class="num">39,26%</span>, thấp nhất 13 năm.</li></ul>
+  </article>
+
+  <article class="ep">
+    <header><h3>2 · Tay nắm cửa ẩn: TQ khoe “công nghệ” → TQ tự cấm</h3>
+      <div class="meta"><span class="chip hot">dự thảo ra hôm qua</span><span class="chip num">92 [Dn]</span><div class="score"><span class="bar"><i style="width:80%"></i></span>8/10</div></div></header>
+    <p class="jp">中国「隠しドアノブこそ未来ｗ普通のドアノブは古臭い」→結果、中国政府が自ら禁止し427万台リコールの大惨事ｗ</p>
+    <p class="vi">TQ: “tay nắm ẩn mới là tương lai, tay nắm thường cũ kỹ” → kết quả: chính phủ TQ tự cấm, 4,27 triệu xe bị triệu hồi</p>
+    <div class="flip">
+      <div class="then"><span class="lbl">Trước · người bán xe TQ</span><span class="jp">「更有科技感」</span> (có cảm giác công nghệ hơn). Năm 2025, 60% trong top 100 mẫu xe năng lượng mới dùng tay nắm ẩn.</div>
+      <div class="arrow">→</div>
+      <div class="now"><span class="lbl">2026 · nhà nước TQ</span>CCTV gọi là <span class="jp">「安全陷阱」</span> (bẫy an toàn). Tiêu chuẩn GB 48001 bắt mọi cửa có tay nắm cơ khí từ <b class="num">01/01/2027</b>. 9 hãng triệu hồi <b class="num">427,6 vạn</b> xe (21/8). Ngày 10/10 có thêm dự thảo cấm hẳn.</div>
+    </div>
+    <ul class="dont"><li>Không có câu TQ chê đích danh tay nắm xe Nhật. Chỉ có một người mua xe năm 2021 chê xe Nhật “già cỗi”. Câu “tay nắm thường cũ kỹ” chỉ đặt vào miệng chủ tịch hư cấu.</li><li>Lý do triệu hồi là tay kéo khẩn cấp bên trong khó tìm, sửa bằng nhãn cảnh báo và OTA. Không nói “427 vạn xe bị cấm”.</li><li>Toyota bZ3 và Nissan Leaf cũng có tay nắm ẩn, phải nói 1 câu. Không đùa về người chết.</li></ul>
+  </article>
+
+  <article class="ep">
+    <header><h3>3 · Benz: “chỉ có TQ” → TQ −31%, mất ngôi ở Nhật</h3>
+      <div class="meta"><span class="chip ok">số mới 07/10</span><span class="chip num">101 [Dn]</span><div class="score"><span class="bar"><i style="width:70%"></i></span>7/10</div></div></header>
+    <p class="jp">ベンツ「中国に根を張るしか選択肢はない」→結果、中国販売3割減、日本ではスズキのインド製ジムニーに首位を奪われる</p>
+    <p class="vi">Benz: “chỉ còn cách bám rễ ở TQ” → kết quả: doanh số TQ giảm 30%, ở Nhật mất ngôi số 1 vào tay Jimny làm ở Ấn Độ</p>
+    <div class="flip">
+      <div class="then"><span class="lbl">3/2026 · CEO Källenius</span><span class="jp">「必须扎根中国，没有其他选项」</span> (phải bám rễ ở TQ, không có lựa chọn khác)</div>
+      <div class="arrow">→</div>
+      <div class="now"><span class="lbl">07/10/2026</span>TQ quý 3: <b class="num">86.800</b> xe, <b class="num">−31%</b>. EBIT năm 2025 <b class="num">−57%</b>. Ở Nhật nửa đầu 2026: Suzuki <span class="num">34.288</span> &gt; Benz <span class="num">23.064</span>.</div>
+    </div>
+    <ul class="dont"><li>Bỏ phần Tesla: xe Tesla làm ở Mỹ vẫn dùng gần 100% pin Panasonic, không có đợt triệu hồi nào vì pin TQ.</li><li>Đối thủ bịa “linh kiện Nhật trong Benz” và “triệu hồi 40.339 xe”. Đợt triệu hồi xe làm ở TQ không lan sang Nhật.</li><li>Suzuki vượt Benz ở Nhật chỉ trùng thời điểm, không phải hệ quả chuyện TQ. Geely + BAIC nắm khoảng 20%, không kiểm soát Benz.</li></ul>
+  </article>
+
+  <article class="ep">
+    <header><h3>4 · Hãng Nhật rút đi, ai thiệt? Nhà máy Mitsubishi về tay GAC</h3>
+      <div class="meta"><span class="chip ok">móc TDB 28/9</span><span class="chip num">85 [Dn]</span><div class="score"><span class="bar"><i style="width:75%"></i></span>7,5/10</div></div></header>
+    <p class="jp">中国「三菱は時代遅れｗ工場はウチのEVが使ってやる」→結果、2年後その会社は88億元の大赤字、工場稼働率46%に</p>
+    <p class="vi">TQ: “Mitsubishi lỗi thời, nhà máy để EV nhà ta dùng” → 2 năm sau công ty đó lỗ 88億元 (khoảng 8,8 tỷ tệ), nhà máy chạy 46% công suất</p>
+    <div class="flip">
+      <div class="then"><span class="lbl">2023</span>Báo chê Mitsubishi điện hoá chậm là “tội tổ tông”. GAC khoe “BAT ô tô = BYD, AION, Tesla” và nhận nhà máy 長沙 (Trường Sa) cho AION.</div>
+      <div class="arrow">→</div>
+      <div class="now"><span class="lbl">2025</span>AION giảm từ <span class="num">48</span> xuống <span class="num">29</span> vạn xe. Hệ thống nhà máy AION chạy <span class="num">46%</span> công suất. GAC lỗ <span class="num">87,84億元</span>. Chỉ liên doanh Toyota còn tăng (<span class="num">+2,44%</span>).</div>
+    </div>
+    <ul class="dont"><li>Hitachi “đòi bằng sáng chế”, Fujifilm “bỏ 800億円 rút khỏi TQ”, Canon/Sony “30 vạn người thất nghiệp”: đều bịa.</li><li>Không nói Mitsubishi lãi kỷ lục sau khi rút: lãi hoạt động còn giảm, và hãng lỗ đặc biệt 243億円 khi rút.</li><li>Canon đạt doanh thu kỷ lục sau khi đóng nhà máy 中山 (Trung Sơn), nhưng không phải <i>vì</i> đóng nhà máy.</li></ul>
+  </article>
+
+  <article class="ep">
+    <header><h3>5 · Whisky: TQ chê Nhật “rơi khỏi ngai” → Yamazaki 3 năm liền</h3>
+      <div class="meta"><span class="chip">dự phòng</span><span class="chip num">87 [Dn]</span><div class="score"><span class="bar"><i style="width:60%"></i></span>6/10</div></div></header>
+    <p class="jp">中国「日本ウイスキーは神話崩壊ｗ次は国産の時代だ」→結果、山崎が3年連続で世界一、34億元つぎ込んだ中国最大の蒸溜所は“想定の効果に届かず”ｗ</p>
+    <p class="vi">TQ: “thần thoại whisky Nhật sụp, giờ là thời đồ nội” → Yamazaki 3 năm liền số 1 thế giới, nhà máy lớn nhất TQ đổ 34億元 “chưa đạt hiệu quả dự kiến”</p>
+    <ul class="dont"><li>Video đối thủ nói “TQ thảm bại ở giải” là sai: năm 2026 whisky TQ thắng World’s Best Blended Malt và một huy chương vàng ISC.</li><li>Năm 2024 xuất khẩu whisky Nhật sang TQ giảm thật 49,7%, phải nói. “Kỷ lục” là của tổng xuất khẩu rượu, không riêng whisky.</li></ul>
+  </article>
+  </div>
+</section>
+
+<section>
+  <h2>Vì sao đề tài này đáng mở lane</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Đề tài (tìm 1 năm, tiêu đề có TQ)</th><th class="r">Video</th><th class="r">≥100k</th><th>Video lớn nhất</th></tr></thead>
+    <tbody>
+    <tr><td>Doanh nghiệp Nhật rút khỏi TQ</td><td class="r num">39</td><td class="r num">24</td><td>日テレNEWS <span class="num">1,43M</span> (12 ngày): “DN Nhật rời TQ, giảm 3 phần 10”</td></tr>
+    <tr><td>Suzuki rút khỏi TQ</td><td class="r num">28</td><td class="r num">4</td><td>ニッポンすんだ村 <span class="num">1,23M</span>. Đề tài đã có người làm, phải có góc 2026</td></tr>
+    <tr><td>Benz dựa vào TQ</td><td class="r num">26</td><td class="r num">5</td><td>ニッポンすんだ村 <span class="num">913k</span></td></tr>
+    <tr><td>Bridgestone rút</td><td class="r num">18</td><td class="r num">3</td><td>まるっと世界情勢 <span class="num">230k</span> “vì sao lãi cao nhất lịch sử”</td></tr>
+    <tr><td>Tay nắm cửa ẩn bị cấm</td><td class="r num">28</td><td class="r num">1</td><td>Firstpost <span class="num">665k</span> (lồng tiếng Nhật). Chưa kênh ゆっくり nào làm</td></tr>
+    <tr><td>Whisky TQ và Nhật</td><td class="r num">2</td><td class="r num">1</td><td>ずんだ実話 <span class="num">120k</span>. Ít người làm nhưng cầu nhỏ</td></tr>
+    </tbody></table></div>
+  <p><b>Trục này chưa bão hoà.</b> Sau video Suzuki và Benz, ニッポンすんだ村 làm thêm 6 video cùng trục trong tháng 9: Hitachi <span class="num">199k</span>, Bridgestone <span class="num">258k</span>, Thái Lan chọn xe TQ <span class="num">229k</span>, bản tổng hợp Tesla–Benz <span class="num">146k</span>, Tesla <span class="num">133k</span>, xe máy Indonesia <span class="num">106k</span>. Trung vị khoảng <span class="num">172k</span>, ngang mức thường của kênh (<span class="num">171k</span> tháng 8–9). Cầu vẫn đều. Chỉ có cú nổ 8 lần như Suzuki là không lặp lại khi đề tài là hàng công nghiệp. Cú nổ đến khi thương hiệu là thứ người Nhật tự đi, tự mua (Suzuki, Benz), nên lane ưu tiên hàng tiêu dùng và tin dưới 30 ngày.</p>
+  <p class="mute">Bình luận top: <span class="jp">「スズキの見る目はすごい」</span> (Suzuki có con mắt tinh đời, 417 like), <span class="jp">「ボルボも中国製だよね」</span> (Volvo cũng là hàng TQ nhỉ, 877 like). Khán giả thích so hãng này với hãng khác, nên nhóm hãng Geely (Volvo) và bản 総集編 (tổng hợp) đã được đưa vào kho chờ.</p>
+</section>
+
+<section>
+  <h2>Ranh giới với các lane khác</h2>
+  <div class="two">
+    <div><h3>MG Lane Q 凛とした日本</h3><p class="mute">Chính quyền TQ ra đòn chính sách (cấm, tẩy chay, visa) rồi trượt. Lane P không lấy: hải sản, スシロー, du lịch, anime, bóng bàn, 抹茶 (trà matcha), ポケモン, ユニクロ, 和牛 (bò wagyu).</p></div>
+    <div><h3>MG Lane P (mới)</h3><p class="mute">Thị trường, hãng, sản phẩm: hãng Nhật, đồ Nhật, hãng phương Tây chọn TQ, quy chuẩn an toàn, xếp hạng doanh số. Ba kiểu tập: rút đi rồi thắng / chọn TQ rồi hối hận / TQ khoe rồi thua trên sân đấu.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Video mẫu để MG học (16 video, bóc theo từng phút)</h2>
+  <p>Mỗi tập có một file <code>MAU_&lt;tập&gt;.md</code> gồm: cấu trúc video thắng theo mốc phút, hook 0–60 giây nguyên văn kèm dịch, số đo nhịp, tiêu đề và thumbnail, bình luận, dàn 6 chương có mốc phút cho tập của mình, và danh sách chi tiết bịa không được chép (mỗi chi tiết kèm câu thay thế có [Dn]). Thư mục mỗi video có transcript cả video, thumbnail, 8 khung hình và số đo.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Tập</th><th>Mẫu chính</th><th class="r">View</th><th class="r">× trung vị kênh</th><th>Mẫu phụ</th></tr></thead>
+    <tbody>
+    <tr><td>Suzuki</td><td>ニッポンすんだ村 (tiểu phẩm)</td><td class="r num">1.229.701</td><td class="r num">6,2</td><td>世界が愛したJAPAN 264k (10,6×) · 日本の誇りドキュメンタリー 250k (12,9×)</td></tr>
+    <tr><td>Tay nắm cửa</td><td>ずんだ探検隊 BYD (chỉ học nhịp)</td><td class="r num">241.153</td><td class="r num">0,69</td><td>Firstpost 665k (tiếng Anh) · 日本自動車研究所 39k (5,0×)</td></tr>
+    <tr><td>Benz</td><td>ニッポンすんだ村 (tiểu phẩm)</td><td class="r num">912.883</td><td class="r num">4,6</td><td>元ベンツ営業 320k (21,2×) và 255k (16,9×)</td></tr>
+    <tr><td>Mitsubishi/GAC</td><td>すんだ観察所 (đúng định dạng lane Q) · おもてなしJAPAN 1,19M (sức hút)</td><td class="r num">95.513</td><td class="r num">0,99</td><td>まるっと世界情勢 Bridgestone 230k · 日テレNEWS 1,43M</td></tr>
+    <tr><td>Whisky</td><td>ずんだ実話</td><td class="r num">120.212</td><td class="r num">1,8</td><td>—</td></tr>
+    </tbody></table></div>
+  <p class="mute">Kênh nhỏ và vừa làm đề tài này vượt xa mức thường của kênh (10–21 lần). Kênh lớn đã làm nhiều lần thì về mức thường. Kênh mới của mình thuộc nhóm kênh nhỏ. Thư mục: <code>E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\tham_khao\</code></p>
+</section>
+
+<section>
+  <h2>Đã giao sang dự án MG</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>File</th><th>Nội dung</th></tr></thead>
+    <tbody>
+    <tr><td class="path">E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\BAT_DAU_LANE_P.md</td><td>Hướng dẫn cho Claude MG: đọc gì, làm gì trước tập 1, tiêu chí nghiệm thu</td></tr>
+    <tr><td class="path">E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\TAB_MOI_LANE_P.md</td><td>Lời mở tab mới, anh copy dán vào MG</td></tr>
+    <tr><td class="path">E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\NGHIEN_CUU.md</td><td>Số đo thị trường, ranh giới, kho tập, bài học, tên kênh gợi ý</td></tr>
+    <tr><td class="path">E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\LUAT.md</td><td>Luật kịch bản tiếng Nhật. §0: không đổi quyết định hay lý do của hãng có thật</td></tr>
+    <tr><td class="path">E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\vi_du_hook.md</td><td>Khuôn hook 9 nhịp + vai 社長 Nhật, hook mẫu 5 tập, hook đối thủ</td></tr>
+    <tr><td class="path">E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\p\lane.de_xuat.json</td><td>Bản nháp lane.json: 8 vai, 5 phòng, khuôn hook, từ cấm</td></tr>
+    <tr><td class="path">E:\CLAUDE\YOUTUBE\MG_STUDIO\episodes\p\ep01-suzuki\ … ep05-doornob\</td><td>Mỗi tập: <code>HO_SO.md</code>, <code>de_tai.json</code> (stt, lời hứa), <code>tu_lieu.json</code>, <code>nguon\</code></td></tr>
+    <tr><td class="path">E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\</td><td>+2 video mới, 8 video gắn nhãn <code>mg-lane-p</code> (kho có 319 video)</td></tr>
+    </tbody></table></div>
+</section>
+
+<section class="ask">
+  <h2 style="border:0;padding:0">Việc cần anh quyết</h2>
+  <ul>
+    <li>Duyệt thứ tự ra: Suzuki → tay nắm cửa → Benz → Mitsubishi/GAC → whisky (dự phòng).</li>
+    <li>Tên kênh: <span class="jp">選ばれる日本</span> (Nhật được chọn) · <span class="jp">数字で見る日本の底力</span> (sức bền Nhật qua con số) · <span class="jp">静かな日本の逆転</span> (cú lật lặng lẽ của Nhật). Em chưa kiểm trùng tên trên YouTube.</li>
+    <li>Nhân vật: dùng lại chủ tịch, thư ký, phát ngôn viên của lane Q, hay vẽ bộ mặt riêng cho kênh mới?</li>
+    <li>Tên tab Sheet: <code>MG-P</code> (tránh trùng với Lane P của h2dev).</li>
+  </ul>
+</section>
+</div>

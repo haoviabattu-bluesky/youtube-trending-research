@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lane L — Video quả báo/công sở ≤3 ngày · &gt;100k view · kênh ≤5.000 sub</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#151b23; --panel2:#1b2430; --line:#2a3543;
+    --txt:#e6edf3; --dim:#8b98a5; --hot:#ff5c5c; --ok:#3fb950; --warn:#d29922;
+    --acc:#58a6ff; --acc2:#bc8cff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font:15px/1.65 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+    padding:0 0 80px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+  header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#131a23,#0d1117);
+    padding:34px 0 26px;margin-bottom:30px}
+  h1{font-size:27px;line-height:1.25;margin:0 0 10px;letter-spacing:-.3px}
+  h1 .lane{color:var(--acc2)}
+  .sub{color:var(--dim);font-size:14.5px}
+  .filters{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:20px;
+    padding:5px 13px;font-size:12.5px;color:var(--dim);font-variant-numeric:tabular-nums}
+  .chip b{color:var(--txt)}
+  h2{font-size:19px;margin:38px 0 6px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+  h2 .n{color:var(--acc);font-variant-numeric:tabular-nums;margin-right:8px;font-weight:600}
+  h3{font-size:15.5px;margin:26px 0 8px;color:var(--acc)}
+  p{margin:9px 0}
+  .lead{color:var(--dim);font-size:13.5px;margin:4px 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:20px 22px;margin:16px 0}
+  .card.hit{border-color:#2f5d38;background:linear-gradient(180deg,#152219,#151b23)}
+  .card.near{border-color:#4a3a1a;background:linear-gradient(180deg,#1e1a10,#151b23)}
+  .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.6px;
+    padding:3px 9px;border-radius:5px;vertical-align:2px;margin-right:8px}
+  .b-ok{background:#1f3d26;color:#5fd67b;border:1px solid #2f5d38}
+  .b-no{background:#3d2020;color:#ff8080;border:1px solid #5d2f2f}
+  .b-near{background:#3d3118;color:#e0b341;border:1px solid #5d4a1f}
+  .vtitle{font-size:16px;font-weight:600;line-height:1.45;margin:0 0 10px}
+  .vtitle a{color:var(--txt);text-decoration:none;border-bottom:1px dotted #4a5867}
+  .vtitle a:hover{color:var(--acc)}
+  .stats{display:flex;flex-wrap:wrap;gap:22px;margin:13px 0 4px;
+    font-variant-numeric:tabular-nums;font-size:13px;color:var(--dim)}
+  .stats b{display:block;font-size:19px;color:var(--txt);line-height:1.2}
+  .stats .v b{color:var(--hot)}
+  .stats .s b{color:var(--ok)}
+  table{width:100%;border-collapse:collapse;font-size:13.2px;margin:12px 0;
+    font-variant-numeric:tabular-nums}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);
+    vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;
+    letter-spacing:.5px;background:var(--panel2)}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr:hover td{background:#1a222c}
+  a.lnk{color:var(--acc);text-decoration:none}
+  a.lnk:hover{text-decoration:underline}
+  .why{list-style:none;padding:0;margin:10px 0}
+  .why li{padding:5px 0 5px 22px;position:relative;font-size:13.6px;color:#c8d3de}
+  .why li:before{content:"▸";position:absolute;left:4px;color:var(--acc)}
+  .hist{font-size:12.6px;font-variant-numeric:tabular-nums;color:var(--dim);
+    margin:10px 0 0;border-left:2px solid var(--line);padding-left:13px}
+  .hist div{padding:2px 0}
+  .hist .cur{color:var(--txt);font-weight:600}
+  .note{background:#1a1f14;border-left:3px solid var(--warn);padding:13px 17px;
+    border-radius:0 7px 7px 0;font-size:13.5px;color:#d6cfae;margin:16px 0}
+  .note b{color:#f0d97a}
+  .quote{background:var(--panel2);border-left:3px solid var(--acc2);
+    padding:12px 17px;border-radius:0 7px 7px 0;font-size:13.5px;
+    color:#c8d3de;margin:12px 0;white-space:pre-line}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  code{background:#222c38;padding:1.5px 6px;border-radius:4px;font-size:12.5px;
+    color:#a5d6ff;font-family:ui-monospace,Consolas,monospace}
+  .foot{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);
+    color:#6e7b88;font-size:12.3px}
+  .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:20px 0 8px}
+  .kpi div{background:var(--panel2);border:1px solid var(--line);border-radius:9px;
+    padding:14px 16px}
+  .kpi b{display:block;font-size:23px;line-height:1.2;font-variant-numeric:tabular-nums}
+  .kpi span{font-size:11.6px;color:var(--dim);text-transform:uppercase;letter-spacing:.6px}
+  @media(max-width:820px){.kpi{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1><span class="lane">LANE L</span> — Video Công sở / Quả báo <em>không trả thù</em></h1>
+    <div class="sub">Săn video mới ≤72 giờ · &gt;100.000 view · kênh ≤5.000 sub — dữ liệu chốt 18/10/2026</div>
+    <div class="filters">
+      <span class="chip">Tuổi video <b>≤ 72h</b></span>
+      <span class="chip">View <b>&gt; 100.000</b></span>
+      <span class="chip">Sub kênh <b>≤ 5.000</b></span>
+      <span class="chip">Thời điểm chốt <b>18/10/2026</b></span>
+      <span class="chip">Corpus đã quét <b>1.511 video</b></span>
+      <span class="chip">Quota Data API <b>~9.100</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<h2><span class="n">00</span>Kết quả chốt — 2 video ĐẠT cả 3 điều kiện</h2>
+<p class="lead">Quét 5 vòng (InnerTube + Data API, ~140 keyword + 6 truy vấn rộng phân trang sâu). Sau khi enrich toàn bộ và đối chiếu sub kênh thật: <b>chỉ 2 video</b> thoả đồng thời ≤72h &amp; &gt;100k view &amp; kênh ≤5.000 sub. Cả 2 đều đã mở video + kênh kiểm tra trực tiếp, không suy đoán từ metadata tìm kiếm.</p>
+
+<div class="kpi">
+  <div><b>1.511</b><span>video trong corpus</span></div>
+  <div><b>18</b><span>video &gt;100k / 72h</span></div>
+  <div><b>2</b><span>kênh ≤5.000 sub</span></div>
+  <div><b>1/901</b><span>tỉ lệ kênh nhỏ đạt ngưỡng</span></div>
+</div>
+
+<div class="card hit">
+  <span class="badge b-ok">ĐẠT · #1</span>
+  <div class="vtitle"><a href="https://youtu.be/6A26BSmMibY" target="_blank">【結果報告】煽り運転犯の因果応報　後ろからつけられたので警察に誘導してあげた。　解説、警察側視点、みんなのコメントver. です。</a></div>
+  <div class="stats">
+    <div class="v"><b>246.855</b>view (62,7h)</div>
+    <div class="s"><b>4.780</b>sub kênh</div>
+    <div><b>3.936</b>view/giờ</div>
+    <div><b>167</b>ngày tuổi kênh</div>
+    <div><b>613</b>like · 41 cmt</div>
+    <div><b>539s</b>thời lượng</div>
+  </div>
+  <p style="font-size:13.6px;color:#c8d3de;margin:12px 0 0">
+    <b>Kênh:</b> <a class="lnk" href="https://www.youtube.com/channel/UCJzNOWvKMYwwdPPDHRA2P0w" target="_blank">PENGUINWATCH-NEO</a> · 68 video · tổng 13,65M view.
+    <b>Thể loại:</b> dashcam/giám sát thật + tường thuật — <em>kẻ gây sự bị quả báo do cơ quan chức năng xử lý</em>, người quay không trả đũa.
+  </p>
+  <ul class="why">
+    <li><b>Đúng "quả báo không trả thù":</b> kẻ lái ẩu bám đuôi → người quay <em>dẫn đường cho công an</em>, không đánh trả, không chửi. Hậu quả đến từ pháp luật, không từ protagonist.</li>
+    <li><b>Kênh siêu nhỏ mà video bùng:</b> 4.780 sub nhưng video này 246k — gấp <b>51×</b> số sub. Đây là dấu hiệu thuật toán đẩy mạnh, không phải view mua.</li>
+    <li><b>Có tiền lệ bùng lặp lại:</b> video cùng mô-típ 690h trước đạt <b>9,07M view</b>; một video cùng chủ đề 1.025h đạt 1,12M. Cùng công thức đã bùng 3 lần → không phải ăn may.</li>
+    <li><b>Không phụ thuộc khuôn mặt/người thật đóng:</b> toàn bộ hình ảnh là footage dashcam — tái sử dụng được cho kênh tổng hợp.</li>
+  </ul>
+  <div class="hist">
+    <div class="cur">246.855 · 63h ← video hiện tại</div>
+    <div>4.990 · 207h · 当て逃げ犯の因果応報（cùng mô-típ, view thấp → mô-típ không tự bùng, cách kể mới là yếu tố quyết định）</div>
+    <div>36.866 · 374h · 不法投棄の因果応報</div>
+    <div>9.071.813 · 690h · 煽り運転犯の因果応報（bản gốc bùng lớn nhất）</div>
+    <div>1.128.589 · 1.025h · ゴミを返した不法投棄犯の家に警察が</div>
+    <div style="margin-top:6px;color:#6e7b88">median 40 video gần nhất: 22.110 · trend ổn định</div>
+  </div>
+</div>
+
+<div class="card hit">
+  <span class="badge b-ok">ĐẠT · #2</span>
+  <div class="vtitle"><a href="https://youtu.be/1z1jBVSRYNA" target="_blank">【漫画】大混雑の深夜食堂にボロボロの母娘「子供たちだけでも食べさせて…」接客を手伝ってもらった結果→数ヶ月後、予約の取れない名店に…【恋愛マンガ動画】</a></div>
+  <div class="stats">
+    <div class="v"><b>117.621</b>view (38,7h)</div>
+    <div class="s"><b>614</b>sub kênh</div>
+    <div><b>3.037</b>view/giờ</div>
+    <div><b>12</b>ngày tuổi kênh</div>
+    <div><b>257</b>like · 8 cmt</div>
+    <div><b>1.194s</b>thời lượng</div>
+  </div>
+  <p style="font-size:13.6px;color:#c8d3de;margin:12px 0 0">
+    <b>Kênh:</b> <a class="lnk" href="https://www.youtube.com/channel/UC-xq-30Dlt4zsbpPxl7nwFg" target="_blank">逆転ときめき漫画</a> · 11 video · tổng 192k view.
+    <b>Thể loại:</b> manga AI kể chuyện — người tốt bị coi thường → làm việc tử tế → được đền đáp, kẻ xấu quay lại bị từ chối.
+  </p>
+  <ul class="why">
+    <li><b>Đúng "quả báo không trả thù":</b> protagonist <em>không đánh trả</em> — chỉ bán đồ ăn cho mẹ con khó khăn. Kẻ xấu (người chồng cũ bỏ đi) tự quay lại và bị từ chối. Đền đáp đến từ nhân quả, không từ trả đũa.</li>
+    <li><b>Kênh 12 ngày tuổi, 614 sub, 11 video — đã có video 117k.</b> Đây là kênh <em>vừa mở</em> đã bắt được sóng; cực hiếm và đúng loại "kênh mới nhiều view" cần tìm.</li>
+    <li><b>Tỉ lệ 192× số sub</b> (117.621 / 614) — cao hơn cả video #1. Thuật toán đẩy thuần bằng nội dung.</li>
+    <li><b>Chủ đề đời sống, không chính trị:</b> quán ăn đêm, mẹ đơn thân, bữa cơm — đúng ràng buộc "đề tài sát đời sống" trong CLAUDE.md.</li>
+  </ul>
+  <div class="hist">
+    <div class="cur">117.502 · 39h ← video hiện tại</div>
+    <div>13.483 · 15h · 弟ばかり溺愛する両親の家を出て数年…（video mới nhất, còn đang lên）</div>
+    <div>10.654 · 62h · 父の急死で院長を継いだ俺に副院長「医師全員連れて独立するw」</div>
+    <div>15.711 · 110h · 内定を出したT大の就活生たちが…（chủ đề công sở/tuyển dụng）</div>
+    <div>76.669 · 231h · 廃業寸前の定食屋を営む俺が雨でずぶ濡れの女性に食事をご馳走→（cùng mô-típ "cho ăn → được đền đáp"）</div>
+    <div style="margin-top:6px;color:#6e7b88">median 11 video: 10.654 → video này gấp <b>11×</b> median kênh = breakout thật</div>
+  </div>
+</div>
+
+<h2><span class="n">01</span>Bảng đối chiếu toàn bộ video &gt;100k trong 72h</h2>
+<p class="lead">18 video vượt 100k view trong 72h. Chỉ 2 video thuộc kênh ≤5.000 sub — phần còn lại là kênh 132k–866k sub, không dùng được cho tiêu chí "kênh nhỏ".</p>
+
+<table>
+<thead><tr>
+  <th>Kênh</th><th class="num">Sub</th><th class="num">View</th><th class="num">Tuổi</th><th>Video</th><th>Đạt?</th>
+</tr></thead>
+<tbody>
+<tr><td>PENGUINWATCH-NEO</td><td class="num">4.780</td><td class="num">246.855</td><td class="num">62,7h</td><td><a class="lnk" href="https://youtu.be/6A26BSmMibY" target="_blank">煽り運転犯の因果応報</a></td><td>✅ ĐẠT</td></tr>
+<tr><td>逆転ときめき漫画</td><td class="num">614</td><td class="num">117.621</td><td class="num">38,7h</td><td><a class="lnk" href="https://youtu.be/1z1jBVSRYNA" target="_blank">大混雑の深夜食堂にボロボロの母娘</a></td><td>✅ ĐẠT</td></tr>
+<tr><td>トラブルバスターズ</td><td class="num">710.000</td><td class="num">704.632</td><td class="num">36,0h</td><td><a class="lnk" href="https://youtu.be/9adavC-wz_Q" target="_blank">スキー場でゴンドラに無賃乗車するDQN</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>トラブルバスターズ</td><td class="num">710.000</td><td class="num">568.581</td><td class="num">60,0h</td><td><a class="lnk" href="https://youtu.be/GCq40QB6l34" target="_blank">初取引で「5億の契約に来ました」</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>トラブルバスターズ</td><td class="num">710.000</td><td class="num">559.199</td><td class="num">43,0h</td><td><a class="lnk" href="https://youtu.be/f1oXpqO8hOc" target="_blank">中卒下請は待ってろ</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>トラブルバスターズ</td><td class="num">710.000</td><td class="num">532.667</td><td class="num">67,0h</td><td><a class="lnk" href="https://youtu.be/OZySUbQwsig" target="_blank">浮気嫁に味方する娘</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>トラブルバスターズ</td><td class="num">710.000</td><td class="num">402.729</td><td class="num">12,0h</td><td><a class="lnk" href="https://youtu.be/WLzBCqkGfjs" target="_blank">亡き姉の娘のために定期預金</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>トラブルバスターズ</td><td class="num">710.000</td><td class="num">385.389</td><td class="num">19,0h</td><td><a class="lnk" href="https://youtu.be/rPMIFlePlBo" target="_blank">社長が10億の赤字を放置</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>スカッとLINE</td><td class="num">348.000</td><td class="num">112.750</td><td class="num">67,0h</td><td><a class="lnk" href="https://youtu.be/3VS-QIpZIrU" target="_blank">義家族との旅行でホテル代を払わされ</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>セカイノフシギ</td><td class="num">866.000</td><td class="num">239.244</td><td class="num">60,7h</td><td><a class="lnk" href="https://youtu.be/ifHfpBhw2XE" target="_blank">会社が倒産し、俺が無職になった途端</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>セカイノフシギ</td><td class="num">866.000</td><td class="num">216.360</td><td class="num">36,7h</td><td><a class="lnk" href="https://youtu.be/-HfpCB0AKpc" target="_blank">ヒョロガリ過ぎて無理</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>ときめきデイズ</td><td class="num">173.000</td><td class="num">172.397</td><td class="num">62,0h</td><td><a class="lnk" href="https://youtu.be/pF4HvbmFyiM" target="_blank">上司に嫌われてクビになった俺</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>ときめきデイズ</td><td class="num">173.000</td><td class="num">132.430</td><td class="num">43,0h</td><td><a class="lnk" href="https://youtu.be/4WTnBhVVLOo" target="_blank">下請け会社から来た俺を貶す元カノ</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>ときめきデイズ</td><td class="num">173.000</td><td class="num">101.388</td><td class="num">14,0h</td><td><a class="lnk" href="https://youtu.be/dKPv5SdT__k" target="_blank">コネ新人SEがサーバーを落とす</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>恋愛漫画ラボラトリー</td><td class="num">132.000</td><td class="num">125.636</td><td class="num">36,0h</td><td><a class="lnk" href="https://youtu.be/il5tgTvfEUg" target="_blank">姉の結婚式当日に新郎がドタキャン</a></td><td>✗ kênh lớn</td></tr>
+<tr><td>猫元パト</td><td class="num">415.000</td><td class="num">200.208</td><td class="num">10,0h</td><td><a class="lnk" href="https://youtu.be/mms-9p67Nvc" target="_blank">チャンネルの現状と今後の活動について</a></td><td>✗ không phải ngách</td></tr>
+<tr><td>CoachD_Speaks</td><td class="num">215.000</td><td class="num">107.642</td><td class="num">54,0h</td><td><a class="lnk" href="https://youtu.be/XBct1BFZLsU" target="_blank">MAGA FAFO UPDATE!</a></td><td>✗ tiếng Anh/chính trị</td></tr>
+<tr><td>孤独のグルメ</td><td class="num">443.000</td><td class="num">276.553</td><td class="num">60,6h</td><td><a class="lnk" href="https://youtu.be/oOp_7fw3iLI" target="_blank">孤独のグルメ3 第6話</a></td><td>✗ nội dung phim có bản quyền</td></tr>
+</tbody>
+</table>
+
+<h2><span class="n">02</span>Vì sao chỉ 2 video — và vì sao con số đó là thật</h2>
+
+<p>Tỉ lệ này <b>không phải lỗi tìm kiếm</b>. Trong 1.286 video ≤72h thu được, có <b>901 video thuộc kênh ≤5.000 sub</b>, nhưng video cao nhất của nhóm này chỉ đạt <b>89.308 view</b>. Nói cách khác: kênh nhỏ trong ngách này gần như <em>không thể</em> vượt 100k trong 72h — 2 video trên là ngoại lệ có thật, và cả 2 đều đã được xác minh bằng cách mở trực tiếp video + kênh.</p>
+
+<div class="note">
+<b>Bài học phương pháp (đã trả giá trong chính lần tìm này):</b> vòng 1–4 dùng hơn 140 keyword hẹp (<code>漫画 職場</code>, <code>因果応報</code>, <code>スカッとする話</code>…) và <b>sót</b> video 117k view / 614 sub — vì tiêu đề nó là "大混雑の深夜食堂にボロボロの母娘…", không chứa từ khoá hẹp nào. Video chỉ lộ ra khi tôi soi lịch sử kênh bằng tay. Vòng 5 sửa đúng: <b>ít truy vấn RỘNG + phân trang sâu + sort viewCount</b>. Nguyên tắc: khi săn ngưỡng view cao, <em>sort theo view</em> quan trọng hơn <em>khớp keyword</em>.
+</div>
+
+<h2><span class="n">03</span>Nhóm gần ngưỡng — kênh nhỏ, đúng ngách, chưa đạt 100k</h2>
+<p class="lead">8 video đúng thể loại công sở/quả báo, kênh ≤5.000 sub, view 16k–72k trong 72h. Đây là danh sách theo dõi: nếu thuật toán đẩy tiếp, chúng có thể vượt 100k trong 1–2 ngày tới.</p>
+
+<table>
+<thead><tr>
+  <th class="num">View</th><th class="num">Tuổi</th><th class="num">Sub</th><th>Kênh</th><th>Video</th><th class="num">Median kênh</th><th class="num">Trend</th>
+</tr></thead>
+<tbody>
+<tr><td class="num">71.762</td><td class="num">36,9h</td><td class="num">817</td><td>他人事じゃない人生【ヒトゴト】</td><td><a class="lnk" href="https://youtu.be/KCvrhcEsU_0" target="_blank">退職金1500万円を5年で使い切った62歳の末路</a></td><td class="num">—</td><td class="num">—</td></tr>
+<tr><td class="num">50.649</td><td class="num">69,7h</td><td class="num">3.860</td><td>老人ホーム</td><td><a class="lnk" href="https://youtu.be/YMlWIT0S7q8" target="_blank">定年直前の俺にクビ宣告した2代目社長「今すぐ出社しろ！」</a></td><td class="num">8.035</td><td class="num">0,47 ↓</td></tr>
+<tr><td class="num">28.979</td><td class="num">61,9h</td><td class="num">905</td><td>恋と逆転のスカッと劇場</td><td><a class="lnk" href="https://youtu.be/R0sRaU1A5c4" target="_blank">8年間温泉を守った技術者との契約を切った支配人</a></td><td class="num">6.665</td><td class="num">1,22 ↑</td></tr>
+<tr><td class="num">23.823</td><td class="num">47,0h</td><td class="num">4.210</td><td>星野マンガ劇場</td><td><a class="lnk" href="https://youtu.be/7RZv1_AXNfc" target="_blank">実家から追い出され絶望に陥った青年</a></td><td class="num">2.501</td><td class="num">0,29 ↓</td></tr>
+<tr><td class="num">17.969</td><td class="num">59,0h</td><td class="num">4.770</td><td>しおりの恋灯り文庫</td><td><a class="lnk" href="https://youtu.be/XKc5LW5O3Ks" target="_blank">婚約者も手柄も後輩に奪われた俺</a></td><td class="num">10.051</td><td class="num">1,41 ↑</td></tr>
+<tr><td class="num">17.126</td><td class="num">63,0h</td><td class="num">760</td><td>絶対に許さないからな</td><td><a class="lnk" href="https://youtu.be/1tvvFdtc0gc" target="_blank">掃除のおばさんが親戚になるなんて恥ずかしいｗ</a></td><td class="num">8.562</td><td class="num">0,97 →</td></tr>
+<tr><td class="num">16.499</td><td class="num">68,0h</td><td class="num">3.630</td><td>生きてるうちに。</td><td><a class="lnk" href="https://youtu.be/cBJeLzQjVsY" target="_blank">【50代の退職】会社を辞めて困ったこと6選</a></td><td class="num">—</td><td class="num">—</td></tr>
+<tr><td class="num">16.446</td><td class="num">61,2h</td><td class="num">1.470</td><td>人生家計簿</td><td><a class="lnk" href="https://youtu.be/3-YvDqGVMss" target="_blank">退職後の投資ポートフォリオ</a></td><td class="num">—</td><td class="num">—</td></tr>
+</tbody>
+</table>
+
+<h2><span class="n">04</span>Đọc gì từ 2 video đạt — mô-típ "quả báo không trả thù"</h2>
+
+<div class="grid2">
+<div class="card">
+<h3 style="margin-top:0">Video #1 — PENGUINWATCH-NEO</h3>
+<p style="font-size:13.5px;color:#c8d3de"><b>Cấu trúc:</b> kẻ xấu gây sự (bám đuôi, lái ẩu) → người quay <em>không đánh trả</em> → gọi/dẫn công an → kết quả pháp lý.</p>
+<p style="font-size:13.5px;color:#c8d3de"><b>Vì sao "không trả thù":</b> protagonist giữ đúng luật. Quả báo do <em>hệ thống</em> thực thi, không do protagonist. Đây chính là ranh giới của lane L.</p>
+<p style="font-size:13.5px;color:#c8d3de"><b>Điểm yếu khi clone:</b> phụ thuộc footage thật (dashcam/camera an ninh). Muốn làm phải có nguồn clip — xem mục 06.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Video #2 — 逆転ときめき漫画</h3>
+<p style="font-size:13.5px;color:#c8d3de"><b>Cấu trúc:</b> người tốt bị coi thường → làm việc tử tế với người yếu thế → vài tháng sau thành công → kẻ xấu cũ quay lại → bị từ chối.</p>
+<p style="font-size:13.5px;color:#c8d3de"><b>Vì sao "không trả thù":</b> protagonist không chủ động hại ai. Kẻ xấu <em>tự</em> đến và <em>tự</em> mất. Đền đáp là hệ quả của việc tốt.</p>
+<p style="font-size:13.5px;color:#c8d3de"><b>Điểm mạnh khi clone:</b> manga AI — không cần footage thật, không cần người đóng. Pipeline ảnh AI + giọng đọc là đủ.</p>
+</div>
+</div>
+
+<div class="quote">「子供たちだけでも、何か食べさせてもらえませんか？」
+大混雑の深夜食堂を訪れたのは、ボロボロの服を着た母親と幼い双子の姉妹だった。
+…
+ところが、母娘を置いて出ていった元夫が現れ、復縁を迫ってきて…
+— mô tả gốc video #2: mở bằng <em>câu thoại của người yếu thế</em>, không mở bằng tình huống xấu hổ. Đây là hook khác biệt so với 90% video cùng ngách (mở bằng "tôi bị sếp chửi").</div>
+
+<h2><span class="n">05</span>Cảnh báo — những gì KHÔNG tìm được</h2>
+<div class="note">
+<b>Không có video "công sở thuần" nào đạt ngưỡng.</b> Cả 2 video đạt đều <em>không</em> phải công sở Nhật điển hình: #1 là giao thông, #2 là quán ăn. Các video công sở đúng nghĩa (sếp chửi nhân viên, パワハラ, 下請け) trong 72h đều nằm ở kênh lớn: トラブルバスターズ 710k sub, ときめきデイズ 173k sub, スカッとLINE 348k sub.<br><br>
+<b>Nghĩa là:</b> nếu anh muốn <em>kênh nhỏ</em> + <em>công sở</em> + <em>&gt;100k/72h</em> cùng lúc — dữ liệu 72h này cho thấy chưa có ai làm được. Đây là khoảng trống thật, nhưng cũng là rủi ro: có thể ngách công sở bị kênh lớn khoá chặt bằng thuật toán.
+</div>
+
+<h2><span class="n">06</span>Đề xuất bước tiếp</h2>
+<ul class="why">
+<li><b>Nếu ưu tiên "kênh nhỏ bùng view":</b> clone mô-típ #2 (manga AI, cho-ăn-được-đền-đáp). Không cần footage, kênh 12 ngày tuổi đã bùng → xác nhận thuật toán còn chỗ.</li>
+<li><b>Nếu ưu tiên "quả báo không trả thù" thuần:</b> mô-típ #1 mạnh hơn về mặt lane, nhưng cần nguồn footage dashcam/camera thật + cân nhắc bản quyền.</li>
+<li><b>Nếu muốn đúng "công sở":</b> cần nới ngưỡng sub lên 10–20k, hoặc chấp nhận view 30–50k trong 72h. Cả 2 hướng đều lệch yêu cầu ban đầu — cần anh quyết.</li>
+<li><b>Theo dõi nhóm gần ngưỡng:</b> 8 video ở mục 03, đặc biệt 老人ホーム (50,6k/69,7h, 3.860 sub) và 他人事じゃない人生 (71,7k/36,9h, 817 sub) — chạy lại sau 24h để xem có vượt 100k.</li>
+</ul>
+
+<div class="foot">
+Nguồn: YouTube Data API v3 (<code>search.list</code> + <code>videos.list</code> + <code>channels.list</code>) và InnerTube keyless.<br>
+Corpus: 1.511 video unique · 1.286 video ≤72h · enrich 100% qua <code>videos.list</code>, sub kênh qua <code>channels.list</code>.<br>
+Script: <code>scratch_analysis/lane_L_payback_3d_20261018/</code> — <code>scan_wide.py</code> là bản chạy đúng (vòng 5).<br>
+Số liệu chốt lúc 18/10/2026; view sẽ còn tăng. Không có số liệu nào trong báo cáo này là suy đoán — tất cả lấy từ API và kiểm tra lại thủ công 2 video đạt.
+</div>
+
+</div>
+</body>
+</html>

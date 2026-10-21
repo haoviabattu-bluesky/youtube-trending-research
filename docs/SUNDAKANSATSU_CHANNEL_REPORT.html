@@ -1,0 +1,471 @@
+<title>Hồ sơ kênh すんだ観察所</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: một cột đọc 46rem, khối bằng chứng (ảnh/bảng) được tràn rộng 64rem; màu lấy từ thumbnail kênh: dải đen-vàng + chữ tím hồng */
+:root{
+  --paper:#f6f5f2; --ink:#1d1a22; --muted:#5d5866; --rule:#d9d5df; --panel:#ffffff;
+  --accent:#a01a74; --accent-soft:#f6e3ef; --band:#16131a; --band-fg:#ffd83a;
+  --good:#1f7a4a; --good-soft:#e2f2e9; --bad:#b03a2e; --bad-soft:#f8e4e1; --warn:#946200; --warn-soft:#fbf0d6;
+  --f-display:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;
+  --f-body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;
+  --f-jp:"Noto Sans JP","Yu Gothic","Meiryo",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#16141a; --ink:#ece9f1; --muted:#a9a3b4; --rule:#34303c; --panel:#1f1c25;
+  --accent:#e66bb8; --accent-soft:#3a1f33; --band:#0c0a0e; --band-fg:#ffd83a;
+  --good:#6fcf98; --good-soft:#173326; --bad:#f08a7e; --bad-soft:#3a1d1a; --warn:#e6b94f; --warn-soft:#352a12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#16141a; --ink:#ece9f1; --muted:#a9a3b4; --rule:#34303c; --panel:#1f1c25;
+  --accent:#e66bb8; --accent-soft:#3a1f33; --band:#0c0a0e; --band-fg:#ffd83a;
+  --good:#6fcf98; --good-soft:#173326; --bad:#f08a7e; --bad-soft:#3a1d1a; --warn:#e6b94f; --warn-soft:#352a12; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65;margin:0}
+.wrap{max-width:64rem;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+.read{max-width:46rem}
+.jp{font-family:var(--f-jp)}
+.vi{display:block;color:var(--muted);font-size:.92em}
+header.top{background:var(--band);color:#fff;padding-block:28px 26px;margin-bottom:28px}
+header.top .wrap{padding-block:0}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--band-fg)}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,5vw,44px);line-height:1.15;margin:.3em 0 .2em;text-wrap:balance}
+h1 .jp{color:var(--band-fg)}
+header.top p{color:#d9d4e2;max-width:46rem;margin:.4em 0}
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(21px,3vw,27px);line-height:1.25;margin:2.4em 0 .5em;text-wrap:balance;display:flex;gap:.6em;align-items:baseline}
+h2 .n{font-family:var(--f-mono);font-size:.62em;color:var(--accent);font-weight:600}
+h3{font-size:18px;margin:1.6em 0 .4em}
+a{color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.btn{display:inline-block;padding:9px 14px;border-radius:6px;background:var(--band-fg);color:#16131a;text-decoration:none;font-weight:700;font-size:14px}
+.btn.alt{background:transparent;color:#fff;border:1px solid #6d6578}
+.verdict{border-left:4px solid var(--accent);background:var(--accent-soft);padding:16px 20px;margin:18px 0;border-radius:0 8px 8px 0}
+.verdict p{margin:.4em 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.kpi b{display:block;font-family:var(--f-mono);font-size:22px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;color:var(--muted)}
+.tbl{overflow-x:auto;margin:14px 0;border:1px solid var(--rule);border-radius:8px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--paper)}
+td.num,th.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.hot{color:var(--good);font-weight:700}.cold{color:var(--bad);font-weight:700}
+.quote{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;margin:10px 0}
+.quote .jp{display:block;font-size:15px}
+.quote .who{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.chip{display:inline-block;font-family:var(--f-mono);font-size:12px;padding:1px 8px;border-radius:99px;border:1px solid var(--rule);background:var(--panel);white-space:nowrap}
+.chip.new{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.chip.re{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.chip.risk{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+figure{margin:18px 0}
+figure img{display:block;width:100%;border-radius:6px;border:1px solid var(--rule)}
+figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.cols>div{min-width:0}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:14px 18px}
+.box h3{margin-top:.2em}
+ul,ol{padding-left:1.3em}
+li{margin:.3em 0}
+.steps li{margin:.55em 0}
+.ep{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:14px 18px;margin:12px 0}
+.ep .t{font-family:var(--f-jp);font-weight:700;font-size:16px}
+.ep .meta{font-size:14px;margin-top:6px}
+.ep .meta b{color:var(--muted);font-weight:600}
+.pri{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:600}
+.small{font-size:13px;color:var(--muted)}
+.decide{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.decide>div{border:2px solid var(--rule);border-radius:8px;padding:14px;background:var(--panel)}
+.decide>div.rec{border-color:var(--accent)}
+code{font-family:var(--f-mono);font-size:.88em;background:var(--accent-soft);padding:1px 5px;border-radius:4px;word-break:break-all}
+</style>
+
+<header class="top"><div class="wrap">
+  <div class="eyebrow">Đào sâu kênh · 07/10/2026 · đủ 18/18 video</div>
+  <h1><span class="jp">すんだ観察所</span> — Trạm quan sát “すんだ”</h1>
+  <p>Kênh ゆっくり (giọng máy) tiểu phẩm “tự làm tự chịu”: một kẻ kiêu ngạo nói câu ngạo mạn, làm theo, rồi trả giá bằng con số. Mở 14/08/2026, 54 ngày, 18 video, 2,31 triệu view. Đa số đánh vào Trung Quốc, nhưng 3 trong 6 video nhiều view nhất là chuyện nội địa Nhật (残クレ — 残価設定クレジット, mua xe trả góp chừa lại “giá trị còn lại” tới cuối kỳ; gạo tồn kho; NHK).</p>
+  <div class="links">
+    <a class="btn" href="https://www.youtube.com/channel/UCEaNC-I0as6FhFHzBgWDxMw" target="_blank" rel="noopener">Kênh すんだ観察所 ↗</a>
+    <a class="btn alt" href="https://www.youtube.com/watch?v=dYRNIba0alA" target="_blank" rel="noopener">Top 1: cấm du lịch Nhật 376k ↗</a>
+    <a class="btn alt" href="https://www.youtube.com/watch?v=6gy5g8amfxQ" target="_blank" rel="noopener">Video 残クレ nội địa 197k ↗</a>
+    <a class="btn alt" href="https://www.youtube.com/watch?v=acc_9sQx_a0" target="_blank" rel="noopener">Video mới: phí visa 347k/2 ngày ↗</a>
+  </div>
+</div></header>
+
+<main class="wrap">
+<div class="read">
+
+<h2><span class="n">00</span>Trả lời nhanh 4 câu anh hỏi</h2>
+<div class="verdict">
+  <p><b>Đã phân tích chưa?</b> Chưa đào sâu. Kênh mới chỉ xuất hiện 2 lần ngày 06/10: một dòng trong bảng 10 kênh 海外の反応 (phản ứng nước ngoài) và một dòng đối thủ trong hồ sơ ニッポンすんだ村 (Làng Nippon すんだ). Hôm nay làm đủ 18/18 video.</p>
+  <p><b>Cùng ngách, khác chủ đề có được không?</b> Được, và có số chứng minh. Trong 5 kênh tiểu phẩm cùng khuôn, video nội địa Nhật kiểu “người thường/tổ chức ai cũng ghét tự chuốc thiệt hại tiền bạc” đạt trung vị <b>1,34 lần</b> mức thường của kênh, còn video “chiến lược doanh nghiệp” chỉ <b>0,14 lần</b>. Kênh 底辺なのだ (Tầng đáy đây mà) làm toàn đề tài xã hội Nhật, mở 01/2026, trung vị 196k/video. Chi tiết ở mục 10.</p>
+  <p><b>Em đề xuất lane gì?</b> Giữ nguyên bộ khung của すんだ観察所 (tiểu phẩm “kẻ kiêu ngạo → con số vả mặt”, mở bằng cảnh trả giá, thumbnail trước→sau), nhưng đổi chủ đề sang <b>bẫy tiền bạc đời thường của người Nhật</b>: 残クレ, lãi thả nổi, phe đầu cơ, rút lương hưu sớm, dịch vụ nghỉ việc hộ… Nhân vật là nguyên mẫu, không gán lời cho người thật, không nhắm vào dân tộc nào.</p>
+  <p><b>Tập nào làm trước?</b> 5 tập đợt 1 ở mục 17, đứng đầu là lãi thả nổi (mốc tin: ngân hàng tăng lãi tháng 10/2026) và 残クレ ngày trả xe (đã có 3 video 197k–2,1M chứng minh cầu).</p>
+</div>
+
+<h2><span class="n">01</span>Kênh làm nội dung gì</h2>
+<p>Mỗi video 16–20 phút dựng một tin thật trong 3–6 tuần qua thành vở kịch hội thoại nhiều vai. Mô tả kênh ghi rõ 「実際の出来事や報道などを参考に再構成したフィクションです」 <span class="vi">— “đây là hư cấu dựng lại dựa trên sự kiện và tin tức có thật”</span>. Hai khuôn truyện:</p>
+<div class="cols">
+  <div class="box">
+    <h3>Khuôn A — “lá bài vô địch bị trượt”</h3>
+    <p>Vai: 主席 <span class="vi">(Chủ tịch, nét vẽ biếm hoạ)</span> · 秘書 <span class="vi">(thư ký, từ 19/09 là cô gái anime)</span> · 大臣 <span class="vi">(bộ trưởng giải thích)</span> · 首相 Nhật <span class="vi">(nữ, mặt là lá cờ Nhật — không vẽ mặt người thật)</span> · dân thường.</p>
+    <p>Chủ tịch khoe một đòn trừng phạt Nhật → thư ký đọc số liệu ngược → điều tra nguyên nhân → nguyên nhân nằm ở chính nước mình → phía Nhật bình thản → chủ tịch suy sụp → bài học.</p>
+    <p class="small">Đa số trong 13/18 video nhắm Trung Quốc (trung vị 87k).</p>
+  </div>
+  <div class="box">
+    <h3>Khuôn B — “cảnh trả giá trước, tua lại sau”</h3>
+    <p>Vai nguyên mẫu không tên thật: vợ chồng ヤンキー <span class="vi">(dân chơi)</span> mua xe trả góp, 卸業者 <span class="vi">(nhà buôn sỉ gạo)</span>, “hội trưởng” NHK hư cấu, bạn thân can ngăn, nhân viên bán hàng, nhân viên bảo hiểm.</p>
+    <p>Mở ở lúc mất tiền → “sao lại thế này” → tua về lúc khoe khoang → từng quyết định ngu được narrator giải thích bằng số → cái giá cuối cùng → 3 lối thoát → bài học.</p>
+    <p class="small">3 video nội địa: 197k, 147k, 123k — trung vị 147k, cao hơn trung vị kênh (92k).</p>
+  </div>
+</div>
+
+<h2><span class="n">02</span>Hook — đọc trước số liệu</h2>
+<p>Đọc 0–90 giây của 11 video (top, mới nhất, thấp nhất). Nạp kho với 2 kiểu mở mới <b>H44</b> và <b>H45</b> ở <code>E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\HOOK_LIBRARY.md</code> (kho nay 239 video). Kênh KHÔNG dùng kiểu tiểu phẩm tua nhanh cả vòng cung H43 như ニッポンすんだ村; nó giấu nguyên nhân để giữ câu hỏi lâu hơn.</p>
+
+<h3>H44 — Khoe thành tích → thuộc hạ đọc một con số ngược trong 15 giây</h3>
+<div class="quote">
+  <span class="who">dYRNIba0alA · 375.731 view · auto-caption</span>
+  <span class="jp">[0s] 台湾情勢が緊迫する2026年、中国北京の中南海。</span><span class="vi">Năm 2026, eo biển Đài Loan căng thẳng. Trung Nam Hải, Bắc Kinh.</span>
+  <span class="jp">[5s] 人民には日本への渡航自粛を通達してやった。これで日本の観光業は壊滅するはずだ。</span><span class="vi">Ta đã ra lệnh dân không sang Nhật. Thế là ngành du lịch Nhật tiêu tan.</span>
+  <span class="jp">[12s] 主席、恐れながら…7月の外国人旅客数が過去最高を記録したそうです。</span><span class="vi">Thưa Chủ tịch, xin mạn phép… số khách nước ngoài tháng 7 lập kỷ lục.</span>
+  <span class="jp">[18s] な、なんでだ？日本の観光客といえば中国人だっただろう。</span><span class="vi">Sao lại thế? Khách du lịch Nhật chẳng phải là người Trung Quốc sao.</span>
+</div>
+<p><b>Vì sao giữ người:</b> mâu thuẫn nằm trong một con số có thật (JNTO, sân bay Narita tháng 7), nên người xem tin ngay. Kết quả lộ ra từ giây 12, nhưng nguyên nhân bị giấu tới phút 4 (“đòn trúng rồi sao đối thủ không ngã?”), và đáp án là “dân Trung Quốc hết tiền đi du lịch”, khớp đúng tiêu đề 「そもそも行けない」 <span class="vi">— “vốn dĩ không đi nổi”</span>.</p>
+
+<h3>H45 — Mở ở cảnh trả giá có số tiền, rồi tua về lúc khoe khoang</h3>
+<div class="quote">
+  <span class="who">6gy5g8amfxQ · 196.542 view · auto-caption</span>
+  <span class="jp">[0s] 記録的な大雨に厳重警戒してください。</span><span class="vi">(Bản tin) Hãy hết sức cảnh giác với mưa lớn kỷ lục.</span>
+  <span class="jp">[2s] 翌朝、駐車場は水没していました。</span><span class="vi">Sáng hôm sau, bãi đỗ xe ngập nước.</span>
+  <span class="jp">[11s] 保険金でチャラだろうがよ。— 差額の70万は自己負担です。来月までに一括で。</span><span class="vi">“Bảo hiểm trả hết chứ gì.” — “Phần chênh 700 nghìn yên anh tự chịu, trả một lần trước tháng sau.”</span>
+  <span class="jp">[22s] あんたが特約削ったからでしょ。— お前が固定費下げろって言ったんだろうが。</span><span class="vi">“Tại anh cắt điều khoản bổ sung.” — “Tại cô bảo giảm chi phí cố định.”</span>
+  <span class="jp">[31s] なんでこんなことになったんだよ。— 時は遡ること2年前。</span><span class="vi">“Sao lại ra nông nỗi này.” — Quay lại 2 năm trước.</span>
+</div>
+<p><b>Vì sao giữ người:</b> khán giả thấy cái giá trước, nên mọi câu khoe sau đó (「乗るならアルファード一択だろ」 <span class="vi">— “đã đi thì phải Alphard”</span>) thành quả bom chờ nổ. Họ ở lại để xem nó nổ thế nào, giống cách xem phim biết trước kết cục.</p>
+
+<div class="tbl"><table>
+<thead><tr><th>Video</th><th class="num">View</th><th>Kiểu</th><th>Câu mở (dịch)</th><th class="num">Điểm /12</th><th>Thắng/thua vì</th></tr></thead>
+<tbody>
+<tr><td><span class="jp">主席「日本へ行くな」</span><span class="vi">Chủ tịch: “Không được sang Nhật”</span></td><td class="num">375.731</td><td>H44</td><td>Ra lệnh cấm du lịch → khách lập kỷ lục</td><td class="num">12</td><td class="hot">Số liệu thật vả lời khoe ở giây 12</td></tr>
+<tr><td><span class="jp">中国「ビザ代で報復」</span><span class="vi">TQ: “Trả đũa bằng phí visa”</span></td><td class="num">347.013</td><td>H44</td><td>Phí visa 2.250 → 16.750 yên → mạng Nhật “càng tốt”</td><td class="num">12</td><td class="hot">Tin 24 ngày tuổi, khán giả được mời chế giễu</td></tr>
+<tr><td><span class="jp">永住許可を取って「もう働かなくていいw」</span><span class="vi">Lấy được vĩnh trú: “khỏi cần làm nữa”</span></td><td class="num">313.252</td><td>H22</td><td>Bài khoe trên mạng xã hội TQ ở giây 3</td><td class="num">12</td><td class="hot">Chạm nỗi bực về thuế; video đầu tiên của kênh</td></tr>
+<tr><td><span class="jp">【残クレの末路】</span><span class="vi">Kết cục mua xe 残クレ</span></td><td class="num">196.542</td><td>H45</td><td>Xe ngập → đòi 70 vạn → vợ chồng đổ lỗi</td><td class="num">12</td><td class="hot">Nguyên mẫu ai cũng biết + mưa lớn Chiba 8/2026</td></tr>
+<tr><td><span class="jp">救急車にまで受信料を請求したNHK</span><span class="vi">NHK đòi phí thu sóng cả xe cứu thương</span></td><td class="num">146.677</td><td>H43</td><td>Hội trưởng: “không tha tỉnh nào”</td><td class="num">12</td><td class="hot">Tổ chức ai cũng ghét + hình ảnh vô lý</td></tr>
+<tr><td><span class="jp">卸業者「今買えばボロ儲けだ！」</span><span class="vi">Nhà buôn sỉ: “Mua giờ là lãi đậm”</span></td><td class="num">122.834</td><td>H44</td><td>Năm ngoái kệ trống gạo → nay kho chất đống</td><td class="num">11</td><td class="hot">Nghịch lý ai cũng sống qua; kênh mới 11 ngày</td></tr>
+<tr><td><span class="jp">中国高速鉄道を選んだインドネシア</span><span class="vi">Indonesia chọn đường sắt cao tốc TQ</span></td><td class="num">91.662</td><td>H45</td><td>Họp báo lỗ → “sai từ năm 2015”</td><td class="num">12</td><td>Tin cũ, trần thấp hơn</td></tr>
+<tr><td><span class="jp">主席「撤退などできるはずがない！」</span><span class="vi">“Họ không thể rút được đâu”</span></td><td class="num">77.161</td><td>H44</td><td>7 vạn công ty mới vs vốn đầu tư giảm</td><td class="num">11</td><td>Mới 4 ngày tuổi khi đo</td></tr>
+<tr><td><span class="jp">「バレなきゃ勝ちｗ」</span><span class="vi">“Không bị lộ là thắng”</span></td><td class="num">25.181</td><td>H41</td><td>Phòng trọ chui → tin phạt ở giây 52</td><td class="num">7</td><td class="cold">Nghịch lý muộn; luật của Việt Nam, khó hả hê</td></tr>
+<tr><td><span class="jp">韓国「日本のシャインマスカットを大量生産！」</span><span class="vi">Hàn: “Sản xuất hàng loạt nho Shine Muscat”</span></td><td class="num">8.811</td><td>H41</td><td>Quầy siêu thị yên ắng → tua về 1988</td><td class="num">5</td><td class="cold">Tin cũ, nhóm “Hàn Quốc” yếu nhất cả dòng</td></tr>
+<tr><td><span class="jp">中国「沖縄を内側から崩す！」</span><span class="vi">TQ: “Phá Okinawa từ bên trong”</span></td><td class="num">1.846</td><td>H41</td><td>Phòng tác chiến, âm mưu trừu tượng</td><td class="num">5</td><td class="cold">Không tiền, không cảnh trả giá; kênh mới 5 ngày</td></tr>
+</tbody></table></div>
+<p class="small">Tách bạch: 3 video thua thua vì đề tài (tin cũ, không có thiệt hại vật chất, nhắm Hàn Quốc) chứ không vì kiểu hook. Video gạo cùng hook H44 với video thắng và vẫn được 122k dù kênh mới 11 ngày tuổi.</p>
+
+<h2><span class="n">03</span>Số liệu kênh</h2>
+</div>
+<div class="kpis">
+  <div class="kpi"><b>2.460</b><span>subscriber</span></div>
+  <div class="kpi"><b>2,31M</b><span>view · 18 video · 54 ngày</span></div>
+  <div class="kpi"><b>91.662</b><span>trung vị view (video ≥7 ngày)</span></div>
+  <div class="kpi"><b>0,98</b><span>trend (nửa mới / nửa cũ)</span></div>
+  <div class="kpi"><b>16,3%</b><span>top 1 / tổng view (top 3: 44,9%)</span></div>
+  <div class="kpi"><b>11/15</b><span>video ≥50k (6/15 ≥100k)</span></div>
+</div>
+<div class="read">
+<ul>
+  <li>Nhịp đăng: cứ 3 ngày 1 video, giờ đăng không cố định (03–21h UTC).</li>
+  <li>Độ dài 16–20 phút, trung vị 17,3 phút. 7.100–8.300 ký tự/video, 410–450 ký tự/phút (hội thoại nhiều giọng nên nhanh hơn lane kể chuyện của mình khoảng 310).</li>
+  <li>Tương tác thấp kiểu xem thụ động: like/view 0,77%, comment/view 0,13%. Sub thấp so với view (0,1%) — người xem đến từ đề xuất, chưa gắn với kênh.</li>
+  <li>Đạt tiêu chí playbook: video đầu ≤60 ngày (54 ngày), ≥1.000 sub, 100% video ≤40 phút, top 1 &lt;25%.</li>
+  <li>Đà hiện tại: video 05/10 đạt 347k sau 2,2 ngày (159k view/ngày) — kênh đang được đẩy mạnh nhất từ trước tới nay.</li>
+</ul>
+
+<h2><span class="n">04</span>Tại sao — 7 câu hỏi về cách làm của kênh</h2>
+
+<h3>1. Tại sao làm nội dung này?</h3>
+<p>Từ 11/2025 (sau câu trả lời Quốc hội của Thủ tướng Takaichi về Đài Loan), Trung Quốc liên tục ra đòn: khuyến cáo không du lịch Nhật, cấm hải sản, tăng phí visa. Mỗi đòn là một tin mới, nên kênh không bao giờ hết đề tài. Khán giả (đọc 1.074 comment) là người Nhật bực với những chuyện này và muốn được “hả giận” (comment top: 「100倍でも1000倍でもどうぞ」 <span class="vi">— “gấp 100, 1000 lần cũng mời”</span>). Khung “tự làm tự chịu” biến tin khô thành chuyện có kẻ ác bị trừng phạt.</p>
+<p>Điều quan trọng hơn: khung này không cần Trung Quốc. Kênh đã thử chuyện trả góp xe, gạo, NHK và cả ba đều vượt trung vị kênh. Thứ khán giả mua là cảm giác “kẻ tham và kiêu bị số liệu vả mặt”, không phải quốc tịch của kẻ đó.</p>
+
+<h3>2. Tại sao hook như vậy?</h3>
+<p>Ba lý do. (a) Đặt con số ngược vào giây 12–18: người già xem trên TV/điện thoại quyết định ở lại rất nhanh, và một con số có nguồn đáng tin hơn lời kể. (b) Giấu nguyên nhân chứ không giấu kết quả: tiêu đề đã nói kết cục, nên hook chỉ cần hứa “vì sao”. (c) Với chuyện nội địa, mở ở cảnh trả giá có số tiền (70 vạn) vì nhân vật nguyên mẫu không có danh tiếng để câu người, chỉ cái giá mới câu được.</p>
+
+<h3>3. Tại sao kịch bản dựng như vậy?</h3>
+<ul>
+  <li><b>Cái giá đi theo bậc thang:</b> ở video 残クレ, cái giá tăng dần — giới hạn số km → phí khôi phục khi độ xe → con làm đổ nước lên ghế → xe ngập → bảo hiểm chỉ trả 230 vạn → còn nợ 70 vạn → vợ bỏ về nhà mẹ. Mỗi 1–2 phút có một nấc mới.</li>
+  <li><b>Người can ngăn (ダチ — bạn thân):</b> cảnh báo đúng từng bẫy, bị gạt đi. Khán giả đứng về phía người can, nên càng hả khi bẫy sập.</li>
+  <li><b>Narrator giảng xen kịch:</b> sau mỗi cảnh ngu, narrator giải thích cơ chế bằng số và một phép so sánh đời thường (残クレ = “ăn nhà hàng trả một nửa, phần còn lại vẫn tính phí giữ”; giữ xe 残クレ = “mặc tuxedo thuê đi tiệc nướng”). Đây là phần người xem “học được gì”, giúp video không chỉ là chửi.</li>
+  <li><b>Kết có lối thoát + bài học + kêu gọi bình luận:</b> 「皆さんはこの問題についてどう思いますか？」 <span class="vi">— “Các bạn nghĩ sao về chuyện này?”</span> (18/18 video).</li>
+</ul>
+
+<h3>4. Tại sao thumbnail như vậy?</h3>
+<ul>
+  <li><b>Dải đen trên cùng chữ vàng/đỏ</b> = chủ thể + đề tài, đọc được trên màn điện thoại nhỏ.</li>
+  <li><b>Hai ô trước → sau nối bằng mũi tên cam</b> = cả câu chuyện trong một cái liếc, đúng cấu trúc tiêu đề 「…」→結果.</li>
+  <li><b>Nhân vật thân trắng, đầu là lá cờ hoặc tấm biển</b> (業者 <span class="vi">— nhà buôn</span>, NHK): biết ngay “ai” mà không cần vẽ mặt người thật, tránh quyền chân dung.</li>
+  <li><b>Bong bóng thoại viền xanh</b> chứa câu ngạo mạn trong tiêu đề; nhãn vàng nhỏ góc trên (「最強の切り札」 <span class="vi">— “lá bài mạnh nhất”</span>, 「まさかの塩対応」 <span class="vi">— “bị đối xử lạnh nhạt không ngờ”</span>).</li>
+  <li><b>Chữ đáy khổng lồ gradient tím hồng, kết bằng “ｗ”</b>: chữ “w” (cười) báo đây là hài, hả hê chứ không phải giận dữ.</li>
+  <li><b>Nền ảnh AI giống ảnh thật</b> (Thiên An Môn, sân bay, đường ngập): đặt bối cảnh trong 1 giây. Thân video thì dùng hình kiểu いらすとや; thumbnail và thân video là hai phong cách khác nhau.</li>
+</ul>
+
+<h3>5. Tại sao hoạt hình như vậy?</h3>
+<p>Không có hoạt hình thật — chỉ là ảnh tĩnh đổi liên tục. Dùng ffmpeg đếm: video Trung Quốc đổi khung nhỏ (bong bóng, biểu cảm) 445 lần/16 phút, tức khoảng 2,2 giây một lần, đổi cảnh lớn 65 lần (15 giây/lần). Video 残クレ đổi khung nhỏ 2,5 giây/lần, đổi cảnh lớn 8,9 giây/lần. Rẻ nhưng mắt luôn có thứ mới để nhìn. Chi tiết ở mục 06.</p>
+
+<h3>6. Tại sao tiêu đề như vậy?</h3>
+<p>Khuôn: <span class="jp">{chủ thể}「{câu ngạo mạn}！」→{kết cục}ｗ【海外の反応・ゆっくり解説】</span> <span class="vi">— {chủ thể}: “{câu ngạo mạn}!” → {kết cục} (cười) 【phản ứng nước ngoài · giải thích giọng máy】</span>. Câu trong ngoặc là thứ khán giả muốn thấy bị vả. Video 残クレ và NHK vẫn giữ đuôi 【海外の反応】 dù không có gì “nước ngoài”: nhiều khả năng để YouTube tiếp tục gợi ý cho cùng nhóm người xem các kênh 海外の反応 (giả thuyết, không đo được từ bên ngoài). Video gạo bỏ đuôi đó vẫn đạt 122k.</p>
+
+<h3>7. Tại sao chọn đúng những tin này?</h3>
+<p>Mỗi video bám một tin thật mới 3–6 tuần, sau khi báo mạng đã có bài giải thích chi tiết để chép số liệu:</p>
+</div>
+<div class="tbl"><table>
+<thead><tr><th>Video</th><th>Tin thật làm mốc</th><th>Ngày tin</th><th>Ngày đăng</th><th class="num">Trễ</th></tr></thead>
+<tbody>
+<tr><td><span class="jp">ビザ代で報復</span><span class="vi">Trả đũa bằng phí visa</span></td><td>ĐSQ Trung Quốc công bố tăng phí visa cho người Nhật (1 lần: 2.250 → 16.750 yên), hiệu lực 14/9 (<a href="https://kumanichi.com/articles/2035019" target="_blank" rel="noopener">熊本日日新聞 — báo Kumamoto</a>)</td><td>11/09</td><td>05/10</td><td class="num">24 ngày</td></tr>
+<tr><td><span class="jp">残クレの末路</span><span class="vi">Kết cục 残クレ</span></td><td>Mưa lớn Chiba 8/2026, xe ngập; bài J-CAST về 残クレ Alphard ngập (<a href="https://www.j-cast.com/2026/08/21517312.html?p=all" target="_blank" rel="noopener">J-CAST</a>, <a href="https://financial-field.com/loan/entry-518150" target="_blank" rel="noopener">ファイナンシャルフィールド — trang tài chính cá nhân</a>)</td><td>21/08</td><td>12/09</td><td class="num">22 ngày</td></tr>
+<tr><td><span class="jp">中国系業者「行政指導なんて無視」</span><span class="vi">Công ty gốc Hoa: “kệ chỉ đạo hành chính”</span></td><td>Thị trấn Kutchan tuyên bố tố cáo hình sự vụ chặt 3,9 ha rừng, 9 loại vi phạm (<a href="https://www.hokkaido-np.co.jp/article/1250588/" target="_blank" rel="noopener">北海道新聞 — báo Hokkaido</a>)</td><td>25/08</td><td>28/09</td><td class="num">34 ngày</td></tr>
+<tr><td><span class="jp">救急車にまで受信料</span><span class="vi">Phí thu sóng cả xe cứu thương</span></td><td>全国知事会 (Hội nghị thống đốc toàn quốc) đề nghị miễn phí cho xe khẩn cấp (<a href="https://www.sakigake.jp/news/article/20260716OR0073/" target="_blank" rel="noopener">秋田魁新報 — báo Akita</a>, <a href="https://kuruma-news.jp/post/1095751" target="_blank" rel="noopener">くるまのニュース — tin xe hơi</a>)</td><td>16/07</td><td>30/08</td><td class="num">45 ngày</td></tr>
+</tbody></table></div>
+<div class="read">
+<p>Phần thật (narrator đọc) lấy đúng số trong các bài này: một lần 2.250 → 16.750 yên; bảo hiểm dạng 一般型 <span class="vi">(toàn diện)</span> và エコノミー型 <span class="vi">(tiết kiệm)</span> đều trả cho ngập nước; 3,9 ha và 9 loại vi phạm. Phần dựng là toàn bộ lời thoại. Video NHK cho “hội trưởng NHK” là một phụ nữ hư cấu và gán lời đòi tiền gay gắt cho tổ chức có thật — đó là chỗ yếu về pháp lý.</p>
+
+<h2><span class="n">05</span>Cấu trúc kịch bản — 2 bản đo thật</h2>
+<div class="cols">
+<div class="box">
+<h3>A · <span class="jp">主席「日本へ行くな」</span> (16:19)</h3>
+<p class="vi">Chủ tịch: “Không được sang Nhật”</p>
+<ol>
+<li>0:00–0:30 H44: khoe lệnh cấm → khách lập kỷ lục</li>
+<li>0:30–1:30 Bộ trưởng giảng “ngoại giao bắt kinh tế làm con tin” (3 bước)</li>
+<li>1:30–3:30 Ba tiền lệ có năm: 2012 (Senkaku), 2017 (THAAD, Hàn), 2023 (nước xử lý Fukushima) — mỗi tiền lệ có 1 cảnh nạn nhân</li>
+<li>3:30–4:30 “Lần này không ăn thua” → câu hỏi bí ẩn → lệnh điều tra</li>
+<li>4:30–8:30 Đáp án: bất động sản, 2 phần 10 thanh niên thất nghiệp, dân hết tiền; phỏng vấn đường phố; phép so sánh “ông chủ cấm nhân viên mua sắm”</li>
+<li>8:30–11:00 Phía Nhật: thủ tướng bình thản + số liệu (Narita 195 vạn khách tháng 7); khách Tây ở onsen 3 tuần</li>
+<li>11:00–13:30 Báo cáo cuối → chủ tịch suy sụp; thư ký châm chọc</li>
+<li>13:30–14:30 Ngư dân Fukushima hồi phục (nốt cảm động)</li>
+<li>14:30–16:19 Bài học + kêu gọi bình luận</li>
+</ol>
+</div>
+<div class="box">
+<h3>B · <span class="jp">【残クレの末路】</span> (17:47)</h3>
+<p class="vi">Kết cục mua xe 残クレ</p>
+<ol>
+<li>0:00–0:33 H45: xe ngập → nợ 70 vạn → đổ lỗi → tua lại</li>
+<li>0:33–1:50 Khoe: “Alphard thôi”, 900 vạn, trả trước 0 đồng, tháng 3 vạn</li>
+<li>1:50–4:00 Narrator: 残クレ là gì + so sánh nhà hàng; bạn thân can ngăn</li>
+<li>4:00–6:00 Lãi tính trên cả phần treo: 91 vạn vs 130 vạn</li>
+<li>6:00–8:00 Giới hạn km (1.000–1.500 km/tháng, phạt 10–20 yên/km)</li>
+<li>8:00–10:00 Vết bẩn, độ xe → phí khôi phục</li>
+<li>10:00–13:30 Mưa lớn → xe hỏng hẳn → bảo hiểm 230 vạn, còn nợ 300 vạn, thiếu 70 vạn vì không mua 新車特約 <span class="vi">(điều khoản giá xe mới, vài trăm yên/tháng)</span></li>
+<li>13:30–15:30 Đại lý chỉ vào chữ ký; vợ bỏ đi</li>
+<li>15:30–17:47 Bạn thân quay lại; 3 lối thoát khi hết hợp đồng; bài học</li>
+</ol>
+</div>
+</div>
+
+<h2><span class="n">06</span>Mô típ hình ảnh và giọng</h2>
+</div>
+<figure><img src="../data/sundakansatsu/web/motif.jpg" alt="12 khung hình tiêu biểu từ 4 video của すんだ観察所"><figcaption>12 khung từ 4 video. A: mở bằng dòng chữ thời gian-địa điểm vàng · B: bong bóng viền màu theo vai · C: nền cầu vồng khi sốc · D: cảnh narrator trên tranh AI kiểu いらすとや · E: phỏng vấn đường phố · F: phía Nhật (thủ tướng mặt cờ) · G: bản tin mở đầu · H: icon tiền 70万 · I: cận mặt giận · J: “tiếng nói mạng xã hội” trong khung nổ · K: clip 3D người đầu cờ (có thể là video AI) · L: chân dung minh hoạ chính trị gia thật.</figcaption></figure>
+<div class="read">
+<ul>
+  <li><b>Nhân vật:</b> phong cách いらすとや (người tròn, má hồng), đứng tĩnh 2–3 người/khung. Nhãn tên màu trên đầu (主席, 秘書, パパ, ママ, 保険屋 <span class="vi">— nhân viên bảo hiểm</span>) để nghe mà không cần nhìn vẫn biết ai nói. Khoảng từ 19/09 thêm thư ký cô gái anime; comment để ý ngay 「新手の秘書さんｷｬｰｶﾜｲｰ」 <span class="vi">— “cô thư ký mới, dễ thương quá”</span>.</li>
+  <li><b>Biểu cảm:</b> mỗi nhân vật có 3–4 mặt (bình thường, giận có dấu 💢, tái tím, khóc). Hiệu ứng manga: nền cầu vồng/xoáy khi sốc, mặt phủ tím khi tuyệt vọng, giọt mồ hôi.</li>
+  <li><b>Bong bóng thoại:</b> viền màu theo vai (mỗi vai một màu, giữ suốt video), chữ đầy đủ — xem không tiếng vẫn hiểu.</li>
+  <li><b>Icon số liệu:</b> clip-art bên cạnh bong bóng: cọc tiền ghi 「70万」, túi 「借金」 <span class="vi">— “nợ”</span>, toà nhà 「LOAN」, biểu đồ lên/xuống đặt cạnh lá cờ.</li>
+  <li><b>Nền:</b> văn phòng, phòng họp, phố, nhà — ảnh/tranh AI; nhãn thời gian-địa điểm chữ vàng ở cảnh mở.</li>
+  <li><b>Narrator:</b> tranh minh hoạ AI hoặc ảnh tư liệu/ảnh chụp báo mạng toàn màn hình + phụ đề trắng viền vàng. Có dùng cả cảnh Quốc hội và poster phim (Kimetsu no Yaiba) — vùng rủi ro bản quyền.</li>
+  <li><b>Giọng:</b> nhiều giọng máy, mỗi vai một giọng. Chưa xác minh là VOICEVOX hay AquesTalk (mô tả không ghi credit).</li>
+</ul>
+</div>
+<div class="cols">
+<figure><img src="../data/sundakansatsu/web/frames_china.jpg" alt="Khung hình 0–75 giây video 主席「日本へ行くな」"><figcaption>Khuôn A: 0–75 giây video <span class="jp">主席「日本へ行くな」</span> (Chủ tịch: “Không được sang Nhật”).</figcaption></figure>
+<figure><img src="../data/sundakansatsu/web/frames_zankure.jpg" alt="Khung hình 0–75 giây video 残クレの末路"><figcaption>Khuôn B: 0–75 giây video <span class="jp">【残クレの末路】</span> (Kết cục 残クレ) — gia đình nguyên mẫu, không ai là người thật.</figcaption></figure>
+</div>
+<div class="read">
+
+<h2><span class="n">07</span>Mẫu số liệu</h2>
+<p>Đếm số trong 18 transcript: trung vị chỉ <b>1,4 con số/phút</b> (khoảng 25 số/video). Kênh không phải kênh số liệu; số được dùng như cú đấm, đặt ở vài chỗ cố định:</p>
+<ul>
+  <li><b>Vị trí:</b> khuôn A có số đầu tiên ở giây 0–5 (lời khoe) và số ngược ở giây 10–18. Khuôn B có số tiền đầu tiên ở giây 13 (「差額の70万」 <span class="vi">— “phần chênh 70 vạn”</span>), rồi “bậc thang tiền” ở giữa video.</li>
+  <li><b>Loại số:</b> năm (132 lần trên 18 video — mốc tiền lệ “2012, 2017, 2023”), tiền (107), người/xe/vụ (94), % (77). Tiền dày nhất ở video có nhân vật mất tiền: 残クレ 19 lần, phí visa 15, lao động chui 15.</li>
+  <li><b>Cặp tương phản:</b> nhỏ → lớn: 「数百円の特約をケチって70万」 <span class="vi">— “tiếc vài trăm yên điều khoản → mất 70 vạn”</span>, 「たった数十円の部品で信用崩壊」 <span class="vi">— “linh kiện vài chục yên → mất uy tín”</span>; hoặc tỉ lệ: 7,5 lần, 99% giảm, 60 năm trả nợ.</li>
+  <li><b>Cách hiện:</b> số nằm trong bong bóng thoại của nhân vật báo cáo + 1 icon clip-art. Không có biểu đồ động, không đếm số chạy. Số trong tiêu đề luôn là số của cái giá (900万円, 99%減, 60年, 9件, 1億).</li>
+  <li><b>Dịch số ra đời thường:</b> mỗi số khó đi kèm 1 phép so sánh (nhà hàng, tuxedo thuê, ông chủ công ty).</li>
+</ul>
+<p>Với lane mình: thêm một thẻ số đơn giản (HyperFrames/motion_graphics của h2dev) cho 3–4 số chính là đủ, không cần làm dày hơn kênh mẫu.</p>
+
+<h2><span class="n">08</span>Thumbnail thật — 18/18 ảnh, xếp theo view</h2>
+</div>
+<figure><img src="../data/sundakansatsu/web/thumbs_0.jpg" alt="6 thumbnail view cao nhất"><figcaption>6 video cao nhất. Ô cuối hàng 2 và hàng 3 là đề tài nội địa: <span class="jp">豪雨で残クレ崩壊</span> (mưa lớn làm 残クレ sụp đổ), <span class="jp">救急車にまで受信料請求</span> (đòi phí thu sóng cả xe cứu thương).</figcaption></figure>
+<figure><img src="../data/sundakansatsu/web/thumbs_1.jpg" alt="Thumbnail hạng 7 đến 12"><figcaption>Hạng 7–12. Ô đầu: <span class="jp">米を買い占めた卸業者 / 在庫の山で損切り祭りｗ</span> (nhà buôn tích trữ gạo / núi hàng tồn, cắt lỗ tưng bừng) — đầu nhân vật là tấm biển 「業者」, không phải lá cờ.</figcaption></figure>
+<figure><img src="../data/sundakansatsu/web/thumbs_2.jpg" alt="Thumbnail hạng 13 đến 18"><figcaption>Hạng 13–18. Hai ô cuối là video thua: nho Hàn Quốc 8,8k và Okinawa 1,8k — khuôn thumbnail y hệt video thắng, nên thua là do đề tài.</figcaption></figure>
+<div class="read">
+
+<h2><span class="n">09</span>Khán giả — đọc 1.074 comment của 18 video</h2>
+<p>Chân dung (suy từ ngôn ngữ comment, không có số tuổi): người Nhật trung niên trở lên, bảo thủ, đọc tin Yahoo, bực với Trung Quốc, NHK, truyền thông (gọi 「マスゴミ」 <span class="vi">— “rác truyền thông”</span>), và với người tiêu xài phô trương. Xem để hả giận và để thấy mình khôn hơn nhân vật.</p>
+<div class="quote"><span class="who">残クレ · 206 like</span><span class="jp">営業「頭金ゼロでも大丈夫Death」</span><span class="vi">Nhân viên bán hàng: “Trả trước 0 đồng cũng ổn ạ (chết đó)” — chơi chữ です/Death.</span></div>
+<div class="quote"><span class="who">残クレ · 146 like</span><span class="jp">残クレは買ったんじゃないんよ 残クレはレンタカーのリボ払い</span><span class="vi">残クレ không phải là mua. Nó là thuê xe trả góp quay vòng.</span></div>
+<div class="quote"><span class="who">残クレ · 110 like</span><span class="jp">登場人物が全員バカすぎて楽しい</span><span class="vi">Nhân vật nào cũng ngu quá, xem vui ghê.</span></div>
+<div class="quote"><span class="who">卸業者・古米 · 338 like</span><span class="jp">「国民の主食でマネーゲームしたんだから、潰れてくれ」以外に感想がない。</span><span class="vi">“Đem lương thực của dân ra chơi trò tiền bạc thì phá sản đi” — ngoài câu đó ra chẳng có cảm tưởng gì.</span></div>
+<div class="quote"><span class="who">NHK · 383 like</span><span class="jp">NHK要らないだろ　解体してほしいです</span><span class="vi">Cần gì NHK. Mong giải thể luôn.</span></div>
+<div class="quote"><span class="who">永住許可 · 613 like</span><span class="jp">何で永住許可があったら働かなくていい発想になるの？</span><span class="vi">Sao có vĩnh trú lại nghĩ là không cần đi làm?</span></div>
+<h3>Comment bắt lỗi — cổng QC cần thêm</h3>
+<div class="quote"><span class="who">「バレなきゃ勝ちｗ」 · 109 like</span><span class="jp">ベトナム犯罪者を美化してますが単に罰金を払いたくない理由で入管に出頭しただけです。</span><span class="vi">Video tô đẹp tội phạm người Việt, thực ra họ chỉ ra trình diện vì không muốn nộp phạt.</span></div>
+<div class="quote"><span class="who">「バレなきゃ勝ちｗ」 · 29 like</span><span class="jp">1年分の収入が罰金ていうけどね、日本で言えばそんなの500万円程度でしょ</span><span class="vi">Nói phạt bằng 1 năm thu nhập, quy ra Nhật chỉ cỡ 500 vạn yên (nên không đủ răn đe).</span></div>
+<p>Bài học: khán giả soi lập trường đạo đức (ai đáng bị phạt) và soi phép quy đổi số. Kịch bản phải để kẻ bị phạt thực sự là kẻ sai, và mọi phép quy đổi phải có nguồn.</p>
+
+<h2><span class="n">10</span>Cùng ngách khác chủ đề — kiểm bằng số</h2>
+<p>Lấy toàn bộ video 7–120 ngày tuổi của 5 kênh tiểu phẩm cùng khuôn (すんだ観察所, ニッポンすんだ村, ずんだ探検隊 — Đội thám hiểm Zunda, ずんだ実話 — Chuyện thật Zunda, 底辺なのだ), xác định “kẻ kiêu ngạo” trong tiêu đề, rồi so mỗi video với trung vị của chính kênh đó (bỏ hiệu ứng kênh to/nhỏ). 210 video.</p>
+</div>
+<div class="tbl"><table>
+<thead><tr><th>Kẻ kiêu ngạo là…</th><th class="num">Số video</th><th class="num">Số kênh</th><th class="num">Trung vị so với kênh</th><th class="num">% video ≥1,5×</th></tr></thead>
+<tbody>
+<tr><td>Chính phủ/hãng Âu Mỹ (Đức EV, Pháp, Merkel, CEO Tây)</td><td class="num">7</td><td class="num">2</td><td class="num hot">1,48×</td><td class="num">43%</td></tr>
+<tr><td>Trung Quốc (chính phủ, BYD, người TQ)</td><td class="num">122</td><td class="num">4</td><td class="num">1,02×</td><td class="num">33%</td></tr>
+<tr><td>Nội địa Nhật — tất cả</td><td class="num">62</td><td class="num">5</td><td class="num">0,93×</td><td class="num">19%</td></tr>
+<tr><td>&nbsp;&nbsp;↳ người thường/ngành/tổ chức ai cũng ghét, mất tiền cụ thể (残クレ, gạo, NHK×2, nhà mạng)</td><td class="num">5</td><td class="num">2</td><td class="num hot">1,34×</td><td class="num">40%</td></tr>
+<tr><td>&nbsp;&nbsp;↳ chiến lược doanh nghiệp/địa phương (KADOKAWA, Toshiba, Nitori, Nissan, Fuji TV, Honmoku, điện mặt trời)</td><td class="num">7</td><td class="num">2</td><td class="num cold">0,14×</td><td class="num">0%</td></tr>
+<tr><td>Đông Nam Á/Ấn (Thái, Indonesia…)</td><td class="num">6</td><td class="num">2</td><td class="num">0,87×</td><td class="num">17%</td></tr>
+<tr><td>Hàn Quốc</td><td class="num">12</td><td class="num">4</td><td class="num cold">0,77×</td><td class="num">25%</td></tr>
+</tbody></table></div>
+<div class="read">
+<p class="small">Nhóm con nội địa phân loại tay từ tiêu đề; mẫu nhỏ (5 và 7 video), đọc như xu hướng. Dữ liệu: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\sundakansatsu\genre\actor_groups.json</code>.</p>
+<p><b>Hai kênh nội địa thuần chứng minh quy mô:</b></p>
+</div>
+<div class="tbl"><table>
+<thead><tr><th>Kênh</th><th>Mở / video đầu</th><th class="num">Sub</th><th class="num">Trung vị view</th><th>Làm gì</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.youtube.com/channel/UC99fMQJQP8H_9b6Bgd9o9RA" target="_blank" rel="noopener"><span class="jp">底辺なのだ</span></a><span class="vi">Tầng đáy đây mà</span></td><td>24/01/2026</td><td class="num">15.600</td><td class="num">195.808 (90 ngày)</td><td>Tiểu phẩm ずんだもん (Zundamon, nhân vật giọng máy) về xã hội Nhật: Gen Z ở công sở, hôn nhân, sông băng việc làm. Hit: <span class="jp">Z世代「それパワハラなんでｗ」</span> <span class="vi">(Gen Z: “Cái đó là quấy rối quyền lực đấy”)</span> 611k</td></tr>
+<tr><td><a href="https://www.youtube.com/channel/UC_JY1bKNWd2fjf2RxM3xLLQ" target="_blank" rel="noopener"><span class="jp">ずんだもん末路ストーリー</span></a><span class="vi">Chuyện kết cục của Zundamon</span></td><td>21/08/2023</td><td class="num">196.000</td><td class="num">211.784 (toàn kênh)</td><td>Giải thích đời người thường: <span class="jp">街中に800万のアルファードが溢れている理由</span> <span class="vi">(Vì sao phố đầy Alphard 800 vạn)</span> 2,15M · <span class="jp">住宅ローンに支配されようとする一般人</span> <span class="vi">(Người thường sắp bị khoản vay mua nhà điều khiển)</span> 998k</td></tr>
+</tbody></table></div>
+<div class="read">
+<div class="verdict">
+<p><b>Kết luận mục 10:</b> cùng ngách khác chủ đề làm được, với 2 điều kiện bắt buộc: (1) kẻ kiêu ngạo là nguyên mẫu mà khán giả muốn thấy bị phạt (người tiêu xài phô trương, phe đầu cơ, tổ chức thu tiền vô lý), (2) cái giá là tiền cụ thể mà khán giả từng sợ cho chính mình. Đề tài “công ty X ra quyết định chiến lược sai” thua nặng (0,14×) dù cùng khuôn hook. Hàn Quốc là hướng yếu nhất nếu vẫn muốn giữ mảng nước ngoài; Âu Mỹ (EV Đức, Na Uy) là hướng nước ngoài khả quan nhất.</p>
+</div>
+
+<h2><span class="n">11</span>Nguồn tài liệu để làm lane</h2>
+<h3>Mốc tin (chọn đề tài mỗi tuần)</h3>
+<ul>
+  <li>Báo mạng có bài giải thích kèm số — đúng nơi kênh mẫu lấy số: <a href="https://financial-field.com/" target="_blank" rel="noopener">ファイナンシャルフィールド</a> (Financial Field — tài chính cá nhân), <a href="https://www.j-cast.com/" target="_blank" rel="noopener">J-CAST</a>, <a href="https://kuruma-news.jp/" target="_blank" rel="noopener">くるまのニュース</a> (xe), <a href="https://trafficnews.jp/" target="_blank" rel="noopener">乗りものニュース</a> (tin phương tiện), Yahoo!ニュース (Yahoo News) mục kinh tế, 東洋経済オンライン (Toyo Keizai Online) và ダイヤモンド・オンライン (Diamond Online) — báo kinh tế, 弁護士ドットコムニュース (tin pháp luật Bengoshi.com — vụ kiện).</li>
+  <li>Bảng xếp hạng từ khoá: chạy lại tool <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\sundakansatsu\genre\g5_topic_demand.py</code> mỗi tuần để thấy đề tài nào đang có video 100k+.</li>
+</ul>
+<h3>Số liệu chính thức (phần narrator — bắt buộc có nguồn)</h3>
+<ul>
+  <li><b>国民生活センター</b> (Trung tâm đời sống quốc dân) — ca tranh chấp tiêu dùng có thật, ẩn danh; đây là nguồn kịch bản tốt nhất vì mỗi ca đã là một nguyên mẫu: <a href="https://www.kokusen.go.jp/" target="_blank" rel="noopener">kokusen.go.jp</a>.</li>
+  <li><b>J-FLEC 金融経済教育推進機構</b> (cơ quan giáo dục tài chính, kế thừa 知るぽると) — tài liệu về vay, trả góp, bảo hiểm: <a href="https://www.j-flec.go.jp/" target="_blank" rel="noopener">j-flec.go.jp</a> · tài liệu cũ: <a href="https://www.shiruporuto.jp/public/knowledge/loan/rich/edu/pdf/rich_e12.pdf" target="_blank" rel="noopener">知るぽると PDF</a>.</li>
+  <li><b>日本銀行</b> (Ngân hàng Nhật Bản — lãi suất chính sách) + thông báo lãi của ngân hàng — cho đề tài lãi thả nổi: tin ngày 16/06/2026 nâng lãi lên khoảng 1%, ngân hàng dự kiến tăng lãi thả nổi tháng 10 (<a href="https://www.aeonbank.co.jp/column/mortgageloan/nichigin/riage/" target="_blank" rel="noopener">イオン銀行 — ngân hàng AEON</a>, <a href="https://www.bk.mufg.jp/kariru/jutaku/column/032/index.html" target="_blank" rel="noopener">三菱UFJ銀行 — ngân hàng MUFG</a>).</li>
+  <li><b>住宅金融支援機構</b> (Cơ quan hỗ trợ tài chính nhà ở) — khảo sát người vay mua nhà (tỉ lệ vay thả nổi).</li>
+  <li><b>日本年金機構 / 厚生労働省</b> (Cơ quan Hưu trí Nhật / Bộ Y tế–Lao động) — tỉ lệ giảm khi nhận lương hưu sớm (0,4%/tháng), thông báo chuyển khoản tháng 10.</li>
+  <li><b>警察庁</b> (Cục Cảnh sát Quốc gia) — thống kê nhóm tội phạm “làm thêm đen” (闇バイト); <b>消費者庁</b> (Cục Người tiêu dùng) — cảnh báo lừa đảo, mua định kỳ.</li>
+  <li><b>日本損害保険協会</b> (Hiệp hội bảo hiểm phi nhân thọ) — bảo hiểm xe và thiên tai; <b>日本クレジット協会</b> (Hiệp hội tín dụng) — số dư trả góp quay vòng (リボ).</li>
+  <li><b>裁判所 判例検索</b> (tra cứu án lệ của Toà án) và tin bản án (vd. vụ dịch vụ nghỉ việc hộ モームリ — “Không nổi nữa” bị kết án 28/08/2026 — <a href="https://www.j-cast.com/2026/09/03517649.html?p=all" target="_blank" rel="noopener">J-CAST</a>) — chỉ dùng phần sự thật trong bản án, nhân vật trong kịch đổi thành nguyên mẫu.</li>
+</ul>
+<h3>Nếu vẫn làm mảng nước ngoài</h3>
+<ul>
+  <li>JNTO 訪日外客統計 (thống kê khách quốc tế), 観光庁 (Cục Du lịch), JETRO ビジネス短信 (tin kinh tế nước ngoài), 財務省 貿易統計 (thống kê thương mại Bộ Tài chính), thông cáo của ĐSQ/Bộ Ngoại giao.</li>
+</ul>
+<h3>Tài nguyên hình và giọng</h3>
+<ul>
+  <li><b>いらすとや</b> (Irasutoya — kho hình minh hoạ miễn phí): miễn phí thương mại tối đa <b>20 hình/một sản phẩm</b>; một video 17 phút nhiều vai, nhiều icon như kênh mẫu dễ vượt mức này. Dùng qua Canva thì không giới hạn số hình (<a href="https://forest.watch.impress.co.jp/docs/news/1574083.html" target="_blank" rel="noopener">窓の杜 — trang tin phần mềm</a>). Cách an toàn hơn: tự sinh bộ nhân vật riêng bằng ảnh AI (gpti2) theo phong cách phẳng, khoá mặt.</li>
+  <li><b>Giọng</b>: VOICEVOX — mỗi nhân vật có điều khoản riêng, một số cấm nội dung chính trị/tôn giáo; phải ghi credit (<a href="https://zunko.jp/con_ongen_kiaku.html" target="_blank" rel="noopener">quy định ずんだもん</a>). Đề tài tiền bạc đời thường không vướng; đề tài Trung–Nhật thì phải đọc kỹ. Phương án khác: ai33 nhiều giọng (đã dùng ở h2dev).</li>
+  <li><b>Nền</b>: ảnh AI tự sinh (văn phòng, đại lý xe, ngân hàng, nhà). Không dùng ảnh chụp báo, cảnh TV, poster phim như kênh mẫu.</li>
+</ul>
+
+<h2><span class="n">12</span>Điểm mạnh</h2>
+<ul>
+  <li>Kênh 54 ngày đã 2,31M view, 11/15 video ≥50k: bằng chứng kênh mới vào được ngách này bây giờ.</li>
+  <li>Hai khuôn hook (H44, H45) đọc được và dựng được, đã thử trên cả đề tài nước ngoài lẫn nội địa.</li>
+  <li>Sản xuất rẻ: ảnh tĩnh + bong bóng, không cần nhất quán khuôn mặt từng cảnh, không cần video AI.</li>
+  <li>Đề tài tự làm mới theo tin tức; mỗi tuần đều có tin tiền bạc mới (lãi, giá, bảo hiểm, lừa đảo, án).</li>
+  <li>Phần narrator giảng cơ chế bằng số giúp video có giá trị “học được gì”, không chỉ là chửi.</li>
+  <li>Khán giả trung niên trở lên — trùng tệp mình đang làm ở các lane người già.</li>
+</ul>
+
+<h2><span class="n">13</span>Điểm yếu và rủi ro</h2>
+<ul>
+  <li><span class="chip risk">chính sách</span> Bản gốc: 13/18 video nhắm Trung Quốc, có video gắn hành vi xấu với “người Trung Quốc” (vĩnh trú, công ty gốc Hoa) — vùng chính sách thù ghét theo quốc tịch.</li>
+  <li><span class="chip risk">pháp lý</span> Gán lời bịa cho tổ chức/người có thật (hội trưởng NHK, chủ tịch TQ, tổng thống Indonesia); dùng cảnh TV, ảnh báo, poster phim.</li>
+  <li><span class="chip risk">tái sử dụng</span> Khuôn ゆっくり + いらすとや dùng chung cả dòng — rủi ro bị xếp “nội dung lặp lại” nếu không có nhân vật và nền riêng.</li>
+  <li><span class="chip re">đông</span> Mảng Trung Quốc có ít nhất 5 kênh lớn cùng làm (ずんだ探検隊 146k sub, ニッポンすんだ村, ずんだ実話…). Mảng tiền bạc nội địa cũng có ずんだもん末路ストーリー (196k sub) và 底辺なのだ — nhưng chưa ai làm dạng tiểu phẩm H45 thường xuyên.</li>
+  <li><span class="chip re">phụ thuộc tin</span> Video phải đăng trong 3–6 tuần sau tin; trễ hơn là trần view thấp (Indonesia, nho Hàn).</li>
+  <li><span class="chip re">sub yếu</span> 0,1% view thành sub — người xem đến từ đề xuất; kênh phải đăng đều để giữ luồng.</li>
+  <li><span class="chip re">chưa đo</span> RPM và việc có bị giới hạn quảng cáo hay không — không xem được từ bên ngoài.</li>
+</ul>
+
+<h2><span class="n">14</span>Có clone được không</h2>
+<div class="cols">
+<div class="box"><h3>Clone nguyên mẫu (Trung Quốc) — không khuyên</h3><p>Kỹ thuật làm được ngay. Nhưng đề tài đông, phụ thuộc quan hệ Nhật–Trung, và mang 3 rủi ro trên. Kết luận giữ như hồ sơ ニッポンすんだ村 ngày 06/10.</p></div>
+<div class="box"><h3>Clone khuôn sang tiền bạc đời thường — khuyên làm</h3><p>Điều kiện: (1) nhân vật nguyên mẫu, không tên thật, không nhắm dân tộc; (2) mọi câu narrator có nguồn ở mục 11; (3) bộ nhân vật và nền tự sinh, không dùng ảnh báo/TV; (4) mô tả ghi rõ hư cấu + danh sách nguồn; (5) bỏ đuôi 【海外の反応】, dùng 【ゆっくり解説】 (giải thích giọng máy) hoặc tên riêng.</p></div>
+</div>
+
+<h2><span class="n">15</span>Quy trình sản xuất</h2>
+<ol class="steps">
+  <li><span class="chip re">TÁI DÙNG</span> Chọn đề tài mỗi tuần: tool quét của TRENDING-RESEARCH + bảng mốc tin ở mục 11. Lọc theo 2 điều kiện mục 10.</li>
+  <li><span class="chip new">MỚI</span> Bảng dữ kiện: 8–12 số có link nguồn (fact_table.csv như lane keizai-doc).</li>
+  <li><span class="chip new">MỚI</span> Kịch bản hội thoại 7.500–8.000 ký tự, 5–7 vai (kẻ kiêu ngạo, người đồng loã, người can ngăn, nhân viên/chuyên gia, người ngoài cuộc, narrator), khuôn B ở mục 05: hook H45 ≤33s → khoe → 4–5 nấc giá → trả giá → lối thoát → bài học. h2dev hiện chỉ viết độc thoại ngôi 1, nên đây là định dạng mới.</li>
+  <li><span class="chip new">MỚI</span> TTS nhiều giọng, mỗi vai 1 giọng cố định, ~430 ký tự/phút.</li>
+  <li><span class="chip new">MỚI</span> Bộ nhân vật phẳng tự sinh (6–8 nguyên mẫu × 4 biểu cảm) + 8–10 nền cố định.</li>
+  <li><span class="chip re">TÁI DÙNG MỘT PHẦN</span> Dựng bằng code (HyperFrames/motion_graphics của h2dev): mỗi câu thoại = 1 bong bóng màu theo vai, đổi khung ~2,5 giây; thẻ số cho 3–4 số chính.</li>
+  <li><span class="chip re">TÁI DÙNG</span> Thumbnail PIL (skill youtube-thumbnail): dải đen chữ vàng + 2 ô trước→sau + chữ đáy gradient có “ｗ”.</li>
+  <li><span class="chip new">MỚI</span> Cổng QC: grep mọi số trong script có nguồn; không tên người/công ty thật trong lời thoại; kẻ bị phạt thực sự sai (theo comment bắt lỗi mục 09).</li>
+</ol>
+<p class="small">Nhịp kênh mẫu: 1 video/3 ngày.</p>
+
+<h2><span class="n">16</span>Tên kênh — 3 phương án</h2>
+<ul>
+  <li><span class="jp">ざんねん観察所</span> <span class="vi">(Trạm quan sát những kẻ đáng tiếc)</span> — gần tên kênh mẫu về cảm giác, khác chữ.</li>
+  <li><span class="jp">自業自得ラボ</span> <span class="vi">(Phòng thí nghiệm tự làm tự chịu)</span> — nói thẳng khung truyện.</li>
+  <li><span class="jp">お金の末路劇場</span> <span class="vi">(Nhà hát kết cục tiền bạc)</span> — nói thẳng chủ đề, tốt cho tìm kiếm.</li>
+</ul>
+
+<h2><span class="n">17</span>Tập nên làm trước</h2>
+<p>Xếp theo: mốc tin còn nóng trong tháng 10/2026 · cầu đã có video 100k+ · chưa ai làm dạng tiểu phẩm · rủi ro thấp. Tiêu đề là bản nháp theo khuôn kênh mẫu.</p>
+
+<div class="ep"><div class="pri">ĐỢT 1 · TẬP 1</div>
+<div class="t">夫婦「変動金利なら月8万で余裕ｗ」→金利1％時代で返済額が跳ね上がり家計崩壊ｗ【ゆっくり解説】</div>
+<span class="vi">Vợ chồng: “Lãi thả nổi thì 8 vạn/tháng, dư sức” → thời lãi 1%, tiền trả vọt lên, gia đình vỡ trận.</span>
+<div class="meta"><b>Mốc tin:</b> BoJ nâng lãi lên khoảng 1% (16/06/2026); ngân hàng tăng lãi thả nổi tháng 10, người đang vay nhận thông báo đổi số tiền trả từ tháng 1/2027. · <b>Cầu:</b> <span class="jp">住宅ローンに支配されようとする一般人</span> <span class="vi">(Người thường sắp bị khoản vay mua nhà điều khiển)</span> 998k; tin TBS tháng này 284k. · <b>Hook:</b> H45 — mở ở lá thư ngân hàng 「返済額見直しのお知らせ」 <span class="vi">(thông báo điều chỉnh số tiền trả)</span>. · <b>Nguồn:</b> 日本銀行, 住宅金融支援機構, thông báo lãi ngân hàng.</div></div>
+
+<div class="ep"><div class="pri">ĐỢT 1 · TẬP 2</div>
+<div class="t">「残クレならみんな乗れる！」→5年後の返却査定で追い金と再ローン地獄ｗ【ゆっくり解説】</div>
+<span class="vi">“Có 残クレ thì ai cũng đi được xe xịn!” → 5 năm sau định giá lúc trả xe: nộp thêm tiền và vay lại, địa ngục.</span>
+<div class="meta"><b>Mốc tin:</b> giá Alphard cũ giảm, mùa hết hợp đồng; J-CAST/ファイナンシャルフィールド 8/2026. · <b>Cầu:</b> 3 video đã chứng minh (2,15M · 353k · 197k). · <b>Khác kênh mẫu:</b> không phải ngập nước mà là ngày trả xe (km vượt, vết xước, 3 lối thoát). · <b>Hook:</b> H45 — mở ở bàn định giá 「査定額は…」 (“giá định giá là…”). · <b>Nguồn:</b> 国民生活センター (tranh chấp thuê/trả góp xe), J-FLEC.</div></div>
+
+<div class="ep"><div class="pri">ĐỢT 1 · TẬP 3</div>
+<div class="t">転売ヤー「ポケカは買えば儲かるｗ」→本人確認の導入で在庫の山、損切り祭りｗ【ゆっくり解説】</div>
+<span class="vi">Dân buôn lại: “Thẻ Pokémon mua là lời” → áp dụng xác minh danh tính, hàng tồn chất núi, cắt lỗ tưng bừng.</span>
+<div class="meta"><b>Mốc tin:</b> Pokémon Center Online dự định xác minh bằng thẻ My Number từ khoảng 8/2026; giá nhiều thẻ giảm từ 6/2026. · <b>Cầu:</b> 564k và 313k trong tháng (dạng 2ch, chưa có tiểu phẩm). · <b>Khuôn:</b> giống hệt video gạo 122k (H44). · <b>Nguồn:</b> thông báo chính thức Pokémon, báo game.</div></div>
+
+<div class="ep"><div class="pri">ĐỢT 1 · TẬP 4</div>
+<div class="t">「年金は60歳からもらった方が得ｗ」→一生24％減のまま、80歳で後悔するｗ【ゆっくり解説】</div>
+<span class="vi">“Nhận lương hưu từ 60 tuổi là lời” → bị giảm 24% suốt đời, 80 tuổi mới hối hận.</span>
+<div class="meta"><b>Mốc tin:</b> thông báo chuyển khoản lương hưu tháng 10/2026 (video giải thích 701k và 198k trong tháng). · <b>Cầu:</b> tệp người già — trùng khán giả các lane F/G của mình. · <b>Lưu ý:</b> số 24% = 0,4%/tháng × 60 tháng, phải trích nguồn 日本年金機構. · <b>Hook:</b> H45 — mở ở cảnh 80 tuổi so sổ lương hưu với bạn cùng tuổi.</div></div>
+
+<div class="ep"><div class="pri">ĐỢT 1 · TẬP 5</div>
+<div class="t">退職代行業者「紹介料でボロ儲けｗ」→弁護士法違反で有罪、客も会社も消えるｗ【ゆっくり解説】</div>
+<span class="vi">Công ty nghỉ việc hộ: “Tiền giới thiệu lời đậm” → có tội vi phạm Luật Luật sư, mất cả khách lẫn công ty.</span>
+<div class="meta"><b>Mốc tin:</b> án ngày 28/08/2026 (J-CAST, NHK). · <b>Cầu:</b> video giải thích 629k. · <b>Bắt buộc:</b> công ty và người trong kịch là hư cấu; chỉ narrator nói sự thật trong bản án, không nêu tên. · <b>Hook:</b> H44 — giám đốc khoe doanh thu → thư ký đọc tin bị khám xét.</div></div>
+
+<p><b>Đợt 2</b> (làm sau khi đợt 1 có số): 闇バイト <span class="vi">(làm thêm đen: “1 ngày 10 vạn, dễ ợt” → bị bắt; cầu 233k)</span> · タワマン・ペアローン <span class="vi">(vợ chồng cùng vay mua chung cư cao tầng → nghỉ sinh/ly hôn)</span> · リボ払い <span class="vi">(trả góp quay vòng “tháng 5.000 yên mua thả ga”)</span> · 便乗値上げの店 <span class="vi">(cửa hàng tăng giá ăn theo)</span> · 婚活の高望み <span class="vi">(săn chồng đòi hỏi cao — cầu 281k/253k ở 底辺なのだ, nhưng dễ bị coi là kỳ thị giới, làm sau cùng)</span>.</p>
+<p><b>Nhánh phụ nước ngoài</b> (nếu anh muốn giữ chất 海外の反応): ưu tiên Âu Mỹ — chính sách EV Đức/Na Uy phản tác dụng (1,48×), tránh Hàn Quốc (0,77×).</p>
+
+<h2><span class="n">18</span>Chưa làm / giới hạn</h2>
+<ul>
+  <li>Transcript là phụ đề tự động (nghe sai tên riêng); mốc giây trong trích dẫn lấy từ phụ đề.</li>
+  <li>Bảng mục 10 phân loại theo tiêu đề; nhóm con nội địa chỉ 5 và 7 video.</li>
+  <li>Cầu đề tài đo bằng 2 truy vấn/đề tài trong 1 tháng — nhiều đề tài ra 0 vì chưa ai làm, không có nghĩa không có cầu.</li>
+  <li>Chưa xác minh giọng đọc (VOICEVOX hay AquesTalk), chưa đo RPM.</li>
+  <li>Chưa đào sâu 底辺なのだ và ずんだもん末路ストーリー (chỉ lấy số liệu kênh).</li>
+  <li>Chưa bàn giao gì sang h2dev.</li>
+</ul>
+
+<h2><span class="n">19</span>Anh quyết</h2>
+</div>
+<div class="decide">
+  <div class="rec"><b>A · Mở lane “tiền bạc tự làm tự chịu” (em khuyên)</b><p>Em soạn hồ sơ lane + gói tư liệu tập 1–2 (bảng dữ kiện có nguồn) và phiếu giao h2dev dựng thử 60 giây khuôn B.</p></div>
+  <div><b>B · Clone sát kênh mẫu (Trung Quốc)</b><p>Em soạn hồ sơ kèm điều kiện an toàn ở mục 14. Em không khuyên.</p></div>
+  <div><b>C · Đào thêm trước khi quyết</b><p>Đào sâu 底辺なのだ + ずんだもん末路ストーリー (hai kênh nội địa thuần) để chốt khuôn tốt nhất.</p></div>
+</div>
+<div class="read">
+<p class="small">Dữ liệu: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\sundakansatsu\</code> (channel.json 18 video, transcripts\, comments.json 1.074 comment, thumbs\, frames\, genre\ — 12 kênh cùng dòng). Hook: <code>E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\seed_2026-10-07_sundakansatsu.py</code>.</p>
+</div>
+</main>

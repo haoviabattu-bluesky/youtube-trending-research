@@ -1,0 +1,23 @@
+{
+ "topics": [
+  "年金",
+  "繰下げ受給",
+  "老後資金",
+  "60代の家計"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "72歳の1月。私は庭で30分経てなかった。洗濯物を保に出て濡れた飛び石で足を滑らせたのよ。[音楽]腰を打ってそれきり起き上がれなかった。私は野崎しよ。夫をなくして2年この家に1人で住んでいる。病院で撮ってもらったけど骨は大丈夫だった。[音楽]打っただけでも30分も来なかったのよ。それが怖かった。ほとんの保物は2年前に真金梗速で亡くなった。",
+ "hook_n_segments_0_30": 12,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 295 segments, phủ ~100% độ dài video",
+ "video_id": "SOIklzU69fg",
+ "title": "【漫画】72歳で老人ホームの体験入居へ。3泊4日で初めて知った施設のリアル",
+ "view_count": 68984,
+ "duration_min": 15.2,
+ "vpd": 8623.0,
+ "days": 8
+}

@@ -1,0 +1,180 @@
+<title>Lane L · nguồn 社会観測所</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&family=BIZ+UDPMincho:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap">
+<style>
+/* Layout: 1 cột đọc, bảng xếp hạng là thẻ dọc theo thứ tự ưu tiên */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --fg:#1d2330; --muted:#5d6577; --line:#dde1e8;
+  --ai:#2b4a8b; --ai-soft:#e6ecf7; --ok:#1f7a4d; --ok-soft:#e3f3ea; --warn:#9a5b00; --warn-soft:#fbf0dc; --no:#a33a3a; --no-soft:#f8e5e5;
+  --f-disp:"BIZ UDPMincho","Noto Serif JP",serif; --f-body:"Be Vietnam Pro","Noto Sans JP",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141821; --panel:#1c212c; --fg:#e6e9ef; --muted:#9aa3b5; --line:#2e3545;
+  --ai:#8fb0f0; --ai-soft:#22304b; --ok:#6fd0a0; --ok-soft:#1d3329; --warn:#e8b45c; --warn-soft:#3a2f1c; --no:#f08a8a; --no-soft:#3a2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141821; --panel:#1c212c; --fg:#e6e9ef; --muted:#9aa3b5; --line:#2e3545;
+  --ai:#8fb0f0; --ai-soft:#22304b; --ok:#6fd0a0; --ok-soft:#1d3329; --warn:#e8b45c; --warn-soft:#3a2f1c; --no:#f08a8a; --no-soft:#3a2224; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.65}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:28px 60px;display:grid;gap:28px}
+h1,h2{font-family:var(--f-disp);text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:1.75rem} h2{font-size:1.25rem;color:var(--ai)} h3{margin:0;font-size:1.05rem}
+p{margin:0} .muted{color:var(--muted)} .sm{font-size:.86rem}
+a{color:var(--ai)} section{display:grid;gap:12px}
+.verdict{background:var(--ai-soft);border-radius:10px;padding:16px 18px;display:grid;gap:8px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.stat b{display:block;font-size:1.25rem;font-variant-numeric:tabular-nums}
+.ep{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:8px;min-width:0}
+.ep header{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.rank{font-family:var(--f-disp);font-size:1.4rem;color:var(--ai);font-variant-numeric:tabular-nums}
+.pill{font-size:.75rem;padding:2px 8px;border-radius:99px;letter-spacing:.02em}
+.ok{background:var(--ok-soft);color:var(--ok)} .warn{background:var(--warn-soft);color:var(--warn)} .no{background:var(--no-soft);color:var(--no)}
+dl{display:grid;grid-template-columns:8.5em 1fr;gap:4px 12px;margin:0} dt{color:var(--muted);font-size:.86rem} dd{margin:0;min-width:0}
+.title-jp{font-family:"Noto Sans JP",var(--f-body);font-weight:700}
+ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+.tbl{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:.88rem} th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top} td.n{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+code{font-size:.82rem;word-break:break-all}
+@media (max-width:520px){dl{grid-template-columns:1fr} dt{margin-top:6px}}
+</style>
+
+<div class="wrap">
+<header style="display:grid;gap:6px">
+  <p class="muted sm">TRENDING-RESEARCH · 10/10/2026 · Lane L 社会のなぜ研究室 (Phòng nghiên cứu Vì sao của xã hội)</p>
+  <h1>Nguồn 社会観測所 cho các tập tiếp của Lane L</h1>
+</header>
+
+<div class="verdict">
+  <p><b>Kết luận: hợp, dùng được làm nguồn chính thay cho 社会のウラガワ ("Mặt sau xã hội").</b> Cùng khuôn manga 「なぜ〜」 có số liệu thật (Bộ Lao động, Cục Thuế, Viện Nhân sự) và cặp nhân vật cố định. Nhóm đề tài công sở + tiền ở kênh này ăn nhất, cũng là nhóm ăn nhất ở kênh mình (tập 給料 "lương" 5.773 view).</p>
+  <p>Thứ tự em đề xuất làm: <b>① リベンジ退職 → ② 手取り → ③ 早期退職 → ④ 育成キャンセル</b>, dự phòng ⑤ 電話 và ⑥ 生活保護.</p>
+  <p class="sm muted">Đổi so với báo cáo sáng nay: hạ Z世代採用 ("doanh nghiệp không tuyển Gen Z") từ hạng 1 xuống "không làm tập chính". Lý do ở mục 4.</p>
+</div>
+
+<section>
+  <h2>1. Kênh 社会観測所 ("Trạm quan sát xã hội")</h2>
+  <p><a href="https://www.youtube.com/channel/UCiSvbUPLCeB6SiZ2PSKgEeQ">https://www.youtube.com/channel/UCiSvbUPLCeB6SiZ2PSKgEeQ</a></p>
+  <div class="stats">
+    <div class="stat"><b>8.470</b><span class="sm muted">sub · 236 ngày tuổi</span></div>
+    <div class="stat"><b>75.306</b><span class="sm muted">trung vị 12 video (≥7 ngày)</span></div>
+    <div class="stat"><b>8,9</b><span class="sm muted">ch_mult (trung vị/sub)</span></div>
+    <div class="stat"><b>0,66</b><span class="sm muted">trend 6 video gần / 6 trước</span></div>
+    <div class="stat"><b>12/50</b><span class="sm muted">video ≥50k view</span></div>
+  </div>
+  <p><b>Công thức (đọc 12 transcript đầy đủ):</b> mỗi tập có cặp bạn thân 藤堂ひなの (Todo Hinano, cô ngây thơ, chọn sai) và 水島みお (Mizushima Mio, cô tỉnh táo, cảnh báo và giải thích). Mạch: chọn sai → hậu quả nhỏ dần thành lớn → người kể chen số liệu có nguồn (2–12 chỗ/tập) → sửa sai → câu đạo lý cuối. 15–17 phút, ~5.000 chữ.</p>
+  <p><b>Mạnh:</b> đề tài sát đời sống, số liệu thật mới (2025–2026), đăng 3 ngày/tập. Bùng từ tháng 8/2026 (trước đó trung vị 16k). Kênh này và ウラガワ chép đề tài của nhau (Z世代, 結婚しない, 婚活, 頭がいい人), nên đề tài nào nổ ở cả hai thì đã được chứng minh 2 lần.</p>
+  <p><b>Yếu:</b> hook chậm, em chấm 5–9/12, vào chuyện nhẹ nhàng. View đến từ đề tài, không đến từ hook. Bình luận chê nhân vật thiếu thật ("không có bà 50 tuổi nào như con gái 20", "sao người thế này lên được trưởng phòng"). Trend 0,66 là do mấy tập tiêu dùng gần đây yếu (NISA 7k, nhà container 16k). Tập công sở và tiền vẫn mạnh: 生活保護 123k sau 4,6 ngày, 早期退職 19,6k sau 2 ngày.</p>
+  <p><b>Cách lấy cho lane L:</b> chỉ lấy đề tài + khung số liệu. Hook làm theo cách của lane mình (cao trào, có phe để giận). Vai: nhân vật chính là người đi làm của tập, さくら (Sakura) đóng vai hỏi thay khán giả, giống vai của みお nhưng đổi chiều. <b>Không dùng tên ひなの/みお</b> (thêm vào luật 5 "không dùng lại nhân vật kênh gốc").</p>
+</section>
+
+<section>
+  <h2>2. Xếp hạng tập nên làm</h2>
+  <p class="sm muted">"Độ nóng tháng" = em quét YouTube theo từ khoá, lọc video đăng trong 30 ngày, xếp theo view thật. Kênh mình đã làm 13 tập; em đã đối chiếu từng tập để tránh trùng.</p>
+
+  <article class="ep">
+    <header><span class="rank">1</span><h3 class="title-jp">中高年のリベンジ退職</h3><span class="pill ok">làm ngay</span></header>
+    <p class="muted">(Người trung niên nghỉ việc "trả đũa")</p>
+    <dl>
+      <dt>Video gốc</dt><dd>観測所 73.471 view <a href="https://www.youtube.com/watch?v=Qafq_LhubTM">https://www.youtube.com/watch?v=Qafq_LhubTM</a><br>Mẫu hook: メシのタネ ("Kế sinh nhai") 674.343 view/21 ngày <a href="https://www.youtube.com/watch?v=jzVO80stWM4">https://www.youtube.com/watch?v=jzVO80stWM4</a></dd>
+      <dt>Độ nóng tháng</dt><dd>Nóng nhất trong các đề tài: 18 video, 3 video ≥10k, tổng 705k. Video 674k cùng khuôn manga 「どうなる」.</dd>
+      <dt>Vì sao hợp</dt><dd>Có phe để giận: công ty coi người 20 năm là đồ thay thế ("お前の代わりなんていくらでもいる" — "người thay mày thiếu gì"). Đúng khán giả 40–50+. Bình luận đứng hẳn về phía người trung niên: "trẻ bị power harassment thì cấm, trung niên bị thì được à?" (16 like).</dd>
+      <dt>Lách luật lane</dt><dd>Luật 4 cấm trả thù. Bản メシのタネ cho nhân vật định phá dữ liệu rồi bị chuyên viên tư vấn chặn lại, mình đi đúng hướng đó: nghỉ hợp pháp (báo trước 2 tuần, dùng hết phép năm). Công ty thiệt vì cơ chế: việc dồn vào một người, không ai được bàn giao. Không cho ai hả hê. Không dùng 退職代行 ("dịch vụ nghỉ việc hộ") vì luật 5 cấm.</dd>
+      <dt>Số liệu</dt><dd>マイナビ 転職動向調査 2026 (tỷ lệ chuyển việc 40–50 tuổi tăng từ 2021) · định nghĩa 就職氷河期 (thế hệ "kỷ băng hà việc làm") 1993–2005 · tăng lương khởi điểm cho người mới, phần lương trung niên bị kìm.</dd>
+      <dt>Tiêu đề gợi ý</dt><dd><span class="title-jp">なぜ「何でも引き受けてきた」ベテランは、ある日突然辞めるのか【漫画】</span><br><span class="muted sm">(Vì sao người kỳ cựu "việc gì cũng nhận" lại bỗng một ngày nghỉ việc)</span></dd>
+    </dl>
+  </article>
+
+  <article class="ep">
+    <header><span class="rank">2</span><h3 class="title-jp">手取り14万 — 額面と手取りの差</h3><span class="pill ok">làm ngay</span></header>
+    <p class="muted">(Lương thực nhận 14 vạn: vì sao lương ghi 18 vạn mà bị trừ nhiều thế)</p>
+    <dl>
+      <dt>Video gốc</dt><dd>観測所 86.912 view <a href="https://www.youtube.com/watch?v=P570Lbe9OXY">https://www.youtube.com/watch?v=P570Lbe9OXY</a></dd>
+      <dt>Độ nóng tháng</dt><dd>64 video, 13 video ≥10k, tổng 622k. 借金ストーリーランド ("Xứ truyện nợ nần") 157k và 121k (2 ngày), メシのタネ 88k (2 ngày).</dd>
+      <dt>Vì sao hợp</dt><dd>Cùng nhóm với tập 給料 (lương), tập tốt nhất kênh mình (5.773 view). Hook có sẵn: mở phiếu lương, ai cũng từng làm. Bên để giận là cơ chế thuế và bảo hiểm (bình luận "社保が高すぎ" — "bảo hiểm xã hội cao quá", 40 like).</dd>
+      <dt>Khác tập 5</dt><dd>Tập 5 hỏi "vì sao lương 30 năm không tăng". Tập này hỏi "vì sao phần bị trừ ngày càng lớn": tỷ lệ bảo hiểm hưu 18,3%, y tế, thuế, lương thực tế âm.</dd>
+      <dt>Số liệu</dt><dd>国税庁 民間給与実態統計調査 2024 (Cục Thuế, điều tra lương khu vực tư) · 厚労省 lương thực tế 2025 −1,3% · 総務省 chỉ số giá +3,2%, thực phẩm +6,8%. <b>Lưu ý:</b> bình luận top (42 like) chê dùng lương bình quân, đòi trung vị. Series_ctx phải lấy 中央値 (trung vị).</dd>
+      <dt>Tiêu đề gợi ý</dt><dd><span class="title-jp">額面18万なのに手取り14万…なぜ給料から引かれる額は増え続けるのか【漫画】</span><br><span class="muted sm">(Lương ghi 18 vạn mà về tay 14 vạn… vì sao khoản bị trừ cứ tăng mãi)</span></dd>
+    </dl>
+  </article>
+
+  <article class="ep">
+    <header><span class="rank">3</span><h3 class="title-jp">早期退職制度を使った50代</h3><span class="pill ok">làm ngay</span></header>
+    <p class="muted">(Người 50 tuổi nhận gói nghỉ hưu sớm)</p>
+    <dl>
+      <dt>Video gốc</dt><dd>観測所 19.623 view sau 2 ngày (11k view/ngày) <a href="https://www.youtube.com/watch?v=xrUHdGDgR0w">https://www.youtube.com/watch?v=xrUHdGDgR0w</a><br>Tham khảo: 他人の人生【タニジン】 ("Đời người khác") 53k <a href="https://www.youtube.com/watch?v=Oc81ttmqgU8">https://www.youtube.com/watch?v=Oc81ttmqgU8</a></dd>
+      <dt>Độ nóng tháng</dt><dd>Đều nhất: 67 video, 38 video ≥10k, tổng 1,48 triệu.</dd>
+      <dt>Vì sao hợp</dt><dd>Một khoản tiền to trước mắt hoá thành thiệt hại vì cơ chế, không ai trả thù. Đúng khán giả 50+.</dd>
+      <dt>Rút kinh nghiệm</dt><dd>Bình luận chê nhân vật 50 tuổi cư xử như 20 tuổi. Nhân vật mình phải là người 50 thật: có nợ nhà, con đi học, biết sợ.</dd>
+      <dt>Số liệu</dt><dd>人事院 (Viện Nhân sự) mức cộng thêm khi nghỉ sớm: 45 tuổi 80,6% → 50 tuổi 56,1% → 55 tuổi 35,2% · 厚労省 tỷ lệ việc/người 2026-07 = 1,18 lần, nhưng việc văn phòng chỉ ~2 phần 10 số tin tuyển · tỷ lệ chuyển việc 50 tuổi 3,8%.</dd>
+      <dt>Trùng?</dt><dd>Tập 11 (50代楽しくない — "50 tuổi chẳng gì vui") và tập 2 (管理職 — "quản lý") cùng khán giả nhưng khác đề tài. Nên đặt cách tập 11 ít nhất 2 tập.</dd>
+      <dt>Tiêu đề gợi ý</dt><dd><span class="title-jp">「退職金が1000万増える」なぜ早期退職した50代は後悔するのか【漫画】</span><br><span class="muted sm">("Tiền thôi việc tăng thêm 1000 vạn" — vì sao người 50 tuổi nghỉ sớm lại hối hận)</span></dd>
+    </dl>
+  </article>
+
+  <article class="ep">
+    <header><span class="rank">4</span><h3 class="title-jp">育成キャンセル — 叱らない上司</h3><span class="pill ok">làm sau 3 tập trên</span></header>
+    <p class="muted">("Huỷ đào tạo": sếp sợ bị tố power harassment nên bỏ mặc cấp dưới)</p>
+    <dl>
+      <dt>Video gốc</dt><dd>Khung: 観測所 394.682 view <a href="https://www.youtube.com/watch?v=6i4rUV1Kbnc">https://www.youtube.com/watch?v=6i4rUV1Kbnc</a><br>Bằng chứng đề tài: ABEMA Prime (talkshow thời sự) 635k/14 ngày <a href="https://www.youtube.com/watch?v=btupuBgNJHo">https://www.youtube.com/watch?v=btupuBgNJHo</a> · ウラガワ 102k <a href="https://www.youtube.com/watch?v=YFjKKrYJMw8">https://www.youtube.com/watch?v=YFjKKrYJMw8</a></dd>
+      <dt>Độ nóng tháng</dt><dd>775k tổng trên 3 video; 「育成キャンセル」 là từ mới đang lên.</dd>
+      <dt>Vì sao hợp</dt><dd>Kể từ phía người sếp 40–50 tuổi, đúng khán giả. Cả hai phía đều có lý, hậu quả do cơ chế: người trẻ không lớn được, sếp gánh hết việc. Bình luận: "bị nhắc là nghĩ ngay đây là quấy rối" (101 like).</dd>
+      <dt>Lưu ý</dt><dd>Tập 3 đã mượn khung video ウラガワ này (đề tài 静かな退職 — "nghỉ việc trong im lặng"), nên lần này lấy khung video 観測所. Không dùng cảnh "dùng AI tóm tài liệu" (giống 議事録AI bị luật 5 cấm) và không dùng số liệu 退職代行.</dd>
+      <dt>Số liệu</dt><dd>厚労省 職場のハラスメント実態調査 (điều tra quấy rối nơi làm việc) · luật phòng chống power harassment bắt buộc với doanh nghiệp nhỏ từ 4/2022 · điều tra quản lý 2026: 46,3% than cấp dưới "thiếu chủ động".</dd>
+      <dt>Tiêu đề gợi ý</dt><dd><span class="title-jp">なぜ上司は部下を「叱らなく」なったのか【漫画】</span><br><span class="muted sm">(Vì sao sếp không còn "mắng" cấp dưới nữa)</span></dd>
+    </dl>
+  </article>
+
+  <article class="ep">
+    <header><span class="rank">5</span><h3 class="title-jp">なぜ若手は電話に出ないのか</h3><span class="pill warn">dự phòng</span></header>
+    <p class="muted">(Vì sao nhân viên trẻ không nghe điện thoại)</p>
+    <dl>
+      <dt>Video gốc</dt><dd>観測所 「なぜZ世代は無能と言われるのか」 97.690 view <a href="https://www.youtube.com/watch?v=F6DqxRMCHH4">https://www.youtube.com/watch?v=F6DqxRMCHH4</a></dd>
+      <dt>Vì sao dự phòng</dt><dd>Chuyện văn phòng rất cụ thể, có số liệu (50,8% nhân viên dưới 3 năm sợ nghe điện thoại; 80,3% Gen Z năm 2026). Nhưng kênh mình đã có 2 tập về người trẻ (tập 1, tập 3). Làm thêm thì nên cách xa.</dd>
+    </dl>
+  </article>
+
+  <article class="ep">
+    <header><span class="rank">6</span><h3 class="title-jp">生活保護 — なぜ本当に困った人ほど申請しないのか</h3><span class="pill warn">dự phòng, cần cẩn thận</span></header>
+    <p class="muted">(Trợ cấp sinh hoạt: vì sao người khó khăn thật lại không xin)</p>
+    <dl>
+      <dt>Video gốc</dt><dd>観測所 123.208 view sau 4,6 ngày, nhanh nhất kênh (26k/ngày) <a href="https://www.youtube.com/watch?v=84hB7FjqjhE">https://www.youtube.com/watch?v=84hB7FjqjhE</a></dd>
+      <dt>Độ nóng tháng</dt><dd>38 video, 12 video ≥10k, tổng 1,05 triệu.</dd>
+      <dt>Rủi ro</dt><dd>3 bình luận top (112–121 like) đều chửi người nước ngoài nhận trợ cấp. Mục bình luận dễ thành bài ngoại, lệch giọng ấm của lane. Câu chuyện cũng rời công sở sau phút 3. Nếu làm: mở bằng tăng ca → trầm cảm như bản gốc, câu hỏi なぜ đặt ở chỗ người cần mà không xin.</dd>
+      <dt>Số liệu</dt><dd>厚労省 2022: hộ cao tuổi 55,4%, hộ khuyết tật 24,9% · gian lận chỉ ~0,3% tổng chi · tỷ lệ dân nhận trợ cấp 1,62%.</dd>
+    </dl>
+  </article>
+</section>
+
+<section>
+  <h2>3. Không đề xuất làm tập chính</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Đề tài (video 観測所)</th><th class="n">View</th><th>Lý do</th></tr></thead>
+    <tbody>
+      <tr><td>企業がZ世代を採用しなくなった (doanh nghiệp ngừng tuyển Gen Z)</td><td class="n">394.682</td><td>Tập 1 đã mượn khung video cùng đề tài của ウラガワ. Video này dựa vào cảnh AI tóm tài liệu và số liệu 退職代行, cả hai đụng luật 5. Kênh mình đã có 2 tập về người trẻ.</td></tr>
+      <tr><td>中高年の非正規 貧困ループ (vòng nghèo của lao động thời vụ trung niên)</td><td class="n">28.749</td><td>Đề tài nóng (ABEMA 765k) nhưng đang bị kéo sang chính trị (竹中平蔵 — Takenaka Heizo, người bị coi là "cha đẻ" chế độ phái cử). Bản 観測所 yếu.</td></tr>
+      <tr><td>派遣を辞める (bỏ làm phái cử)</td><td class="n">37.118</td><td>Tháng này không video nào ≥10k; bình luận cãi nhau chính trị.</td></tr>
+      <tr><td>年金を払わない (không đóng lương hưu)</td><td class="n">9.892</td><td>メシのタネ làm 230–240k nhưng là đất Lane F (定年後のリアル), không phải công sở.</td></tr>
+      <tr><td>高卒採用 · フリーランス後悔 · 大学進学率 (tuyển người tốt nghiệp cấp 3 · hối hận làm tự do · tỷ lệ vào đại học)</td><td class="n">28–48k</td><td>Tháng này gần như không ai làm (0–1 video ≥10k).</td></tr>
+      <tr><td>お金持ちの家と貧乏な家 · キャンピングカー · iPhone→Android (nhà giàu và nhà nghèo · sống trên xe cắm trại · đổi điện thoại)</td><td class="n">77k–568k</td><td>Tiêu dùng, không công sở. Tập 車離れ ("không mua xe") của mình chỉ 1.534 view.</td></tr>
+      <tr><td>周りを潰すパワハラ上司 (sếp power harassment dẫm đạp người khác, ウラガワ, video duy nhất chưa dùng)</td><td class="n">1.928</td><td>6 ngày mới 1,9k view, tháng này không ai làm nổ.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>4. Đổi gì so với báo cáo sáng nay</h2>
+  <ul>
+    <li>Z世代 hạ từ hạng 1 xuống "không làm tập chính". Lúc sáng em chỉ xem view, giờ đã đối chiếu luật 5 của lane và 13 tập đã làm.</li>
+    <li>リベンジ退職 lên hạng 1. Lúc sáng em chưa thấy video メシのタネ 674k cùng khuôn manga.</li>
+    <li>パワハラ指導拒否 ("lấy cớ quấy rối để từ chối được dạy") đổi góc thành 育成キャンセル, kể từ phía sếp. Video ABEMA 635k cho thấy góc này đang nóng hơn.</li>
+    <li>生活保護 hạ xuống dự phòng vì mục bình luận có nội dung bài ngoại.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>5. Dữ liệu</h2>
+  <ul class="sm">
+    <li>Transcript đầy đủ + bình luận 15 video: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_kansokujo_20261010\</code> (dùng làm competitor.txt được ngay)</li>
+    <li>Độ nóng 14 đề tài: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_kansokujo_20261010\heat.json</code></li>
+    <li>Danh sách video 3 kênh nguồn: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_L_check_20261010\source_videos.json</code></li>
+    <li>Hook: thêm 6 video vào <code>E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\hooks.jsonl</code> (kho 295 video), gồm メシのタネ リベンジ退職 10/12 điểm.</li>
+  </ul>
+</section>
+</div>

@@ -1,0 +1,23 @@
+{
+ "topics": [
+  "老後資金",
+  "貯蓄",
+  "年金",
+  "60代の家計"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "心配すんなって。最後は生活保護があるじゃねえか。だよな。原浩司さん46歳。結婚はしませんでした。子供もいません。そしてこの世に聞いた一言を20年信じていました。20年後の夏原さんはその窓口の前に立つことになります。66[音楽]歳の春原さんは倉庫で夜勤をしていました。週4日手取りは13万円です。18歳から",
+ "hook_n_segments_0_30": 10,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 402 segments, phủ ~100% độ dài video",
+ "video_id": "uHAwTDsOQ-M",
+ "title": "【漫画】生活保護で老後を乗り切ろうとした男「ヤバくなったら頼ればいいじゃん」と思っていたが…",
+ "view_count": 28106,
+ "duration_min": 19.7,
+ "vpd": 2007.6,
+ "days": 14
+}

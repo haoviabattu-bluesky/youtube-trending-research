@@ -1,0 +1,174 @@
+<title>Kinh tế vs sức khỏe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Noto+Sans+JP:wght@400;700;900&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout: một cột đọc ~70ch, cùng hệ với báo cáo 04/10; vàng công nghiệp = điểm nhấn, đỏ chỉ cho lỗi/cảnh báo */
+:root{
+  --bg:#eef0f2; --paper:#ffffff; --ink:#1d2329; --muted:#5b6670; --line:#d3d8dd;
+  --accent:#e2b100; --accent-ink:#5a4600; --warn:#b3261e; --good:#1f7a4d; --chip:#e5e9ed; --onaccent:#2a2100;
+  --f-body:"Be Vietnam Pro","Noto Sans JP",system-ui,sans-serif;
+  --f-jp:"Noto Sans JP","Be Vietnam Pro",sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14181c; --paper:#1c2227; --ink:#e7eaed; --muted:#9aa6b1; --line:#2f373e;
+  --accent:#f2c530; --accent-ink:#f2c530; --warn:#ff7b72; --good:#5fd39a; --chip:#262e35; --onaccent:#2a2100; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14181c; --paper:#1c2227; --ink:#e7eaed; --muted:#9aa6b1; --line:#2f373e;
+  --accent:#f2c530; --accent-ink:#f2c530; --warn:#ff7b72; --good:#5fd39a; --chip:#262e35; --onaccent:#2a2100; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.7 var(--f-body)}
+.wrap{max-width:900px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:grid;gap:28px}
+h1,h2,h3{text-wrap:balance;line-height:1.3;margin:0}
+h1{font-size:1.9rem;font-weight:800}
+h2{font-size:1.3rem;font-weight:800;display:flex;gap:.6em;align-items:baseline}
+h2 .n{font:500 .85rem var(--f-num);color:var(--muted)}
+h3{font-size:1.02rem;font-weight:700;margin-top:4px}
+p{margin:0;max-width:72ch}
+ul,ol{margin:0;padding-left:1.3em;display:grid;gap:4px}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:2px}
+.jp{font-family:var(--f-jp)}
+.vn{color:var(--muted);font-size:.92em}
+section{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;gap:14px;min-width:0}
+.eyebrow{font:500 .75rem var(--f-num);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.verdict{border-left:6px solid var(--accent);background:var(--paper);padding:18px 20px;border-radius:0 6px 6px 0;display:grid;gap:10px}
+.verdict strong{color:var(--accent-ink)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;gap:.5em;align-items:center;padding:9px 14px;border-radius:5px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;font-size:.92rem}
+.btn.alt{background:var(--chip);color:var(--ink)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--chip);border-radius:5px;padding:10px 12px}
+.stat b{display:block;font:500 1.35rem var(--f-num);font-variant-numeric:tabular-nums}
+.stat span{font-size:.82rem;color:var(--muted)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.87rem;min-width:640px}
+th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;vertical-align:top}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+td.num{font-family:var(--f-num);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+td a{word-break:break-all}
+.hot{color:var(--good);font-weight:700}
+.cold{color:var(--warn);font-weight:700}
+.bar{display:flex;height:22px;border-radius:4px;overflow:hidden;font:500 .72rem var(--f-num);color:var(--onaccent)}
+.bar span{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
+.b-ir{background:var(--accent)} .b-news{background:#8fb3d6} .b-hist{background:#b9c6a3} .b-fake{background:#e59a92}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.8rem;color:var(--muted)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.barrow{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;font-size:.85rem}
+.steps{list-style:none;padding:0;display:grid;gap:12px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.steps li::before{counter-increment:s;content:counter(s);font:500 .9rem var(--f-num);background:var(--ink);color:var(--paper);border-radius:4px;text-align:center;padding:4px 0}
+.steps li > div{display:grid;gap:4px;min-width:0}
+.ev{font-size:.84rem;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid2 > div{min-width:0;display:grid;gap:8px;align-content:start}
+.pro{border-top:3px solid var(--good);padding-top:8px}
+.con{border-top:3px solid var(--warn);padding-top:8px}
+figure{margin:0;display:grid;gap:6px}
+figure img{border-radius:4px;border:1px solid var(--line)}
+figcaption{font-size:.82rem;color:var(--muted)}
+.tag-new{background:var(--accent);color:var(--onaccent);font-size:.7rem;font-weight:700;padding:1px 6px;border-radius:3px}
+.tag-re{background:var(--chip);font-size:.7rem;font-weight:700;padding:1px 6px;border-radius:3px}
+.st{font:500 .74rem var(--f-num);padding:1px 6px;border-radius:3px;white-space:nowrap}
+.st.ok{background:var(--good);color:var(--paper)} .st.part{background:var(--chip);color:var(--ink)} .st.bad{background:var(--warn);color:var(--paper)}
+code{font:500 .82rem var(--f-num);background:var(--chip);padding:1px 5px;border-radius:3px;word-break:break-all}
+@media (max-width:640px){.grid2{grid-template-columns:1fr}.barrow{grid-template-columns:1fr}h1{font-size:1.5rem}}
+</style>
+<div class="wrap">
+
+<header style="display:grid;gap:12px">
+  <div class="eyebrow">So sánh ngách · TRENDING-RESEARCH · quét ngày 06/10/2026</div>
+  <h1>Tư liệu kinh tế doanh nghiệp Nhật hay sức khỏe người già: ngách nào đáng làm?</h1>
+  <p>Em đo hai ngách bằng cùng một cách: mỗi ngách 25 từ khoá, chỉ lấy video dài đăng trong 30 ngày gần nhất, phân loại tay từng kênh và chỉ tính kênh faceless. Ngoài lượt xem, em còn so tiền quảng cáo, chính sách YouTube và luật Nhật. Em cũng đặt kết quả cạnh lịch sử thật của dự án: Lane E (sức khỏe người già) đã bị bỏ ngày 29/09.</p>
+</header>
+
+<div class="verdict">
+  <div class="eyebrow">Trả lời ngắn</div>
+  <p><strong>Ngách tư liệu kinh tế có tiềm năng thật, và đáng làm hơn sức khỏe người già.</strong> Nhưng tiềm năng của nó nằm ở <b>độ ổn định và giá trị mỗi view</b>, không nằm ở quy mô. Tổng lượt xem của ngách sức khỏe vẫn lớn hơn khoảng 1,4 lần.</p>
+  <p>So trên 15 kênh faceless mạnh nhất mỗi ngách, một video kinh tế có trung vị <b>56.236 view</b>, còn một video sức khỏe chỉ <b>6.753 view</b>, tức gấp 8 lần. Tiền quảng cáo cho mỗi 1.000 view của ngách kinh tế cũng cao hơn khoảng 1,3–1,7 lần. Ngách sức khỏe thì đang có một đợt kênh AI ồ ạt đổ vào: 11 kênh mới tạo tháng 8–9 đã có video trên 100k. Kênh mẫu cũ của Lane E giờ chỉ còn trung vị 258 view mỗi video. Ngách sức khỏe còn là ngách YouTube và luật Nhật siết mạnh nhất năm 2026.</p>
+  <p><strong>Điểm yếu thật của ngách kinh tế:</strong> nhu cầu nhỏ hơn. Trong 30 ngày không có video faceless nào vượt 1 triệu view (video 1,79M của kênh mẫu đăng ngoài khung đo). Đề tài phụ thuộc tin doanh nghiệp. Ngoài ra dòng 「海外の反応」 (phản ứng nước ngoài) và 日本すごい (Nhật giỏi) đang giành cùng đề tài, với 32 video trên 100k.</p>
+</div>
+
+<section>
+  <h2><span class="n">01</span>Lượt xem: ai có nhiều, ai có đều</h2>
+  <div class="tbl"><table>
+    <tr><th>Chỉ số (video faceless, đăng trong 30 ngày)</th><th>Sức khỏe người già</th><th>Kinh tế doanh nghiệp</th><th>Đọc ra</th></tr>
+    <tr><td>Video ≥100k / ≥300k / ≥1M</td><td class="num hot">29 / 8 / 1</td><td class="num">21 / 7 / 0</td><td>Nhu cầu thô của sức khỏe lớn hơn</td></tr>
+    <tr><td>Tổng view của 100 video top</td><td class="num hot">11,9M</td><td class="num">8,2M</td><td>Lớn hơn khoảng 1,4 lần</td></tr>
+    <tr><td>Số kênh faceless đang hoạt động (có video ≥5k)</td><td class="num">88</td><td class="num hot">50</td><td>Kinh tế ít đối thủ hơn</td></tr>
+    <tr><td><b>Trung vị view mỗi video của 15 kênh mạnh nhất</b></td><td class="num cold">6.753</td><td class="num hot">56.236</td><td><b>Kinh tế gấp 8 lần</b></td></tr>
+    <tr><td>Trung vị ch_mult (view mỗi video ÷ sub)</td><td class="num cold">0,44</td><td class="num hot">2,98</td><td>Kênh sức khỏe có sub nhưng sub không quay lại xem</td></tr>
+    <tr><td>Kênh đang tụt (trend &lt; 0,8) trong top 15</td><td class="num cold">8</td><td class="num">4</td><td>Một nửa kênh sức khỏe đang đi xuống</td></tr>
+    <tr><td>Số video đăng mỗi tháng (trung vị)</td><td class="num">29 (gần mỗi ngày)</td><td class="num">13</td><td>Sức khỏe phải đăng gấp đôi để trúng</td></tr>
+    <tr><td>Kênh mới (≤6 tháng) có video ≥100k</td><td class="num">13 (11 kênh tạo tháng 8–9)</td><td class="num">5</td><td>Sức khỏe đang có đợt kênh AI đổ vào</td></tr>
+    <tr><td>Thời lượng video ≥100k (trung vị)</td><td class="num">23,9 phút</td><td class="num">20,9 phút</td><td>Như nhau, đều chèn được quảng cáo giữa video</td></tr>
+  </table></div>
+  <p><b>Ví dụ cho thấy ngách sức khỏe là trò may rủi:</b> kênh <span class="jp">元気シニア</span> (Người già khỏe mạnh) có 1 video 669k view nhưng trung vị chỉ 211 view, trend 0,19. Kênh <span class="jp">健康シニアの暮らし方</span> (Lối sống người già khỏe) có video 399k nhưng trung vị 957, trend 0,16. Kênh mẫu cũ của Lane E là <span class="jp">シニアいきいき健康</span> (Người già khỏe tươi): có lúc đạt 3.341 view/ngày, nay trung vị 12 video gần nhất chỉ còn <b>258 view</b>.</p>
+  <p><b>Ví dụ ngược lại ở ngách kinh tế:</b> các kênh nhỏ vẫn có sàn view ổn định. <span class="jp">企業の解剖図【調査員・佐伯】</span> (Giải phẫu doanh nghiệp, điều tra viên Saeki) có 659 sub mà ch_mult 16, video <span class="jp">三洋電機崩壊の真相</span> (Sự thật vụ Sanyo sụp đổ) đạt 168k. <span class="jp">消滅図鑑</span> (Bách khoa những thứ biến mất) ch_mult 9,3. <span class="jp">あの会社はなぜ消えた?</span> (Công ty ấy vì sao biến mất?) ch_mult 3,05.</p>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Tiền: mỗi view đáng bao nhiêu</h2>
+  <div class="tbl"><table>
+    <tr><th></th><th>Sức khỏe người già</th><th>Kinh tế doanh nghiệp</th></tr>
+    <tr><td>Tiền quảng cáo cho 1.000 view (ước tính từ blog/khảo sát Nhật, độ tin cậy trung bình)</td><td class="num">≈ 450–1.050 ¥</td><td class="num hot">≈ 750–1.800 ¥</td></tr>
+    <tr><td><b>Tính thử 1 kênh tầm trung vị top 15:</b> view mỗi video × số video/tháng × tiền/1.000 view</td><td class="num">6.753 × 29 × 0,45–1,05 ¥ ≈ <b>9–21 vạn ¥/tháng</b></td><td class="num hot">56.236 × 13 × 0,75–1,8 ¥ ≈ <b>55–130 vạn ¥/tháng</b></td></tr>
+    <tr><td>Thu nhập phụ</td><td>Affiliate thực phẩm chức năng hoa hồng cao, nhưng dính luật dược (薬機法) và luật cấm quảng cáo trá hình (ステマ規制). Đã có affiliate bị chuyển hồ sơ truy tố. Comment cho thấy khán giả chỉ mua đồ siêu thị, gần như không ai mua thực phẩm chức năng.</td><td>Affiliate mở tài khoản chứng khoán (ví dụ Rakuten Securities 500 ¥/tài khoản), tài trợ sách kinh doanh. Hợp pháp nếu không khuyến nghị mua bán mã cổ phiếu. 6/100 comment có nhắc theo dõi cổ phiếu.</td></tr>
+  </table></div>
+  <p class="vn">Phép tính chỉ để so độ lớn giữa hai ngách, không phải dự báo doanh thu. Kênh mới thường dưới mức trung vị trong vài tháng đầu, và phải đủ điều kiện bật kiếm tiền trước.</p>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Rủi ro: cái nào có thể mất cả kênh</h2>
+  <div class="tbl"><table>
+    <tr><th>Rủi ro</th><th>Sức khỏe người già</th><th>Kinh tế doanh nghiệp</th></tr>
+    <tr><td>Chính sách YouTube về thông tin y tế sai</td><td class="cold">CAO. Video trái hướng dẫn của Bộ Y tế Nhật hoặc WHO bị gỡ và nhận gậy cảnh cáo. Kệ "nguồn thông tin sức khỏe" chỉ dành cho bác sĩ và cơ sở y tế có giấy phép, nên kênh AI luôn bị đẩy xuống dưới.</td><td>Không áp dụng</td></tr>
+    <tr><td>Đợt dẹp nội dung AI sản xuất hàng loạt 2026</td><td class="cold">CAO. YouTube đã xoá nhiều kênh AI lớn. Ở Nhật, đầu 2026 có làn sóng kênh AI bị tắt kiếm tiền. Một số nguồn cho rằng nhóm sức khỏe dính nhiều hơn (chưa kiểm).</td><td>TRUNG BÌNH. Cũng bị soi giọng TTS, nhưng kịch bản có phân tích riêng và số liệu có nguồn thì được tính là có giá trị nguyên bản.</td></tr>
+    <tr><td>Luật Nhật</td><td class="cold">CAO. Luật dược (薬機法) áp cho bất kỳ ai nói thực phẩm "chữa" bệnh. Luật bác sĩ (医師法) cấm xưng bác sĩ khi không phải bác sĩ, nên nhân vật AI xưng ○○医師 là vi phạm.</td><td>TRUNG BÌNH, tự kiểm soát được. Không khuyến nghị cổ phiếu. Kiểm chứng mọi câu chê công ty hay người có thật. Chỉ trích IR ngắn, có nguồn, không chép (đã ghi thành luật trong hồ sơ lane).</td></tr>
+    <tr><td>Báo chí và cơ quan đang nhắm vào</td><td class="cold">Có. Ở Hàn, 42/100 video sức khỏe người già xem nhiều nhất là AI. Một điều tra đếm hơn 1.000 kênh "bác sĩ AI" trên 30 ngôn ngữ, có cả tiếng Nhật.</td><td>Chưa thấy</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Vậy ngách kinh tế có thật sự tiềm năng?</h2>
+  <div class="grid2">
+    <div class="pro"><h3>Có, vì</h3><ul>
+      <li>Kênh làm đúng có sàn view ổn định: trung vị 56k/video, 7/15 kênh có ch_mult ≥ 3. Kênh mới vẫn chen vào được bằng chất lượng (企業の解剖図, 消滅図鑑, 最高の老後).</li>
+      <li>Mỗi view đáng tiền hơn. Chỉ cần đăng khoảng 13 video/tháng thay vì mỗi ngày.</li>
+      <li>Rủi ro mất kênh thấp, rủi ro luật tự kiểm soát được bằng quy trình.</li>
+      <li>Chưa kênh faceless nào kết hợp đủ ba thứ: biên bản hỏi đáp IR, biểu đồ động, giọng AI (đo hôm nay, 8 kênh).</li>
+    </ul></div>
+    <div class="con"><h3>Nhưng cần biết</h3><ul>
+      <li>Nhu cầu nhỏ hơn sức khỏe khoảng 1,4 lần, trần thấp hơn. Trong 30 ngày không có video faceless nào trên 1M.</li>
+      <li>Khán giả là nam giới làm sản xuất hoặc văn phòng, quan tâm cổ phiếu. Comment hầu như không cho thấy người già, nên đây không phải tệp "tuổi già" như các lane khác.</li>
+      <li>Đề tài bám tin doanh nghiệp, phải làm theo lịch công bố kết quả kinh doanh.</li>
+      <li>Dòng 「海外の反応」 giành cùng đề tài (Nippon Steel, Toyota) với 32 video trên 100k. Phải khác biệt bằng tư liệu thật.</li>
+      <li>Bằng chứng mạnh nhất (kênh mẫu) mới có 4 video.</li>
+    </ul></div>
+  </div>
+  <p><b>Khuyến nghị:</b> giữ kế hoạch ứng viên lane kinh tế như đã giao h2dev, chờ bài thử 60 giây. Không mở lại ngách sức khỏe dạng lời khuyên y tế. Nếu vẫn muốn khai thác tệp người già, các lane kể chuyện và kinh tế tuổi già đang chạy (lương hưu, việc làm sau nghỉ hưu) an toàn hơn nhiều.</p>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Kênh mới đáng để ý (chưa báo trước đây)</h2>
+  <div class="tbl"><table>
+    <tr><th>Kênh</th><th>Tạo</th><th>Sub</th><th>ch_mult</th><th>Video top</th></tr>
+    <tr><td><a href="https://www.youtube.com/channel/UCa2a1OHLJ6u5PXOj1w31YuA" target="_blank" rel="noopener"><span class="jp">企業の解剖図【調査員・佐伯】</span></a><br><span class="vn">Giải phẫu doanh nghiệp, điều tra viên Saeki</span></td><td>02/2026</td><td class="num">659</td><td class="num hot">16,0</td><td><span class="jp">三洋電機崩壊の真相</span> <span class="vn">(Sự thật vụ Sanyo sụp đổ)</span>, 168k</td></tr>
+    <tr><td><a href="https://www.youtube.com/channel/UCRNSwqwJnBWjUvzcQw3YU_g" target="_blank" rel="noopener"><span class="jp">あっと驚く経済学</span></a><br><span class="vn">Kinh tế học bất ngờ</span></td><td>12/2025</td><td class="num">19.000</td><td class="num">1,11</td><td><span class="jp">ケーズデンキ「がんばらない経営」の秘密</span> <span class="vn">(Bí mật kiểu kinh doanh "không gồng" của K's Denki)</span>, 241k. trend 0,41, đang tụt</td></tr>
+  </table></div>
+  <p class="vn">Em chưa đào sâu hai kênh này. 企業の解剖図 ch_mult rất cao trên rất ít sub, nên đáng xem có phải công thức thật hay không nếu anh muốn.</p>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Giới hạn</h2>
+  <ul>
+    <li>Tiền quảng cáo mỗi 1.000 view là ước tính từ blog và khảo sát, không phải số thật của kênh nào.</li>
+    <li>Kết quả tìm kiếm mỗi từ khoá bị giới hạn khoảng 40 video/tháng, nên nhu cầu cả hai ngách bị đánh giá thấp, có lẽ thấp hơn ở ngách sức khỏe.</li>
+    <li>Từ khoá kinh tế có tên hãng (Toyota, Nintendo) nên kéo vào nhiều video lệch ngách. Em đã loại tay nhưng vẫn còn chỗ chủ quan.</li>
+    <li>Không đo được retention, doanh thu thật, lượng tìm kiếm.</li>
+    <li>Kênh của mình <code>@Lopezzapa68</code> (ghi ngách "sức khỏe người già" trong profile) không còn tra được qua API, nên không có số liệu thật của chính mình để so.</li>
+  </ul>
+  <p class="vn">Dữ liệu: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\niche_compare_kenko_vs_keizai\</code> · kênh mẫu Lane E: <code>E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\niche_ref_UCBODlDy5sXo_49pC7KPr7vQ.json</code></p>
+</section>
+
+</div>

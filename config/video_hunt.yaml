@@ -54,13 +54,13 @@ defaults:
 lanes:
   shinya_shiryoshitsu:
     col: shinya_shiryoshitsu
-    tab: shinya_shiryoshitsu
+    tab: A-shinya_shiryoshitsu
     label: "Lane A — 都市伝説/vũ trụ/bí ẩn"
     seed_tags: [宇宙 謎, 宇宙 都市伝説, UFO 日本, NASA 隠蔽, 未解決 ミステリー]
 
   Lopezzapa68:
     col: Lopezzapa68
-    tab: Lopezzapa68
+    tab: Satori-Lopezzapa68
     label: "Lane satori — chuyện người già cảm động"
     seed_tags: [老後 実話, 高齢者 感動 話, 年金 生活 実話, 老老介護 実話, 特殊詐欺 実話]
 
@@ -72,19 +72,19 @@ lanes:
 
   70dai-kenko:
     col: 70dai-kenko
-    tab: 70dai-kenko
+    tab: E-70dai-kenko
     label: "Lane E — sức khoẻ/trường thọ người già"
     seed_tags: [70代 健康, 高齢者 食べ物, 転倒 予防, 筋肉 減る 高齢者, 長生き 習慣, 血流 改善 足]
 
   teinengo-real:
     col: teinengo-real
-    tab: teinengo-real
+    tab: F-teinengo-real
     label: "Lane F — hưu trí manga, tiền mất, 2 nhân vật đối lập"
     seed_tags: [定年後 漫画, 年金 繰り上げ 後悔, 再雇用 給料 半分, 退職 後悔 漫画, 老後 お金 失敗]
 
   teinengo-tanoshimi:
     col: teinengo-tanoshimi
-    tab: teinengo-tanoshimi
+    tab: G-teinengo-tanoshimi
     label: "Lane G — hưu trí manga list N選, sống vui/rẻ"
     seed_tags: [定年後 趣味 5選, 60代 朝の習慣, 定年後 一人旅, 老後 楽しみ 漫画, シニア 節約 生活]
 

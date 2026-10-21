@@ -1,0 +1,282 @@
+<title>Lane Q đề tài tháng 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Shippori+Mincho+B1:wght@600;800&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: một cột đọc ~72ch; mỗi đề tài là một "phiếu" có dải trạng thái bên trái màu theo khuyến nghị; bảng nằm trong khung cuộn riêng */
+:root{
+  --paper:#f6f5f1; --ink:#1d2330; --muted:#5d6472; --line:#d9d6cc; --card:#ffffff;
+  --ai:#24407a;      /* 藍 — màu nhấn */
+  --shu:#b33a26;     /* 朱 — cảnh báo / Nhật thiệt */
+  --matcha:#4c6b2f;  /* đạt */
+  --amber:#9a6a12;   /* dự phòng */
+  --chip:#ebe8df;
+  --f-disp:"Shippori Mincho B1","Noto Serif JP",serif;
+  --f-body:"Be Vietnam Pro",system-ui,sans-serif;
+  --f-jp:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#14171d; --ink:#e7e5df; --muted:#a3a8b3; --line:#2d323c; --card:#1b1f27;
+  --ai:#8fb0ec; --shu:#ec8a72; --matcha:#a3c47a; --amber:#e0b35a; --chip:#262b35; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#14171d; --ink:#e7e5df; --muted:#a3a8b3; --line:#2d323c; --card:#1b1f27;
+  --ai:#8fb0ec; --shu:#ec8a72; --matcha:#a3c47a; --amber:#e0b35a; --chip:#262b35; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:15.5px/1.7 var(--f-body);margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-inline:18px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-disp);text-wrap:balance;line-height:1.3;margin:0}
+h1{font-size:clamp(1.7rem,4.6vw,2.4rem);font-weight:800}
+h2{font-size:1.35rem;font-weight:800;margin-top:44px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+h3{font-size:1.12rem;font-weight:800}
+p{margin:.55em 0}
+a{color:var(--ai);text-underline-offset:2px;word-break:break-all}
+a:focus-visible{outline:2px solid var(--ai);outline-offset:2px}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.jp{font-family:var(--f-jp)}
+.vi{color:var(--muted);font-size:.93em}
+.lead{font-size:1.04rem;max-width:68ch}
+ul{padding-left:1.15em;margin:.4em 0} li{margin:.25em 0}
+.note{border:1px solid var(--line);background:var(--card);padding:12px 14px;border-radius:6px}
+.verdict{display:grid;gap:10px;margin-top:18px}
+.verdict div{background:var(--card);border:1px solid var(--line);padding:10px 14px;border-radius:6px}
+.tablebox{overflow-x:auto;margin:12px 0;border:1px solid var(--line);border-radius:6px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:620px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+td.n{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.topic{position:relative;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px 14px 22px;margin:18px 0}
+.topic::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;border-radius:8px 0 0 8px;background:var(--matcha)}
+.topic.backup::before{background:var(--amber)}
+.thead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;justify-content:space-between}
+.rank{font-family:var(--f-disp);font-weight:800;color:var(--ai);font-size:1.05rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--chip);border-radius:99px;padding:1px 10px;font-size:.78rem;white-space:nowrap}
+.chip.go{color:var(--matcha);font-weight:600} .chip.warn{color:var(--shu);font-weight:600} .chip.wait{color:var(--amber);font-weight:600}
+.title-jp{font-family:var(--f-jp);font-weight:500;margin-top:10px;padding:8px 12px;border-left:3px solid var(--ai);background:var(--paper)}
+.grid{display:grid;grid-template-columns:118px minmax(0,1fr);gap:6px 14px;margin-top:12px}
+.grid dt{font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.03em;padding-top:3px}
+.grid dd{margin:0;min-width:0}
+.grid dd.bad{color:var(--ink)} .grid dt.bad{color:var(--shu)}
+q{font-family:var(--f-jp);quotes:"「" "」"}
+.src{font-size:.82rem}
+.small{font-size:.86rem;color:var(--muted)}
+@media (max-width:560px){.grid{grid-template-columns:1fr}.grid dt{padding-top:8px}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+<div class="eyebrow">TRENDING-RESEARCH · Lane Q (MG_STUDIO) · 10/10/2026</div>
+<h1>Lane Q — đề tài mới, sát đời sống</h1>
+<p class="lead">Khung lane Q: Trung Quốc chê, cấm, khoe khoang hoặc khiêu khích một thứ người Nhật quen thuộc → tưởng Nhật thiệt → số liệu thật cho thấy Nhật làm tốt → bên mất mặt hoặc thiệt là Trung Quốc. Đã bỏ các đề tài trong kho (hãng bay, ホタテ, スシロー, anime/ca sĩ, phim, Kyoto, visa, gấu trúc). <b>Bản cập nhật chiều 10/10:</b> trả lời câu hỏi về Asian Games, phân tích kênh gốc lấy đề tài thế nào, thêm 3 đề tài mới từ tin trong tuần.</p>
+
+<div class="verdict">
+  <div><b>Asian Games còn làm được không?</b> Làm "tổng kết Asian Games" thì đã muộn. Đỉnh sóng là 5–6/10: video đăng lúc đó đạt 1,6–2,2 triệu view, còn video đăng trong 2 ngày qua chỉ đạt tối đa 126–144k. Đến khi tập của mình ra (khoảng 14–17/10) thì sự kiện đã qua 10–13 ngày. Nhưng <b>chuyện bóng bàn Nhật–Trung vẫn đang nóng và mới hơn</b>: ngày 5/10 松島輝空 lên số 1 thế giới và lần đầu trong thế kỷ 21 không còn tay vợt TQ nào trong top 3 (báo TQ đổ cho <span class="jp">「ポイント制度の問題」</span> <span class="vi">"lỗi cách tính điểm"</span>); ngày 7/10 Hiệp hội Bóng bàn TQ phải ra tuyên bố cấm cửa fan quá khích; giải ở Bắc Kinh kéo tới 12/10. Đề xuất: đổi thành tập <b>"卓球王国 TQ"</b>, Asian Games chỉ là một chương, ra trước 17/10. Nếu không kịp thì bỏ.</div>
+  <div><b>Kênh gốc lấy đâu ra nhiều đề tài?</b> Em đã đọc đủ 20 video của <a href="https://www.youtube.com/channel/UCEaNC-I0as6FhFHzBgWDxMw">@すんだ社会観察所 (すんだ観察所)</a>. Chỉ <b>5/20 video</b> là kiểu "TQ ra đòn với Nhật → tự thiệt" như lane Q, nhưng 2 video top của kênh đều thuộc nhóm này (ビザ 557.588 view, 渡航自粛 383.774 view). 15 video còn lại kênh lấy từ 3 nhánh khác: TQ tự mãn rồi tự sụp, đường dây người TQ làm bậy ở Nhật, và chuyện thời sự Nhật. Tức là mình không cạn đề tài; nhánh "TQ ra đòn với Nhật" vốn ít đòn mới (3 tháng qua TQ không tung lệnh cấm tiêu dùng nào mới), nên phải lấy cả <b>những câu khoe hoặc chê của báo nhà nước TQ</b> làm "đòn".</div>
+  <div><b>Đề xuất thứ tự mới:</b> ① 抹茶 → ② ノーベル賞 (mới) → ③ 卓球王国 (thay Asian Games, hạn 17/10) → ④ "báo TQ: Nhật hết khách" phần 2 (mới, cách tập hãng bay ít nhất 2 tuần) → ⑤ ポケモン/キャラ → ⑥ ドンキ & bách hoá → ⑦ ユニクロ & 無印 → ⑧ 和牛 (dự phòng).</div>
+</div>
+
+<h2>0. Kênh gốc @すんだ社会観察所: 20 video, 4 nhánh đề tài</h2>
+<p class="small">Số view lấy qua YouTube API ngày 10/10. Mô tả của mọi video đều ghi <span class="jp">「実際の出来事や報道などを参考に再構成したフィクション」</span> <span class="vi">"tái dựng hư cấu dựa trên sự kiện và tin thật"</span>. Kênh đăng khoảng 1 video mỗi 2–3 ngày; tin gốc thường đã 3–6 tuần tuổi (đề tài ジクロロシラン: tin 8/9, video 9/10).</p>
+<div class="tablebox"><table>
+<tr><th>Nhánh</th><th>Số video</th><th>Trung vị view</th><th>Ví dụ (view)</th><th>Hợp lane Q?</th></tr>
+<tr><td><b>A.</b> TQ ra đòn với Nhật → tự thiệt</td><td class="n">5</td><td class="n">126.382</td><td>ビザ代で報復 557.588 · 日本へ行くな 383.774 · ジクロロシラン 126.382 (sau 1 ngày) · 三菱も日産も撤退 91.725</td><td>Đúng khung, nhưng ít đòn mới</td></tr>
+<tr><td><b>B.</b> TQ tự mãn → tự sụp</td><td class="n">7</td><td class="n">95.245</td><td>論破 172.287 · 借金して作りまくれ 104.599 · ソーラー 96.365 · BYD リコール 54.229</td><td>Chỉ hợp khi có so với Nhật và chạm đời sống</td></tr>
+<tr><td><b>C.</b> Đường dây người TQ ở Nhật làm bậy → bị trị</td><td class="n">4</td><td class="n">78.039</td><td>永住 → 滞納 316.542 · ポケカ転売 105.985 · 羊蹄山 50.093</td><td>LUAT lane Q hiện CẤM (dễ thành chê dân)</td></tr>
+<tr><td><b>D.</b> Thời sự Nhật, không có TQ</td><td class="n">4</td><td class="n">135.666</td><td>残クレ 200.179 · NHK 受信料 146.803 · 古米 124.530</td><td>Ngoài lane Q</td></tr>
+</table></div>
+<p>Cách kênh gốc tìm tin, và em đã làm lại được: quét tin tuần trên Google (Record China mục "中国メディア", Reuters JP, 人民網日本語版, 観察者網, 環球時報), lịch công bố số liệu (MAFF, JNTO, báo cáo tài chính công ty), và radar 71 kênh cùng dòng (1.330 video trong 30 ngày qua). Các đề tài ②, ③, ④ dưới đây đều tìm được theo cách này trong hôm nay.</p>
+
+<h2>1. Hook trước tiên: 12 video đối thủ trên các đề tài này</h2>
+<p>Đã đọc 0–60/90 giây của 14 video và nạp 12 video mới vào kho <span class="jp">E:\CLAUDE\YOUTUBE\HOOK_LIBRARY</span> với nhãn <code>mg-lane-q</code> (kho có 276 video). Bốn điều rút ra:</p>
+<ul>
+<li><b>Tiểu phẩm 15 giây tua cả vòng cung (H43) vẫn thắng:</b> <span class="jp">「和牛パクろ！」</span> <span class="vi">("Trộm wagyu thôi!")</span> 231k; <span class="jp">「シャインマスカットの苗を盗んで…」</span> <span class="vi">("trộm cây giống Shine Muscat…")</span> 11/12 điểm. Bản đọc báo kèm mục lục (アカツキ, <span class="jp">「人気旅行先から日本が陥落」</span> <span class="vi">"Nhật rơi khỏi danh sách điểm đến hot"</span>) chỉ đạt 57k.</li>
+<li><b>Tin nóng + kết cục nói ngay giây đầu</b> (<span class="jp">「自業自得ですよね」</span> <span class="vi">"tự làm tự chịu thôi"</span>) đẩy video cắn tay lên 2,23M. Nhưng video này nhắm vào <b>một vận động viên có tên thật</b> và khán giả Trung Quốc, trái luật lane Q. Mình chỉ lấy cơ chế "chính báo Trung Quốc quay ra chê".</li>
+<li><b>Kênh gốc vẫn dùng H44 và H45:</b> video ジクロロシラン mở bằng <span class="jp">「保証金は最大99.2%に決まりました。見たか？」</span> <span class="vi">"Tiền ký quỹ chốt ở mức tối đa 99,2%. Thấy chưa?"</span>, rồi thư ký lật lại trong 30 giây (126k sau 1 ngày). Video ポケカ mở đúng khoảnh khắc trả giá <span class="jp">「本日はご入店いただけません」</span> <span class="vi">"Hôm nay quý khách không được vào cửa hàng"</span> (12/12 điểm).</li>
+<li><b>Cùng đề tài, kênh vào sau thua đậm:</b> 和牛 "trộm gen" của ずんだ探検隊 đạt 231k, bản ずんだ実話 ra sau chỉ được 8,7k. Đề tài đã có 2–3 kênh làm thì phải đổi góc, không chỉ đổi hook.</li>
+</ul>
+<div class="tablebox"><table>
+<tr><th>Video</th><th>Kênh</th><th>View</th><th>Kiểu</th><th>Ghi chú cho lane Q</th></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=CovdHpDvYsQ">柔道で日本選手に嚙み付いた中国人選手さん…</a><br><span class="vi">VĐV TQ cắn tay VĐV Nhật ở 柔道…</span></td><td>じゃぱん応援隊</td><td class="n">2.230.388</td><td>H40/K25</td><td>Nóng nhất; chê cá nhân, không chép giọng</td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=gr3QwYkQ248">日本に敗戦し26年ぶりに団体優勝を逃した中国代表の王楚欽が…</a><br><span class="vi">王楚欽 sau khi TQ mất ngôi vô địch đồng đội lần đầu sau 26 năm…</span></td><td>日本スポーツ【海外の反応】</td><td class="n">843.293</td><td>H40/K02</td><td>Chuỗi kỷ lục chồng nhau</td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=xTPEycP7keQ">中国「和牛パクろ！」→結果、大損害…</a><br><span class="vi">TQ: "Trộm wagyu!" → thiệt nặng</span></td><td>ずんだ探検隊</td><td class="n">231.230</td><td>H43/K25</td><td>Mẫu H43 chuẩn</td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=UWseYdAJAVE">大型連休で中国人が一斉に押し寄せてきた韓国⇒…</a><br><span class="vi">Khách TQ đổ sang Hàn dịp nghỉ lễ → hỗn loạn</span></td><td>じゃぱん応援隊</td><td class="n">192.985</td><td>H20/K06</td><td>Chê khách du lịch (dân): KHÔNG làm</td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=6za9kx8RP_o">「日本が中国に王者の品格を教えた！」…</a><br><span class="vi">"Nhật dạy TQ phẩm cách nhà vô địch"</span></td><td>Lucis Valandoor</td><td class="n">277.002</td><td>H41/K04</td><td>Chi tiết chưa có nguồn</td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=lZZGPW1jwxo">「3000室もキャンセルしたら大打撃だろ？」…</a><br><span class="vi">"Huỷ 3.000 phòng thì đau lắm nhỉ?"</span></td><td>にほんのチカラ</td><td class="n">10.511</td><td>H43/K13</td><td>Truyện bịa trình bày như thật: KHÔNG làm</td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=lkjKiyNStz0">中国「日本の種苗をパクろ！」→シャインマスカット暴落…</a><br><span class="vi">TQ: "Nhái giống cây Nhật!" → Shine Muscat sập giá</span></td><td>ずんだ実話</td><td class="n">25.073</td><td>H43/K06</td><td>Đề tài vừa có người làm</td></tr>
+<tr><td><a href="https://www.youtube.com/watch?v=uV_FV4Rx9p8">中国の人気旅行先から日本が陥落した結果…</a><br><span class="vi">Nhật rơi khỏi điểm đến hot của TQ</span></td><td>アカツキの報道クエスト</td><td class="n">57.220</td><td>H20/K15</td><td>Mẫu hook THUA để so</td></tr>
+</table></div>
+
+<h2>2. Cầu trên YouTube: đề tài nào đang được xem</h2>
+<p class="small">Video dài ≥8 phút có chữ 中国 trong tiêu đề, gồm corpus 133 kênh (tới 7/10) và lượt quét mới 10/10 (1.101 kết quả). Bảng thứ hai đếm số video và số kênh đã làm từng đề tài ứng viên, cửa sổ tháng và năm.</p>
+<div class="tablebox"><table>
+<tr><th>Nhóm đề tài (60 ngày)</th><th>Số video</th><th>Trung vị view</th><th>≥300k</th></tr>
+<tr><td>Thể thao (卓球, 柔道, bóng chuyền…)</td><td class="n">19</td><td class="n">93.831</td><td class="n">4</td></tr>
+<tr><td>Visa</td><td class="n">9</td><td class="n">64.015</td><td class="n">1</td></tr>
+<tr><td>Anime / phim / ca sĩ</td><td class="n">9</td><td class="n">62.456</td><td class="n">1</td></tr>
+<tr><td>Sushi / quán ăn</td><td class="n">3</td><td class="n">43.132</td><td class="n">0</td></tr>
+<tr><td>Bò / gạo</td><td class="n">2</td><td class="n">41.723</td><td class="n">0</td></tr>
+<tr><td>Rượu / trà</td><td class="n">4</td><td class="n">35.929</td><td class="n">0</td></tr>
+<tr><td>Quân sự / ngoại giao (đối chiếu)</td><td class="n">284</td><td class="n">9.565</td><td class="n">16</td></tr>
+<tr><td>Du lịch / khách TQ</td><td class="n">148</td><td class="n">4.230</td><td class="n">3</td></tr>
+</table></div>
+<div class="tablebox"><table>
+<tr><th>Đề tài ứng viên</th><th>Video đã có</th><th>Số kênh</th><th>Top</th><th>Đánh giá</th></tr>
+<tr><td>柔道 cắn tay</td><td class="n">34</td><td class="n">25</td><td class="n">2.230.258</td><td>Rất nóng, đã đông</td></tr>
+<tr><td>卓球 Asian Games</td><td class="n">54</td><td class="n">41</td><td class="n">843.287</td><td>Nóng; chưa có bản ゆっくり寸劇 kể theo khung Q</td></tr>
+<tr><td>抹茶</td><td class="n">11</td><td class="n">11</td><td class="n">71.829</td><td><b>Khoảng trống:</b> chỉ đài TV (FNN, ANN 18/9); 0 video ゆっくり</td></tr>
+<tr><td>和牛</td><td class="n">7</td><td class="n">7</td><td class="n">231.200</td><td>Góc "trộm gen" đã bão hoà</td></tr>
+<tr><td>ポケモン / キャラ</td><td class="n">3</td><td class="n">3</td><td class="n">8.598</td><td>Khoảng trống</td></tr>
+<tr><td>ユニクロ / 無印</td><td class="n">3</td><td class="n">3</td><td class="n">304</td><td>Khoảng trống (1 bản ゆっくり 295 view, sai số liệu)</td></tr>
+<tr><td>ドンキ / 免税</td><td class="n">1</td><td class="n">1</td><td class="n">49</td><td>Khoảng trống</td></tr>
+<tr><td>シャインマスカット</td><td class="n">7</td><td class="n">7</td><td class="n">143.117</td><td>Vừa có bản ゆっくり 5 ngày trước</td></tr>
+</table></div>
+
+<h2>3. Tám đề tài đề xuất (theo thứ tự nên làm)</h2>
+
+<div class="topic">
+<div class="thead"><span class="rank">① 抹茶 (matcha)</span>
+<div class="chips"><span class="chip go">Đề xuất</span><span class="chip">Hiểu ngay 5/5</span><span class="chip">Cú lật 4/5</span><span class="chip">0 video ゆっくり</span></div></div>
+<div class="title-jp">中国「抹茶は中国が世界一！日本から取り戻した」→結果、世界が4倍の値段で買ったのは日本の抹茶だったｗ<br><span class="vi">TQ: "Matcha giờ TQ số 1, đã giành lại từ Nhật!" → kết quả: thế giới vẫn trả giá gấp 4 lần để mua matcha Nhật</span></div>
+<dl class="grid">
+<dt>Đòn của TQ</dt><dd>China Daily 26/8: <q>2025年，中国抹茶出口规模首次超过日本，跃居全球第一</q> <span class="vi">"Năm 2025 xuất khẩu matcha TQ lần đầu vượt Nhật, lên số 1 thế giới"</span>; <q>占全球产量近70%</q> <span class="vi">"gần 70% sản lượng thế giới"</span>. Theo Yomiuri (6/2026), Quý Châu treo biển <q>中国が抹茶発祥の地</q> <span class="vi">"TQ là quê gốc matcha"</span> và đặt mục tiêu <q>日本を凌駕</q> <span class="vi">"vượt mặt Nhật"</span>. Hàng TQ dán nhãn "宇治抹茶" bán ra thế giới (FNN, ANN 18/9).</dd>
+<dt>Nhật làm tốt</dt><dd>Xuất khẩu trà xanh 1–8/2026: <b>674,1億円, +77,3%</b> (MAFF 2/10). Riêng nửa đầu năm +83,5%, tăng mạnh nhất trong mọi mặt hàng. Tám tháng đã bằng khoảng 93% cả năm 2025, mà năm 2025 đã là kỷ lục (~721億円). Chính China Daily thừa nhận <q>日本在高端产品…仍具有较强影响力</q> <span class="vi">"Nhật vẫn mạnh ở hàng cao cấp"</span>.</dd>
+<dt>Bên thiệt là TQ</dt><dd>Chính báo Chiết Giang (潮新闻 29/5) đặt tít <q>售价仅为日本抹茶的四分之一</q> <span class="vi">"giá bán chỉ bằng 1/4 matcha Nhật"</span>: 11,2 USD/kg so với 46,2 USD/kg. Báo cáo ngành TQ cảnh báo <q>产能扩张速度可能超过消费增速</q> <span class="vi">"công suất có thể tăng nhanh hơn tiêu dùng"</span>. Nói gọn: TQ thắng số tấn, Nhật thắng số tiền.</dd>
+<dt class="bad">Không được nói</dt><dd>Trà vốn từ TQ sang Nhật, nên "TQ là quê gốc" không sai; đừng cãi chuyện gốc gác. Giá matcha và trà đóng chai ở Nhật tăng (bà nội trợ chịu thiệt), và một số quán nước ngoài đã chuyển sang hàng TQ. Hiện chưa có số "TQ lỗ"; trục của tập là chênh lệch giá, không phải TQ phá sản.</dd>
+<dt>Nguồn</dt><dd class="src"><a href="https://cn.chinadaily.com.cn/a/202608/26/WS6a8e99bee4b09a165c78626c.html">China Daily 26/8</a> · <a href="https://tidenews.com.cn/news.html?id=3458444">潮新闻 (giá 1/4)</a> · <a href="https://m.36kr.com/p/3788772233567497">36Kr (thấp hơn 4–5 lần)</a> · <a href="https://www.maff.go.jp/j/shokusan/export/e_info/attach/pdf/zisseki-312.pdf">MAFF 1–8/2026</a> · <a href="https://www.maff.go.jp/j/press/yusyutu_kokusai/kikaku/attach/pdf/260804-2.pdf">MAFF nửa đầu 2026</a> · <a href="https://www.youtube.com/watch?v=Thsz6aCY3Jo">FNN: 中国産の『宇治抹茶』？</a> <span class="vi">(matcha "Uji" làm ở TQ?)</span></dd>
+</dl>
+</div>
+
+<div class="topic">
+<div class="thead"><span class="rank">② ノーベル賞 (giải Nobel)</span>
+<div class="chips"><span class="chip go">Mới, tin 3 ngày</span><span class="chip">Hiểu ngay 5/5</span><span class="chip">Cú lật 3/5</span><span class="chip">0 video ゆっくり</span></div></div>
+<div class="title-jp">中国「日本のノーベル賞は過去の遺産、20年後にはゼロ」→結果、3年連続受賞で中国ネットも「日本人すごすぎ」ｗ<br><span class="vi">TQ: "Nobel của Nhật là di sản quá khứ, 20 năm nữa sẽ hết" → kết quả: Nhật đoạt Nobel năm thứ 3 liên tiếp, dân mạng TQ cũng phải thốt "người Nhật giỏi quá"</span></div>
+<dl class="grid">
+<dt>Đòn của TQ</dt><dd>Tháng 10/2025, một người trong giới doanh nghiệp TQ tuyên bố <q>日本はノーベル賞の数でリードも科学技術では中国に大きく後れ</q> <span class="vi">"Nhật dẫn về số giải Nobel nhưng tụt xa TQ về khoa học công nghệ"</span>. Người này cho rằng thành quả của Nhật đến từ thời bong bóng 1980–90 và 20 năm nữa Nhật sẽ hầu như không còn giải. Trên mạng TQ có câu <q>ノーベル賞など西側諸国のお遊びに過ぎない</q> <span class="vi">"Nobel chẳng qua là trò chơi của phương Tây"</span>.</dd>
+<dt>Nhật làm tốt</dt><dd>Ngày 7/10/2026, 硤合憲三 (Soai Kenso, 76 tuổi, ĐH Khoa học Tokyo) đoạt Nobel Hoá học với "phản ứng Soai". Ông biết tin khi đang ở siêu thị. Đây là năm thứ 3 liên tiếp Nhật có giải Nobel; tổng cộng 31 người Nhật đoạt giải, riêng Hoá học là 10 người.</dd>
+<dt>Bên thiệt là TQ</dt><dd>Lần này cú lật đến từ chính dân mạng TQ: <q>日本は強すぎる</q> <span class="vi">"Nhật mạnh quá"</span>, <q>やはり日本人は毎年受賞するんだな</q> <span class="vi">"quả nhiên năm nào người Nhật cũng có giải"</span>, kể cả câu chế giễu chính nước mình. TQ đại lục mới có đúng 1 giải Nobel khoa học (屠呦呦, 2015); số này cần [Dn] trước khi dùng.</dd>
+<dt class="bad">Không được nói</dt><dd>Không nói "TQ thua về khoa học": TQ dẫn đầu thế giới về số bài báo khoa học, và lập luận "Nobel trễ 20 năm" có phần đúng. Trục của tập là "câu dự đoán của TQ đoán sai năm nay", không phải "TQ kém". Ông Soai và người đồng giải (Henri Kagan, Pháp) là người thật: chỉ trích lời thật của họ.</dd>
+<dt>Nguồn</dt><dd class="src"><a href="https://www.recordchina.co.jp/b961754-s25-c30-d0052.html">Record China 9/10/2025 (câu chê)</a> · <a href="https://www.recordchina.co.jp/b994494-s25-c30-d0052.html">Record China 2026 (dân mạng TQ)</a> · <a href="https://mainichi.jp/articles/20261007/k00/00m/040/246000c">毎日新聞 7/10</a> · <a href="https://www.yomiuri.co.jp/science/20261007-GYT1T00343/">読売: 3 năm liên tiếp</a> · <a href="https://news.yahoo.co.jp/articles/ff5f223b7b79bd3398ae59515f2a024b5238b5a3">産経: tổng 31 người</a></dd>
+</dl>
+</div>
+
+<div class="topic">
+<div class="thead"><span class="rank">③ 卓球王国 TQ (thay Asian Games)</span>
+<div class="chips"><span class="chip go">Hạn chót 17/10</span><span class="chip">Hiểu ngay 5/5</span><span class="chip">Cú lật 4/5</span><span class="chip warn">Nguội nhanh</span></div></div>
+<div class="title-jp">中国「張本は口だけｗ」→結果、世界ランクのトップ3から中国が消え「ポイント制度のせい」と言い訳ｗ<br><span class="vi">TQ: "張本 chỉ được cái miệng" → kết quả: TQ biến khỏi top 3 thế giới, rồi đổ lỗi "tại cách tính điểm"</span></div>
+<dl class="grid">
+<dt>Đòn của TQ</dt><dd>Mạng TQ trước chung kết Asian Games (Sina 19/9): <q>张本每次大赛前都放狠话，但三大赛至今零冠</q> <span class="vi">"Trước giải lớn nào 張本 cũng nói cứng, mà 3 giải lớn vẫn 0 cúp"</span>. Sau trận, báo 大河報 gọi câu 張本 nói "Nhật đã vượt TQ" là <q>放言</q> <span class="vi">"ăn nói ngông cuồng"</span>. Ở giải Bắc Kinh, khán giả chiếu đèn flash phá 張本 khi thi đấu.</dd>
+<dt>Nhật làm tốt</dt><dd>24/9: đồng đội nam Nhật thắng TQ 3–2, lấy HCV Asian Games sau 60 năm (張本 thắng số 1 thế giới 王楚欽 3–0). ソフトボール chung kết thắng TQ 7–0. Toàn đoàn 83 HCV, kỷ lục. Ngày 5/10: 松島輝空 (19 tuổi) lên <b>số 1 thế giới</b>, 張本 số 3; TQ lần đầu từ năm 1998 không có ai trong top 3.</dd>
+<dt>Bên thiệt là TQ</dt><dd>Báo TQ 封面新聞 đổ cho <q>ポイント制度の問題</q> <span class="vi">"lỗi cách tính điểm"</span>. Chính dân mạng TQ viết <q>史上最低じゃないのか？</q> <span class="vi">"chẳng phải thấp nhất lịch sử sao?"</span>. Tân Hoa xã viết đội nam TQ <q>阵容深度不足</q> <span class="vi">"thiếu chiều sâu đội hình"</span>. Ngày 7/10, Hiệp hội Bóng bàn TQ phải ra tuyên bố cấm cửa fan quá khích (fan chửi cả HLV đội TQ).</dd>
+<dt class="bad">Không được nói</dt><dd>Nhật thua TQ ở đồng đội nữ 0–3 và ở đôi nam; 張本 thua tay vợt TQ hạng 14 ở Bắc Kinh ngày 8/10. Bảng xếp hạng đổi một phần vì điểm của 王楚欽 hết hạn: phải nói rõ. Không chế giễu cá nhân VĐV TQ, không nhắc xuất thân của 張本. Vụ cắn tay ở 柔道 chỉ được nhắc 1 câu (đã có 25 kênh làm).</dd>
+<dt>Nguồn</dt><dd class="src"><a href="https://sina.cn/detail/nishrap3019782">Sina 19/9</a> · <a href="https://www.news.cn/sports/20260925/d786f7d2832543c4b8e00ce927beb2d7/c.html">Tân Hoa xã 25/9</a> · <a href="https://www.nikkansports.com/sports/news/202609240001926.html">日刊スポーツ 24/9</a> · <a href="https://www.recordchina.co.jp/b993576-s25-c50-d0052.html">Record China 25/9 (放言)</a> · <a href="https://news.infoseek.co.jp/article/recordchina_RC_994311/">Record China 5/10 (số 1 thế giới)</a> · <a href="https://www.recordchina.co.jp/b994381-s25-c50-d0052.html">Record China 6/10 (lỗi cách tính điểm)</a> · <a href="https://world-tt.com/blog/news/archives/382357">卓球王国 8/10 (tuyên bố hiệp hội)</a></dd>
+</dl>
+</div>
+
+<div class="topic">
+<div class="thead"><span class="rank">④ Báo TQ: "Nhật hết khách" (phần 2)</span>
+<div class="chips"><span class="chip go">Mới, tin 4 ngày</span><span class="chip">Hiểu ngay 5/5</span><span class="chip">Cú lật 4/5</span><span class="chip wait">Cách tập hãng bay ≥2 tuần</span></div></div>
+<div class="title-jp">中国メディア「外国人が日本に行かなくなった」→結果、日本が観光で世界1位に選ばれてしまうｗ<br><span class="vi">Báo TQ: "Người nước ngoài không đi Nhật nữa" → kết quả: Nhật được xếp số 1 thế giới về du lịch</span></div>
+<dl class="grid">
+<dt>Đòn của TQ</dt><dd>Ba câu của truyền thông nhà nước, có ngày tháng: CCTV trên Weibo (21/8) gắn hashtag <q>外国人が日本に行かなくなった</q> <span class="vi">"người nước ngoài không đi Nhật nữa"</span>; 観察者網 (20/8) viết <q>日本は中国人観光客なしでは持ちこたえられない</q> <span class="vi">"Nhật không trụ nổi nếu thiếu khách TQ"</span>; 観察者網 (6/10) viết 2,13 tỷ lượt người TQ đi chơi dịp 国慶節 mà Nhật <q>「恩恵」を受けられず</q> <span class="vi">"không được hưởng lộc"</span>.</dd>
+<dt>Nhật làm tốt</dt><dd>WEF xếp Nhật <b>số 1 thế giới</b> về chỉ số phát triển du lịch 2026 (công bố 25/9, Nhật vượt Mỹ; TQ đứng thứ 8). Tháng 7/2026 Nhật đón 344,2 vạn khách, kỷ lục tháng 7: Hàn Quốc +31,9%, Đài Loan +26,4%, Hồng Kông +54,8%. Khách Anh năm 2025 tăng 40,8% so với 2019.</dd>
+<dt>Bên thiệt là TQ</dt><dd>Ngay dịp lễ đó, chi tiêu bình quân mỗi chuyến du lịch trong nước của người TQ thấp nhất 4 năm (893,92 tệ, −1,9%). Phòng vé dịp lễ giảm 36,6%, thấp nhất kể từ 2014 (Reuters 9/10). Ngay khi CCTV đăng hashtag, dân mạng TQ đã cãi lại (Record China).</dd>
+<dt class="bad">Không được nói</dt><dd>Tháng 8 tổng khách quốc tế −9,6%; 1–8 tháng −2,7%; khách TQ −59%. Phải nói ngắn những số này, đặt cạnh số tốt. Không nói phòng vé TQ giảm vì thiếu phim Nhật (không có nguồn nói vậy). Tập hãng bay (ra mắt) đã dùng mạch "Nhật vẫn kỷ lục khách", nên tập này phải dựa vào câu nói mới của báo TQ và xếp WEF, và ra cách tập hãng bay ít nhất 2 tuần. Nếu tập hãng bay chưa đăng, có thể đưa câu 観察者網 6/10 vào tập đó.</dd>
+<dt>Nguồn</dt><dd class="src"><a href="https://www.recordchina.co.jp/b990257-s25-c30-d0052.html">Record China 21/8 (CCTV)</a> · <a href="https://www.recordchina.co.jp/b990441-s25-c30-d0052.html">Record China 24/8 (観察者網 20/8)</a> · <a href="https://www.recordchina.co.jp/b994514-s25-c30-d0052.html">Record China 8/10 (観察者網 6/10)</a> · <a href="https://jp.weforum.org/stories/sustainable-development/top-10-countries-for-travel-and-tourism-2026-ttdi-index-ja/">WEF 2026</a> · <a href="https://www.jiji.com/jc/article?k=2026092500794&amp;g=int">時事 25/9</a> · <a href="https://www.newsweekjapan.jp/articles/-/336536">Reuters qua Newsweek JP 9/10</a> · <a href="https://www.aviationwire.jp/archives/349072">tháng 7 kỷ lục</a></dd>
+</dl>
+</div>
+
+<div class="topic">
+<div class="thead"><span class="rank">⑤ ポケモン · サンリオ · ちいかわ</span>
+<div class="chips"><span class="chip go">Đề xuất</span><span class="chip">Hiểu ngay 5/5</span><span class="chip">Cú lật 4/5</span><span class="chip warn">Gốc chuyện là 靖国</span></div></div>
+<div class="title-jp">人民日報「ポケモンは市場に見捨てられる」→結果、売上5314億円の過去最高ｗ<br><span class="vi">Nhân dân Nhật báo: "Pokémon sẽ bị thị trường ruồng bỏ" → kết quả: doanh thu 5.314 tỷ yên, kỷ lục</span></div>
+<dl class="grid">
+<dt>Đòn của TQ</dt><dd>人民日報 30/1/2026: <q>漠视历史、伤害中国人民感情的品牌，终将被市场抛弃</q> <span class="vi">"Thương hiệu coi thường lịch sử, làm tổn thương tình cảm nhân dân TQ, rốt cuộc sẽ bị thị trường ruồng bỏ"</span>. 36Kr giật tít <q>宝可梦在华深耕十年一日葬送</q> <span class="vi">"10 năm Pokémon gây dựng ở TQ chôn vùi trong 1 ngày"</span>. Hãng TQ 李寧 và 名創優品 gỡ hàng hợp tác.</dd>
+<dt>Nhật làm tốt</dt><dd>株式会社ポケモン năm tài chính đến 2/2026: doanh thu <b>5.314億円 +29,3%</b>, lãi ròng <b>+70,7%</b>, kỷ lục. Sanrio châu Á: doanh thu +57,6%, lãi +72,1%. ちいかわ mở thêm 5 cửa hàng ở TQ năm 2026, triển lãm ở Thượng Hải 12/9–1/11. Sega mở cửa hàng ở Bắc Kinh có hơn 100 fan xếp hàng; một fan TQ nói <q>政治と趣味は分けて考えるべきだ</q> <span class="vi">"chính trị với sở thích phải tách riêng"</span>.</dd>
+<dt>Bên thiệt là TQ</dt><dd>Hãng TQ mất hàng bản quyền đang bán chạy (36Kr ước tính ポケモン×李寧 bán 3–4億元/năm; con số này chưa kiểm). Rạp TQ không được chiếu phim ちいかわ dù fan vẫn mua hàng.</dd>
+<dt class="bad">Không được nói</dt><dd>Không làm 靖国 thành trục của tập (chính trị/lịch sử); chỉ một câu "trang sự kiện đăng sai, công ty đã xin lỗi". Năm tài chính kỷ lục kết thúc chỉ 1 tháng sau vụ việc, nên chưa chứng minh được "bị chê xong vẫn thắng"; cần thêm số bán ぽこ あ ポケモン (khoảng 400 vạn bản, chưa đối chiếu IR 任天堂). Trùng một phần với tập anime/ca sĩ: nên làm thành "phần hàng hoá" riêng.</dd>
+<dt>Nguồn</dt><dd class="src"><a href="https://news.sina.cn/2026-01-30/detail-inhkcfmc0382936.d.html">人民日報 qua Sina</a> · <a href="https://www.36kr.com/p/3675681167946503">36Kr</a> · <a href="https://gamebiz.jp/news/426891">gamebiz: Pokémon FY</a> · <a href="https://gamebiz.jp/news/420865">gamebiz: Sanrio</a> · <a href="https://www.sakigake.jp/news/article/20261002CO0077/">Kyodo 2/10: ちいかわ</a> · <a href="https://kumanichi.com/articles/2015192">Kyodo 18/7: Sega Bắc Kinh</a></dd>
+</dl>
+</div>
+
+<div class="topic">
+<div class="thead"><span class="rank">⑥ ドンキ & bách hoá miễn thuế</span>
+<div class="chips"><span class="chip go">Đề xuất</span><span class="chip">Hiểu ngay 5/5</span><span class="chip">Cú lật 4/5</span><span class="chip wait">Cách tập hãng bay ≥2 tuần</span></div></div>
+<div class="title-jp">中国「中国人が来なければ日本の小売は終わり」→結果、ドンキの免税売上が過去最高になってしまうｗ<br><span class="vi">TQ: "Không có khách TQ thì bán lẻ Nhật tiêu" → kết quả: doanh thu miễn thuế của ドンキ lập kỷ lục</span></div>
+<dl class="grid">
+<dt>Đòn của TQ</dt><dd>Tân Hoa xã 26/11/2025: <q>首当其冲的便是日本旅游业、零售业和影视产业</q> <span class="vi">"Hứng đòn đầu tiên là du lịch, bán lẻ và phim ảnh Nhật"</span>. Lưu ý: câu này là lời của nhà kinh tế Nhật 田代秀敏, do Tân Hoa xã chọn đăng; phải ghi <span class="jp">「新華社が伝えた」</span> <span class="vi">"theo Tân Hoa xã"</span>. Tân Hoa xã 18/11 đưa tin cổ phiếu 三越伊勢丹 −11,31%; bài 14/1/2026 tả miễn thuế 三越伊勢丹 giảm 20%.</dd>
+<dt>Nhật làm tốt</dt><dd>PPIH (ドンキ) năm tài chính đến 6/2026: miễn thuế <b>2.286億円 +31,2%, kỷ lục</b>; lãi ròng lần đầu vượt 1.000億円. Báo cáo của công ty viết <q>一カ国に依存しないインバウンド戦略が奏功</q> <span class="vi">"chiến lược khách quốc tế không phụ thuộc một nước đã hiệu quả"</span>. Bách hoá: miễn thuế tháng 8 +4,6%, tăng 6 tháng liền; mỗi khách chi 10,3 vạn円 (+15,6%).</dd>
+<dt>Bên thiệt là TQ</dt><dd>Phần yếu nhất của đề tài: lời "đừng sang Nhật" mất tác dụng làm đòn bẩy. Người thiệt là chính dân TQ (khách TQ giảm 37% nhưng ai vẫn sang thì chi nhiều hơn). Chưa có số về đường dây 代購 <span class="vi">(mua hộ)</span>. Cần thêm 1–2 [Dn] trước khi soạn.</dd>
+<dt class="bad">Không được nói</dt><dd>Bách hoá âm 3 tháng liền (11/2025–1/2026). Năm 2025 miễn thuế giảm khoảng 40% nên mức tăng hiện nay có phần do nền thấp. Không lặp lại cảnh "khách TQ biến mất" của tập hãng bay. Đề tài này cùng mạch du lịch với ④: chọn ④ thì ドンキ chỉ làm 1 chương trong ④.</dd>
+<dt>Nguồn</dt><dd class="src"><a href="https://www.news.cn/world/20251126/d236c3cd9f2c4819bec49678e33bbf78/c.html">Tân Hoa xã 26/11/2025</a> · <a href="https://www.news.cn/world/20260114/4a703ed6fc6048ee806d5cd864e565c8/c.html">Tân Hoa xã 14/1/2026</a> · <a href="https://ppih.co.jp/ir/library/earnings/pdf/PPIH_FY2026_Q4_Financial_Results_J.pdf">PPIH IR</a> · <a href="https://kumanichi.com/articles/2026440">Kyodo 18/8</a> · <a href="https://www.advertimes.com/20260818/article554111/">AdverTimes: 中国客頼みから脱却したドンキ</a> <span class="vi">(ドンキ thoát phụ thuộc khách TQ)</span> · <a href="https://honichi.com/news/2026/10/01/department_202608/">訪日ラボ: bách hoá tháng 8</a></dd>
+</dl>
+</div>
+
+<div class="topic">
+<div class="thead"><span class="rank">⑦ ユニクロ & 無印良品</span>
+<div class="chips"><span class="chip go">Đề xuất</span><span class="chip">Hiểu ngay 5/5</span><span class="chip">Cú lật 3/5</span><span class="chip">Tin 2 ngày tuổi</span></div></div>
+<div class="title-jp">中国「ユニクロも無印も株価暴落だ」→結果、中国事業の利益が2割増で過去最高益ｗ<br><span class="vi">TQ: "ユニクロ, 無印 đều sụp cổ phiếu" → kết quả: lãi mảng TQ tăng 20%, lãi kỷ lục</span></div>
+<dl class="grid">
+<dt>Đòn của TQ</dt><dd>Tân Hoa xã 18/11/2025 kể tên <q>无印良品母公司良品计划、优衣库母公司迅销集团</q> <span class="vi">"Ryohin Keikaku (無印) và Fast Retailing (ユニクロ)"</span> trong nhóm cổ phiếu sụp. Cổ phiếu 良品計画 giảm khoảng 20%. Báo Nhật lúc đó viết <q>無印良品・ユニクロに不買懸念も</q> <span class="vi">"lo bị tẩy chay cả 無印 lẫn ユニクロ"</span>.</dd>
+<dt>Nhật làm tốt</dt><dd>Fast Retailing công bố 8/10/2026: năm thứ 5 liền lãi kỷ lục; khu vực Đại Trung Hoa doanh thu +11,3%, <b>lãi +24,6%</b>. 無印 9 tháng: mảng Đông Á doanh thu +29,3%, <b>lãi +39,6%</b>; nâng dự báo lãi 2 lần lên mức kỷ lục.</dd>
+<dt>Bên thiệt là TQ</dt><dd>Mỏng: Âu-Mỹ của ユニクロ lần đầu vượt Đại Trung Hoa, tức TQ mất vị thế "con tin". CIGS 25/2/2026 dẫn lời doanh nghiệp Nhật ở TQ: <q>日本企業のビジネスへの影響はほとんどない</q> <span class="vi">"hầu như không ảnh hưởng doanh nghiệp Nhật"</span>.</dd>
+<dt class="bad">Không được nói</dt><dd>Không có lời kêu gọi tẩy chay ユニクロ/無印 cụ thể nào trong 2025–26, nên không viết "TQ kêu gọi tẩy chay". ユニクロ TQ đóng 42 cửa hàng trong một năm. Khung "lệnh nhà nước thua túi tiền dân TQ" trùng tập スシロー, nên đặt cách xa tập đó.</dd>
+<dt>Nguồn</dt><dd class="src"><a href="https://www.news.cn/world/20251118/8ba8533244db492bb5c3a5734a9edf1e/c.html">Tân Hoa xã 18/11/2025</a> · <a href="https://shueisha.online/articles/-/255753">集英社オンライン</a> · <a href="https://www.fastretailing.com/jp/ir/financial/summary.html">Fast Retailing IR</a> · <a href="https://www.ryutsuu.biz/accounts/s071043.html">流通ニュース: 無印</a> · <a href="https://cigs.canon/article/20260225_9725.html">CIGS 25/2</a></dd>
+</dl>
+</div>
+
+<div class="topic backup">
+<div class="thead"><span class="rank">⑧ 和牛 (dự phòng)</span>
+<div class="chips"><span class="chip wait">Dự phòng</span><span class="chip">Hiểu ngay 5/5</span><span class="chip">Cú lật 3/5</span></div></div>
+<div class="title-jp">中国が日本産牛肉の輸入協議を一方的に打ち切り→結果、和牛輸出が過去最高を更新<br><span class="vi">TQ đơn phương cắt đàm phán nhập bò Nhật → kết quả: xuất khẩu wagyu lập kỷ lục</span></div>
+<dl class="grid">
+<dt>Đòn của TQ</dt><dd>Kyodo 19/11/2025: <q>日本産牛肉の輸出再開に向けた政府間協議も中国側の意向で中止</q> <span class="vi">"đàm phán mở lại xuất khẩu bò Nhật cũng bị dừng theo ý phía TQ"</span>. Đây là cơ hội đầu tiên sau 24 năm cấm.</dd>
+<dt>Nhật làm tốt</dt><dd>Năm 2025 bò thành mặt hàng xuất khẩu hạng 2 (731億円, từ hạng 13 năm 2015). 1–8/2026: 518,2億円 +18,7%; riêng tháng 8 +46,3% (Đài Loan, Thái).</dd>
+<dt>Bên thiệt là TQ</dt><dd>Giá bò ở TQ cao nhất hơn 2 năm (71,59 tệ/kg ngày 21/9). TQ tự đánh thêm 55% lên bò nhập vượt hạn ngạch.</dd>
+<dt class="bad">Không được nói</dt><dd>Giá bò TQ tăng vì đàn bò nội địa giảm và chính sách tự vệ, không phải vì thiếu bò Nhật. Góc "TQ trộm gen" đã có 3 kênh làm. Chưa tìm được câu TQ chê bò Nhật.</dd>
+<dt>Nguồn</dt><dd class="src"><a href="https://www.sakigake.jp/news/article/20251119CO0075/">Kyodo 19/11/2025</a> · <a href="https://www.nippon.com/ja/japan-data/h02743/">nippon.com</a> · <a href="https://news.sina.cn/2026-09-24/detail-inisxhnx5292863.d.html">Yicai: giá bò TQ</a></dd>
+</dl>
+</div>
+
+<p class="note"><b>Để dành cho mùa đông:</b> ブリ / サバ (cá trên mâm cơm). Bộ Ngoại giao TQ nói <q>日本水产品…也不会有市场</q> <span class="vi">"hải sản Nhật có xuất sang cũng chẳng có thị trường"</span>, trong khi hải sản Nhật năm 2025 lập kỷ lục 4.231億円; 1–8/2026 ブリ +67%, サバ +116%; Hồng Kông mua gấp khoảng 13 lần TQ đại lục. Hiện có 0 video đề tài này. Nhưng tập ホタテ đã mở bằng đúng câu trên, nên để vào mùa 寒ブリ (12–1), làm "phần 2".</p>
+
+<h2>4. Đã kiểm và loại</h2>
+<div class="tablebox"><table>
+<tr><th>Đề tài</th><th>Lý do loại</th></tr>
+<tr><td>シャインマスカット</td><td>TQ nhái giống chứ không chê hay cấm; Nhật mất ≥100億円/năm tiền bản quyền; ずんだ実話 vừa làm 5 ngày trước</td></tr>
+<tr><td>Mỹ phẩm (資生堂, KATE)</td><td>Nhật thiệt thật: 資生堂 năm 2025 lỗ ròng khoảng 406億円</td></tr>
+<tr><td>Ô tô Nhật ở TQ</td><td>TQ thắng thật: Toyota bán ở TQ −18,2%, sản lượng xe Nhật ở TQ tháng 7 −46,9%</td></tr>
+<tr><td>Gạo</td><td>Không có đòn của TQ; nông dân Nhật lại thiệt</td></tr>
+<tr><td>Sake, サイゼリヤ, quán Nhật ở TQ</td><td>TQ vẫn là thị trường số 1 của sake; lãi châu Á của サイゼリヤ giảm (xem lại sau báo cáo 14/10); chủ quán người Nhật thiệt</td></tr>
+<tr><td>WEGO × ヒロアカ</td><td>Mạng TQ tẩy chay → WEGO huỷ bán ở Nhật: Nhật thiệt</td></tr>
+<tr><td>Khách TQ gây rối ở Hàn dịp 国慶節</td><td>Chê dân, trái luật lane Q; chỉ lấy số "Nhật rơi khỏi top 10" làm chi tiết</td></tr>
+<tr><td>W杯: TQ mắng fan cổ vũ Nhật</td><td>Tin 6–7/2026, Nhật bị loại ngay vòng 32; dễ trượt sang chê fan TQ</td></tr>
+<tr><td>Niseko, du thuyền, Tokyo Game Show, "Nhật mất an ninh"</td><td>Không có đòn thật, hoặc số liệu không ủng hộ (tội phạm ở Nhật tăng thật; khách TQ ở Niseko còn tăng)</td></tr>
+<tr><td>Tập "tổng kết Asian Games"</td><td>Đỉnh sóng 5–6/10 đã qua; vụ cắn tay đã có 25 kênh làm. Chỉ giữ mạch bóng bàn trong đề tài ③</td></tr>
+<tr><td>Visa phần 2 (phí ×7)</td><td>すんだ観察所 làm 6/10 (364k sau 4 ngày); để dành tới mốc miễn visa 31/12</td></tr>
+</table></div>
+
+<h2>5. Đang theo dõi (nóng nhưng chưa đủ cú lật)</h2>
+<ul>
+<li><b>Chiều cao:</b> Nikkei viết <span class="jp">「日本人の身長、なぜ中国・韓国に抜かれたのか」</span> <span class="vi">"Vì sao chiều cao người Nhật bị TQ, Hàn vượt"</span>, và báo TQ hả hê <span class="jp">「身長でも日本を抜いた！」</span> <span class="vi">"Vượt Nhật cả về chiều cao!"</span> (Diamond 9/10). Đề tài ai cũng hiểu, nhưng chưa có số lật chắc chắn. Nếu so tuổi thọ thì dễ thành so sánh dân tộc. <a href="https://diamond.jp/articles/-/400692">Diamond</a></li>
+<li><b>Báo TQ chế "食事キャンセル界隈"</b> <span class="vi">(trào lưu bỏ bữa của giới trẻ Nhật)</span>: dân mạng TQ cãi lại. Có thể làm chi tiết trong đề tài ④. <a href="https://www.recordchina.co.jp/b994386-s25-c30-d0052.html">Record China</a></li>
+<li><b>Doanh nghiệp Nhật rút khỏi TQ nhiều kỷ lục</b> (Teikoku Databank): kênh gốc đã làm ngày 3/10 (三菱・日産, 91.725 view).</li>
+<li><b>Đại sứ quán TQ dặn người TQ ở Nhật "chuẩn bị động đất":</b> chưa có cú lật.</li>
+</ul>
+
+<h2>6. Mốc sắp tới</h2>
+<ul>
+<li><b>12/10:</b> giải bóng bàn ở Bắc Kinh kết thúc (chốt số liệu cho ③).</li>
+<li><b>Khoảng 10–14/10:</b> 良品計画 công bố kết quả cả năm (⑦). <b>14/10:</b> サイゼリヤ công bố kết quả cả năm.</li>
+<li><b>Giữa tháng 10:</b> JNTO công bố khách tháng 9 (④). <b>4/11:</b> MAFF công bố xuất khẩu tháng 9 (①, ⑧, ブリ).</li>
+<li><b>7/11:</b> tròn 1 năm câu trả lời Quốc hội của Thủ tướng Takaichi; có thể làm tập tổng hợp "các lá bài của TQ".</li>
+</ul>
+
+<h2>7. Anh quyết</h2>
+<ul>
+<li><b>A.</b> Duyệt thứ tự ①–⑧. Em soạn tư liệu [Dn] cho ③ 卓球王国 trước vì có hạn chót 17/10, rồi tới ① 抹茶 và ② ノーベル賞.</li>
+<li><b>B.</b> Chọn bớt hoặc đổi thứ tự.</li>
+<li><b>C.</b> Mở thêm nhánh B của kênh gốc ("TQ tự mãn → tự sụp", chỉ lấy đề tài chạm đời sống và có so với Nhật) để giữ nhịp 1 video mỗi 2–3 ngày. Nhánh C (đường dây người TQ ở Nhật) vẫn để cấm như LUAT hiện tại, trừ khi anh đổi luật.</li>
+</ul>
+<p class="small">Chưa bàn giao gì sang MG_STUDIO. Dữ liệu và ghi chép gốc nằm ở <span class="jp">E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\lane_q_topics_20261010\</span>: agent_food.md, agent_brands.md, agent_travel_ent.md, agent_timeline.md, demand.json, sat.json, radar.json (71 kênh cùng dòng), sunda_all.json (20 video kênh gốc), news1–4.log, hooks.log, hooks2.log. Công cụ tìm tin tuần: pw_search.py (tiền tố "w:" = tin 1 tuần qua).</p>
+</div>

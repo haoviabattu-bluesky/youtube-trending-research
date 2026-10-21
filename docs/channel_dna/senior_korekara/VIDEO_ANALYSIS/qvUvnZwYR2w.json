@@ -1,0 +1,23 @@
+{
+ "topics": [
+  "老後の生活",
+  "夫婦",
+  "年金",
+  "60代の暮らし"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "これは年金6万円の男が年金25万円の同級生の家で働く[音楽]ことになった物語です。大久保トールさん73歳45年大工として家を立ててきました。今の仕事[音楽]はシルバー人材センターの便利仕事です。網戸の張替え、棚の修理、庭の草。年金は[音楽]国民年金だけ。通帳に振り込まれるのは2ヶ月で12万43194[音楽]円。月にしておよそ",
+ "hook_n_segments_0_30": 9,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 315 segments, phủ ~100% độ dài video",
+ "video_id": "qvUvnZwYR2w",
+ "title": "【漫画】老後の年金別の生活レベル!年金6万円と25万円の格差",
+ "view_count": 76880,
+ "duration_min": 16.1,
+ "vpd": 1537.6,
+ "days": 50
+}

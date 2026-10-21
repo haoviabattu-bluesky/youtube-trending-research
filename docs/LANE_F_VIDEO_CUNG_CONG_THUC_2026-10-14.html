@@ -1,0 +1,192 @@
+<title>Video cùng công thức Lane F</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: cột đọc 980px; 3 bảng video cuộn ngang riêng; khối kết luận trước, bảng sau */
+:root{
+  --bg:#f4f6f7; --panel:#ffffff; --fg:#1a242a; --muted:#5b6b74; --line:#d7dfe3;
+  --accent:#0f6b70; --accent-soft:#dcefee; --hot:#fff1d6; --hot-line:#c98a12; --bad:#b4442f;
+  --f-body:"Be Vietnam Pro","Noto Sans JP",system-ui,sans-serif;
+  --f-jp:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1619; --panel:#172126; --fg:#e3eaed; --muted:#93a5ae; --line:#2a3a41;
+  --accent:#5cc3c6; --accent-soft:#1b3a3c; --hot:#3a2e14; --hot-line:#e3b04f; --bad:#ec8a74; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1619; --panel:#172126; --fg:#e3eaed; --muted:#93a5ae; --line:#2a3a41;
+  --accent:#5cc3c6; --accent-soft:#1b3a3c; --hot:#3a2e14; --hot-line:#e3b04f; --bad:#ec8a74; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:18px;padding-block:28px 64px;display:grid;gap:32px}
+h1,h2,h3{margin:0;line-height:1.25;text-wrap:balance}
+h1{font-size:1.85rem;font-weight:800}
+h2{font-size:1.25rem;font-weight:800;padding-top:6px;border-top:2px solid var(--fg)}
+h3{font-size:1rem;font-weight:700}
+p{margin:0}
+section{display:grid;gap:12px;min-width:0}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.jp{font-family:var(--f-jp)}
+.verdict{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--accent);padding:16px 18px;display:grid;gap:10px}
+.verdict ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:.84rem;font-variant-numeric:tabular-nums}
+th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top;white-space:nowrap}
+th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;font-weight:600}
+td.t,th.t{text-align:left;white-space:normal;min-width:330px}
+td.ch,th.ch{text-align:left;white-space:normal;min-width:130px}
+td.t a,td.ch a{color:var(--accent);text-decoration:none;font-weight:700}
+td.t a:hover,td.ch a:hover{text-decoration:underline}
+td .vn,td .note{display:block;font-size:.82rem;color:var(--muted);font-family:var(--f-body);font-weight:400}
+td .note{font-size:.78rem}
+tr.hot td{background:var(--hot)}
+tr.hot td:first-child{box-shadow:inset 4px 0 0 var(--hot-line)}
+.tag{display:inline-block;font-size:.72rem;padding:1px 7px;border:1px solid var(--line);border-radius:9px;white-space:nowrap;color:var(--fg)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);padding:14px 16px;display:grid;gap:8px;min-width:0}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+blockquote{margin:0;padding:8px 12px;border-left:3px solid var(--line);font-family:var(--f-jp);font-size:.9rem;display:grid;gap:3px}
+blockquote .vn{font-family:var(--f-body);color:var(--muted);font-size:.85rem}
+.note-s{font-size:.84rem;color:var(--muted)}
+.path{font-family:var(--f-mono);font-size:.8rem;word-break:break-all}
+.pairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.pair{background:var(--panel);border:1px solid var(--line);padding:12px 14px;display:grid;gap:6px;align-content:start}
+.pair b.big{font-size:1.25rem;font-family:var(--f-mono)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.7rem;padding:1px 7px;border-radius:9px;border:1px solid currentColor;width:max-content}
+.pill.g{color:var(--accent)}.pill.w{color:var(--hot-line)}.pill.b{color:var(--bad)}
+@media (max-width:640px){.two{grid-template-columns:1fr}h1{font-size:1.45rem}}
+</style>
+
+<div class="wrap">
+<header style="display:grid;gap:10px">
+  <div class="eyebrow">Lane F · 定年後のリアル · săn video cùng công thức · 14/10/2026</div>
+  <h1>Video đang thắng với công thức "tôi và đồng kỳ chọn hai đường"</h1>
+  <p>Quét 65 từ khoá tiếng Nhật × 3 khung thời gian (tuần / tháng / năm, sắp theo view) trên YouTube: 1.185 video. Lọc còn 197 video dài ≥8 phút có tiêu đề đúng khung "hai con đường" hoặc "niềm tin bị lật" về quyết định nghỉ hưu. Lấy số thật qua API, đọc hook 0–100 giây của 19 video, đọc comment 8 video, kiểm nhịp kênh. Dưới đây là 34 video khớp công thức nhất.</p>
+</header>
+
+<div class="verdict">
+  <h3>Kết luận</h3>
+  <ol>
+    <li><b>Công thức đang nóng nhất ngách ngay lúc này.</b> Trong 6 tuần qua có 5 video cùng một khuôn "nghỉ năm 60 vs đồng kỳ ở lại tới 65, 5 năm sau ai hơn", cộng lại ~790K view. Dẫn đầu là <span class="jp">源さん</span>: <b>303K view sau 4 ngày, kênh mới 12 ngày tuổi</b>. <span class="jp">縁側の知恵</span> chỉ có 530 sub, 4 video, mà được 153K view sau 9 ngày. ep02 và ep10 của mình được đẩy là vì đi đúng làn sóng này.</li>
+    <li><b>Cặp 60 vs 65 bắt đầu bão hoà.</b> Comment 34 like dưới video 303K: <span class="jp">「この手の動画がやたら増えたな」</span> (dạo này loại video này nhiều quá). Các cặp khác vẫn còn chỗ và đã có bằng chứng: <b>65 vs 70</b> (598K), <b>về quê vs thành phố</b> (221K, và vừa có video mới 1,6 ngày), <b>tiêu tiền thôi việc</b> (mở quán vs gửi tiết kiệm).</li>
+    <li><b>Hook thắng có chung 4 nhịp</b>, đúng như quy tắc Lane F vừa chốt: đặt hai người cạnh nhau trong 10 giây đầu → một câu thoại của đồng kỳ lộ cái giá → hỏi "ai đúng" (nhiều kênh hỏi thẳng người xem) → hé rằng người kể cũng mất thứ gì đó.</li>
+    <li><b>Người xem thưởng cho "cả hai đều đúng", phạt video giảng một phe.</b> Comment top ở mọi video là người xem kể lựa chọn của chính họ và câu <span class="jp">「正解は無い」「どっちも正解」</span> (không có đáp án đúng, cả hai đều đúng). Video <span class="jp">ZERO-YEN GARDEN</span> nghiêng hẳn phe "làm tiếp" bị chê <span class="jp">「死ぬまで働けと言われてるみたい」</span> (như bị bảo làm tới chết).</li>
+    <li><b>Biến thể mới đáng thử:</b> <span class="jp">源さん</span> ghép truyện hai con đường với "5 việc nên làm khi còn ở công ty" và có video đạt 303K. Người xem chép lại 5 việc vào comment. Lane F có thể thử khi kịch bản thật sự đếm đủ 5 mục.</li>
+  </ol>
+</div>
+
+<section>
+  <h2>1 · Mới đăng (≤30 ngày)</h2>
+  <p class="note-s">Sắp theo view/ngày. Dòng tô vàng là ≥10.000 view/ngày. Bấm tiêu đề để mở video, bấm tên kênh để mở kênh. "Kênh đã biết" là kênh đã có trong các báo cáo Lane F trước.</p>
+  <div class="tbl"><table>
+    <thead><tr><th class="t">Video</th><th class="ch">Kênh</th><th>Khung</th><th>Đăng</th><th>View</th><th>View/ngày</th><th>Cmt</th></tr></thead>
+    <tbody>
+<tr class="hot"><td class="t"><a href="https://www.youtube.com/watch?v=Zdl2hHM2AhI" target="_blank" rel="noopener"><span class="jp">【漫画】60歳で辞めた男と、65歳まで会社に残った男。5年後、差がついた本当の理由と“会社にいるうちにやるべき5つのこと”</span></a><span class="vn">Người nghỉ năm 60 và người ở lại công ty tới 65. 5 năm sau, lý do thật của khoảng cách và &quot;5 việc nên làm khi còn ở công ty&quot;</span><span class="note">Mở bằng cảnh gặp đồng kỳ đã nghỉ ở thư viện ngày thường: 「声を出すのが3日ぶり」 (3 ngày rồi mới mở miệng nói). Người kể ở lại, còn 2 năm, hứa 5 việc.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCOkbo1BhQw1NhMj1sBdkt6w" target="_blank" rel="noopener" class="jp">源さん【定年シニアの人生相談】</a><span class="note">5.110 sub</span></td><td><span class="tag">Hai con đường</span></td><td>10/10</td><td>302.929</td><td><b>77.674</b></td><td>101</td></tr>
+<tr class="hot"><td class="t"><a href="https://www.youtube.com/watch?v=FRwEG07HvsI" target="_blank" rel="noopener"><span class="jp">【60歳で退職】60歳で会社を辞めた私と、65歳まで働いた同期。5年後に気づいた「本当に大切な違い」</span></a><span class="vn">Tôi nghỉ năm 60, đồng kỳ làm tới 65. 5 năm sau mới nhận ra &quot;khác biệt thật sự quan trọng&quot;</span><span class="note">Đồng kỳ nói 「お前はいいよな。俺には会社をやめたら何も残らなかった」 (mày sướng thật, tao nghỉ là chẳng còn gì), nhưng người kể cũng có hối tiếc riêng. Hai bên cùng mất.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCtrSWVOH-Vz0tayneEz2Ovw" target="_blank" rel="noopener" class="jp">心のよりみち</a><span class="note">14.900 sub</span></td><td><span class="tag">Hai con đường</span></td><td>10/13</td><td>51.220</td><td><b>51.220</b></td><td>23</td></tr>
+<tr class="hot"><td class="t"><a href="https://www.youtube.com/watch?v=iGiFtXAvOwA" target="_blank" rel="noopener"><span class="jp">60歳で辞めた俺と65歳まで働いた同期。5年後の&quot;格差&quot;に絶望した理由【漫画】</span></a><span class="vn">Tôi nghỉ năm 60, đồng kỳ làm tới 65. Lý do tôi tuyệt vọng trước &quot;khoảng cách&quot; sau 5 năm</span><span class="note">Câu đầu hỏi thẳng người xem 「あなたならどちらを選ぶだろうか」, rồi 「正しい選択をしたと信じて疑わなかった」. Kênh mới 2 tuần, 4 video.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCF15-jbv4fzo-xh9KyZPNxA" target="_blank" rel="noopener" class="jp">縁側の知恵</a><span class="note">530 sub</span></td><td><span class="tag">Hai con đường + niềm tin lật</span></td><td>10/04</td><td>153.599</td><td><b>16.879</b></td><td>183</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=gxPKDoiwDNs" target="_blank" rel="noopener"><span class="jp">【アニメ】「野菜を作って売るだけ」と思っていた65歳が、定年後に農家になって知った現実</span></a><span class="vn">Ông 65 tuổi tưởng &quot;chỉ trồng rau rồi bán&quot;, làm nông sau hưu mới biết sự thật</span><span class="note">Kênh 383 sub.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UC2njH2avYkCLlf_ZkBeS2jg" target="_blank" rel="noopener" class="jp">シニアのしおり</a><span class="note">383 sub</span></td><td><span class="tag">Niềm tin lật (việc sau hưu)</span></td><td>10/04</td><td>37.282</td><td><b>3.804</b></td><td>16</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=LRonp6LFJcY" target="_blank" rel="noopener"><span class="jp">【漫画】定年後、67歳でスーパーのレジを始めた俺。バーコードを通すだけだと思っていた1か月後…</span></a><span class="vn">Sau hưu, tôi 67 tuổi làm thu ngân siêu thị. Tưởng chỉ quét mã vạch, 1 tháng sau…</span><span class="note">Mở bằng cảnh 17:42 quầy đông, mã vạch hàng giảm giá không quét được. Chuỗi cùng khuôn của kênh đều 7–29K.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCexMeNdmgAAQKBHHkwIZgLw" target="_blank" rel="noopener" class="jp">人生後半ストーリ</a><span class="note">797 sub</span></td><td><span class="tag">Niềm tin lật (việc sau hưu)</span></td><td>10/02</td><td>29.144</td><td><b>2.491</b></td><td>10</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=zJEWdaRj2Ac" target="_blank" rel="noopener"><span class="jp">【漫画】退職金1800万を「とりあえず定期」に入れた65歳…3年後に気づいた誤算とは？</span></a><span class="vn">Ông 65 tuổi gửi 18 triệu yên tiền thôi việc vào &quot;tạm tiết kiệm có kỳ hạn&quot;… 3 năm sau mới thấy tính sai</span><span class="note">Hai cuốn sổ trên bàn: sổ của tôi không giảm, sổ của vợ từ 1,8 triệu còn 360 nghìn. Kênh 126 sub.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCX_Tu_vOHcD66g6elTyeVPA" target="_blank" rel="noopener" class="jp">定年ブルース</a><span class="note">126 sub</span></td><td><span class="tag">Niềm tin lật</span></td><td>10/11</td><td>5.987</td><td><b>2.064</b></td><td>1</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=ARMZW9kChqU" target="_blank" rel="noopener"><span class="jp">【漫画】70歳まで働き年金を75歳まで遅らせようとした兄 VS 60歳で退職し車で日本一周を始めた弟。5年後に後悔した本当の理由とは？</span></a><span class="vn">Anh trai làm tới 70, hoãn lương hưu tới 75 VS em trai nghỉ năm 60 lái xe vòng quanh Nhật. 5 năm sau ai hối hận?</span><span class="note">Video dài 3 tiếng 26 phút (ghép nhiều tập).</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCpZpjLy3MAMMo2UQKvHKjAw" target="_blank" rel="noopener" class="jp">【スカッと漫画】</a><span class="note">2.220 sub</span></td><td><span class="tag">Hai con đường</span></td><td>10/11</td><td>5.863</td><td><b>2.022</b></td><td>1</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=1wXO-PzLkLs" target="_blank" rel="noopener"><span class="jp">【漫画】定年後、65歳でスーパーの「半額シールを貼る仕事」を始めた俺。貼るだけだと思っていた1か月後…</span></a><span class="vn">Sau hưu, tôi 65 tuổi làm việc &quot;dán tem giảm giá&quot; ở siêu thị. Tưởng chỉ dán, 1 tháng sau…</span><span class="note">Cùng kênh, cùng khuôn với video trên.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCexMeNdmgAAQKBHHkwIZgLw" target="_blank" rel="noopener" class="jp">人生後半ストーリ</a><span class="note">797 sub</span></td><td><span class="tag">Niềm tin lật (việc sau hưu)</span></td><td>09/30</td><td>27.064</td><td><b>1.975</b></td><td>29</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=UY52DEn6PhA" target="_blank" rel="noopener"><span class="jp">【漫画】65歳で完全退職した男は貯金160万円減…働き続けた同期が70歳で体を壊しかけた理由</span></a><span class="vn">Người nghỉ hẳn năm 65 hụt 1,6 triệu yên tiết kiệm… đồng kỳ làm tiếp suýt hỏng sức khoẻ năm 70</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCRyRbGsbGQfSkuJKTW3Cl_Q" target="_blank" rel="noopener" class="jp">ZERO-YEN GARDEN</a><span class="note">2.440 sub</span></td><td><span class="tag">Hai con đường</span></td><td>10/12</td><td>3.697</td><td><b>1.760</b></td><td>6</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=E8wL3dweKws" target="_blank" rel="noopener"><span class="jp">【漫画】定年後、63歳で餃子工場に入った俺。「機械が全部包む」と思っていた1か月後…</span></a><span class="vn">Sau hưu, tôi 63 tuổi vào xưởng sủi cảo. Tưởng &quot;máy gói hết&quot;, 1 tháng sau…</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCexMeNdmgAAQKBHHkwIZgLw" target="_blank" rel="noopener" class="jp">人生後半ストーリ</a><span class="note">797 sub</span></td><td><span class="tag">Niềm tin lật (việc sau hưu)</span></td><td>10/07</td><td>7.653</td><td><b>1.142</b></td><td>0</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=kvvvTNIYn1A" target="_blank" rel="noopener"><span class="jp">【漫画】「地方なら安く暮らせる」と移住した70歳夫婦と、都会に残った70歳夫婦。5年後、後悔したのはどちら？</span></a><span class="vn">Cặp 70 tuổi chuyển về quê &quot;vì sống rẻ&quot; và cặp ở lại thành phố. 5 năm sau ai hối hận?</span><span class="note">Đúng cặp ưu tiên số 1 của Lane F. Mở: vợ nói 「あなた、もうこの家では暮らせない」. Mới 1,6 ngày.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCO10BKQrfwmdJKVOUfon36A" target="_blank" rel="noopener" class="jp">老後の分かれ道マンガ</a><span class="note">1.100 sub</span></td><td><span class="tag">Hai con đường</span></td><td>10/12</td><td>1.259</td><td><b>787</b></td><td>2</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=_OTioU6nFQw" target="_blank" rel="noopener"><span class="jp">【漫画】退職金でそば屋を開いた私と、全部貯金した同期｜4年後、通帳に残った残酷な差</span></a><span class="vn">Tôi dùng tiền thôi việc mở quán soba, đồng kỳ gửi hết. 4 năm sau sổ tiết kiệm chênh tàn nhẫn</span><span class="note">Kênh chỉ 7 sub. Cặp &quot;tiêu tiền thôi việc&quot;.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCQ-phJp7t72HKvmUoSvLDFA" target="_blank" rel="noopener" class="jp">お金の分岐点【漫画】</a><span class="note">7 sub</span></td><td><span class="tag">Hai con đường</span></td><td>10/10</td><td>2.433</td><td><b>760</b></td><td>1</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=k6MPB0A-Rv4" target="_blank" rel="noopener"><span class="jp">【漫画】50歳で早期リタイアして「俺は勝ち組」と笑っていた男の行き着いた先…</span></a><span class="vn">Người nghỉ hưu sớm năm 50, cười &quot;tôi là kẻ thắng&quot;, rồi đi tới đâu…</span><span class="note">Kênh đã biết (nguồn Lane F).</span></td><td class="ch"><a href="https://www.youtube.com/channel/UC5iOuqUPyR4dBLYnrD0tB9A" target="_blank" rel="noopener" class="jp">人生の物語アニメ</a><span class="note">48.700 sub</span></td><td><span class="tag">Niềm tin lật</span></td><td>09/20</td><td>15.376</td><td><b>652</b></td><td>15</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=upTEfhuQdLU" target="_blank" rel="noopener"><span class="jp">【漫画】給料は激減、年金は不安…65歳で定年を迎えた男が思い知った誤算の現実</span></a><span class="vn">Lương giảm mạnh, lương hưu bấp bênh… người nghỉ hưu năm 65 thấm thía tính toán sai</span><span class="note">Kênh đã biết.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UC5iOuqUPyR4dBLYnrD0tB9A" target="_blank" rel="noopener" class="jp">人生の物語アニメ</a><span class="note">48.700 sub</span></td><td><span class="tag">Niềm tin lật</span></td><td>09/15</td><td>17.906</td><td><b>624</b></td><td>13</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=HwMEVt1IzOk" target="_blank" rel="noopener"><span class="jp">同じ日に定年した二人が、5年後まるで別人になった本当の理由 | シニアライフ60代 | 幸せ老後 | 老後の差 | 人間関係  | 定年退職</span></a><span class="vn">Hai người nghỉ hưu cùng một ngày, 5 năm sau như hai người khác hẳn</span><span class="note">Không có phụ đề, chưa đọc được hook.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UC5ZV-rx9_ndtFqVrgs6WrtA" target="_blank" rel="noopener" class="jp">長寿の秘訣</a><span class="note">1.230 sub</span></td><td><span class="tag">Hai con đường</span></td><td>09/29</td><td>8.976</td><td><b>611</b></td><td>8</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=VonXcGtsi_w" target="_blank" rel="noopener"><span class="jp">【漫画】54歳で早期退職。「勝ち組」のはずが5年後…妻も居場所も失って気づいた老後のリアル</span></a><span class="vn">Nghỉ sớm năm 54. &quot;Kẻ thắng&quot; mà 5 năm sau mất cả vợ lẫn chỗ đứng</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCm_3AWx9kkr1PTxhWtB1tvA" target="_blank" rel="noopener" class="jp">老後に響く お金の話</a><span class="note">1.240 sub</span></td><td><span class="tag">Niềm tin lật</span></td><td>09/19</td><td>8.410</td><td><b>340</b></td><td>0</td></tr>
+    </tbody></table></div>
+</section>
+
+<section>
+  <h2>2 · Đã chứng minh (31–90 ngày)</h2>
+  <div class="tbl"><table>
+    <thead><tr><th class="t">Video</th><th class="ch">Kênh</th><th>Khung</th><th>Đăng</th><th>View</th><th>View/ngày</th><th>Cmt</th></tr></thead>
+    <tbody>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=r4jNE1oTv8Q" target="_blank" rel="noopener"><span class="jp">【漫画】70歳でまだ働く男と、65歳で卒業した男。5年後、差がついた本当の理由とは？</span></a><span class="vn">Người 70 tuổi vẫn đi làm và người &quot;tốt nghiệp&quot; năm 65. 5 năm sau, lý do thật của khoảng cách</span><span class="note">Mở: 70 tuổi vẫn vẫy cờ ở ngã tư nắng gắt, đồng kỳ thì đi câu cá từ 5 năm trước. Video thắng nhất của cặp 65 vs 70.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCxD2Exs2Q4lf7x0Q28OuKvg" target="_blank" rel="noopener" class="jp">老後のゴローさん</a><span class="note">11.300 sub</span></td><td><span class="tag">Hai con đường</span></td><td>07/23</td><td>598.682</td><td><b>7.239</b></td><td>250</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=m7wBZyFT7rw" target="_blank" rel="noopener"><span class="jp">【漫画】老後「完全リタイア」した男と働き続ける男がそれぞれ迎えた残酷な現実…</span></a><span class="vn">Người nghỉ hẳn và người làm tiếp, mỗi người gặp một thực tế tàn nhẫn</span><span class="note">Mở: có 110 triệu yên mà 4 ngày không nói chuyện với ai; 「働かない老後こそ勝ち組だ。そう信じて」. Kênh đã biết.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UC5iOuqUPyR4dBLYnrD0tB9A" target="_blank" rel="noopener" class="jp">人生の物語アニメ</a><span class="note">48.700 sub</span></td><td><span class="tag">Hai con đường + niềm tin lật</span></td><td>09/03</td><td>198.276</td><td><b>4.872</b></td><td>117</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=XbwqD2SktC0" target="_blank" rel="noopener"><span class="jp">【漫画】60歳で定年退職した男…5年後、65歳まで働いた同僚との差に絶望しました</span></a><span class="vn">Người nghỉ hưu năm 60… 5 năm sau tuyệt vọng trước khoảng cách với đồng nghiệp làm tới 65</span><span class="note">Video gốc của Lane F ep06–ep10. Kênh đã biết.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCRkP44Mcw-K8IktdTqxC9dg" target="_blank" rel="noopener" class="jp">老後の暮らし研究所</a><span class="note">15.700 sub</span></td><td><span class="tag">Hai con đường</span></td><td>08/03</td><td>321.771</td><td><b>4.488</b></td><td>87</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=kdL4XdtMXbg" target="_blank" rel="noopener"><span class="jp">【４６歳・早期退職】２４年勤めた会社を辞めて分かった「最大の勘違い」と無職のリアル</span></a><span class="vn">Nghỉ sớm năm 46: rời công ty 24 năm mới biết &quot;hiểu lầm lớn nhất&quot; và thực tế thất nghiệp</span><span class="note">Vlog người thật, KHÔNG làm theo được.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCDvzFTPZHy1aSqVpu3mTjHg" target="_blank" rel="noopener" class="jp">つーさん</a><span class="note">3.870 sub</span></td><td><span class="tag">Niềm tin lật</span></td><td>07/28</td><td>293.598</td><td><b>3.779</b></td><td>297</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=Ft7oekrcPY4" target="_blank" rel="noopener"><span class="jp">【漫画】60歳で再雇用された男、安泰のはずが給料半減と2026年度の社会保険改正の落とし穴【老後資金】</span></a><span class="vn">Người được tái tuyển dụng năm 60, tưởng yên ổn mà lương giảm nửa + bẫy cải cách bảo hiểm xã hội 2026</span><span class="note">Phe &quot;ở lại&quot; bị lật: 「会社に残れば安心のはずだった」. Kênh lớn đã biết.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCgNr-yxfjcW0ao2dhvBZVWA" target="_blank" rel="noopener" class="jp">News65 (老後)</a><span class="note">174.000 sub</span></td><td><span class="tag">Niềm tin lật</span></td><td>08/14</td><td>161.439</td><td><b>2.655</b></td><td>76</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=O8zOjga1hG8" target="_blank" rel="noopener"><span class="jp">【漫画】65歳まで働くのが本当に正解？60歳で定年退職した男と会社に残った男、5年後の現実</span></a><span class="vn">Làm tới 65 có thật là đúng? Người nghỉ năm 60 và người ở lại, thực tế sau 5 năm</span><span class="note">Mở: ngày nghỉ hưu ôm hoa về, vợ để lại thư đi du lịch với bạn.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCAN_m2VTCsQrBi3BpubXc_w" target="_blank" rel="noopener" class="jp">賢者のしおり【シニアの知恵袋】</a><span class="note">5.270 sub</span></td><td><span class="tag">Hai con đường</span></td><td>09/05</td><td>88.776</td><td><b>2.270</b></td><td>17</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=9l9eooc1IXE" target="_blank" rel="noopener"><span class="jp">【漫画】9割が勘違い！「70歳で時給で働く男」と「65歳で完全引退した男」の5年後の衝撃的な差</span></a><span class="vn">9 phần 10 hiểu nhầm! &quot;Người 70 tuổi làm theo giờ&quot; và &quot;người nghỉ hẳn năm 65&quot;: chênh lệch sau 5 năm</span><span class="note">Comment chê: mở đầu dài, như bảo người ta làm tới chết.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCRyRbGsbGQfSkuJKTW3Cl_Q" target="_blank" rel="noopener" class="jp">ZERO-YEN GARDEN</a><span class="note">2.440 sub</span></td><td><span class="tag">Hai con đường</span></td><td>09/11</td><td>69.511</td><td><b>2.165</b></td><td>95</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=6oEo67p6vxU" target="_blank" rel="noopener"><span class="jp">【漫画】65歳で仕事を辞めた男性と、70歳まで働いた男性…5年後に後悔したのはどっち？</span></a><span class="vn">Người nghỉ năm 65 và người làm tới 70… 5 năm sau ai hối hận?</span><span class="note">Mở bằng kết cục: 「5年間も働いたのにその差は540万円だけだった」 (làm thêm 5 năm mà chỉ chênh 5,4 triệu yên).</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCO10BKQrfwmdJKVOUfon36A" target="_blank" rel="noopener" class="jp">老後の分かれ道マンガ</a><span class="note">1.100 sub</span></td><td><span class="tag">Hai con đường</span></td><td>07/29</td><td>41.964</td><td><b>547</b></td><td>21</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=O_M6oAOwbm0" target="_blank" rel="noopener"><span class="jp">【漫画】同じ年金月8万円。持ち家に残った女性と、家を売って賃貸へ移った女性。10年後の生活費の差</span></a><span class="vn">Cùng lương hưu 80 nghìn yên/tháng: người ở lại nhà mình và người bán nhà đi thuê. Chênh chi phí sau 10 năm</span><span class="note">Cặp &quot;giữ nhà hay bán nhà&quot;.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCO10BKQrfwmdJKVOUfon36A" target="_blank" rel="noopener" class="jp">老後の分かれ道マンガ</a><span class="note">1.100 sub</span></td><td><span class="tag">Hai con đường</span></td><td>08/29</td><td>23.183</td><td><b>507</b></td><td>12</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=boiwmUoL6mA" target="_blank" rel="noopener"><span class="jp">【漫画】「一括で受け取らないと大損ですよ」銀行員の言葉に従った同僚と、逆らった男。退職金2300万円の受け取り方で生まれた、8年後の〈残酷な格差〉</span></a><span class="vn">&quot;Không nhận một lần là lỗ to&quot; — đồng nghiệp nghe lời nhân viên ngân hàng, còn tôi thì không. 23 triệu yên, 8 năm sau chênh tàn nhẫn</span><span class="note">Cặp &quot;nhận tiền thôi việc một lần hay nhận dần&quot;. Bằng chứng còn mỏng (7,7K).</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCYdXiCNahIQy3wfxRPuimHg" target="_blank" rel="noopener" class="jp">セカンドライフ</a><span class="note">1.440 sub</span></td><td><span class="tag">Hai con đường</span></td><td>07/19</td><td>7.742</td><td><b>89</b></td><td>20</td></tr>
+    </tbody></table></div>
+</section>
+
+<section>
+  <h2>3 · Bền lâu (hơn 90 ngày, sắp theo tổng view)</h2>
+  <div class="tbl"><table>
+    <thead><tr><th class="t">Video</th><th class="ch">Kênh</th><th>Khung</th><th>Đăng</th><th>View</th><th>View/ngày</th><th>Cmt</th></tr></thead>
+    <tbody>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=D7T5I_QMYr8" target="_blank" rel="noopener"><span class="jp">【漫画】65歳まで働くのが幸せなのか？60歳で定年退職した男と会社に残った男、どちらを選んでも待っていた地獄の正体とは…【老後生活】</span></a><span class="vn">Làm tới 65 có hạnh phúc không? Người nghỉ năm 60 và người ở lại, chọn đường nào cũng gặp địa ngục</span><span class="note">Kênh lớn đã biết. 887K.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCgNr-yxfjcW0ao2dhvBZVWA" target="_blank" rel="noopener" class="jp">News65 (老後)</a><span class="note">174.000 sub</span></td><td><span class="tag">Hai con đường</span></td><td>01/16</td><td>886.922</td><td><b>3.275</b></td><td>187</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=e74N2LiJpSc" target="_blank" rel="noopener"><span class="jp">【漫画】62歳で年金受給するとどうなる？60歳定年退職 vs 2年だけ再雇用。税金・保険料を徹底比較した結果…【老後年金・繰上げ受給】</span></a><span class="vn">Nhận lương hưu năm 62 thì sao? Nghỉ năm 60 vs tái tuyển dụng thêm 2 năm, so thuế và bảo hiểm</span><span class="note">Cặp có số chế độ (nhận hưu sớm). Kênh đã biết. 638 comment.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCgNr-yxfjcW0ao2dhvBZVWA" target="_blank" rel="noopener" class="jp">News65 (老後)</a><span class="note">174.000 sub</span></td><td><span class="tag">Hai con đường</span></td><td>12/19</td><td>798.072</td><td><b>2.671</b></td><td>638</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=kIJtWVarckE" target="_blank" rel="noopener"><span class="jp">【漫画】早期リタイアで人生勝ち逃げのはずが…FIRE達成おじさんの末路…</span></a><span class="vn">Nghỉ sớm để &quot;thắng rồi rút&quot;… kết cục của ông chú đạt FIRE</span><span class="note">Video gốc của ep16. Kênh đã biết.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UC5iOuqUPyR4dBLYnrD0tB9A" target="_blank" rel="noopener" class="jp">人生の物語アニメ</a><span class="note">48.700 sub</span></td><td><span class="tag">Niềm tin lật</span></td><td>01/05</td><td>796.655</td><td><b>2.828</b></td><td>361</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=2QebMRyrKWk" target="_blank" rel="noopener"><span class="jp">【漫画】66歳まで年金受給を待った男の誤算…ほとんどの人が65歳を選ぶ実態…</span></a><span class="vn">Người chờ tới 66 mới nhận lương hưu tính sai… thực tế đa số chọn 65</span><span class="note">Cặp nhận sớm/muộn.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UC5iOuqUPyR4dBLYnrD0tB9A" target="_blank" rel="noopener" class="jp">人生の物語アニメ</a><span class="note">48.700 sub</span></td><td><span class="tag">Niềm tin lật</span></td><td>01/16</td><td>300.724</td><td><b>1.111</b></td><td>200</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=U_W3ONlV6lM" target="_blank" rel="noopener"><span class="jp">【漫画】「第二の人生を…」早期退職で「退職金2000万」を手に入れた50代男の勘違い。身の丈に合わない高級外車とプチ贅沢で貯金が底をつく…【借金ストーリーランド】</span></a><span class="vn">Ông 50 tuổi nghỉ sớm cầm 20 triệu yên &quot;cho đời thứ hai&quot; và cái hiểu lầm… xe sang, xa xỉ nhỏ làm cạn tiền</span><span class="note">Kênh nợ nần lớn 215K sub.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCXftus7nG4Xw-ByjjaxwzEQ" target="_blank" rel="noopener" class="jp">借金ストーリーランド【シャキスト】</a><span class="note">215.000 sub</span></td><td><span class="tag">Niềm tin lật</span></td><td>06/01</td><td>275.276</td><td><b>2.045</b></td><td>369</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=bZp51t9b-_g" target="_blank" rel="noopener"><span class="jp">【漫画】退職金で念願の田舎に移住した６５歳の老夫婦…田舎と都会、どっちが幸せなのか？</span></a><span class="vn">Cặp vợ chồng 65 tuổi dùng tiền thôi việc chuyển về quê… quê hay thành phố, đâu hạnh phúc hơn?</span><span class="note">Mở: vợ kéo vali lên taxi bỏ đi; 「最高の決断をしたはずだったのに」. Bằng chứng mạnh nhất cho cặp về quê.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCxD2Exs2Q4lf7x0Q28OuKvg" target="_blank" rel="noopener" class="jp">老後のゴローさん</a><span class="note">11.300 sub</span></td><td><span class="tag">Hai con đường + niềm tin lật</span></td><td>03/31</td><td>224.152</td><td><b>1.140</b></td><td>169</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=iS0lGlKvO6s" target="_blank" rel="noopener"><span class="jp">【漫画】60歳で即引退で自由を得た男と、65歳再雇用でプライドを捨てた男。定年後の本当の敵とは…</span></a><span class="vn">Người nghỉ ngay năm 60 để tự do và người tái tuyển dụng tới 65 bỏ qua sĩ diện. Kẻ thù thật sau hưu là gì</span><span class="note">Kênh đã biết.</span></td><td class="ch"><a href="https://www.youtube.com/channel/UC5iOuqUPyR4dBLYnrD0tB9A" target="_blank" rel="noopener" class="jp">人生の物語アニメ</a><span class="note">48.700 sub</span></td><td><span class="tag">Hai con đường</span></td><td>03/16</td><td>182.064</td><td><b>860</b></td><td>85</td></tr>
+<tr><td class="t"><a href="https://www.youtube.com/watch?v=Ht1prOKEd_M" target="_blank" rel="noopener"><span class="jp">65歳まで働けば安心は嘘だった。定年再雇用で60歳で潔く辞めた人vs65歳まで残った人</span></a><span class="vn">&quot;Làm tới 65 là yên tâm&quot; là nói dối. Người dứt khoát nghỉ năm 60 vs người ở lại tới 65</span></td><td class="ch"><a href="https://www.youtube.com/channel/UCrLqIfzbv0Su3l1kO5NFLkg" target="_blank" rel="noopener" class="jp">崖っぷちライフ【お金と暮らしの本音チャンネル】</a><span class="note">1.050 sub</span></td><td><span class="tag">Hai con đường + niềm tin lật</span></td><td>05/14</td><td>66.117</td><td><b>433</b></td><td>27</td></tr>
+    </tbody></table></div>
+</section>
+
+<section>
+  <h2>4 · Hook của các video thắng (đọc nguyên văn 0–60 giây)</h2>
+  <div class="two">
+    <div class="card">
+      <h3><span class="jp">源さん</span> · 303K / 4 ngày</h3>
+      <blockquote><span>平日の昼の図書館に同期の野口がいた。…「すまん。声を出すのが3日ぶりなんだ」営業で1番声の大きかったあの野口が。私は会社に残った。給料は4割減り、上司は元の部下だ。やめた男と残った男、どちらが正しかったのか。</span><span class="vn">Giữa trưa ngày thường, đồng kỳ Noguchi ở thư viện. "Xin lỗi, 3 ngày rồi tôi mới mở miệng nói." Noguchi, người to tiếng nhất phòng kinh doanh. Tôi ở lại công ty: lương giảm 40%, sếp là cấp dưới cũ. Người nghỉ và người ở lại, ai đúng?</span></blockquote>
+    </div>
+    <div class="card">
+      <h3><span class="jp">心のよりみち</span> · 51K / 17 giờ</h3>
+      <blockquote><span>私は自由な時間を手に入れ、彼は毎月の給料を手に入れた。…5年後…「お前はいいよな。俺には会社をやめたら何も残らなかった」…なぜなら私にも彼には言えない後悔があったからです。</span><span class="vn">Tôi có thời gian tự do, anh ấy có lương mỗi tháng. 5 năm sau anh ấy nói: "Mày sướng thật, tao nghỉ là chẳng còn gì." Nhưng tôi không gật đầu được, vì tôi cũng có hối tiếc không thể nói với anh ấy.</span></blockquote>
+    </div>
+    <div class="card">
+      <h3><span class="jp">縁側の知恵</span> · 153K / 9 ngày · kênh 530 sub</h3>
+      <blockquote><span>60歳でやめるのが正解か、65歳まで会社に残るのが正解か。あなたならどちらを選ぶだろうか。…俺は自分の方が正しい選択をしたと信じて疑わなかった。</span><span class="vn">Nghỉ năm 60 là đúng, hay ở lại tới 65 là đúng? Bạn sẽ chọn bên nào? … Tôi tin chắc mình đã chọn đúng.</span></blockquote>
+    </div>
+    <div class="card">
+      <h3><span class="jp">老後のゴローさん</span> · 598K · cặp 65 vs 70</h3>
+      <blockquote><span>70歳の今も俺は毎日炎天下の交差点で旗を振っている。…同じ日に定年したはずの同期は5年も前に仕事をやめて悠々と釣り三昧だ。…なのになぜ俺だけがまだここに立っているのか。</span><span class="vn">70 tuổi tôi vẫn vẫy cờ ở ngã tư dưới nắng gắt. Đồng kỳ nghỉ cùng ngày thì đã bỏ việc từ 5 năm trước, ung dung đi câu. Sao chỉ mình tôi còn đứng đây?</span></blockquote>
+    </div>
+    <div class="card">
+      <h3><span class="jp">老後の分かれ道マンガ</span> · mới 1,6 ngày · cặp về quê vs thành phố</h3>
+      <blockquote><span>5年前、この鍵さえあればどこへでも行けると思っていた。…妻が静かに言った。「あなた、もうこの家では暮らせない」…一方、都会の小さなマンションで…「俺たち本当にここに残って正解だったのかな？」</span><span class="vn">5 năm trước tôi tưởng có chìa khoá xe là đi đâu cũng được. Vợ nói khẽ: "Mình không sống nổi ở nhà này nữa." Còn cặp ở lại căn hộ nhỏ thành phố: "Ở lại đây có thật là đúng không?"</span></blockquote>
+    </div>
+    <div class="card">
+      <h3><span class="jp">News65</span> · 161K · niềm tin lật phe "ở lại"</h3>
+      <blockquote><span>安全な方に賭けたつもりで俺は会社に残った。なのに机には契約書が1枚。…会社に残れば安心のはずだった。</span><span class="vn">Tôi ở lại công ty vì tưởng đặt cược vào đường an toàn. Vậy mà trên bàn là một tờ hợp đồng… Ở lại công ty lẽ ra phải yên tâm.</span></blockquote>
+    </div>
+  </div>
+  <p class="note-s">13 hook đã phân tích, chấm điểm và nạp vào kho <span class="path">E:\CLAUDE\YOUTUBE\HOOK_LIBRARY\HOOK_LIBRARY.md</span> (mã H18, H15, H35, H08).</p>
+</section>
+
+<section>
+  <h2>5 · Các cặp lựa chọn: bằng chứng thị trường</h2>
+  <div class="pairs">
+    <div class="pair"><span class="pill w">Đông nhất · bắt đầu bão hoà</span><h3>Nghỉ năm 60 vs ở lại tới 65</h3><b class="big">303K</b><span class="note-s">5 video trong 6 tuần, ~790K view. Comment đã than "loại này nhiều quá". Muốn làm tiếp thì phải đổi góc (nghề, vùng, ai kể).</span></div>
+    <div class="pair"><span class="pill g">Mạnh, ít người làm</span><h3>Nghỉ năm 65 vs làm tới 70</h3><b class="big">598K</b><span class="note-s"><span class="jp">老後のゴローさん</span> 598K, <span class="jp">ZERO-YEN</span> 69K, <span class="jp">分かれ道</span> 42K. Lane F chưa làm cặp này.</span></div>
+    <div class="pair"><span class="pill g">Bền, vừa có video mới</span><h3>Về quê vs ở lại thành phố</h3><b class="big">221K</b><span class="note-s"><span class="jp">ゴローさん</span> 221K (6 tháng vẫn lên), <span class="jp">分かれ道</span> giữ nhà vs bán nhà 23K, video mới 1,6 ngày. Khớp ưu tiên số 1 đã chốt.</span></div>
+    <div class="pair"><span class="pill g">Có số chế độ, view lớn</span><h3>Nhận hưu sớm / tái tuyển dụng thêm 2 năm</h3><b class="big">798K</b><span class="note-s">News65 "60歳退職 vs 2年再雇用" 798K, 638 comment; "66歳まで待った男の誤算" 301K.</span></div>
+    <div class="pair"><span class="pill b">Bằng chứng mỏng</span><h3>Tiền thôi việc một lần vs nhận dần</h3><b class="big">7,7K</b><span class="note-s">Chỉ 1 video truyện (<span class="jp">セカンドライフ</span>). Cặp gần: "mở quán vs gửi hết" và "gửi kỳ hạn rồi quên vợ" đều mới nổi. Nên làm sau.</span></div>
+    <div class="pair"><span class="pill g">Biến thể niềm tin lật</span><h3>"Tưởng việc sau hưu dễ, 1 tháng sau…"</h3><b class="big">37K</b><span class="note-s"><span class="jp">人生後半ストーリ</span> (797 sub) làm thành chuỗi: thu ngân, dán tem giảm giá, xưởng sủi cảo, đều 7–29K. Hợp Lane G hơn Lane F.</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>6 · Những gì không đưa vào</h2>
+  <ul class="note-s" style="margin:0;padding-left:1.1em;display:grid;gap:4px">
+    <li>Video danh sách so sánh kiểu <span class="jp">一流と二流</span> (người hạng nhất vs hạng hai): <span class="jp">シニアの人生トリビア</span> 596K / 17 ngày. Rất mạnh nhưng là khung danh sách, không phải truyện hai con đường.</li>
+    <li>Video so sánh 4 người theo thu nhập (News65 395K): khung "nhiều người", không phải đồng kỳ.</li>
+    <li>Video スカッと ngoại tình, cướp tiền thôi việc: khác trục Lane F.</li>
+    <li>Vlog người thật (<span class="jp">つーさん</span> 293K, <span class="jp">定年退職チャンネル</span>): không làm theo được.</li>
+  </ul>
+</section>
+
+<footer class="note-s" style="display:grid;gap:4px">
+  <span>Dữ liệu: <span class="path">E:\CLAUDE\YOUTUBE\TRENDING-RESEARCH\data\laneF_formula_hunt_20261014\</span> (search_raw*.json, cand_enriched.json 197 video, channels.json, comments_top.json, hooks.txt, hook_records.json).</span>
+  <span>Số view lấy qua YouTube API lúc 14/10/2026. View/ngày = view ÷ số ngày từ lúc đăng (tối thiểu 1 ngày).</span>
+</footer>
+</div>

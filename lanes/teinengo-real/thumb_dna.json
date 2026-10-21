@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "measured": true,
+  "lane_id": "teinengo-real",
+  "sheet_tab": "F-teinengo-real",
+  "sheet_id": "1xu4iNudIPanWrUxlTODqIySGf9YxLy7rpTq9OtXDMOU",
+  "source_channels": [
+    "https://www.youtube.com/channel/UCRkP44Mcw-K8IktdTqxC9dg"
+  ],
+  "sample_thumbs": [
+    "thumbs/win/XbwqD2SktC0.jpg",
+    "thumbs/win/K8tTrxijqEo.jpg",
+    "thumbs/win/O84L0zOtrxo.jpg",
+    "thumbs/win/_VXUim2J9QM.jpg",
+    "thumbs/win/EANADckKWT4.jpg",
+    "thumbs/win/dY3HfjtmvXI.jpg",
+    "thumbs/win/e_Zo7Ht5OH8.jpg",
+    "thumbs/win/_fJim8rkhhM.jpg",
+    "thumbs/win/WblFD81yjOI.jpg",
+    "thumbs/win/iJrKlKBAabY.jpg",
+    "thumbs/win/O0k7prbS9PE.jpg",
+    "thumbs/win/cjqH1URIwvc.jpg",
+    "thumbs/win/ZogHjPo8cX0.jpg"
+  ],
+  "measured_at": "2026-09-24",
+  "layout": "bands",
+  "text_rows": [
+    {
+      "role": "top",
+      "color": "#FCFC0E",
+      "stroke": "#FBF9FD",
+      "max_chars": 9,
+      "height_ratio": 0.19,
+      "width_ratio": 0.774,
+      "align": "center",
+      "required": true,
+      "seen_in": "12/13",
+      "meaning": "băng tiêu đề trên nền ĐEN đặc, chữ trắng + tô VÀNG đúng cụm từ khoá",
+      "description": "TOP headline on a solid black bar across the full width. White text; the 2-4 character keyword that carries the promise is coloured YELLOW (the reference channel does this in 11/12 winners). Natural Japanese, <= 9 characters.",
+      "measured_px": "h 0.183–0.206 H · w 0.527–1.000 W · ký tự 5–9 (trung vị 7)",
+      "top_margin_ratio": 0.016,
+      "stroke_ratio": 0.07
+    },
+    {
+      "role": "lead",
+      "color": "#FDFD08",
+      "stroke": "#EBED4A",
+      "max_chars": 8,
+      "height_ratio": 0.102,
+      "width_ratio": 0.216,
+      "align": "right",
+      "required": false,
+      "seen_in": "12/13",
+      "meaning": "nhãn nhỏ trong tranh (第3位 / 60歳で退職 / 2か月後…) — mốc thứ hạng hoặc mốc thời gian",
+      "description": "Small label line inside the artwork: a rank (第3位), a state (60歳で退職) or a time jump (2か月後…). <= 8 characters, omit when the scene needs no label.",
+      "measured_px": "h 0.079–0.122 H · w 0.158–0.445 W · ký tự 2–8 (trung vị 4)",
+      "font_ratio": 0.102,
+      "left_margin_ratio": 0.551,
+      "gap_ratio": 0.012,
+      "stroke_ratio": 0.1
+    },
+    {
+      "role": "shock",
+      "color": "#FEFE07",
+      "stroke": "#EFF14B",
+      "max_chars": 9,
+      "height_ratio": 0.157,
+      "width_ratio": 0.444,
+      "align": "left",
+      "required": false,
+      "seen_in": "9/13",
+      "meaning": "dòng CHỐT lớn ở nửa dưới (最高の娯楽5選 / ※1円もかからない) — 0/2 mẫu THUA có",
+      "description": "BIG closing line over the artwork in the lower half: the payoff of the promise (最高の娯楽5選 / ※ぜんぶ0円です). White with a thick dark outline in 4 of 9 measured cases, yellow in 5; <= 9 characters. Only 1 of the 5 losing thumbnails had such a line.",
+      "measured_px": "h 0.100–0.475 H · w 0.339–0.887 W · ký tự 4–15 (trung vị 7)",
+      "bottom_margin_ratio": 0.018,
+      "stroke_ratio": 0.11
+    }
+  ],
+  "text_coverage_ratio": [
+    0.262,
+    0.4
+  ],
+  "image": {
+    "source": "ai_text2img",
+    "subject_position": "centre",
+    "require_face": false,
+    "forbid_real_person": true,
+    "face_seen_in": "13/13",
+    "art_style": "semi-realistic Japanese seinen manga illustration in the style of a retirement money-drama web comic: realistic adult proportions, clean ink line art with soft cel shading, ordinary modern Japanese settings (small apartment kitchen table, bank counter, pension office window, hospital waiting room, factory floor, izakaya, convenience store); the frame is split into EXACTLY 2 side-by-side comic panels with a thin white gutter, each panel shows ONE Japanese man or woman in their 60s drawn large (head and shoulders to waist) with a clear readable expression, one panel relaxed or proud and the other worried, regretful or shocked; keep the top 22% of the frame empty dark for a black title bar and the bottom 15% simple for small yellow labels; NO text, no letters, no speech bubbles drawn by the model, no logos, no watermark, no real photograph",
+    "keep_top_ratio": 0.28,
+    "keep_bottom_ratio": 0.2
+  },
+  "font": {
+    "family": "Noto Sans JP",
+    "file": "NotoSansJP-Variable.ttf",
+    "variation": "Black",
+    "fallback": "Yu Gothic Bold"
+  },
+  "content": {
+    "lenses": [
+      "two_way_compare",
+      "before_after_time",
+      "ranking_countdown"
+    ],
+    "lens_notes": "two_way_compare = 2 panel 2 lựa chọn (60歳で退職 vs 65歳まで働く; XbwqD 313k) · before_after_time = cùng 1 người trước/sau (もう自由だ → 話が違う…; _VX, EANAD, O0k7) · ranking_countdown = nhãn 第3位/第2位 chỉ khi video ĐẾM thật (K8t, O84)",
+    "forbidden_phrases": [
+      "衝撃の真実",
+      "まさかの結末",
+      "その理由とは？",
+      "残酷な現実",
+      "衝撃の現実",
+      "末路",
+      "老後破産の実態"
+    ],
+    "audience": "người Nhật 58-67 tuổi sắp hoặc vừa nghỉ hưu, lo tiền hưu (年金・退職金・再雇用・繰上げ), xem trên điện thoại, thích truyện tranh kể chuyện đời thường có con số thật",
+    "brief": "Reference channel 老後の暮らし研究所 (UCRkP44Mcw-K8IktdTqxC9dg), manga-story retirement money drama. Motif checked by eye on 6/15 thumbnails and in the channel's title_intel: (1) a solid BLACK bar across the top carrying ONE line of 4-9 characters, white text with the keyword in YELLOW or RED (a phrase the viewer applies to themself: 65歳で定年退職 / 貧乏になるお金の使い方 / 62歳で年金受給) - never the full video title; (2) EXACTLY 2 semi-realistic manga panels (left/right), each with one Japanese person in their 60s and a white oval speech bubble with VERTICAL text of at most 5 characters (inner voice: もう自由だ / 話が違う… / 安いから…); (3) a YELLOW label box with black outline at the bottom of each panel (age / choice / N年後…). Winners carry NO money amounts on the thumbnail (0/4). The thumbnail adds a second angle to the title, it does not repeat it."
+  },
+  "bans": [
+    "ảnh/chân dung người thật hoặc ảnh gần thật (kênh mẫu 15/15 tranh manga bán thực)",
+    "số tiền trên thumbnail (0/4 video thắng có; 3/9 video không thắng có)",
+    "chữ sốc trừu tượng 残酷な現実 / 衝撃の現実 / 末路 (0/4 thắng dùng)",
+    "chép nguyên tiêu đề lên dải đen (dải chỉ 4-9 chữ, là cụm người xem tự áp vào mình)",
+    "chữ do model ảnh vẽ (chữ luôn do PIL vẽ đè lên)"
+  ],
+  "notes": "Đo bằng máy 13 thumbnail THẮNG + 2 THUA của kênh 老後の暮らし研究所 (1 kênh, 15 video) 2026-09-24. Băng đen trên 12/13 (cao trung vị 0.277 H), chữ VÀNG trong băng 11/12, ≥2 panel 11/13, dòng chốt nửa dưới 9/13 THẮNG vs 1/2 THUA. Kênh chỉ 15 video nên dùng --all; `seen_in` là SÀN DƯỚI (OCR trượt chữ dọc trong bong bóng). Đối chiếu bằng mắt: ảnh lưới 6 thumbnail top trong E:\\CLAUDE\\YOUTUBE\\h2dev\\FlowHandoff_local\results\\laneF_from_research\\data/thumb_老後の暮らし研究所.png.",
+  "stats": {
+    "n_win": 13,
+    "n_lose": 2,
+    "yellow_in_top": "11/12",
+    "punch_line_win": "9/13",
+    "punch_line_lose": "1/2",
+    "faces_haar": "13/13",
+    "panels_ge2": "11/13",
+    "yellow_blocks": "13/13",
+    "red_blocks_win": "3/13",
+    "red_blocks_lose": "1/2",
+    "coverage_q25_med_q75": [
+      0.262,
+      0.272,
+      0.4
+    ],
+    "top_bar_height_med": 0.277
+  }
+}

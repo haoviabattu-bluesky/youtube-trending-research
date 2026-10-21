@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "measured": true,
+  "lane_id": "shakai_no_naze",
+  "sheet_tab": "L-shakai-no-naze",
+  "sheet_id": "1xu4iNudIPanWrUxlTODqIySGf9YxLy7rpTq9OtXDMOU",
+  "source_channels": [
+    "https://www.youtube.com/channel/UCFWFKb3Yr_1SrAT0kcvwFdw"
+  ],
+  "sample_thumbs": [
+    "thumbs/win/9uJitpEzT-M.jpg",
+    "thumbs/win/HjPYNdKspRM.jpg",
+    "thumbs/win/YFjKKrYJMw8.jpg",
+    "thumbs/win/rSHA0RrxwJA.jpg",
+    "thumbs/win/CncHDX_zGOY.jpg",
+    "thumbs/win/qwV8VWwe5Qk.jpg",
+    "thumbs/win/4RUxib2i6fo.jpg"
+  ],
+  "measured_at": "2026-09-24",
+  "layout": "bands",
+  "text_rows": [
+    {
+      "role": "top",
+      "color": "#EE3837",
+      "stroke": "#FDFDFD",
+      "max_chars": 13,
+      "height_ratio": 0.138,
+      "width_ratio": 1.0,
+      "align": "center",
+      "required": true,
+      "seen_in": "7/7",
+      "meaning": "băng tiêu đề trên nền ĐEN đặc, chữ trắng + tô VÀNG đúng cụm từ khoá",
+      "description": "TOP headline on a solid black bar across the full width. White text; the 2-4 character keyword that carries the promise is coloured YELLOW (the reference channel does this in 7/7 winners). Natural Japanese, <= 13 characters.",
+      "measured_px": "h 0.133–0.146 H · w 0.968–1.000 W · ký tự 12–18 (trung vị 13)",
+      "top_margin_ratio": 0.015,
+      "stroke_ratio": 0.07
+    },
+    {
+      "role": "lead",
+      "color": "#080202",
+      "stroke": "#E0B742",
+      "max_chars": 9,
+      "height_ratio": 0.095,
+      "width_ratio": 0.441,
+      "align": "left",
+      "required": false,
+      "seen_in": "6/7",
+      "meaning": "nhãn nhỏ trong tranh (第3位 / 60歳で退職 / 2か月後…) — mốc thứ hạng hoặc mốc thời gian",
+      "description": "Small label line inside the artwork: a rank (第3位), a state (60歳で退職) or a time jump (2か月後…). <= 9 characters, omit when the scene needs no label.",
+      "measured_px": "h 0.092–0.099 H · w 0.336–0.454 W · ký tự 6–9 (trung vị 8)",
+      "font_ratio": 0.095,
+      "left_margin_ratio": 0.057,
+      "gap_ratio": 0.012,
+      "stroke_ratio": 0.1
+    }
+  ],
+  "text_coverage_ratio": [
+    0.179,
+    0.237
+  ],
+  "image": {
+    "source": "ai_text2img",
+    "subject_position": "centre",
+    "require_face": false,
+    "forbid_real_person": true,
+    "face_seen_in": "6/7",
+    "art_style": "clean modern Japanese anime illustration (bright semi-realistic anime, soft cel shading, clear line art) of an ordinary modern Japanese setting (open-plan office, meeting room, care home, apartment living room, phone shop, street); the frame is split into EXACTLY 2 side-by-side panels with a thin black gutter, each panel shows ONE or TWO Japanese adults drawn large (waist-up) with a clear readable expression that tells the story (the two panels contrast: cause vs result, or two sides of the question); a young Japanese woman about 25 with long black hair in a low ponytail and brown eyes (Sakura) may appear in one panel; keep the top 20% of the frame plain dark for a black title bar and the top 12% of each panel below it simple for a small yellow label; NO text, no letters, no speech bubbles, no charts or numbers drawn by the model, no logos, no watermark, no real photograph",
+    "keep_top_ratio": 0.16,
+    "keep_bottom_ratio": 0.2
+  },
+  "font": {
+    "family": "Noto Sans JP",
+    "file": "NotoSansJP-Variable.ttf",
+    "variation": "Black",
+    "fallback": "Yu Gothic Bold"
+  },
+  "content": {
+    "lenses": [
+      "cause_vs_result",
+      "two_sides_contrast",
+      "open_question"
+    ],
+    "lens_notes": "cause_vs_result = panel trái nguyên nhân / panel phải hậu quả (9uJ 打たれ弱い → すぐ辞める; YFj なんでもパワハラ → 誰も助けない) · two_sides_contrast = 2 mặt của câu hỏi (独身は勝ち組 / 金も時間も自由; 高すぎるiPhone / 中高年に人気) · open_question = 1 nhãn giấu đáp án (xW2 いい人だけど… / ○○が原因)",
+    "forbidden_phrases": [
+      "衝撃の真実",
+      "まさかの結末",
+      "その理由とは？",
+      "驚愕",
+      "ヤバすぎる"
+    ],
+    "audience": "người Nhật 25-55 tuổi đi làm (công sở, nhân sự, quản lý, người chuyển việc), tò mò về hiện tượng xã hội/thế hệ/nơi làm việc, xem điện thoại, thích truyện tranh giải thích có số liệu thật",
+    "brief": "Reference channel 社会のウラガワ (UCFWFKb3Yr_1SrAT0kcvwFdw), manga explainer of Japanese social phenomena. Motif checked by eye on 11/11 thumbnails: (1) a solid BLACK bar across the top with ONE line of 9-14 characters in THREE colours - YELLOW = the subject group (Z世代 / 賢い人 / 独身男性), RED = the shocking keyword (大量解雇 / 群れない / 爆増), WHITE = particles; 10/11 lines end with 理由 (1/11 末路) and are a REWRITE, not the video title; (2) EXACTLY 2 anime panels side by side, each with ONE yellow label box with black outline near the TOP of the panel, 5-8 characters, a short claim or inner voice (打たれ弱い / すぐ辞める / 独身は勝ち組 / 転職者数が6倍); (3) the black-ponytail young woman Sakura appears in 6/11. No speech bubbles except 1/11."
+  },
+  "bans": [
+    "ảnh/chân dung người thật hoặc ảnh chụp (kênh mẫu 11/11 tranh anime)",
+    "chép nguyên tiêu đề lên dải đen (dải đen là câu VIẾT LẠI kết bằng 理由, 9-14 chữ)",
+    "chữ/số/biểu đồ do model ảnh vẽ (chữ luôn do PIL vẽ đè lên; số trên nhãn phải có trong script)",
+    "poster phim/logo/nhân vật có bản quyền",
+    "bong bóng thoại/nhãn RỖNG trong scene_prompt"
+  ],
+  "notes": "Đo bằng máy 7 thumbnail THẮNG + 4 THUA của kênh 社会のウラガワ (1 kênh, 11 video) 2026-09-24. Băng đen trên 7/7 (cao trung vị 0.163 H), chữ VÀNG trong băng 7/7, ≥2 panel 2/7, dòng chốt nửa dưới 1/7 THẮNG vs 0/4 THUA. Kênh chỉ 11 video nên dùng --all. Đối chiếu bằng mắt 11/11: nhãn vàng nằm ĐẦU mỗi panel (không phải đáy).",
+  "stats": {
+    "n_win": 7,
+    "n_lose": 4,
+    "yellow_in_top": "7/7",
+    "punch_line_win": "1/7",
+    "punch_line_lose": "0/4",
+    "faces_haar": "6/7",
+    "panels_ge2": "2/7",
+    "yellow_blocks": "7/7",
+    "red_blocks_win": "6/7",
+    "red_blocks_lose": "3/4",
+    "coverage_q25_med_q75": [
+      0.179,
+      0.215,
+      0.237
+    ],
+    "top_bar_height_med": 0.163
+  }
+}

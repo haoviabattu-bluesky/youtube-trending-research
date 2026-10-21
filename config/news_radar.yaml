@@ -1,0 +1,44 @@
+# NEWS RADAR — quét tin nóng/viral Nhật hằng ngày (anh chốt 17/10/2026: chỉ Nhật, mọi thể loại, B, lane Q)
+market:
+  geo: JP
+  hl: ja
+
+sources:                      # bật/tắt từng nguồn; probe thật 17/10/2026 đều HTTP 200 keyless
+  google_trends: true         # https://trends.google.com/trending/rss?geo=JP
+  google_news: true           # https://news.google.com/rss?hl=ja&gl=JP&ceid=JP:ja
+  yahoo_ranking: true         # https://news.yahoo.co.jp/ranking/access/news (+ /domestic)
+  x_trends24: true            # https://trends24.in/japan/  (25 snapshot/giờ)
+  x_getdaytrends: true        # https://getdaytrends.com/japan/
+  youtube_supply: true        # InnerTube search window=today cho từng cụm (đo CUNG)
+
+http:
+  timeout_s: 25
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
+
+cluster:
+  lookback_hours: 24          # keyword trong 24h gần nhất mới đem gộp
+  max_keywords: 100           # 150 làm output model ~7.5k token, dễ cụt; mỗi nguồn còn cap riêng (cluster.SOURCE_CAP)
+
+heat:
+  source_weight: {google_trends: 1.0, google_news: 0.6, yahoo_ranking: 1.0, x_trends24: 0.8, x_getdaytrends: 0.6}
+  multi_source_bonus: {2: 1.5, 3: 2.0, 4: 2.5}
+  velocity_cap: 3.0
+  supply_view_unit: 10000     # gap = heat / log1p(tổng view 24h / unit + số video)
+  sensational_floor: 0.6      # hệ số = floor + 0.1 × điểm giật gân (1–5)
+
+brief:
+  top_n: 10                   # anh làm 3–5 video/ngày → brief ≤10 đề tài
+  evidence_top_n: 6
+  evidence_urls_per_cluster: 6
+  evidence_chars_per_url: 3000
+  hooks_per_cluster: 2        # chỉ chạy khi --hooks
+  min_final_score: 0.5        # dưới ngưỡng thì không đưa vào brief (nhiễu); đo 17/10: cụm 1 nguồn Yahoo ≈ 1.2–2.7
+
+output:
+  runs_dir: runs/news_radar
+  lane_q_dir: E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\q\NEWS_RADAR
+  handoff_log: E:\CLAUDE\YOUTUBE\MG_STUDIO\lanes\q\BAN_GIAO_TRENDING.md
+  db: data/news_radar.db
+
+tools:
+  pw_search: data/lane_q_topics_20261010/pw_search.py   # Chrome nền cổng 9461 (không mở/tắt cửa sổ)

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chọn thời kỳ — đo nhu cầu &amp; cạnh tranh</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=Be+Vietnam+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f6f4; --panel:#ffffff; --ink:#151d1a; --muted:#5c6b64; --line:#dde3de;
+  --accent:#8c2f22; --accent-soft:#f7e8e4; --warn:#b3341f; --warn-soft:#fbe9e4;
+  --gold:#a8801a; --gold-soft:#faf0d6; --blue:#1f5a8f; --blue-soft:#e6eff7;
+  --font-display:"Zen Kaku Gothic New","Hiragino Sans",sans-serif;
+  --font-serif:"Noto Serif JP",serif; --font-body:"Be Vietnam Pro",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#101412; --panel:#181f1b; --ink:#e9efea; --muted:#93a39a; --line:#2b342d;
+  --accent:#e0806c; --accent-soft:#2a1a16; --warn:#e8776a; --warn-soft:#2c1a17;
+  --gold:#e0b84e; --gold-soft:#2a2214; --blue:#7aa9dd; --blue-soft:#16232f; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#101412; --panel:#181f1b; --ink:#e9efea; --muted:#93a39a; --line:#2b342d;
+  --accent:#e0806c; --accent-soft:#2a1a16; --warn:#e8776a; --warn-soft:#2c1a17;
+  --gold:#e0b84e; --gold-soft:#2a2214; --blue:#7aa9dd; --blue-soft:#16232f; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.65;padding-inline:16px}
+.wrap{max-width:1020px;margin:0 auto;padding-block:40px 80px}
+[lang="ja"]{font-family:var(--font-display)}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--font-serif);text-wrap:balance;margin:0;line-height:1.3}
+.hero{display:flex;flex-direction:column;gap:14px;padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0}
+h1{font-size:clamp(1.55rem,4vw,2.15rem)}
+.lede{color:var(--muted);max-width:74ch;font-size:1rem;margin:0}
+.statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-top:8px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.stat .n{font-family:var(--font-mono);font-size:1.22rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}
+.stat .l{font-size:.74rem;color:var(--muted);margin-top:2px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+nav.toc a{font-size:.82rem;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px 12px;text-decoration:none;color:var(--ink)}
+section{margin-bottom:48px;scroll-margin-top:16px}
+h2{font-size:1.3rem;margin-bottom:6px}
+h3{font-size:1.02rem;font-family:var(--font-display);margin:18px 0 6px}
+.sectionlede{color:var(--muted);max-width:76ch;margin:0 0 18px;font-size:.94rem}
+.answer{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:14px 18px;font-size:.96rem;margin:0 0 18px}
+.answer b{color:var(--accent)}
+.vi{color:var(--muted);font-style:italic}
+.vi.block{display:block;margin-top:3px;font-size:.9rem;font-style:normal}
+table{width:100%;border-collapse:collapse;font-size:.87rem;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--accent-soft);font-weight:600;font-size:.8rem;letter-spacing:.02em}
+tr:last-child td{border-bottom:none}
+td.num,th.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.tblwrap{overflow-x:auto;border-radius:10px}
+.vcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.vhead{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between;margin-bottom:4px}
+.vhead h3{margin:0;font-family:var(--font-serif);font-size:1.02rem;flex:1 1 340px}
+.vid{font-family:var(--font-mono);font-size:.72rem;color:var(--muted)}
+.vmeta{display:flex;flex-wrap:wrap;gap:14px;font-size:.78rem;color:var(--muted);margin-bottom:10px}
+.vmeta b{font-family:var(--font-mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.q{font-size:.9rem;background:var(--blue-soft);border-radius:8px;padding:9px 12px;margin:0 0 10px}
+.q b{color:var(--blue)}
+ul.pts{margin:0;padding-left:19px;font-size:.88rem}
+ul.pts li{margin-bottom:4px}
+.take{font-size:.85rem;color:var(--muted);border-top:1px dashed var(--line);margin-top:10px;padding-top:8px}
+.take b{color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:700px){.grid2{grid-template-columns:1fr}}
+figure{margin:0}
+figure img{width:100%;border-radius:9px;display:block;border:1px solid var(--line)}
+figcaption{font-size:.78rem;color:var(--muted);margin-top:6px}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.ev{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.ev h3{margin:0 0 6px;font-size:.96rem}
+.ev p{margin:0;font-size:.88rem}
+.hook{background:#1c1a17;color:#f2ede4;border-radius:10px;padding:14px 16px;font-size:.86rem;font-family:var(--font-display);line-height:1.9;overflow-x:auto}
+.hook .t{color:#c9a227;font-family:var(--font-mono);font-size:.76rem;margin-right:8px}
+.hook .sp{color:#8fb4d8;font-size:.76rem}
+.hooknote{font-size:.76rem;color:var(--muted);margin-top:6px}
+.srcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.srccard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.srccard h3{margin:0 0 8px;font-size:.92rem;color:var(--accent)}
+.srccard ul{margin:0;padding-left:17px;font-size:.84rem}
+.srccard li{margin-bottom:4px}
+.warnbox{background:var(--warn-soft);border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:0 10px 10px 0;padding:14px 18px;font-size:.9rem}
+.warnbox h3{margin-top:0;color:var(--warn)}
+.warnbox ul{margin:6px 0 0;padding-left:19px}
+.warnbox li{margin-bottom:6px}
+.okbox{background:var(--gold-soft);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 18px;font-size:.9rem}
+.okbox h3{margin-top:0;color:var(--gold)}
+.quote{font-size:.86rem;border-left:3px solid var(--line);padding-left:12px;color:var(--muted);margin:10px 0}
+.quote i{display:block;color:var(--ink);font-style:normal}
+footer{color:var(--muted);font-size:.79rem;border-top:1px solid var(--line);padding-top:16px}
+.pill{display:inline-block;font-size:.72rem;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:2px 9px;margin-right:5px;font-weight:600}
+
+.num{text-align:right;font-family:var(--font-mono);font-size:.92em}
+tr.win{background:var(--accent-soft)}
+.bar{height:9px;border-radius:5px;background:var(--accent);display:inline-block;vertical-align:middle}
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:18px 0}
+.vc{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--panel)}
+.vc.pick{border-color:var(--accent);border-width:2px;background:var(--accent-soft)}
+.vc h4{margin:0 0 6px;font-family:var(--font-serif);font-size:1.02rem}
+.vc .tag{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sub{font-size:.7rem;color:var(--muted)}
+.muted{color:var(--muted)}
+.orig{display:block;font-size:.7rem;color:var(--muted);margin-top:3px;line-height:1.4}
+</style></head><body><div class="wrap">
+
+<div class="hero">
+  <div class="eyebrow">Đo lường · không phải cảm tính</div>
+  <h1>Làm thời kỳ nào? — đo nhu cầu và cạnh tranh thật</h1>
+  <p class="lede">Bảng so sánh trước đó là đánh giá chiến lược. Báo cáo này thay nó bằng số đo:
+  quét InnerTube tháng 10/2026 trên 24 truy vấn, lấy toàn bộ video đăng trong 30 ngày,
+  rồi tra số người đăng ký của từng kênh để xem <b>view mới đang chảy vào kênh lớn hay kênh nhỏ</b>.</p>
+</div>
+
+<section>
+  <h2>Câu trả lời ngắn</h2>
+  <div class="answer">
+    <p><b>Làm thời Edo — nhưng đổi định dạng, không sao chép bản đồ.</b></p>
+    <p>Xét thuần "có nhu cầu hay không", cả ba thời kỳ đều có nhu cầu: mỗi tháng có
+    86 / 197 / 122 video mới
+    và trung vị view chênh nhau không đáng kể. Khác biệt nằm ở <b>cửa chen chân</b> và <b>định dạng còn trống</b>.</p>
+    <p>Ở thời Edo, video mới của kênh dưới 20 nghìn người đăng ký đạt trung vị <b>4.169 view</b>,
+    <b>35%</b> vượt 10 nghìn — cao nhất trong ba thời kỳ. Ở Chiến Quốc, con số tương ứng chỉ là
+    616 và 13%, vì <b>41% video mới là bản đồ lãnh thổ</b>
+    và kênh gốc đã chiếm gần hết chỗ đó.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Đo cái gì, và tại sao đo như vậy</h2>
+  <div class="srcgrid">
+    <div class="srccard"><div class="tag">Đo 1</div><b>Cung hiện tại</b>
+      <p>Tìm kiếm InnerTube lọc theo <code>tháng này</code>, 24 truy vấn × 3 thời kỳ.
+      Trả lời: tháng này ai đang đăng, bao nhiêu video, ăn bao nhiêu view.</p></div>
+    <div class="srccard"><div class="tag">Đo 2</div><b>Cửa chen chân</b>
+      <p>Tra số người đăng ký của từng kênh qua trang giới thiệu kênh (không cần API key,
+      không tốn quota). Chia video mới theo quy mô kênh. Đây là phép đo quan trọng nhất.</p></div>
+    <div class="srccard"><div class="tag">Đo 3</div><b>Nhu cầu tìm kiếm</b>
+      <p>Ô gợi ý tự động của Google/YouTube — trả theo độ phổ biến truy vấn thật.
+      Phân loại ý định: đời sống / học-hiểu / bản đồ / nhân vật.</p></div>
+    <div class="srccard"><div class="tag">Đo 4</div><b>Định dạng còn trống</b>
+      <p>Đếm tiêu đề chứa từ khoá bản đồ so với đời sống, rồi so trung vị view.
+      Cho biết "chỗ nào chưa ai làm tốt".</p></div>
+  </div>
+  <div class="warnbox">
+    <b>Đã lọc nhiễu.</b> Truy vấn thô bắt về cả video ngoài ngành: ở thời Edo có video
+    truyền thuyết đô thị về làng Inunaki <span class="orig">犬鳴村 都市伝説</span> 2,94 triệu view;
+    ở Chiến Quốc có video về Tần Thuỷ Hoàng và truyện Kingdom <span class="orig">秦始皇帝 / キングダム</span>,
+    cùng một video đùa về "thời Chiến Quốc của lốp xe" <span class="orig">タイヤ戦国時代</span>.
+    Loại bằng danh sách từ khoá + yêu cầu tiêu đề phải chứa dấu hiệu lịch sử Nhật đúng thời kỳ.
+    Tỉ lệ nhiễu: Chiến Quốc 27%,
+    thời Edo 25%, Mạt Kỳ 20%. Nếu không lọc, thời kỳ nào
+    tình cờ khớp một video lan truyền ngoài ngành sẽ trông "có nhu cầu" hơn thực tế.
+  </div>
+</section>
+
+<section>
+  <h2>1 · Cung: ai đang đăng, view mới bao nhiêu</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Thời kỳ</th><th class="num">Video mới/30 ngày</th><th class="num">Nhiễu</th>
+    <th class="num">Trung vị view</th><th class="num">Bách phân vị 75</th><th class="num">&gt;10 nghìn</th><th class="num">&gt;100 nghìn</th></tr></thead>
+    <tbody><tr><td><b>Chiến Quốc</b></td>
+      <td class="num">86</td>
+      <td class="num">27%</td>
+      <td class="num">3.965</td>
+      <td class="num">37.567</td>
+      <td class="num">40%</td>
+      <td class="num">13%</td></tr><tr><td><b>Thời Edo</b></td>
+      <td class="num">197</td>
+      <td class="num">25%</td>
+      <td class="num">6.019</td>
+      <td class="num">35.398</td>
+      <td class="num">42%</td>
+      <td class="num">9%</td></tr><tr><td><b>Mạt Kỳ – Minh Trị</b></td>
+      <td class="num">122</td>
+      <td class="num">20%</td>
+      <td class="num">7.065</td>
+      <td class="num">30.012</td>
+      <td class="num">47%</td>
+      <td class="num">8%</td></tr></tbody>
+  </table></div>
+  <p class="sectionlede">Trung vị view gần như bằng nhau (3.965 / 6.019 / 7.065).
+  Nói cách khác: <b>nhu cầu không phải yếu tố phân biệt</b> — cả ba đều có người xem.
+  Cái phân biệt là ai đang giành được view đó.</p>
+</section>
+
+<section>
+  <h2>2 · Cửa chen chân: kênh dưới 20 nghìn người đăng ký có sống được không</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Thời kỳ</th><th class="num">Video từ kênh &lt;20 nghìn</th><th class="num">% số video</th>
+    <th class="num">% tổng view</th><th class="num">Trung vị view</th><th class="num">&gt;10 nghìn</th><th class="num">&gt;50 nghìn</th></tr></thead>
+    <tbody><tr><td><b>Chiến Quốc</b></td>
+      <td class="num">54</td>
+      <td class="num">63%</td>
+      <td class="num">29%</td>
+      <td class="num">616</td>
+      <td class="num"><b>13%</b></td>
+      <td class="num">9%</td></tr><tr class="win"><td><b>Thời Edo</b></td>
+      <td class="num">169</td>
+      <td class="num">86%</td>
+      <td class="num">62%</td>
+      <td class="num">4.169</td>
+      <td class="num"><b>35%</b></td>
+      <td class="num">15%</td></tr><tr><td><b>Mạt Kỳ – Minh Trị</b></td>
+      <td class="num">87</td>
+      <td class="num">71%</td>
+      <td class="num">41%</td>
+      <td class="num">1.363</td>
+      <td class="num"><b>28%</b></td>
+      <td class="num">13%</td></tr></tbody>
+  </table></div>
+  <p class="sectionlede">Đã loại kênh gốc khỏi nhóm này: kênh đó 27 ngày tuổi, 5.810 người đăng ký
+  nên rơi vào đúng nhóm "kênh nhỏ", nhưng 6 video của nó chiếm <b>41%</b> view của cả nhóm —
+  để nguyên thì Chiến Quốc trông như "kênh nhỏ đang thắng", trong khi thực ra đó chính là kênh mẫu.
+  Sau khi loại, Chiến Quốc tụt xuống trung vị 616 view.</p>
+  <div class="okbox">
+    <b>Đọc bảng này thế nào.</b> Cột <b>% tổng view</b> là tỉ lệ view mới rơi vào kênh nhỏ. Ở thời Edo là
+    62% — nghĩa là <b>hơn nửa view mới không phải của kênh lớn</b>.
+    Ở Chiến Quốc chỉ 29%: phần lớn view mới vào kênh đã có từ 20 nghìn người đăng ký trở lên.
+  </div>
+</section>
+
+<section>
+  <h2>3 · Nhu cầu tìm kiếm: người ta gõ gì</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Thời kỳ</th><th class="num">Gợi ý không trùng</th><th class="num">Đời sống</th>
+    <th class="num">Học/hiểu</th><th class="num">Bản đồ</th><th class="num">Nhân vật</th></tr></thead>
+    <tbody><tr><td><b>Chiến Quốc</b></td>
+      <td class="num">41</td>
+      <td class="num">2</td>
+      <td class="num">4</td>
+      <td class="num">2</td>
+      <td class="num">10</td></tr><tr><td><b>Thời Edo</b></td>
+      <td class="num">33</td>
+      <td class="num">14</td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td class="num">0</td></tr><tr><td><b>Mạt Kỳ – Minh Trị</b></td>
+      <td class="num">50</td>
+      <td class="num">0</td>
+      <td class="num">4</td>
+      <td class="num">0</td>
+      <td class="num">10</td></tr></tbody>
+  </table></div>
+  <p class="sectionlede">Đây là chỗ ba thời kỳ khác nhau rõ nhất về <b>loại nhu cầu</b>, không phải lượng:</p>
+  <ul>
+    <li><b>Thời Edo</b> — nhu cầu <b>đời sống</b> chiếm áp đảo (14 gợi ý):
+    ăn uống <span class="orig">食事</span>, sinh hoạt thường ngày <span class="orig">暮らし</span>, cách chạy <span class="orig">走り方</span>,
+    nhà vệ sinh <span class="orig">トイレ</span>, nhà tắm <span class="orig">風呂</span>.
+    Người xem muốn biết <i>sống thế nào</i>, không phải <i>ai thắng trận nào</i>.
+    Đây là nhu cầu nội dung mà kênh mới làm được mà không cần bản đồ.</li>
+    <li><b>Chiến Quốc</b> — nhu cầu <b>nhân vật</b> (10) và bản đồ
+    (2). Nhưng đây đúng là chỗ kênh gốc đã đứng:
+    "võ tướng Chiến Quốc, bản đồ thế lực" <span class="orig">戦国武将 勢力図</span>,
+    "thế lực Oda Nobunaga" <span class="orig">織田信長 勢力</span> — cạnh tranh trực diện với một kênh 27 ngày
+    đã có 1,04 triệu view.</li>
+    <li><b>Mạt Kỳ – Minh Trị</b> — nhu cầu <b>nhân vật</b> (10)
+    nhưng gắn với phim ảnh và truyền thông: phim truyền hình dài kỳ Taiga <span class="orig">大河ドラマ</span>,
+    game Fate/Grand Order <span class="orig">fgo</span>, phim điện ảnh <span class="orig">映画</span>, ám sát <span class="orig">暗殺</span>.
+    Nhu cầu có thật nhưng bị nội dung giải trí chiếm, và không có gợi ý "đời sống" nào.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>4 · Phát hiện chính: bản đồ đã kín ở Chiến Quốc, còn trống ở thời Edo</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Thời kỳ</th><th class="num">Video bản đồ</th><th class="num">Trung vị view</th>
+    <th class="num">Video đời sống</th><th class="num">Trung vị view</th>
+    <th class="num">Đời sống / kênh &lt;20 nghìn</th><th class="num">&gt;10 nghìn</th></tr></thead>
+    <tbody><tr><td><b>Chiến Quốc</b></td>
+      <td class="num">48 (41%)</td>
+      <td class="num">611</td>
+      <td class="num">1 (1%)</td>
+      <td class="num muted">—<br><span class="sub">n=1 video</span></td>
+      <td class="num muted">—<br><span class="sub">n=1 video</span></td><td class="num muted">—</td></tr><tr><td><b>Thời Edo</b></td>
+      <td class="num">31 (12%)</td>
+      <td class="num">992</td>
+      <td class="num">78 (30%)</td>
+      <td class="num">18.010</td>
+      <td class="num">12.987<br><span class="sub">n=70 video</span></td><td class="num"><b>53%</b></td></tr><tr><td><b>Mạt Kỳ – Minh Trị</b></td>
+      <td class="num">6 (4%)</td>
+      <td class="num">1.883</td>
+      <td class="num">1 (1%)</td>
+      <td class="num muted">—<br><span class="sub">n=1 video</span></td>
+      <td class="num muted">—<br><span class="sub">n=1 video</span></td><td class="num muted">—</td></tr></tbody>
+  </table></div>
+  <div class="answer">
+    <p>Ở <b>Chiến Quốc</b>, 41% video mới là bản đồ lãnh thổ,
+    nhưng trung vị chỉ 611 view. Định dạng này <b>đã bị làm cạn</b>:
+    nhiều người làm, view chia nhỏ, và video cao nhất (187.733) lại chính là của kênh gốc.
+    Sao chép đúng công thức bản đồ nghĩa là đi thẳng vào chỗ đông nhất.</p>
+    <p>Ở <b>thời Edo</b>, chỉ 12% video mới là bản đồ —
+    nhưng <b>30% là đời sống</b>, và nhóm này đạt trung vị
+    18.010 view, gấp 18 lần nhóm bản đồ. Quan trọng hơn:
+    video đời sống từ kênh dưới 20 nghìn người đăng ký đạt trung vị <b>12.987</b> view với
+    <b>53%</b> vượt 10 nghìn. Đây là ô trống thật sự.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Kết luận theo từng phương án</h2>
+  <div class="verdict">
+    <div class="vc">
+      <div class="tag">Phương án 1</div>
+      <h4>Sao chép Chiến Quốc</h4>
+      <p><b>Không nên làm trục chính.</b> Nhu cầu có, nhưng 41%
+      video mới là bản đồ với trung vị 611 view; kênh &lt;20 nghìn chỉ
+      13% vượt 10 nghìn. Cạnh tranh trực diện với kênh gốc vừa chứng minh công thức.</p>
+      <p class="tag">Giữ làm dự phòng, hoặc làm tập lẻ khi có góc khác (không phải bản đồ).</p>
+    </div>
+    <div class="vc pick">
+      <div class="tag">Phương án 2 — khuyến nghị</div>
+      <h4>Thời Edo 1603–1868</h4>
+      <p><b>Làm, nhưng đổi định dạng sang đời sống.</b> Cửa chen chân rộng nhất
+      (35% video kênh &lt;20 nghìn vượt 10 nghìn, 62% view mới vào kênh nhỏ).
+      Nhu cầu tìm kiếm nghiêng hẳn về ăn uống, sinh hoạt, nhà vệ sinh, nhà tắm <span class="orig">食事 / 暮らし / トイレ / 風呂</span>
+      — thứ không cần bản đồ lãnh thổ.</p>
+      <p class="tag">Trục chính. Đây là chỗ ít cạnh tranh nhất mà vẫn có nhu cầu đo được.</p>
+    </div>
+    <div class="vc">
+      <div class="tag">Phương án 3</div>
+      <h4>Mạt Kỳ – Minh Trị</h4>
+      <p><b>Để giai đoạn 2.</b> Nhu cầu nhân vật mạnh nhưng gắn với phim, game, phim truyền hình dài kỳ
+      <span class="orig">映画 / fgo / 大河ドラマ</span> nên bị nội dung giải trí chiếm;
+      28% kênh &lt;20 nghìn vượt 10 nghìn, thấp hơn thời Edo. Không có nhu cầu
+      "đời sống" nào trong gợi ý tìm kiếm.</p>
+      <p class="tag">Mở rộng sau khi thời Edo ổn định; dùng lợi thế nhân vật để làm series.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Nếu làm thời Edo thì làm gì — cụ thể</h2>
+  <p class="sectionlede">Lấy từ chính các video đang thắng trong 30 ngày qua, không phải suy đoán.
+  Dòng nhỏ bên dưới mỗi tiêu đề là nguyên văn tiếng Nhật, để tra lại video trên YouTube:</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Video đang thắng (đã dịch)</th><th class="num">View</th><th class="num">Người đăng ký</th></tr></thead>
+    <tbody><tr><td>Trải nghiệm thời Edo: nhà trọ ngày xưa có phòng tắm và nhà vệ sinh thế nào?<span class="orig">【江戸体験】旅籠の風呂とトイレは、どうなっていたのか</span></td><td class="num">494.185</td><td class="num">5.420</td></tr><tr><td>Đến trạm nghỉ mới là lúc khó nhất… yếu tố quyết định chọn nhà trọ hoá ra là ○○?! Bí mật của nhà trọ đã đỡ lưng lữ khách thời Edo hay đến khó tin<span class="orig">【納得!!】宿場に着いてからが大変...宿の決め手は○○だった⁉江戸の旅人を支えた旅籠の秘密が面白過ぎた【ずんだもん＆ゆっくり解説】</span></td><td class="num">410.457</td><td class="num">19.400</td></tr><tr><td>Trải nghiệm thời Edo: cả gia đình sống ra sao trong căn nhà dãy bốn chiếu rưỡi?<span class="orig">【江戸体験】長屋の四畳半で、家族はどう暮らした？</span></td><td class="num">306.482</td><td class="num">5.420</td></tr><tr><td>Kiểm chứng: công việc quan trọng nhất là ○○… đời sống Edo thật của lãnh chúa và góc tối của Mạc phủ<span class="orig">【検証!!】一番重要な仕事は○○...大名のリアルな江戸暮らしと幕府の闇がヤバ過ぎた【ずんだもん＆ゆっくり解説】</span></td><td class="num">267.519</td><td class="num">19.400</td></tr><tr><td>Sốc: vì sao đàn ông thời Edo ăn dưa muối suốt ngày? Lý do khiến cơm trắng ăn không dừng được<span class="orig">【衝撃！】江戸の男はなぜ漬物を食べ続けた？白飯が止まらない理由がヤバすぎた…【ずんだもん＆ゆっくり解説】</span></td><td class="num">249.527</td><td class="num">9.540</td></tr></tbody>
+  </table></div>
+  <div class="okbox">
+    <b>Mẫu chung:</b> một câu hỏi đời thường + một chi tiết gây bất ngờ + kênh rất nhỏ vẫn ăn 200–500 nghìn view.
+    Không có bản đồ, không cần nhân vật nổi tiếng, không cần dàn nhân vật AI đông.
+    <br><br>
+    <b>Nhưng lưu ý:</b> các video này dùng giọng đọc hoạt hình kiểu Yukkuri / Zundamon <span class="orig">ゆっくり / ずんだもん</span>
+    (giọng + nhân vật đại diện) — đó là một quy trình sản xuất khác với ảnh AI tả thực của kênh gốc.
+    Nếu làm thời Edo đời sống, phải chọn: giọng đọc + hình minh hoạ, hay ảnh AI tả thực.
+    Chưa đo được cái nào thắng — cần thử.
+  </div>
+</section>
+
+<section>
+  <h2>Hạn chế của phép đo này</h2>
+  <div class="warnbox">
+    <ul>
+      <li><b>Chỉ là ảnh chụp 30 ngày</b> (tháng 10/2026), không phải xu hướng nhiều tháng. Mùa vụ và tin tức có thể làm lệch.</li>
+      <li><b>Video mới chưa tích đủ view.</b> Video đăng 3 ngày trước không thể so với video đăng 28 ngày trước.
+      Đây là lý do dùng trung vị + tỉ lệ đạt ngưỡng thay vì trung bình, nhưng vẫn còn lệch.</li>
+      <li><b>InnerTube cắt ở 40 video mỗi truy vấn</b> (2 trang). Các truy vấn chạm trần bị đếm thiếu — đúng những truy vấn
+      sung nhất. Nên số video mới là <b>sàn</b>, không phải tổng thật.</li>
+      <li><b>Ô gợi ý tự động không phải volume tuyệt đối.</b> Nó cho biết <i>loại</i> nhu cầu và thứ tự tương đối,
+      không cho con số tìm kiếm mỗi tháng.</li>
+      <li><b>Chưa đo được tỉ lệ bấm và tỉ lệ giữ chân</b> — thứ quyết định thắng thua thật. Cần làm thử video rồi đo.</li>
+      <li><b>Phân loại đời sống/bản đồ dựa trên từ khoá trong tiêu đề</b>, nên có sai số ở video có tiêu đề mơ hồ.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Đề xuất bước tiếp theo</h2>
+  <p>Trước khi cam kết cả kênh, làm <b>3 video thử ở thời Edo, hướng đời sống</b> — chọn 3 chủ đề có nhu cầu tìm kiếm
+  đo được (ăn uống; nhà trọ và trạm nghỉ; sinh hoạt trong nhà dãy), đăng cách nhau 7–10 ngày,
+  đo view 7 ngày đầu và so với trung vị 4.169 của nhóm kênh &lt;20 nghìn người đăng ký.
+  Nếu vượt, mở rộng; nếu không, thử Mạt Kỳ với góc nhân vật.</p>
+  <p>Việc này thuộc dự án sản xuất (h2dev), không thuộc dự án nghiên cứu này — nhưng quyết định chọn thời kỳ
+  thì nên chốt trước khi bắt tay vào quy trình sản xuất.</p>
+</section>
+
+<footer>
+  <p>Số liệu: tìm kiếm InnerTube <code>tháng này</code> + trang giới thiệu kênh (không cần API key)
+  + ô gợi ý tự động, chốt 19/10/2026. 325 kênh được tra số người đăng ký.
+  Nguồn thô: <code>scratch_analysis/era_choice/era_raw.json</code>,
+  <code>channels_cache.json</code>, <code>era_clean.json</code>, <code>demand_suggest.json</code>.</p>
+</footer>
+</div></body></html>

@@ -49,6 +49,9 @@ def chat_http(prov: dict, model: str, messages: list[dict], timeout: int,
     if r.status_code != 200:
         raise TransportError(f"HTTP {r.status_code}: {r.text[:200]}")
     if prov.get("stream"):
+        # text/event-stream không khai charset → requests mặc định ISO-8859-1, iter_lines(decode_unicode)
+        # biến tiếng Nhật thành mojibake (đo thật 17/10/2026, NEWS RADAR: JSON cụm bị băm nát). Ép UTF-8.
+        r.encoding = "utf-8"
         text, usage = _read_sse(r, deadline=time.time() + timeout)
     else:
         data = r.json()
@@ -97,13 +100,43 @@ def _read_sse(r: requests.Response, deadline: float) -> tuple[str, dict]:
     return "".join(parts), usage
 
 
-def chat_claude_cli(prov: dict, model: str, messages: list[dict], timeout: int) -> tuple[str, dict]:
-    """`claude -p` dùng gói Claude Code (không tốn API key). Chạy trong thư mục TẠM rỗng để
-    không nạp CLAUDE.md của dự án vào prompt; stdin đóng (DEVNULL) kẻo chờ 3s vô ích."""
-    prompt = "\n\n".join(m["content"] for m in messages)
+LITE_SYSTEM = "Bạn là công cụ xử lý dữ liệu. Làm đúng yêu cầu, chỉ trả đúng định dạng được yêu cầu."
+
+
+def claude_cli_cmd(prov: dict, model: str, effort: str | None, sys_file: str | None) -> list[str]:
+    """Lệnh `claude -p`. Provider `lite: true` (đường "Claude gọn", anh duyệt 21/10/2026) thêm 3 cờ
+    --tools "" · --strict-mcp-config · --system-prompt-file (thay system prompt mặc định ~6k token)
+    + --safe-mode (bỏ CLAUDE.md/skill/plugin: đo thật 6.941 → 790 token nền/lượt)."""
     cmd = [prov.get("command", "claude"), "-p", "--model", model, "--output-format", "json"]
+    if effort:
+        cmd += ["--effort", effort]
+    if prov.get("lite"):
+        cmd += ["--tools", "", "--strict-mcp-config", "--safe-mode", "--system-prompt-file", sys_file]
+    return cmd
+
+
+def _cli_usage(data: dict) -> dict:
+    """Token thật từ modelUsage (input gồm cả cache tạo/đọc) → khoá chuẩn prompt/completion_tokens."""
+    pt = ct = 0
+    for mu in (data.get("modelUsage") or {}).values():
+        pt += int(mu.get("inputTokens") or 0) + int(mu.get("cacheCreationInputTokens") or 0) \
+            + int(mu.get("cacheReadInputTokens") or 0)
+        ct += int(mu.get("outputTokens") or 0)
+    return {"prompt_tokens": pt, "completion_tokens": ct, "cost_usd": data.get("total_cost_usd")}
+
+
+def chat_claude_cli(prov: dict, model: str, messages: list[dict], timeout: int,
+                    effort: str | None = None) -> tuple[str, dict]:
+    """`claude -p` dùng gói Claude Code (không tốn API key). Chạy trong thư mục TẠM rỗng để
+    không nạp CLAUDE.md của dự án vào prompt; prompt qua stdin. Đường lite: tin nhắn system của
+    caller → file system prompt (không nhét vào dòng lệnh: cmd.exe vỡ với & | < >)."""
+    lite = bool(prov.get("lite"))
+    system = "\n\n".join(m["content"] for m in messages if m["role"] == "system") if lite else ""
+    prompt = "\n\n".join(m["content"] for m in messages if not (lite and m["role"] == "system"))
     with tempfile.TemporaryDirectory(prefix="hunt_v2_claude_") as tmp:
-        Path(tmp, "prompt.txt").write_text(prompt, encoding="utf-8")
+        sys_file = str(Path(tmp, "system.txt"))
+        Path(sys_file).write_text(system or LITE_SYSTEM, encoding="utf-8")
+        cmd = claude_cli_cmd(prov, model, effort, sys_file)
         try:
             proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True,
                                   encoding="utf-8", errors="replace", timeout=timeout,
@@ -111,7 +144,7 @@ def chat_claude_cli(prov: dict, model: str, messages: list[dict], timeout: int) 
         except (subprocess.TimeoutExpired, OSError) as e:
             raise TransportError(f"claude -p: {type(e).__name__}") from e
     if proc.returncode != 0:
-        raise TransportError(f"claude -p rc={proc.returncode}: {proc.stderr[-200:]}")
+        raise TransportError(f"claude -p rc={proc.returncode}: {(proc.stderr or proc.stdout)[-200:]}")
     try:
         data = json.loads(proc.stdout.strip().splitlines()[-1])
     except (json.JSONDecodeError, IndexError) as e:
@@ -121,7 +154,7 @@ def chat_claude_cli(prov: dict, model: str, messages: list[dict], timeout: int) 
     text = data.get("result") or ""
     if not text.strip():
         raise TransportError("claude -p trả rỗng")
-    return text, data.get("usage") or {}
+    return text, _cli_usage(data)
 
 
 def repair_json(text: str):

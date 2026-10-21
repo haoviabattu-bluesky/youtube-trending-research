@@ -1,0 +1,23 @@
+{
+ "topics": [
+  "定年後の生活",
+  "地域",
+  "つながり",
+  "60代の暮らし"
+ ],
+ "hook_type": "Mở đầu bằng lời tự sự ngôi 1 của nhân vật cố định (ông ~60-65 tuổi) hé con số/hoàn cảnh cụ thể",
+ "hook_0_30s": "同じ会社で40[音楽]年働き、同じ日に定年を迎えた2人の男がいました。1年[音楽]後、1人の食卓には湯の立つ鍋と焼き魚、もう1人の食卓にはもやしの炒め物とかけご飯[音楽]だけ。ま、腹にはたまるさ。2人の年金の差は[音楽]大きく変わらない。なぜ2人の生活にはここまで差ができてしまったのでしょうか?松田強し60歳。建設会社の現場監督として",
+ "hook_n_segments_0_30": 10,
+ "loi_hua_video": "Giải đáp câu hỏi thực tế về tiền – việc làm – quan hệ ở tuổi 60+ bằng trải nghiệm của nhân vật",
+ "cap_khop": null,
+ "structure": "narration ngôi 1 + timestamp chapter trong description",
+ "emotional_beats": [],
+ "title_formula": null,
+ "notes": "via=api+proxy1; transcript 262 segments, phủ ~100% độ dài video",
+ "video_id": "o4Dr1wbtikM",
+ "title": "【漫画】年金13万円独身男の老後リアル「1500万あれば大丈夫」と再雇用を断った男の末路",
+ "view_count": 28669,
+ "duration_min": 13.7,
+ "vpd": 448.0,
+ "days": 64
+}
